@@ -83,15 +83,123 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core/1.0#appellation_of -->
+    <!-- http://purl.org/ceu/ebaco/core#appellation_object_property -->
 
-    <owl:ObjectProperty rdf:about="&ebaco;appellation_of">
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#appellation_object_property">
+        <rdfs:label xml:lang="en">appellation object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la denominación de origen</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#grape_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#grape_object_property">
+        <rdfs:label xml:lang="en">grape object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la uva</rdfs:label>
+        <rdfs:domain rdf:resource="&ebaco;Grape"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#has_wine_region_appellation -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#has_wine_region_appellation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
-        <rdfs:label xml:lang="en">appellation of</rdfs:label>
-        <rdfs:label xml:lang="es">denominación de origen de</rdfs:label>
-        <rdfs:comment xml:lang="es">Propiedad que relaciona una región vinícola con un vino perteneciente la denominación de esa región.</rdfs:comment>
+        <rdfs:label xml:lang="es">tiene denominación de origen de región vinícola</rdfs:label>
+        <rdfs:comment xml:lang="en">has wine region appellation</rdfs:comment>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona una región vinícola con una denominación de origen.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_region_with_appellation_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#produced_in_wine_region -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#produced_in_wine_region">
+        <rdfs:label xml:lang="en">produced in wine region</rdfs:label>
+        <rdfs:label xml:lang="es">producido en la región vinícola</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con la región vinícola en la que se produce.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#regulating_council_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#regulating_council_object_property">
+        <rdfs:label xml:lang="en">regulating council object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad del consejo regulador</rdfs:label>
+        <rdfs:domain rdf:resource="&ebaco;Regulating_council"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#wine_appellation_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_appellation_object_property">
+        <rdfs:label xml:lang="en">wine appellation object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la denominación de origen del vino</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#appellation_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#wine_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_object_property">
+        <rdfs:label xml:lang="en">Wine object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad del vino</rdfs:label>
+        <rdfs:domain rdf:resource="&ebaco;Wine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#wine_region_appellation_of -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_region_appellation_of">
+        <rdfs:label xml:lang="en">wine region appellation of</rdfs:label>
+        <rdfs:label xml:lang="es">denominación de origen de la región vinícola</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona una denominación de origen con la región vinícola que tiene la califiación de la denominación.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation"/>
+        <owl:inverseOf rdf:resource="http://purl.org/ceu/ebaco/core#has_wine_region_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_appellation_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#wine_region_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_region_object_property">
+        <rdfs:label xml:lang="en">wine region object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la región vinícola</rdfs:label>
         <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
-        <rdfs:range rdf:resource="&ebaco;Wine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#wine_region_with_appellation_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_region_with_appellation_object_property">
+        <rdfs:label xml:lang="en">wine region with appellation object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la región vinícola con denominación de origen</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_region_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#winery_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#winery_object_property">
+        <rdfs:label xml:lang="en">Winery object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la bodega</rdfs:label>
+        <rdfs:domain rdf:resource="&ebaco;Winery"/>
     </owl:ObjectProperty>
     
 
@@ -102,8 +210,8 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">elaborated with grape</rdfs:label>
         <rdfs:label xml:lang="es">elaborado con uva</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con una variedad de uva utilizada en su elaboración.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
         <rdfs:range rdf:resource="&ebaco;Grape"/>
-        <rdfs:domain rdf:resource="&ebaco;Wine"/>
         <owl:inverseOf rdf:resource="&ebaco;grape_of_elaboration_of"/>
     </owl:ObjectProperty>
     
@@ -115,22 +223,8 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">grape of elaboration of</rdfs:label>
         <rdfs:label xml:lang="es">uva de elaboración de</rdfs:label>
         <rdfs:comment xml:lang="es">Relaciona una variedad de uva con un vino en el que es usada la variedad para su elaboración.</rdfs:comment>
-        <rdfs:domain rdf:resource="&ebaco;Grape"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#grape_object_property"/>
         <rdfs:range rdf:resource="&ebaco;Wine"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core/1.0#has_appellation -->
-
-    <owl:ObjectProperty rdf:about="&ebaco;has_appellation">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:label xml:lang="en">has appellation</rdfs:label>
-        <rdfs:label xml:lang="es">tiene denominación de origen</rdfs:label>
-        <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con la región vinícola con denomiación a la que pertenece.</rdfs:comment>
-        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
-        <rdfs:domain rdf:resource="&ebaco;Wine"/>
-        <owl:inverseOf rdf:resource="&ebaco;appellation_of"/>
     </owl:ObjectProperty>
     
 
@@ -154,8 +248,8 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">has grape content</rdfs:label>
         <rdfs:label xml:lang="es">tiene contenido de uva</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad reificada que relaciona un vino con el porcentaje que contiene de una determinada variedad de uva.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
         <rdfs:range rdf:resource="&ebaco;Grape_content"/>
-        <rdfs:domain rdf:resource="&ebaco;Wine"/>
     </owl:ObjectProperty>
     
 
@@ -168,8 +262,23 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">has regulating council</rdfs:label>
         <rdfs:label xml:lang="es">tiene consejo regulador</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona una denominación de origen con su consejo regulador</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#appellation_object_property"/>
         <rdfs:range rdf:resource="&ebaco;Regulating_council"/>
-        <rdfs:domain rdf:resource="&ebaco;Spanish_wine_region_with_quality_denomination"/>
+        <owl:inverseOf rdf:resource="&ebaco;regulating_council_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core/1.0#has_wine_appellation -->
+
+    <owl:ObjectProperty rdf:about="&ebaco;has_wine_appellation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">has wine appellation</rdfs:label>
+        <rdfs:label xml:lang="es">tiene denominación de origen de vino</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con la denomiación de origen a la que pertenece.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
+        <owl:inverseOf rdf:resource="&ebaco;wine_appellation_of"/>
     </owl:ObjectProperty>
     
 
@@ -181,8 +290,8 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">produces wine</rdfs:label>
         <rdfs:label xml:lang="es">produce vino</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona una bodega con un vino que produce.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#winery_object_property"/>
         <rdfs:range rdf:resource="&ebaco;Wine"/>
-        <rdfs:domain rdf:resource="&ebaco;Winery"/>
     </owl:ObjectProperty>
     
 
@@ -195,20 +304,33 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">regulating council of</rdfs:label>
         <rdfs:label xml:lang="es">consejo regulador de</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un consejo regulador con la denominación de origen que regula.</rdfs:comment>
-        <rdfs:domain rdf:resource="&ebaco;Regulating_council"/>
-        <rdfs:range rdf:resource="&ebaco;Spanish_wine_region_with_quality_denomination"/>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#regulating_council_object_property"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core/1.0#wine_produced_by -->
+    <!-- http://purl.org/ceu/ebaco/core/1.0#wine_appellation_of -->
 
-    <owl:ObjectProperty rdf:about="&ebaco;wine_produced_by">
+    <owl:ObjectProperty rdf:about="&ebaco;wine_appellation_of">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">wine appellation of</rdfs:label>
+        <rdfs:label xml:lang="es">denominación de origen del vino</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona una denominación de origen con un vino perteneciente la denominación.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_appellation_object_property"/>
+        <rdfs:range rdf:resource="&ebaco;Wine"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core/1.0#wine_produced_by_winery -->
+
+    <owl:ObjectProperty rdf:about="&ebaco;wine_produced_by_winery">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:label xml:lang="en">wine produced by</rdfs:label>
-        <rdfs:label xml:lang="es">vino producido por</rdfs:label>
+        <rdfs:label xml:lang="en">wine produced by winery</rdfs:label>
+        <rdfs:label xml:lang="es">vino producido por la bodega</rdfs:label>
         <rdfs:comment xml:lang="es">Relaciona un vino con la bodega que lo produce.</rdfs:comment>
-        <rdfs:domain rdf:resource="&ebaco;Wine"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
         <rdfs:range rdf:resource="&ebaco;Winery"/>
         <owl:inverseOf rdf:resource="&ebaco;produces_wine"/>
     </owl:ObjectProperty>
@@ -233,17 +355,29 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">vintage year</rdfs:label>
         <rdfs:label xml:lang="es">añada</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con su añada o año de vendimia de la uva con la que se elaboró.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
+        <rdfs:range rdf:resource="&xsd;gYear"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core/1.0#alcohol_content_of_wine -->
+    <!-- http://purl.org/ceu/ebaco/core#wine_data_property -->
 
-    <owl:DatatypeProperty rdf:about="&ebaco;alcohol_content_of_wine">
+    <owl:DatatypeProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_data_property">
+        <rdfs:label xml:lang="en">wine data property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad del vino</rdfs:label>
+        <rdfs:domain rdf:resource="&ebaco;Wine"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core/1.0#alcohol_content -->
+
+    <owl:DatatypeProperty rdf:about="&ebaco;alcohol_content">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:label xml:lang="en">alcohol content of wine (%vol)</rdfs:label>
-        <rdfs:label xml:lang="es">grado alcohólico del vino  (%vol)</rdfs:label>
-        <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con su contenido de alcohol en porcentaje de volumen.</rdfs:comment>
+        <rdfs:label xml:lang="en">alcohol content (%vol)</rdfs:label>
+        <rdfs:label xml:lang="es">grado alcohólico (%vol)</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona una bebida alcohólica con su contenido de alcohol en porcentaje de volumen.</rdfs:comment>
         <rdfs:domain rdf:resource="&ebaco;Alcoholic_beverage"/>
         <rdfs:range>
             <rdfs:Datatype>
@@ -266,6 +400,7 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">atmospheric pressure in bottle (atm)</rdfs:label>
         <rdfs:label xml:lang="es">presión atmosférica en botella (atm)</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino espumoso con la presión atmosférica en atmósferas dentro de la botella debida al contenido de gas carbónico.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
         <rdfs:domain rdf:resource="&ebaco;Sparkling_wine"/>
         <rdfs:range>
             <rdfs:Datatype>
@@ -294,10 +429,10 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
                 <owl:onDatatype rdf:resource="&xsd;float"/>
                 <owl:withRestrictions rdf:parseType="Collection">
                     <rdf:Description>
-                        <xsd:minInclusive rdf:datatype="&xsd;float">0.0</xsd:minInclusive>
+                        <xsd:maxInclusive rdf:datatype="&xsd;float">100.0</xsd:maxInclusive>
                     </rdf:Description>
                     <rdf:Description>
-                        <xsd:maxInclusive rdf:datatype="&xsd;float">100.0</xsd:maxInclusive>
+                        <xsd:minInclusive rdf:datatype="&xsd;float">0.0</xsd:minInclusive>
                     </rdf:Description>
                 </owl:withRestrictions>
             </rdfs:Datatype>
@@ -310,11 +445,11 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
 
     <owl:DatatypeProperty rdf:about="&ebaco;min_time_of_aging_in_bottle_in_months">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:label xml:lang="en">minimal time of aging in bottle in months</rdfs:label>
+        <rdfs:label xml:lang="en">minimum time of aging in bottle in months</rdfs:label>
         <rdfs:label xml:lang="es">tiempo mínimo de envejecimiento en botella en meses</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con el tiempo que pasa desde su fermentación hasta su consumo. 
 El vino se deja envejecer para que desarrolle todo su potencial organoléptico.</rdfs:comment>
-        <rdfs:domain rdf:resource="&ebaco;Wine"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
         <rdfs:seeAlso rdf:resource="http://www.diccionariodelvino.com/index.php?qv=envejecimiento"/>
         <rdfs:range>
             <rdfs:Datatype>
@@ -337,7 +472,7 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
         <rdfs:label xml:lang="en">sugar content of wine (g/l)</rdfs:label>
         <rdfs:label xml:lang="es">contenido de azúcar del vino (g/l)</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con su contenido de azúcar en gramos por litro.</rdfs:comment>
-        <rdfs:domain rdf:resource="&ebaco;Wine"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:onDatatype rdf:resource="&xsd;float"/>
@@ -359,7 +494,7 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
         <rdfs:label xml:lang="en">time of aging in barrel in months</rdfs:label>
         <rdfs:label xml:lang="es">tiempo de crianza en barrica en meses</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con el tiempo que ha estado criándose en barricas de madera en meses.</rdfs:comment>
-        <rdfs:domain rdf:resource="&ebaco;Wine"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
         <rdfs:seeAlso rdf:resource="http://www.diccionariodelvino.com/index.php?qv=CRIANZA"/>
         <rdfs:range>
             <rdfs:Datatype>
@@ -386,12 +521,48 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
     
 
 
+    <!-- http://purl.org/ceu/ebaco/core#Appellations -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Appellations">
+        <rdfs:label xml:lang="en">Appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/ceu/ebaco/core#Flora_red_gape -->
 
     <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Flora_red_gape">
         <rdfs:label xml:lang="en">Flora red grape</rdfs:label>
         <rdfs:label xml:lang="es">Uva Flora tinta</rdfs:label>
         <rdfs:subClassOf rdf:resource="&ebaco;Red_grape"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#Spanish_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Spanish_appellation">
+        <rdfs:label xml:lang="en">Spanish appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen de España</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#Spanish_wine_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Spanish_wine_appellation">
+        <rdfs:label xml:lang="en">Spanish wine appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen de vino de España</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Spanish_appellation"/>
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -417,6 +588,16 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
     
 
 
+    <!-- http://purl.org/ceu/ebaco/core#Wine_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_appellation">
+        <rdfs:label xml:lang="en">Wine appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen de vino</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/ceu/ebaco/core#Wine_region -->
 
     <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_region">
@@ -424,6 +605,26 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
         <rdfs:label xml:lang="es">Región vinícola</rdfs:label>
         <rdfs:comment xml:lang="en">A wine region is a geographical region that cultivates grapes and produces wines.</rdfs:comment>
         <rdfs:comment xml:lang="es">Una región vinícola es una región geográfica que cultiva uvas y produce vinos.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#Wine_region_with_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation">
+        <rdfs:label xml:lang="en">Wine region with appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Región vinícola con denominación de origen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#Wine_region_without_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_without_appellation">
+        <rdfs:label xml:lang="en">Wine region without appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Región vinícola sin denominación de origen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
     </owl:Class>
     
 
@@ -697,7 +898,7 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
         <rdfs:subClassOf rdf:resource="&owl;Thing"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&ebaco;alcohol_content_of_wine"/>
+                <owl:onProperty rdf:resource="&ebaco;alcohol_content"/>
                 <owl:someValuesFrom>
                     <rdfs:Datatype>
                         <owl:onDatatype rdf:resource="&xsd;float"/>
@@ -6316,7 +6517,14 @@ Sinónimo de vino fortificado.</rdfs:comment>
     <owl:Class rdf:about="&ebaco;Spanish_wine_region_with_quality_denomination">
         <rdfs:label xml:lang="en">Spanish wine region with quality denomination</rdfs:label>
         <rdfs:label xml:lang="es">Región vinícola de España con denominación de calidad</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ebaco;Spanish_wine_region"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation"/>
+                    <rdf:Description rdf:about="&ebaco;Spanish_wine_region"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <owl:disjointWith rdf:resource="&ebaco;Spanish_wine_region_without_quality_denomination"/>
         <rdfs:comment xml:lang="es">Región de España donde se producen vinos de calidad que están protegidos por un consejo regulador o alguna normativa.</rdfs:comment>
         <rdfs:seeAlso rdf:resource="http://es.wikipedia.org/wiki/Anexo:Vinos_de_Espa%C3%B1a#Lista_de_Denominaciones_de_Origen_y_Vinos_de_la_Tierra_por_Comunidad_Aut.C3.B3noma"/>
@@ -6336,7 +6544,14 @@ Sinónimo de vino fortificado.</rdfs:comment>
     <owl:Class rdf:about="&ebaco;Spanish_wine_region_without_quality_denomination">
         <rdfs:label xml:lang="en">Spanish wine region without quality denomination</rdfs:label>
         <rdfs:label xml:lang="es">Región vinícola de España sin denominación de calidad</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&ebaco;Spanish_wine_region"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_without_appellation"/>
+                    <rdf:Description rdf:about="&ebaco;Spanish_wine_region"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:comment xml:lang="es">Ver http://www.winesfromspain.com/ </rdfs:comment>
     </owl:Class>
     
@@ -6502,7 +6717,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&ebaco;Wine"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&ebaco;has_appellation"/>
+                        <owl:onProperty rdf:resource="&ebaco;has_wine_appellation"/>
                         <owl:someValuesFrom rdf:resource="&ebaco;Spanish_wine_region_without_quality_denomination"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -7377,20 +7592,20 @@ Sinónimo de vino fortificado.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&ebaco;Fermented_alcoholic_beverage"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&ebaco;elaborated_with_grape"/>
-                <owl:someValuesFrom rdf:resource="&ebaco;Grape"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&ebaco;time_of_aging_in_barrel_in_months"/>
                 <owl:someValuesFrom rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&ebaco;has_appellation"/>
-                <owl:someValuesFrom rdf:resource="&ebaco;Spanish_wine_region"/>
+                <owl:onProperty rdf:resource="&ebaco;elaborated_with_grape"/>
+                <owl:someValuesFrom rdf:resource="&ebaco;Grape"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco/core#produced_in_wine_region"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="es">Bebida alcohólica elaborada a partir de la fermentación uva.</rdfs:comment>
@@ -7424,6 +7639,12 @@ Sinónimo de vino fortificado.</rdfs:comment>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ebaco;has_wine_appellation"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="es">Un vino con denominación es un vino de cierta calidad producido en una determinada región geográfica con algún tipo de denominación o protección.</rdfs:comment>
         <owl:disjointUnionOf rdf:parseType="Collection">
             <rdf:Description rdf:about="&ebaco;Wine_with_denomination_of_pago"/>
@@ -7445,7 +7666,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&ebaco;Wine_with_appellation"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&ebaco;has_appellation"/>
+                        <owl:onProperty rdf:resource="&ebaco;has_wine_appellation"/>
                         <owl:someValuesFrom rdf:resource="&ebaco;Spanish_wine_region_with_denomination_of_pago"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -7467,7 +7688,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&ebaco;Wine_with_appellation"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&ebaco;has_appellation"/>
+                        <owl:onProperty rdf:resource="&ebaco;has_wine_appellation"/>
                         <owl:someValuesFrom rdf:resource="&ebaco;Spanish_wine_region_with_protected_denomination_of_origin"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -7492,7 +7713,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&ebaco;Wine_with_appellation"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&ebaco;has_appellation"/>
+                        <owl:onProperty rdf:resource="&ebaco;has_wine_appellation"/>
                         <owl:someValuesFrom rdf:resource="&ebaco;Spanish_wine_region_with_protected_geographical_indicator"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -7514,7 +7735,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&ebaco;Wine_with_appellation"/>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="&ebaco;has_appellation"/>
+                        <owl:onProperty rdf:resource="&ebaco;has_wine_appellation"/>
                         <owl:someValuesFrom rdf:resource="&ebaco;Spanish_wine_region_with_qualified_denomination_of_origin"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
@@ -14548,23 +14769,23 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#used">
         <rdfs:label xml:lang="es">usa</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadUsage">
-        <rdfs:label xml:lang="es">tiene uso</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent">
         <rdfs:label xml:lang="es">Evento instantáneo</rdfs:label>
     </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadUsage">
+        <rdfs:label xml:lang="es">tiene uso</rdfs:label>
+    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasStartedBy">
         <rdfs:label xml:lang="es">comenzado por</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/2006/time#hasBeginning">
-        <rdfs:label xml:lang="es">Inicio</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasEndedAt">
         <rdfs:label xml:lang="es">Terminado</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#specializationOf">
         <rdfs:label xml:lang="es">especialización de</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/2006/time#hasBeginning">
+        <rdfs:label xml:lang="es">Inicio</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasInvalidatedBy">
         <rdfs:label xml:lang="es">invalidado por</rdfs:label>
@@ -14578,11 +14799,11 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasGeneratedBy">
         <rdfs:label xml:lang="es">Generado por</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadActivity">
-        <rdfs:label xml:lang="es">tiene actividad</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#agent">
         <rdfs:label xml:lang="es">agente</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadActivity">
+        <rdfs:label xml:lang="es">tiene actividad</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#qualifiedEnd">
         <rdfs:label xml:lang="es">Final cualificado</rdfs:label>
@@ -14599,11 +14820,11 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#atLocation">
         <rdfs:label xml:lang="es">ubicado en</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Start">
-        <rdfs:label xml:lang="es">Inicio</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadPlan">
         <rdfs:label xml:lang="es">tiene plan</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Start">
+        <rdfs:label xml:lang="es">Inicio</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Role">
         <rdfs:label xml:lang="es">Rol</rdfs:label>
@@ -14620,23 +14841,23 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Generation">
         <rdfs:label xml:lang="es">Generación</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#qualifiedUsage">
-        <rdfs:label xml:lang="es">Uso cualificado</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#Artifact">
         <rdfs:label xml:lang="es">Artefacto</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#invalidatedAtTime">
-        <rdfs:label xml:lang="es">Invalidado en tiempo</rdfs:label>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#qualifiedUsage">
+        <rdfs:label xml:lang="es">Uso cualificado</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#Agent">
         <rdfs:label xml:lang="es">Agente</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasInformedBy">
-        <rdfs:label xml:lang="es">informado por</rdfs:label>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#invalidatedAtTime">
+        <rdfs:label xml:lang="es">Invalidado en tiempo</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#End">
         <rdfs:label xml:lang="es">Fin</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasInformedBy">
+        <rdfs:label xml:lang="es">informado por</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#endedAtTime">
         <rdfs:label xml:lang="es">terminado en tiempo</rdfs:label>
@@ -14659,11 +14880,11 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#Process">
         <rdfs:label xml:lang="es">Proceso</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#generatedAtTime">
-        <rdfs:label xml:lang="es">generado en tiempo</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#EntityInfluence">
         <rdfs:label xml:lang="es">Influencia de entidad</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#generatedAtTime">
+        <rdfs:label xml:lang="es">generado en tiempo</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasPerformedAt">
         <rdfs:label xml:lang="es">Relizado en</rdfs:label>
@@ -14680,20 +14901,20 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Agent">
         <rdfs:label xml:lang="es">Agente</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Communication">
-        <rdfs:label xml:lang="es">Comunicación</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasGeneratedBy">
         <rdfs:label xml:lang="es">generado por</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#Communication">
+        <rdfs:label xml:lang="es">Comunicación</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasUsedAt">
         <rdfs:label xml:lang="es">Usado el</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#qualifiedAttribution">
-        <rdfs:label xml:lang="es">Atribución cualificada</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#value">
         <rdfs:label xml:lang="es">valor</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#qualifiedAttribution">
+        <rdfs:label xml:lang="es">Atribución cualificada</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#entity">
         <rdfs:label xml:lang="es">entidad</rdfs:label>
@@ -14734,11 +14955,11 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Attribution">
         <rdfs:label xml:lang="es">Atribución</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadRole">
-        <rdfs:label xml:lang="es">tiene rol</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Location">
         <rdfs:label xml:lang="es">Ubicación</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadRole">
+        <rdfs:label xml:lang="es">tiene rol</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasStartedAt">
         <rdfs:label xml:lang="es">Comenzado</rdfs:label>
@@ -14773,11 +14994,11 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Plan">
         <rdfs:label xml:lang="es">Plan</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#influencer">
-        <rdfs:label xml:lang="es">influenciador</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Delegation">
         <rdfs:label xml:lang="es">Delegación</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#influencer">
+        <rdfs:label xml:lang="es">influenciador</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadGeneration">
         <rdfs:label xml:lang="es">tiene generación</rdfs:label>
@@ -14799,6 +15020,50 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ebaco;Red_wine"/>
+            <rdf:Description rdf:about="&ebaco;Rose_wine"/>
+            <rdf:Description rdf:about="&ebaco;White_wine"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ebaco;Crianza_wine"/>
+            <rdf:Description rdf:about="&ebaco;Gran_reserva_wine"/>
+            <rdf:Description rdf:about="&ebaco;Reserva_wine"/>
+            <rdf:Description rdf:about="&ebaco;Young_wine"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ebaco;Dry_still_wine"/>
+            <rdf:Description rdf:about="&ebaco;Semi_dry_still_wine"/>
+            <rdf:Description rdf:about="&ebaco;Semi_sweet_still_wine"/>
+            <rdf:Description rdf:about="&ebaco;Sweet_still_wine"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ebaco;Wine_with_denomination_of_pago"/>
+            <rdf:Description rdf:about="&ebaco;Wine_with_protected_denomination_of_origin"/>
+            <rdf:Description rdf:about="&ebaco;Wine_with_protected_geographical_indicator"/>
+            <rdf:Description rdf:about="&ebaco;Wine_with_qualified_denomination_of_origin"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_denomination_of_pago"/>
+            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_protected_denomination_of_origin"/>
+            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_protected_geographical_indicator"/>
+            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_qualified_denomination_of_origin"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&ebaco;Dry_sparkling_wine"/>
             <rdf:Description rdf:about="&ebaco;Extra_dry_spakling_wine"/>
             <rdf:Description rdf:about="&ebaco;Semi_dry_sparkling_wine"/>
@@ -14806,6 +15071,334 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
             <rdf:Description rdf:about="&ebaco;Spakling_wine_brut_nature"/>
             <rdf:Description rdf:about="&ebaco;Spakling_wine_extra_brut"/>
             <rdf:Description rdf:about="&ebaco;Sweet_spakling_wine"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ebaco;Addoraca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Aidini_grape"/>
+            <rdf:Description rdf:about="&ebaco;Airén_grape"/>
+            <rdf:Description rdf:about="&ebaco;Alarije_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albalonga_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albana_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albanella_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albanello_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albaranzeuli_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albarello_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albariño_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albarola_grape"/>
+            <rdf:Description rdf:about="&ebaco;Albillo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Aligoté_grape"/>
+            <rdf:Description rdf:about="&ebaco;Alionza_grape"/>
+            <rdf:Description rdf:about="&ebaco;Altesse_grape"/>
+            <rdf:Description rdf:about="&ebaco;Amigne_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ansonica_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arbane_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arbois_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arilla_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arinto_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arneis_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arnsburger_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arrufiac_grape"/>
+            <rdf:Description rdf:about="&ebaco;Arvesiniadu_grape"/>
+            <rdf:Description rdf:about="&ebaco;Asprinio_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Assyrtiko_grape"/>
+            <rdf:Description rdf:about="&ebaco;Athiri_grape"/>
+            <rdf:Description rdf:about="&ebaco;Aubin_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Aubin_vert_grape"/>
+            <rdf:Description rdf:about="&ebaco;Aurore_grape"/>
+            <rdf:Description rdf:about="&ebaco;Auxerrois_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Avesso_grape"/>
+            <rdf:Description rdf:about="&ebaco;Azal_branco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bacchus_grape"/>
+            <rdf:Description rdf:about="&ebaco;Baco_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Balzac_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Baratuciat_grape"/>
+            <rdf:Description rdf:about="&ebaco;Barbera_bianca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bariadorgia_grape"/>
+            <rdf:Description rdf:about="&ebaco;Baroque_grape"/>
+            <rdf:Description rdf:about="&ebaco;Besgano_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bia_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bianca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Biancame_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bianchetta_trevigiana_grape"/>
+            <rdf:Description rdf:about="&ebaco;Biancolella_grape"/>
+            <rdf:Description rdf:about="&ebaco;Biancone_di_portoferraio_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bical_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bigolona_grape"/>
+            <rdf:Description rdf:about="&ebaco;Blatterle_grape"/>
+            <rdf:Description rdf:about="&ebaco;Boal_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bogdanuša_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bombino_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Borba_blanca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bosco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bourboulenc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bouvier_grape"/>
+            <rdf:Description rdf:about="&ebaco;Breidecker_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bronner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Brustiano_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bukettraube_grape"/>
+            <rdf:Description rdf:about="&ebaco;Burger_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cabernet_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Camaralet_grape"/>
+            <rdf:Description rdf:about="&ebaco;Caprettone_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cascarolo_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cassady_grape"/>
+            <rdf:Description rdf:about="&ebaco;Catarratto_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cayetana_grape"/>
+            <rdf:Description rdf:about="&ebaco;Caíño_blanco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cereza_grape"/>
+            <rdf:Description rdf:about="&ebaco;Chardonnay_grape"/>
+            <rdf:Description rdf:about="&ebaco;Chasan_grape"/>
+            <rdf:Description rdf:about="&ebaco;Chasselas_grape"/>
+            <rdf:Description rdf:about="&ebaco;Chenel_grape"/>
+            <rdf:Description rdf:about="&ebaco;Chenin_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Clairette_blanche_grape"/>
+            <rdf:Description rdf:about="&ebaco;Claverie_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cococciola_grape"/>
+            <rdf:Description rdf:about="&ebaco;Coda_di_pecora_grape"/>
+            <rdf:Description rdf:about="&ebaco;Coda_di_volpe_grape"/>
+            <rdf:Description rdf:about="&ebaco;Colombard_grape"/>
+            <rdf:Description rdf:about="&ebaco;Completer_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cortese_grape"/>
+            <rdf:Description rdf:about="&ebaco;Courbu_grape"/>
+            <rdf:Description rdf:about="&ebaco;Crouchen_grape"/>
+            <rdf:Description rdf:about="&ebaco;Cserszegi_fűszeres_grape"/>
+            <rdf:Description rdf:about="&ebaco;Debina_grape"/>
+            <rdf:Description rdf:about="&ebaco;Debit_grape"/>
+            <rdf:Description rdf:about="&ebaco;Diamond_grape"/>
+            <rdf:Description rdf:about="&ebaco;Dimiat_grape"/>
+            <rdf:Description rdf:about="&ebaco;Dinka_grape"/>
+            <rdf:Description rdf:about="&ebaco;Donzelinho_branco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Doradillo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Doña_blanca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Drupeggio_grape"/>
+            <rdf:Description rdf:about="&ebaco;Durella_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ehrenbreitsteiner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ehrenfelser_grape"/>
+            <rdf:Description rdf:about="&ebaco;Elbling_grape"/>
+            <rdf:Description rdf:about="&ebaco;Emir_wine_grape"/>
+            <rdf:Description rdf:about="&ebaco;Encruzado_grape"/>
+            <rdf:Description rdf:about="&ebaco;Erbaluce_grape"/>
+            <rdf:Description rdf:about="&ebaco;Escanyavella_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ezerjó_grape"/>
+            <rdf:Description rdf:about="&ebaco;Faberrebe_grape"/>
+            <rdf:Description rdf:about="&ebaco;Falanghina_grape"/>
+            <rdf:Description rdf:about="&ebaco;Favorita_grape"/>
+            <rdf:Description rdf:about="&ebaco;Fernão_pires_grape"/>
+            <rdf:Description rdf:about="&ebaco;Fetească_albă_grape"/>
+            <rdf:Description rdf:about="&ebaco;Fetească_regală_grape"/>
+            <rdf:Description rdf:about="&ebaco;Fiano_grape"/>
+            <rdf:Description rdf:about="&ebaco;Findling_grape"/>
+            <rdf:Description rdf:about="&ebaco;Flora_white_grape"/>
+            <rdf:Description rdf:about="&ebaco;Folle_blanche_grape"/>
+            <rdf:Description rdf:about="&ebaco;Forastera_grape"/>
+            <rdf:Description rdf:about="&ebaco;Freisamer_grape"/>
+            <rdf:Description rdf:about="&ebaco;Furmint_grape"/>
+            <rdf:Description rdf:about="&ebaco;Garganega_grape"/>
+            <rdf:Description rdf:about="&ebaco;Garrido_fino_grape"/>
+            <rdf:Description rdf:about="&ebaco;Gewürztraminer_grape"/>
+            <rdf:Description rdf:about="&ebaco;Giró_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Godello_grape"/>
+            <rdf:Description rdf:about="&ebaco;Goldburger_grape"/>
+            <rdf:Description rdf:about="&ebaco;Goldriesling_grape"/>
+            <rdf:Description rdf:about="&ebaco;Gouais_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Graisse_grape"/>
+            <rdf:Description rdf:about="&ebaco;Grasă_de_cotnari_grape"/>
+            <rdf:Description rdf:about="&ebaco;Grechetto_grape"/>
+            <rdf:Description rdf:about="&ebaco;Greco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Green_hungarian_grape"/>
+            <rdf:Description rdf:about="&ebaco;Grenache_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Grillo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Gringet_grape"/>
+            <rdf:Description rdf:about="&ebaco;Grk_bijeli_grape"/>
+            <rdf:Description rdf:about="&ebaco;Gros_manseng_grape"/>
+            <rdf:Description rdf:about="&ebaco;Grüner_veltliner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Gutenborner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Humagne_blanche_grape"/>
+            <rdf:Description rdf:about="&ebaco;Huxelrebe_grape"/>
+            <rdf:Description rdf:about="&ebaco;Hárslevelű_grape"/>
+            <rdf:Description rdf:about="&ebaco;Incrocio_manzoni_rosa_grape"/>
+            <rdf:Description rdf:about="&ebaco;Irsai_olivér_grape"/>
+            <rdf:Description rdf:about="&ebaco;Jacquère_grape"/>
+            <rdf:Description rdf:about="&ebaco;Juhfark_grape"/>
+            <rdf:Description rdf:about="&ebaco;Juwel_grape"/>
+            <rdf:Description rdf:about="&ebaco;Kanzler_grape"/>
+            <rdf:Description rdf:about="&ebaco;Kerner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Knipperlé_grape"/>
+            <rdf:Description rdf:about="&ebaco;Koshu_grape"/>
+            <rdf:Description rdf:about="&ebaco;Krstač_grape"/>
+            <rdf:Description rdf:about="&ebaco;Kéknyelű_grape"/>
+            <rdf:Description rdf:about="&ebaco;Lagarino_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Lagorthi_grape"/>
+            <rdf:Description rdf:about="&ebaco;Lauzet_grape"/>
+            <rdf:Description rdf:about="&ebaco;Loureira_grape"/>
+            <rdf:Description rdf:about="&ebaco;Luglienga_grape"/>
+            <rdf:Description rdf:about="&ebaco;Macabeo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Maceratino_grape"/>
+            <rdf:Description rdf:about="&ebaco;Madeleine_angevine_grape"/>
+            <rdf:Description rdf:about="&ebaco;Malagousia_grape"/>
+            <rdf:Description rdf:about="&ebaco;Malvar_grape"/>
+            <rdf:Description rdf:about="&ebaco;Malvasia_grape"/>
+            <rdf:Description rdf:about="&ebaco;Mantonico_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Manzoni_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Maraština_grape"/>
+            <rdf:Description rdf:about="&ebaco;Marsanne_grape"/>
+            <rdf:Description rdf:about="&ebaco;Marzemina_bianca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Mauzac_grape"/>
+            <rdf:Description rdf:about="&ebaco;Melody_grape"/>
+            <rdf:Description rdf:about="&ebaco;Melon_de_bourgogne_grape"/>
+            <rdf:Description rdf:about="&ebaco;Merlot_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Merseguera_grape"/>
+            <rdf:Description rdf:about="&ebaco;Meslier-saint-françois_grape"/>
+            <rdf:Description rdf:about="&ebaco;Minella_bianca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Misket_cherven_grape"/>
+            <rdf:Description rdf:about="&ebaco;Molette_grape"/>
+            <rdf:Description rdf:about="&ebaco;Mondeuse_blanche_grape"/>
+            <rdf:Description rdf:about="&ebaco;Montepila_grape"/>
+            <rdf:Description rdf:about="&ebaco;Montonico_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Montù_grape"/>
+            <rdf:Description rdf:about="&ebaco;Morio_muscat_grape"/>
+            <rdf:Description rdf:about="&ebaco;Moscato_giallo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Moschofilero_grape"/>
+            <rdf:Description rdf:about="&ebaco;Mtsvane_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscadelle_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscat_blanc_à_petits_grains_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscat_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscat_of_alexandria_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscat_ottonel_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscat_rose_à_petits_grains_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscat_rouge_à_petits_grains_grape"/>
+            <rdf:Description rdf:about="&ebaco;Müller-thurgau_grape"/>
+            <rdf:Description rdf:about="&ebaco;Narince_grape"/>
+            <rdf:Description rdf:about="&ebaco;Nasco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Neuburger_grape"/>
+            <rdf:Description rdf:about="&ebaco;Neyret_grape"/>
+            <rdf:Description rdf:about="&ebaco;Nobling_grape"/>
+            <rdf:Description rdf:about="&ebaco;Nosiola_grape"/>
+            <rdf:Description rdf:about="&ebaco;Nuragus_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ondenc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Optima_grape"/>
+            <rdf:Description rdf:about="&ebaco;Orléans_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ortega_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ortrugo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pallagrello_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Palomino_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pampanuto_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pardillo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Parellada_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pascal_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Passerina_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pearl_of_csaba_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pecorino_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pedro_giménez_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pedro_ximénez_grape"/>
+            <rdf:Description rdf:about="&ebaco;Perle_grape"/>
+            <rdf:Description rdf:about="&ebaco;Petit_manseng_grape"/>
+            <rdf:Description rdf:about="&ebaco;Petit_meslier_grape"/>
+            <rdf:Description rdf:about="&ebaco;Petite_arvine_grape"/>
+            <rdf:Description rdf:about="&ebaco;Peurion_grape"/>
+            <rdf:Description rdf:about="&ebaco;Picardan_grape"/>
+            <rdf:Description rdf:about="&ebaco;Picolit_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pigato_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pinot_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pinot_gris_grape"/>
+            <rdf:Description rdf:about="&ebaco;Piquepoul_grape"/>
+            <rdf:Description rdf:about="&ebaco;Plavay_grape"/>
+            <rdf:Description rdf:about="&ebaco;Pošip_grape"/>
+            <rdf:Description rdf:about="&ebaco;Prié_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Prosecco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rabo_de_ovelha_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ravat_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Regner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Reichensteiner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Retagliado_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rhoditis_grape"/>
+            <rdf:Description rdf:about="&ebaco;Ribolla_gialla_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rieslaner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Riesling_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rkatsiteli_grape"/>
+            <rdf:Description rdf:about="&ebaco;Robola_grape"/>
+            <rdf:Description rdf:about="&ebaco;Romorantin_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rossese_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Roter_veltliner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rotgipfler_grape"/>
+            <rdf:Description rdf:about="&ebaco;Roublot_grape"/>
+            <rdf:Description rdf:about="&ebaco;Roupeiro_grape"/>
+            <rdf:Description rdf:about="&ebaco;Roussanne_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rovello_bianco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Räuschling_grape"/>
+            <rdf:Description rdf:about="&ebaco;Rèze_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sacy_grape"/>
+            <rdf:Description rdf:about="&ebaco;Saint-pierre_doré_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sarfeher_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sauvignon_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sauvignon_gris_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sauvignon_vert_grape"/>
+            <rdf:Description rdf:about="&ebaco;Savagnin_grape"/>
+            <rdf:Description rdf:about="&ebaco;Savagnin_rose_grape"/>
+            <rdf:Description rdf:about="&ebaco;Savatiano_grape"/>
+            <rdf:Description rdf:about="&ebaco;Scheurebe_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sercial_grape"/>
+            <rdf:Description rdf:about="&ebaco;Siegerrebe_grape"/>
+            <rdf:Description rdf:about="&ebaco;Silvaner_grape"/>
+            <rdf:Description rdf:about="&ebaco;Smederevka_grape"/>
+            <rdf:Description rdf:about="&ebaco;Souvignier_gris_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sumoll_white_grape"/>
+            <rdf:Description rdf:about="&ebaco;Sémillon_grape"/>
+            <rdf:Description rdf:about="&ebaco;Tamarez_grape"/>
+            <rdf:Description rdf:about="&ebaco;Taminga_grape"/>
+            <rdf:Description rdf:about="&ebaco;Tamjanika_grape"/>
+            <rdf:Description rdf:about="&ebaco;Tempranillo_blanco_grape"/>
+            <rdf:Description rdf:about="&ebaco;Terrantez_grape"/>
+            <rdf:Description rdf:about="&ebaco;Terret_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Terret_gris_grape"/>
+            <rdf:Description rdf:about="&ebaco;Thrapsathiri_grape"/>
+            <rdf:Description rdf:about="&ebaco;Timorasso_grape"/>
+            <rdf:Description rdf:about="&ebaco;Torrontés_grape"/>
+            <rdf:Description rdf:about="&ebaco;Tourbat_grape"/>
+            <rdf:Description rdf:about="&ebaco;Trebbiano_grape"/>
+            <rdf:Description rdf:about="&ebaco;Treixadura_grape"/>
+            <rdf:Description rdf:about="&ebaco;Trousseau_gris_grape"/>
+            <rdf:Description rdf:about="&ebaco;Tsolikouri_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vega_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdea_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdeca_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdejo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdelho_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdello_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdesse_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdicchio_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verdiso_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verduzzo_grape"/>
+            <rdf:Description rdf:about="&ebaco;Verduzzo_trevigiano_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vermentino_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vernaccia_di_oristano_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vernaccia_grape"/>
+            <rdf:Description rdf:about="&ebaco;Versoaln_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vespaiola_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vigiriega_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vilana_grape"/>
+            <rdf:Description rdf:about="&ebaco;Viognier_grape"/>
+            <rdf:Description rdf:about="&ebaco;Viosinho_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vital_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vitovska_grape"/>
+            <rdf:Description rdf:about="&ebaco;Vugava_grape"/>
+            <rdf:Description rdf:about="&ebaco;Weldra_grape"/>
+            <rdf:Description rdf:about="&ebaco;Welschriesling_grape"/>
+            <rdf:Description rdf:about="&ebaco;Würzer_grape"/>
+            <rdf:Description rdf:about="&ebaco;Xarello_grape"/>
+            <rdf:Description rdf:about="&ebaco;Xynisteri_grape"/>
+            <rdf:Description rdf:about="&ebaco;Zalema_grape"/>
+            <rdf:Description rdf:about="&ebaco;Zierfandler_grape"/>
+            <rdf:Description rdf:about="&ebaco;Zéta_grape"/>
+            <rdf:Description rdf:about="&ebaco;Österreichisch-weiß_grape"/>
+            <rdf:Description rdf:about="&ebaco;Žilavka_grape"/>
+            <rdf:Description rdf:about="&ebaco;Bianco_d&apos;alessano_grape"/>
+            <rdf:Description rdf:about="&ebaco;L&apos;acadie_blanc_grape"/>
+            <rdf:Description rdf:about="&ebaco;Len_de_l&apos;el_grape"/>
+            <rdf:Description rdf:about="&ebaco;Muscat_d&apos;eisenstadt_grape"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -15142,23 +15735,6 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&ebaco;Crianza_wine"/>
-            <rdf:Description rdf:about="&ebaco;Gran_reserva_wine"/>
-            <rdf:Description rdf:about="&ebaco;Reserva_wine"/>
-            <rdf:Description rdf:about="&ebaco;Young_wine"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&ebaco;Red_wine"/>
-            <rdf:Description rdf:about="&ebaco;Rose_wine"/>
-            <rdf:Description rdf:about="&ebaco;White_wine"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&ebaco;Aerated_sparkling_wine"/>
             <rdf:Description rdf:about="&ebaco;Natural_sparkling_wine"/>
             <rdf:Description rdf:about="&ebaco;Semi_spakling_wine"/>
@@ -15172,361 +15748,6 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
             <rdf:Description rdf:about="&ebaco;Fortified_wine_manzanilla"/>
             <rdf:Description rdf:about="&ebaco;Fortified_wine_oloroso"/>
             <rdf:Description rdf:about="&ebaco;Fortified_wine_palo_cortado"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_denomination_of_pago"/>
-            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_protected_denomination_of_origin"/>
-            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_protected_geographical_indicator"/>
-            <rdf:Description rdf:about="&ebaco;Spanish_wine_region_with_qualified_denomination_of_origin"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&ebaco;Wine_with_denomination_of_pago"/>
-            <rdf:Description rdf:about="&ebaco;Wine_with_protected_denomination_of_origin"/>
-            <rdf:Description rdf:about="&ebaco;Wine_with_protected_geographical_indicator"/>
-            <rdf:Description rdf:about="&ebaco;Wine_with_qualified_denomination_of_origin"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&ebaco;Dry_still_wine"/>
-            <rdf:Description rdf:about="&ebaco;Semi_dry_still_wine"/>
-            <rdf:Description rdf:about="&ebaco;Semi_sweet_still_wine"/>
-            <rdf:Description rdf:about="&ebaco;Sweet_still_wine"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&ebaco;Addoraca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Aidini_grape"/>
-            <rdf:Description rdf:about="&ebaco;Airén_grape"/>
-            <rdf:Description rdf:about="&ebaco;Alarije_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albalonga_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albana_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albanella_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albanello_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albaranzeuli_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albarello_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albariño_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albarola_grape"/>
-            <rdf:Description rdf:about="&ebaco;Albillo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Aligoté_grape"/>
-            <rdf:Description rdf:about="&ebaco;Alionza_grape"/>
-            <rdf:Description rdf:about="&ebaco;Altesse_grape"/>
-            <rdf:Description rdf:about="&ebaco;Amigne_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ansonica_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arbane_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arbois_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arilla_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arinto_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arneis_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arnsburger_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arrufiac_grape"/>
-            <rdf:Description rdf:about="&ebaco;Arvesiniadu_grape"/>
-            <rdf:Description rdf:about="&ebaco;Asprinio_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Assyrtiko_grape"/>
-            <rdf:Description rdf:about="&ebaco;Athiri_grape"/>
-            <rdf:Description rdf:about="&ebaco;Aubin_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Aubin_vert_grape"/>
-            <rdf:Description rdf:about="&ebaco;Aurore_grape"/>
-            <rdf:Description rdf:about="&ebaco;Auxerrois_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Avesso_grape"/>
-            <rdf:Description rdf:about="&ebaco;Azal_branco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bacchus_grape"/>
-            <rdf:Description rdf:about="&ebaco;Baco_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Balzac_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Baratuciat_grape"/>
-            <rdf:Description rdf:about="&ebaco;Barbera_bianca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bariadorgia_grape"/>
-            <rdf:Description rdf:about="&ebaco;Baroque_grape"/>
-            <rdf:Description rdf:about="&ebaco;Besgano_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bia_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bianca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Biancame_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bianchetta_trevigiana_grape"/>
-            <rdf:Description rdf:about="&ebaco;Biancolella_grape"/>
-            <rdf:Description rdf:about="&ebaco;Biancone_di_portoferraio_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bical_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bigolona_grape"/>
-            <rdf:Description rdf:about="&ebaco;Blatterle_grape"/>
-            <rdf:Description rdf:about="&ebaco;Boal_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bogdanuša_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bombino_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Borba_blanca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bosco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bourboulenc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bouvier_grape"/>
-            <rdf:Description rdf:about="&ebaco;Breidecker_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bronner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Brustiano_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bukettraube_grape"/>
-            <rdf:Description rdf:about="&ebaco;Burger_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cabernet_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Camaralet_grape"/>
-            <rdf:Description rdf:about="&ebaco;Caprettone_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cascarolo_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cassady_grape"/>
-            <rdf:Description rdf:about="&ebaco;Catarratto_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cayetana_grape"/>
-            <rdf:Description rdf:about="&ebaco;Caíño_blanco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cereza_grape"/>
-            <rdf:Description rdf:about="&ebaco;Chardonnay_grape"/>
-            <rdf:Description rdf:about="&ebaco;Chasan_grape"/>
-            <rdf:Description rdf:about="&ebaco;Chasselas_grape"/>
-            <rdf:Description rdf:about="&ebaco;Chenel_grape"/>
-            <rdf:Description rdf:about="&ebaco;Chenin_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Clairette_blanche_grape"/>
-            <rdf:Description rdf:about="&ebaco;Claverie_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cococciola_grape"/>
-            <rdf:Description rdf:about="&ebaco;Coda_di_pecora_grape"/>
-            <rdf:Description rdf:about="&ebaco;Coda_di_volpe_grape"/>
-            <rdf:Description rdf:about="&ebaco;Colombard_grape"/>
-            <rdf:Description rdf:about="&ebaco;Completer_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cortese_grape"/>
-            <rdf:Description rdf:about="&ebaco;Courbu_grape"/>
-            <rdf:Description rdf:about="&ebaco;Crouchen_grape"/>
-            <rdf:Description rdf:about="&ebaco;Cserszegi_fűszeres_grape"/>
-            <rdf:Description rdf:about="&ebaco;Debina_grape"/>
-            <rdf:Description rdf:about="&ebaco;Debit_grape"/>
-            <rdf:Description rdf:about="&ebaco;Diamond_grape"/>
-            <rdf:Description rdf:about="&ebaco;Dimiat_grape"/>
-            <rdf:Description rdf:about="&ebaco;Dinka_grape"/>
-            <rdf:Description rdf:about="&ebaco;Donzelinho_branco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Doradillo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Doña_blanca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Drupeggio_grape"/>
-            <rdf:Description rdf:about="&ebaco;Durella_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ehrenbreitsteiner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ehrenfelser_grape"/>
-            <rdf:Description rdf:about="&ebaco;Elbling_grape"/>
-            <rdf:Description rdf:about="&ebaco;Emir_wine_grape"/>
-            <rdf:Description rdf:about="&ebaco;Encruzado_grape"/>
-            <rdf:Description rdf:about="&ebaco;Erbaluce_grape"/>
-            <rdf:Description rdf:about="&ebaco;Escanyavella_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ezerjó_grape"/>
-            <rdf:Description rdf:about="&ebaco;Faberrebe_grape"/>
-            <rdf:Description rdf:about="&ebaco;Falanghina_grape"/>
-            <rdf:Description rdf:about="&ebaco;Favorita_grape"/>
-            <rdf:Description rdf:about="&ebaco;Fernão_pires_grape"/>
-            <rdf:Description rdf:about="&ebaco;Fetească_albă_grape"/>
-            <rdf:Description rdf:about="&ebaco;Fetească_regală_grape"/>
-            <rdf:Description rdf:about="&ebaco;Fiano_grape"/>
-            <rdf:Description rdf:about="&ebaco;Findling_grape"/>
-            <rdf:Description rdf:about="&ebaco;Flora_white_grape"/>
-            <rdf:Description rdf:about="&ebaco;Folle_blanche_grape"/>
-            <rdf:Description rdf:about="&ebaco;Forastera_grape"/>
-            <rdf:Description rdf:about="&ebaco;Freisamer_grape"/>
-            <rdf:Description rdf:about="&ebaco;Furmint_grape"/>
-            <rdf:Description rdf:about="&ebaco;Garganega_grape"/>
-            <rdf:Description rdf:about="&ebaco;Garrido_fino_grape"/>
-            <rdf:Description rdf:about="&ebaco;Gewürztraminer_grape"/>
-            <rdf:Description rdf:about="&ebaco;Giró_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Godello_grape"/>
-            <rdf:Description rdf:about="&ebaco;Goldburger_grape"/>
-            <rdf:Description rdf:about="&ebaco;Goldriesling_grape"/>
-            <rdf:Description rdf:about="&ebaco;Gouais_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Graisse_grape"/>
-            <rdf:Description rdf:about="&ebaco;Grasă_de_cotnari_grape"/>
-            <rdf:Description rdf:about="&ebaco;Grechetto_grape"/>
-            <rdf:Description rdf:about="&ebaco;Greco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Green_hungarian_grape"/>
-            <rdf:Description rdf:about="&ebaco;Grenache_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Grillo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Gringet_grape"/>
-            <rdf:Description rdf:about="&ebaco;Grk_bijeli_grape"/>
-            <rdf:Description rdf:about="&ebaco;Gros_manseng_grape"/>
-            <rdf:Description rdf:about="&ebaco;Grüner_veltliner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Gutenborner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Humagne_blanche_grape"/>
-            <rdf:Description rdf:about="&ebaco;Huxelrebe_grape"/>
-            <rdf:Description rdf:about="&ebaco;Hárslevelű_grape"/>
-            <rdf:Description rdf:about="&ebaco;Incrocio_manzoni_rosa_grape"/>
-            <rdf:Description rdf:about="&ebaco;Irsai_olivér_grape"/>
-            <rdf:Description rdf:about="&ebaco;Jacquère_grape"/>
-            <rdf:Description rdf:about="&ebaco;Juhfark_grape"/>
-            <rdf:Description rdf:about="&ebaco;Juwel_grape"/>
-            <rdf:Description rdf:about="&ebaco;Kanzler_grape"/>
-            <rdf:Description rdf:about="&ebaco;Kerner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Knipperlé_grape"/>
-            <rdf:Description rdf:about="&ebaco;Koshu_grape"/>
-            <rdf:Description rdf:about="&ebaco;Krstač_grape"/>
-            <rdf:Description rdf:about="&ebaco;Kéknyelű_grape"/>
-            <rdf:Description rdf:about="&ebaco;Lagarino_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Lagorthi_grape"/>
-            <rdf:Description rdf:about="&ebaco;Lauzet_grape"/>
-            <rdf:Description rdf:about="&ebaco;Loureira_grape"/>
-            <rdf:Description rdf:about="&ebaco;Luglienga_grape"/>
-            <rdf:Description rdf:about="&ebaco;Macabeo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Maceratino_grape"/>
-            <rdf:Description rdf:about="&ebaco;Madeleine_angevine_grape"/>
-            <rdf:Description rdf:about="&ebaco;Malagousia_grape"/>
-            <rdf:Description rdf:about="&ebaco;Malvar_grape"/>
-            <rdf:Description rdf:about="&ebaco;Malvasia_grape"/>
-            <rdf:Description rdf:about="&ebaco;Mantonico_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Manzoni_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Maraština_grape"/>
-            <rdf:Description rdf:about="&ebaco;Marsanne_grape"/>
-            <rdf:Description rdf:about="&ebaco;Marzemina_bianca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Mauzac_grape"/>
-            <rdf:Description rdf:about="&ebaco;Melody_grape"/>
-            <rdf:Description rdf:about="&ebaco;Melon_de_bourgogne_grape"/>
-            <rdf:Description rdf:about="&ebaco;Merlot_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Merseguera_grape"/>
-            <rdf:Description rdf:about="&ebaco;Meslier-saint-françois_grape"/>
-            <rdf:Description rdf:about="&ebaco;Minella_bianca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Misket_cherven_grape"/>
-            <rdf:Description rdf:about="&ebaco;Molette_grape"/>
-            <rdf:Description rdf:about="&ebaco;Mondeuse_blanche_grape"/>
-            <rdf:Description rdf:about="&ebaco;Montepila_grape"/>
-            <rdf:Description rdf:about="&ebaco;Montonico_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Montù_grape"/>
-            <rdf:Description rdf:about="&ebaco;Morio_muscat_grape"/>
-            <rdf:Description rdf:about="&ebaco;Moscato_giallo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Moschofilero_grape"/>
-            <rdf:Description rdf:about="&ebaco;Mtsvane_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscadelle_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscat_blanc_à_petits_grains_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscat_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscat_of_alexandria_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscat_ottonel_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscat_rose_à_petits_grains_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscat_rouge_à_petits_grains_grape"/>
-            <rdf:Description rdf:about="&ebaco;Müller-thurgau_grape"/>
-            <rdf:Description rdf:about="&ebaco;Narince_grape"/>
-            <rdf:Description rdf:about="&ebaco;Nasco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Neuburger_grape"/>
-            <rdf:Description rdf:about="&ebaco;Neyret_grape"/>
-            <rdf:Description rdf:about="&ebaco;Nobling_grape"/>
-            <rdf:Description rdf:about="&ebaco;Nosiola_grape"/>
-            <rdf:Description rdf:about="&ebaco;Nuragus_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ondenc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Optima_grape"/>
-            <rdf:Description rdf:about="&ebaco;Orléans_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ortega_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ortrugo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pallagrello_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Palomino_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pampanuto_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pardillo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Parellada_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pascal_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Passerina_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pearl_of_csaba_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pecorino_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pedro_giménez_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pedro_ximénez_grape"/>
-            <rdf:Description rdf:about="&ebaco;Perle_grape"/>
-            <rdf:Description rdf:about="&ebaco;Petit_manseng_grape"/>
-            <rdf:Description rdf:about="&ebaco;Petit_meslier_grape"/>
-            <rdf:Description rdf:about="&ebaco;Petite_arvine_grape"/>
-            <rdf:Description rdf:about="&ebaco;Peurion_grape"/>
-            <rdf:Description rdf:about="&ebaco;Picardan_grape"/>
-            <rdf:Description rdf:about="&ebaco;Picolit_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pigato_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pinot_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pinot_gris_grape"/>
-            <rdf:Description rdf:about="&ebaco;Piquepoul_grape"/>
-            <rdf:Description rdf:about="&ebaco;Plavay_grape"/>
-            <rdf:Description rdf:about="&ebaco;Pošip_grape"/>
-            <rdf:Description rdf:about="&ebaco;Prié_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Prosecco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rabo_de_ovelha_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ravat_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Regner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Reichensteiner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Retagliado_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rhoditis_grape"/>
-            <rdf:Description rdf:about="&ebaco;Ribolla_gialla_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rieslaner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Riesling_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rkatsiteli_grape"/>
-            <rdf:Description rdf:about="&ebaco;Robola_grape"/>
-            <rdf:Description rdf:about="&ebaco;Romorantin_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rossese_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Roter_veltliner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rotgipfler_grape"/>
-            <rdf:Description rdf:about="&ebaco;Roublot_grape"/>
-            <rdf:Description rdf:about="&ebaco;Roupeiro_grape"/>
-            <rdf:Description rdf:about="&ebaco;Roussanne_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rovello_bianco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Räuschling_grape"/>
-            <rdf:Description rdf:about="&ebaco;Rèze_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sacy_grape"/>
-            <rdf:Description rdf:about="&ebaco;Saint-pierre_doré_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sarfeher_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sauvignon_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sauvignon_gris_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sauvignon_vert_grape"/>
-            <rdf:Description rdf:about="&ebaco;Savagnin_grape"/>
-            <rdf:Description rdf:about="&ebaco;Savagnin_rose_grape"/>
-            <rdf:Description rdf:about="&ebaco;Savatiano_grape"/>
-            <rdf:Description rdf:about="&ebaco;Scheurebe_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sercial_grape"/>
-            <rdf:Description rdf:about="&ebaco;Siegerrebe_grape"/>
-            <rdf:Description rdf:about="&ebaco;Silvaner_grape"/>
-            <rdf:Description rdf:about="&ebaco;Smederevka_grape"/>
-            <rdf:Description rdf:about="&ebaco;Souvignier_gris_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sumoll_white_grape"/>
-            <rdf:Description rdf:about="&ebaco;Sémillon_grape"/>
-            <rdf:Description rdf:about="&ebaco;Tamarez_grape"/>
-            <rdf:Description rdf:about="&ebaco;Taminga_grape"/>
-            <rdf:Description rdf:about="&ebaco;Tamjanika_grape"/>
-            <rdf:Description rdf:about="&ebaco;Tempranillo_blanco_grape"/>
-            <rdf:Description rdf:about="&ebaco;Terrantez_grape"/>
-            <rdf:Description rdf:about="&ebaco;Terret_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Terret_gris_grape"/>
-            <rdf:Description rdf:about="&ebaco;Thrapsathiri_grape"/>
-            <rdf:Description rdf:about="&ebaco;Timorasso_grape"/>
-            <rdf:Description rdf:about="&ebaco;Torrontés_grape"/>
-            <rdf:Description rdf:about="&ebaco;Tourbat_grape"/>
-            <rdf:Description rdf:about="&ebaco;Trebbiano_grape"/>
-            <rdf:Description rdf:about="&ebaco;Treixadura_grape"/>
-            <rdf:Description rdf:about="&ebaco;Trousseau_gris_grape"/>
-            <rdf:Description rdf:about="&ebaco;Tsolikouri_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vega_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdea_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdeca_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdejo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdelho_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdello_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdesse_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdicchio_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verdiso_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verduzzo_grape"/>
-            <rdf:Description rdf:about="&ebaco;Verduzzo_trevigiano_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vermentino_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vernaccia_di_oristano_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vernaccia_grape"/>
-            <rdf:Description rdf:about="&ebaco;Versoaln_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vespaiola_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vigiriega_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vilana_grape"/>
-            <rdf:Description rdf:about="&ebaco;Viognier_grape"/>
-            <rdf:Description rdf:about="&ebaco;Viosinho_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vital_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vitovska_grape"/>
-            <rdf:Description rdf:about="&ebaco;Vugava_grape"/>
-            <rdf:Description rdf:about="&ebaco;Weldra_grape"/>
-            <rdf:Description rdf:about="&ebaco;Welschriesling_grape"/>
-            <rdf:Description rdf:about="&ebaco;Würzer_grape"/>
-            <rdf:Description rdf:about="&ebaco;Xarello_grape"/>
-            <rdf:Description rdf:about="&ebaco;Xynisteri_grape"/>
-            <rdf:Description rdf:about="&ebaco;Zalema_grape"/>
-            <rdf:Description rdf:about="&ebaco;Zierfandler_grape"/>
-            <rdf:Description rdf:about="&ebaco;Zéta_grape"/>
-            <rdf:Description rdf:about="&ebaco;Österreichisch-weiß_grape"/>
-            <rdf:Description rdf:about="&ebaco;Žilavka_grape"/>
-            <rdf:Description rdf:about="&ebaco;Bianco_d&apos;alessano_grape"/>
-            <rdf:Description rdf:about="&ebaco;L&apos;acadie_blanc_grape"/>
-            <rdf:Description rdf:about="&ebaco;Len_de_l&apos;el_grape"/>
-            <rdf:Description rdf:about="&ebaco;Muscat_d&apos;eisenstadt_grape"/>
         </owl:members>
     </rdf:Description>
     
@@ -15551,31 +15772,9 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&ebaco;elaborated_with_grape"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#u"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#v"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&ebaco;has_grape"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#u"/>
-                    </rdf:Description>
-                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -15602,8 +15801,30 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
                         </rdf:rest>
                     </rdf:Description>
                 </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&ebaco;has_grape"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#u"/>
+                    </rdf:Description>
+                </rdf:first>
             </rdf:Description>
         </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&ebaco;elaborated_with_grape"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#u"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#v"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 

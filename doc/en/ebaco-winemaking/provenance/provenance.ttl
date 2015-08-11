@@ -1,0 +1,13 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+<http://purl.org/ceu/ebaco/winemaking/1.0/> a prov:Entity;
+	 dc:title "E-Baco-Winemaking Ontology ";
+	 prov:wasAttributedTo <http://aprendeconalf.es>;
+	 dc:creator <http://aprendeconalf.es>;
+	 prov:wasAttributedTo [ a prov:Agent; foaf:name "Mari Ángeles Gómez Flechoso".];
+	 prov:wasAttributedTo [ a prov:Agent; foaf:name " Elena Pérez-Urria Carril".];
+	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+	 prov:specializationOf <http://purl.org/ceu/ebaco/winemaking/1.0/>;
+	 prov:wasRevisionOf <http://purl.org/ceu/ebaco/winemaking/1.0/>;
+	 prov:wasGeneratedAt "July 2015".
