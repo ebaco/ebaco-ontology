@@ -79,7 +79,6 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
 
     
 
-
     <!-- http://purl.org/ceu/ebaco/winemaking#allows_grape_variety -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/winemaking#allows_grape_variety">
