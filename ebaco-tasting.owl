@@ -28,18 +28,17 @@
      xmlns:ebaco="http://purl.org/ceu/ebaco/1.0#"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
     <owl:Ontology rdf:about="http://purl.org/ceu/ebaco/tasting">
-        <rdfs:label rdf:datatype="&xsd;string">Ontología E-BACO</rdfs:label>
-        <dc:date rdf:datatype="&xsd;dateTime">09-feb-2015 11:20:52</dc:date>
-        <webprotege:revision rdf:datatype="&xsd;integer">426</webprotege:revision>
-        <dc:creator rdf:datatype="&xsd;string">Mari Ángeles Gómez Flechoso (magflechoso@bio.ucm.es)</dc:creator>
-        <owl:versionInfo rdf:datatype="&xsd;string">Vesión 1.0</owl:versionInfo>
+        <rdfs:label xml:lang="es">Ontología E-BACO</rdfs:label>
         <rdfs:comment xml:lang="en">The E-BACO ontology defines a precise vocabulary for representing knowledge in the oenology domain. 
 The E-BACO-Tasting module contains the basic concepts, properties and relations for describing wines, the wine tasting and the pairing of wine and food. 
 It has been developed by the Complutense University of Madrid and the San Pablo CEU University.</rdfs:comment>
+        <dc:creator xml:lang="es">Alfredo Sánchez Alberca (http://aprendeconalf.es/foaf.rdf)</dc:creator>
+        <dc:date xml:lang="es">Febrero 2015</dc:date>
         <rdfs:comment xml:lang="es">La ontología E-BACO define un vocabulario preciso para representación de conocimiento en el dominio de la enología.
 El módulo E-BACO-Tasting contiene los conceptos, propiedades y relaciones básicas para describir los vinos, las catas de los vinos y el maridaje de vinos con comidas. 
 Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad San Pablo CEU.</rdfs:comment>
-        <dc:creator rdf:resource="http://aprendeconalf.es/foaf.rdf"/>
+        <dc:creator xml:lang="es">Mari Ángeles Gómez Flechoso (magflechoso@bio.ucm.es)</dc:creator>
+        <owl:versionInfo xml:lang="es">Vesión 1.0</owl:versionInfo>
         <rdfs:seeAlso rdf:resource="http://ebaco.github.io/"/>
         <owl:imports rdf:resource="http://purl.org/ceu/ebaco/core/1.0"/>
         <owl:versionIRI rdf:resource="http://purl.org/ceu/ebaco/tasting/1.0"/>
@@ -78,6 +77,12 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.org/ceu/ebaco/core#wine_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_object_property"/>
     
 
 
@@ -1667,14 +1672,8 @@ En el se aprecian los reflejos del vino que indican aspectos como su edad o esta
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tasting;has_aroma"/>
-                <owl:someValuesFrom rdf:resource="&tasting;Wine_nose"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&tasting;has_colour_intensity"/>
-                <owl:someValuesFrom rdf:resource="&tasting;Wine_colour_intensity"/>
+                <owl:onProperty rdf:resource="&tasting;has_edging_colour"/>
+                <owl:someValuesFrom rdf:resource="&tasting;Wine_edging_colour"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1685,14 +1684,20 @@ En el se aprecian los reflejos del vino que indican aspectos como su edad o esta
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tasting;has_aroma_intensity"/>
-                <owl:someValuesFrom rdf:resource="&tasting;Aroma_intensity"/>
+                <owl:onProperty rdf:resource="&tasting;has_colour_intensity"/>
+                <owl:someValuesFrom rdf:resource="&tasting;Wine_colour_intensity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tasting;has_edging_colour"/>
-                <owl:someValuesFrom rdf:resource="&tasting;Wine_edging_colour"/>
+                <owl:onProperty rdf:resource="&tasting;has_aroma"/>
+                <owl:someValuesFrom rdf:resource="&tasting;Wine_nose"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&tasting;has_aroma_intensity"/>
+                <owl:someValuesFrom rdf:resource="&tasting;Aroma_intensity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="&xsd;string">Descripción organoléptica de un vino. Comprende fundamentalmente tres características: vista, olfato y gusto.</rdfs:comment>
