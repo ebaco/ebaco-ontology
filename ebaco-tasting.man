@@ -1,0 +1,5788 @@
+Prefix: : <http://purl.org/ceu/ebaco#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: swrl: <http://www.w3.org/2003/11/swrl#>
+Prefix: ebaco: <http://purl.org/ceu/ebaco/1.0#>
+Prefix: swrlb: <http://www.w3.org/2003/11/swrlb#>
+Prefix: tasting: <http://purl.org/ceu/ebaco/tasting/1.0#>
+Prefix: webprotege: <http://protege.stanford.edu/webprotege/>
+
+
+
+Ontology: <http://purl.org/ceu/ebaco/tasting>
+<http://purl.org/ceu/ebaco/tasting/1.0>
+Import: <http://purl.org/ceu/ebaco/core/1.0>
+
+Annotations: 
+    rdfs:seeAlso <http://ebaco.github.io/>,
+    dc:creator "Alfredo Sánchez Alberca (http://aprendeconalf.es/foaf.rdf)"@es,
+    rdfs:label "Ontología E-BACO"@es,
+    rdfs:comment "La ontología E-BACO define un vocabulario preciso para representación de conocimiento en el dominio de la enología.
+El módulo E-BACO-Tasting contiene los conceptos, propiedades y relaciones básicas para describir los vinos, las catas de los vinos y el maridaje de vinos con comidas. 
+Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad San Pablo CEU."@es,
+    rdfs:comment "The E-BACO ontology defines a precise vocabulary for representing knowledge in the oenology domain. 
+The E-BACO-Tasting module contains the basic concepts, properties and relations for describing wines, the wine tasting and the pairing of wine and food. 
+It has been developed by the Complutense University of Madrid and the San Pablo CEU University."@en,
+    owl:versionInfo "Vesión 1.0"@es,
+    dc:date "Febrero 2015"@es,
+    dc:creator "Mari Ángeles Gómez Flechoso (magflechoso@bio.ucm.es)"@es
+
+AnnotationProperty: rdfs:seeAlso
+
+    
+AnnotationProperty: owl:versionInfo
+
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: dc:date
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: dc:creator
+
+    
+Datatype: xsd:date
+
+    
+Datatype: xsd:string
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:gYear
+
+    
+ObjectProperty: done_by_taster
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata con el catador que la hizo."@es,
+        rdfs:label "done by taster"@en,
+        rdfs:label "hecha por catador"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_taster
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        wine_tasting_object_property
+    
+    
+ObjectProperty: has_edging_colour
+
+    Annotations: 
+        rdfs:label "has edging colour"@en,
+        rdfs:label "tiene color de menisco"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_edging_colour
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_sweetness_palate
+
+    Annotations: 
+        rdfs:label "tiene dulzura en paladar"@es,
+        rdfs:label "has sweetness on palate"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la dulzura en paladar del vino."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Sweetness_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: wine_object_property
+
+    Domain: 
+        Wine
+    
+    
+ObjectProperty: eat_with_wine
+
+    Annotations: 
+        rdfs:label "comer con vino"@es,
+        rdfs:label "eat with wine"@en,
+        rdfs:comment "Propiedad que relaciona un tipo de comida con un vino con el que hace buen maridaje."@es
+    
+    Domain: 
+        Wine_food
+    
+    Range: 
+        Wine
+    
+    InverseOf: 
+        drink_with_food
+    
+    
+ObjectProperty: has_tertiary_flavour
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un sabor terciario."@es,
+        rdfs:label "tiene sabor terciario"@es,
+        rdfs:label "has tertiary flavour"@en
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Tertiary_flavour
+    
+    SubPropertyOf: 
+        has_flavour
+    
+    
+ObjectProperty: has_aroma
+
+    Annotations: 
+        rdfs:label "tiene aroma"@es,
+        rdfs:label "has aroma"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_nose
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_secondary_aroma
+
+    Annotations: 
+        rdfs:label "tiene aroma secundario"@es,
+        rdfs:label "has secondary aroma"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma secundario."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Secondary_aroma
+    
+    SubPropertyOf: 
+        has_aroma
+    
+    
+ObjectProperty: has_primary_flavour
+
+    Annotations: 
+        rdfs:label "has primary flavour"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un sabor primario."@es,
+        rdfs:label "tiene sabor primario"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Primary_flavour
+    
+    SubPropertyOf: 
+        has_flavour
+    
+    
+ObjectProperty: has_flavour
+
+    Annotations: 
+        rdfs:label "tiene sabor"@es,
+        rdfs:label "has flavour"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con el sabor del vino."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: drink_with_food
+
+    Annotations: 
+        rdfs:comment "drink with food"@en,
+        rdfs:comment "Propiedad que relaciona un vino con un tipo de comida con el que hace buen maridaje."@es,
+        rdfs:label "beber con comida"@es
+    
+    Domain: 
+        Wine
+    
+    Range: 
+        Wine_food
+    
+    SubPropertyOf: 
+        wine_object_property
+    
+    InverseOf: 
+        eat_with_wine
+    
+    
+ObjectProperty: has_aroma_intensity
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la intensidad del aroma que presenta el vino."@es,
+        rdfs:label "tiene intensidad de aroma"@es,
+        rdfs:label "has intensity aroma"@en
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Aroma_intensity
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_edging_colour_rose_wine
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino rosado con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es,
+        rdfs:label "tiene color de menisco de vino rosado"@es,
+        rdfs:label "has edging colour of rosé wine"@en
+    
+    Domain: 
+        rose_wine_tasting
+    
+    Range: 
+        Rose_wine_edging_colour
+    
+    SubPropertyOf: 
+        has_edging_colour
+    
+    
+ObjectProperty: has_sparkling_wine_tasting
+
+    Annotations: 
+        rdfs:label "tiene cata de vino espumoso"@es,
+        rdfs:label "has sparkling wine tasting"@en,
+        rdfs:comment "Propiedad que relaciona un vino espumoso con una cata suya."@es
+    
+    Domain: 
+        Sparkling_wine
+    
+    Range: 
+        Sparkling_wine_tasting
+    
+    SubPropertyOf: 
+        has_wine_tasting
+    
+    InverseOf: 
+        sparkling_wine_tasting_of
+    
+    
+ObjectProperty: has_colour_rose_wine
+
+    Annotations: 
+        rdfs:label "tiene color de vino rosado"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino rosado con el color que presenta el vino."@es,
+        rdfs:label "has colour of rosé wine"@en
+    
+    Domain: 
+        rose_wine_tasting
+    
+    Range: 
+        Rose_wine_colour
+    
+    SubPropertyOf: 
+        has_colour
+    
+    
+ObjectProperty: has_colour
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con el color que presenta el vino."@es,
+        rdfs:label "has colour"@en,
+        rdfs:label "tiene color"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_colour
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_tertiary_aroma
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma terciario."@es,
+        rdfs:label "has tertiary aroma"@en,
+        rdfs:label "tiene aroma terciario"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Tertiary_aroma
+    
+    SubPropertyOf: 
+        has_aroma
+    
+    
+ObjectProperty: has_fortified_wine_tasting
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona un vino fortificado con una cata suya."@es,
+        rdfs:label "has fortified wine tasting"@en,
+        rdfs:label "tiene cata de vino fortificado"@es
+    
+    Domain: 
+        Fortified_wine
+    
+    Range: 
+        Fortified_wine_tasting
+    
+    SubPropertyOf: 
+        has_wine_tasting
+    
+    InverseOf: 
+        fortified_wine_tasting_of
+    
+    
+ObjectProperty: rose_wine_tasting_of
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino rosado con el vino catado."@es,
+        rdfs:label "rosé wine tasting of"@en,
+        rdfs:label "cata de vino rosado de"@es
+    
+    Domain: 
+        rose_wine_tasting
+    
+    Range: 
+        Rose_wine
+    
+    SubPropertyOf: 
+        tasting_of
+    
+    InverseOf: 
+        has_rose_wine_tasting
+    
+    
+ObjectProperty: has_edging_colour_white_wine
+
+    Annotations: 
+        rdfs:label "tiene color de menisco de vino blanco"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino blanco con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es,
+        rdfs:label "has edging colour of white wine"@en
+    
+    Domain: 
+        white_wine_tasting
+    
+    Range: 
+        White_wine_edging_colour
+    
+    SubPropertyOf: 
+        has_edging_colour
+    
+    
+ObjectProperty: tasting_of
+
+    Annotations: 
+        rdfs:label "tasting of"@en,
+        rdfs:label "cata de"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con el vino catado."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine
+    
+    SubPropertyOf: 
+        wine_tasting_object_property
+    
+    InverseOf: 
+        has_wine_tasting
+    
+    
+ObjectProperty: has_acidity_palate
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la acidez en paladar del vino."@es,
+        rdfs:label "tiene acidez en paladar"@es,
+        rdfs:label "has acidity on palate"@en
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Acidity_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_clarity
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la limpieza que presenta el vino."@es,
+        rdfs:label "has clarity"@en,
+        rdfs:label "tiene limpieza"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_clarity
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_colour_white_wine
+
+    Annotations: 
+        rdfs:label "tiene color de vino blanco"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino blanco con el color que presenta el vino."@es,
+        rdfs:label "has colour of white wine"@en
+    
+    Domain: 
+        white_wine_tasting
+    
+    Range: 
+        White_wine_colour
+    
+    SubPropertyOf: 
+        has_colour
+    
+    
+ObjectProperty: has_astringency_palate
+
+    Annotations: 
+        rdfs:label "tiene astringencia en paladar"@es,
+        rdfs:label "has astringency on palate"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la astringencia en paladar del vino."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Tannins_astringency_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_colour_red_wine
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino tinto con el color que presenta el vino."@es,
+        rdfs:label "has colour of red wine"@en,
+        rdfs:label "tiene color de vino tinto"@es
+    
+    Domain: 
+        Red_wine_tasting
+    
+    Range: 
+        Red_wine_colour
+    
+    SubPropertyOf: 
+        has_colour
+    
+    
+ObjectProperty: has_finish_palate
+
+    Annotations: 
+        rdfs:label "has finish on palate"@en,
+        rdfs:label "tiene persistencia en paladar"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la persistencia en paladar del vino."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Finish_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_secondary_flavour
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un sabor secundario."@es,
+        rdfs:label "tiene sabor secundario"@es,
+        rdfs:label "has secondary flavour"@en
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Secondary_flavour
+    
+    SubPropertyOf: 
+        has_flavour
+    
+    
+ObjectProperty: wine_tasting_object_property
+
+    Annotations: 
+        rdfs:label "propiedad de la cata del vino"@es,
+        rdfs:label "wine tasting object property"@en
+    
+    
+ObjectProperty: sparkling_wine_tasting_of
+
+    Annotations: 
+        rdfs:label "cata de vino espumoso de"@es,
+        rdfs:label "sparkling wine tasting of"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino espumoso con el vino catado."@es
+    
+    Domain: 
+        Sparkling_wine_tasting
+    
+    Range: 
+        Sparkling_wine
+    
+    SubPropertyOf: 
+        tasting_of
+    
+    InverseOf: 
+        has_sparkling_wine_tasting
+    
+    
+ObjectProperty: has_flavour_intensity
+
+    Annotations: 
+        rdfs:label "has flavour intensity"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la intensidad del sabor del vino."@es,
+        rdfs:label "tiene intensidad de sabor"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Intensity_flavour
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: white_wine_tasting_of
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino blanco con el vino catado."@es,
+        rdfs:label "white wine tasting of"@en,
+        rdfs:label "cata de vino blanco de"@es
+    
+    Domain: 
+        white_wine_tasting
+    
+    Range: 
+        White_wine
+    
+    SubPropertyOf: 
+        tasting_of
+    
+    InverseOf: 
+        has_white_wine_tasting
+    
+    
+ObjectProperty: has_tear
+
+    Annotations: 
+        rdfs:label "has tear"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la lágrima que presenta el vino en la copa."@es,
+        rdfs:label "tiene lágrima"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_tear
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_white_wine_tasting
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona un vino blanco con una cata suya."@es,
+        rdfs:label "has white wine tasting"@en,
+        rdfs:label "tiene cata de vino blanco"@es
+    
+    Domain: 
+        White_wine
+    
+    Range: 
+        white_wine_tasting
+    
+    SubPropertyOf: 
+        has_wine_tasting
+    
+    InverseOf: 
+        white_wine_tasting_of
+    
+    
+ObjectProperty: has_edging_colour_red_wine
+
+    Annotations: 
+        rdfs:label "tiene color de menisco de vino tinto"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino tinto con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es,
+        rdfs:label "has edging colour of red wine"@en
+    
+    SubPropertyOf: 
+        has_edging_colour
+    
+    
+ObjectProperty: has_organoleptic_characteristic
+
+    Annotations: 
+        rdfs:label "tiene característica organoléptica"@es,
+        rdfs:label "has organoleptic characteristic"@en,
+        rdfs:comment "Propiedad que relaciona la cata de un vino con una característica organoléptia suya (aspecto, aroma o sabor)."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Organoleptic_characteristic
+    
+    SubPropertyOf: 
+        wine_tasting_object_property
+    
+    
+ObjectProperty: has_primariy_aroma
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma primario."@es,
+        rdfs:label "has primary aroma"@en,
+        rdfs:label "tiene aroma primario"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Primary_aroma
+    
+    SubPropertyOf: 
+        has_aroma
+    
+    
+ObjectProperty: has_alcohol_palate
+
+    Annotations: 
+        rdfs:label "has alcohol on palate"@en,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con el alcohol en paladar del vino."@es,
+        rdfs:label "tiene alcohol en paladar"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Alcohol_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_colour_intensity
+
+    Annotations: 
+        rdfs:label "has colour intensity"@en,
+        rdfs:label "tiene capa"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino con la capa que presenta el vino."@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_colour_intensity
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_smoothness_palate
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino espumoso con la suavidad en paladar del vino."@es,
+        rdfs:label "has smoothness on palate"@en,
+        rdfs:label "tiene suavidad en paladar"@es
+    
+    Domain: 
+        Sparkling_wine_tasting
+    
+    Range: 
+        Smoothness_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_body_palate
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con el cuerpo en paladar del vino."@es,
+        rdfs:label "has body on palate"@en,
+        rdfs:label "tiene cuerpo en paladar"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Body_palate
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: red_wine_tasting_of
+
+    Annotations: 
+        rdfs:label "cata de vino tinto de"@es,
+        rdfs:comment "Propiedad que relaciona una cata de un vino tinto con el vino catado."@es,
+        rdfs:label "red wine tasting of"@en
+    
+    Domain: 
+        Red_wine_tasting
+    
+    Range: 
+        Red_wine
+    
+    SubPropertyOf: 
+        tasting_of
+    
+    InverseOf: 
+        has_red_wine_tasting
+    
+    
+ObjectProperty: has_rose_wine_tasting
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona un vino rosado con una cata suya."@es,
+        rdfs:label "tiene cata de vino rosado"@es,
+        rdfs:label "has rosé wine tasting"@en
+    
+    Domain: 
+        Rose_wine
+    
+    Range: 
+        rose_wine_tasting
+    
+    SubPropertyOf: 
+        has_wine_tasting
+    
+    InverseOf: 
+        rose_wine_tasting_of
+    
+    
+ObjectProperty: has_tannins_level_palate
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con el nivel de los taninos en paladar del vino."@es,
+        rdfs:label "tiene nivel de taninos en paladar"@es,
+        rdfs:label "has tannins level on palate"@en
+    
+    SubPropertyOf: 
+        has_organoleptic_characteristic
+    
+    
+ObjectProperty: has_retronasal_aroma
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma retronasal (después del paso del vino por la boca)."@es,
+        rdfs:label "has retronasal aroma"@en,
+        rdfs:label "tiene aroma retronasal"@es
+    
+    Domain: 
+        Wine_tasting
+    
+    Range: 
+        Wine_nose
+    
+    SubPropertyOf: 
+        has_aroma
+    
+    
+ObjectProperty: has_wine_tasting
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona un vino con una cata suya."@es,
+        rdfs:label "has tasting"@en,
+        rdfs:label "tiene cata"@es
+    
+    Domain: 
+        Wine
+    
+    Range: 
+        Wine_tasting
+    
+    SubPropertyOf: 
+        wine_object_property
+    
+    InverseOf: 
+        tasting_of
+    
+    
+ObjectProperty: has_red_wine_tasting
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona un vino tinto con una cata suya."@es,
+        rdfs:label "tiene cata de vino tinto"@es,
+        rdfs:label "has red wine tasting"@en
+    
+    Domain: 
+        Red_wine
+    
+    Range: 
+        Red_wine_tasting
+    
+    SubPropertyOf: 
+        has_wine_tasting
+    
+    InverseOf: 
+        red_wine_tasting_of
+    
+    
+ObjectProperty: fortified_wine_tasting_of
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una cata de un vino fortificado con el vino catado."@es,
+        rdfs:label "cata de vino fortificado de"@es,
+        rdfs:label "fortified wine tasting of"@en
+    
+    Domain: 
+        Fortified_wine_tasting
+    
+    Range: 
+        Fortified_wine
+    
+    SubPropertyOf: 
+        tasting_of
+    
+    InverseOf: 
+        has_fortified_wine_tasting
+    
+    
+Class: Tannins_astringency_palate
+
+    Annotations: 
+        rdfs:label "Tannins astringency on palate"@en,
+        rdfs:label "Astringencia de los taninos en paladar"@es
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: White_fruit_development_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de desarrollo frutal en vino blanco"@es,
+        rdfs:label "White wine fruit development aroma"@en
+    
+    SubClassOf: 
+        Tertiary_aroma
+    
+    
+Class: White_wine_colour
+
+    Annotations: 
+        rdfs:label "White wine colour"@en,
+        rdfs:label "Color de vino blanco"@es
+    
+    SubClassOf: 
+        Wine_colour
+    
+    
+Class: Sparkling_wine_tasting
+
+    Annotations: 
+        rdfs:comment "Descripción organoléptica de un vino espumoso. Comprende fundamentalmente tres características: vista, olfato y gusto."@es,
+        rdfs:label "Cata de vino espumoso"@es,
+        rdfs:label "Sparkling wine tasting"@en
+    
+    SubClassOf: 
+        Wine_tasting
+    
+    
+Class: Aperitif
+
+    Annotations: 
+        rdfs:label "Aperitif"@en,
+        rdfs:label "Aperitivo"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Alcohol_palate
+
+    Annotations: 
+        rdfs:label "Alcohol en paladar"@es,
+        rdfs:label "Alcohol on palate"@en
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Rice
+
+    Annotations: 
+        rdfs:label "Arroz"@es,
+        rdfs:label "Rice"@en
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Wine_clarity
+
+    Annotations: 
+        rdfs:label "Wine clarity"@en,
+        rdfs:comment "Característica visual del vino que se refiere a la presencia o no de partículas suspendidas o precipitadas en el vino."@es,
+        rdfs:label "Limpieza del vino"@es
+    
+    SubClassOf: 
+        Wine_appearance
+    
+    
+Class: Sparkling_wine
+
+    
+Class: Rose_wine_edging_colour
+
+    Annotations: 
+        rdfs:label "Color del menisco de vino rosado"@es,
+        rdfs:label "Rosé wine edging colour"@en
+    
+    SubClassOf: 
+        Wine_edging_colour
+    
+    
+Class: rose_wine_tasting
+
+    Annotations: 
+        rdfs:label "Cata de vino rosado"@es,
+        rdfs:comment "Descripción organoléptica de un vino rosado. Comprende fundamentalmente tres características: vista, olfato y gusto."@es,
+        rdfs:label "Rosé wine tasting"@en
+    
+    SubClassOf: 
+        Wine_tasting
+    
+    
+Class: Red_fruit_development_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de desarrollo frutal en vino tinto"@es,
+        rdfs:label "Red wine fruit development aroma"@en
+    
+    SubClassOf: 
+        Tertiary_aroma
+    
+    
+Class: Red_bottle_age_flavour
+
+    Annotations: 
+        rdfs:label "Red wine bottle age flavour"@en,
+        rdfs:label "Sabor de envejicimiento en botella de vino tinto"@es
+    
+    SubClassOf: 
+        Tertiary_flavour
+    
+    
+Class: Herbal_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de hierbas"@es,
+        rdfs:label "Herbal flavour"@en
+    
+    SubClassOf: 
+        Primary_flavour
+    
+    
+Class: Dried_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Dried fruit aroma"@en,
+        rdfs:label "Aroma de fruta pasa"@es
+    
+    SubClassOf: 
+        Fruit_aroma
+    
+    
+Class: Rose_wine
+
+    
+Class: Carne
+
+    Annotations: 
+        rdfs:label "Meat"@en,
+        rdfs:label "Carne"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: pizza
+
+    Annotations: 
+        rdfs:label "Pizza"@en,
+        rdfs:label "Pizza"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Fish
+
+    Annotations: 
+        rdfs:label "Pescado"@es,
+        rdfs:label "Fish"@en
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Wine
+
+    
+Class: Oak_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de roble"@es,
+        rdfs:label "Oak aroma"@en
+    
+    SubClassOf: 
+        Secondary_aroma
+    
+    
+Class: Red_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de fruta roja"@es,
+        rdfs:label "Red fruit flavour"@en
+    
+    SubClassOf: 
+        Fruit_flavour
+    
+    
+Class: Red_wine_edging_colour
+
+    Annotations: 
+        rdfs:label "Color del menisco de vino tinto"@es,
+        rdfs:label "Red wine edging colour"@en
+    
+    SubClassOf: 
+        Wine_edging_colour
+    
+    
+Class: Tropical_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de fruta tropical"@es,
+        rdfs:label "Tropical fruit aroma"@en
+    
+    SubClassOf: 
+        Fruit_aroma
+    
+    
+Class: Rose_wine_colour
+
+    Annotations: 
+        rdfs:label "Rosé wine colour"@en,
+        rdfs:label "Color de vino rosado"@es
+    
+    SubClassOf: 
+        Wine_colour
+    
+    
+Class: Wine_colour_intensity
+
+    Annotations: 
+        rdfs:label "Capa del vino"@es,
+        rdfs:label "Wine colour intensity"@en,
+        rdfs:comment "Característica visual del vino que se refiere a la medida de la cantidad o intensidad del color en vinos tintos que depende del contenido de antocianos. 
+Se observa tumbando la copa sobre fondo blanco y mirando el centro de la copa. Se distingue capa alta cuando no se puede ver a través del vino (opaco), capa media cuando deja pasar algo de luz y capa baja cuando puede verse a través del vino."@es
+    
+    SubClassOf: 
+        Wine_appearance
+    
+    
+Class: Herbal_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de hierbas"@es,
+        rdfs:label "Herbal aroma"@en
+    
+    SubClassOf: 
+        Primary_aroma
+    
+    
+Class: Tannins_level_palate
+
+    Annotations: 
+        rdfs:label "Tannins level on palate"@en,
+        rdfs:label "Nivel de taninos en paladar"@es
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Red_bottle_age_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de envejicimiento en botella de vino tinto"@es,
+        rdfs:label "Red wine bottle age aroma"@en
+    
+    SubClassOf: 
+        Tertiary_aroma
+    
+    
+Class: Acidity_palate
+
+    Annotations: 
+        rdfs:label "Acidity on palate"@en,
+        rdfs:label "Acidez en paladar"@es
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Citrus_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Citrus fruit aroma"@en,
+        rdfs:label "Aroma de fruta cítrica"@es
+    
+    SubClassOf: 
+        Fruit_aroma
+    
+    
+Class: Fruit_flavour
+
+    Annotations: 
+        rdfs:label "Fruit flavour"@en,
+        rdfs:label "Sabor de fruta"@es
+    
+    SubClassOf: 
+        Primary_flavour
+    
+    
+Class: Pasta
+
+    Annotations: 
+        rdfs:label "Pasta"@en,
+        rdfs:label "Pasta"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Seafood
+
+    Annotations: 
+        rdfs:label "Seafood"@en,
+        rdfs:label "Marisco"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Wine_nose
+
+    Annotations: 
+        rdfs:label "Olor del vino"@es,
+        rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en,
+        rdfs:comment "Percepción olfativa de un vino. Puede expresar un aroma primario o secundario."@es,
+        rdfs:label "Wine nose"@en
+    
+    SubClassOf: 
+        Organoleptic_characteristic
+    
+    
+Class: White_fruit_development_flavour
+
+    Annotations: 
+        rdfs:label "White wine fruit development flavour"@en,
+        rdfs:label "Sabor de desarrollo frutal en vino blanco"@es
+    
+    SubClassOf: 
+        Tertiary_flavour
+    
+    
+Class: Pungent_spice_flavour
+
+    Annotations: 
+        rdfs:label "Especia picante"@es,
+        rdfs:label "Pungent spice"@en
+    
+    SubClassOf: 
+        Primary_flavour
+    
+    
+Class: Oxidation_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de oxidación"@es,
+        rdfs:label "Oxidation flavour"@en
+    
+    SubClassOf: 
+        Tertiary_flavour
+    
+    
+Class: Dairy
+
+    Annotations: 
+        rdfs:label "Dairy"@en,
+        rdfs:label "Lácteo"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Dried_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de fruta pasa"@es,
+        rdfs:label "Dried fruit flavour"@en
+    
+    SubClassOf: 
+        Fruit_flavour
+    
+    
+Class: Poultry
+
+    Annotations: 
+        rdfs:label "Poultry"@en,
+        rdfs:label "Aves"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Red_wine_colour
+
+    Annotations: 
+        rdfs:label "Red wine colour"@en,
+        rdfs:label "Color de vino tinto"@es
+    
+    SubClassOf: 
+        Wine_colour
+    
+    
+Class: Oak_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de roble"@es,
+        rdfs:label "Oak flavour"@en
+    
+    SubClassOf: 
+        Secondary_flavour
+    
+    
+Class: Wine_appearance
+
+    Annotations: 
+        rdfs:comment "Percepción visual del vino. Puede referirse al color, la limpieza o la viscosidad."@es,
+        rdfs:label "Wine appearance"@en,
+        rdfs:label "Aspecto del vino"@es,
+        rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en
+    
+    SubClassOf: 
+        Organoleptic_characteristic
+    
+    
+Class: Fortified_wine_tasting
+
+    Annotations: 
+        rdfs:comment "Descripción organoléptica de un vino fortificado o generoso. Comprende fundamentalmente tres características: vista, olfato y gusto."@es,
+        rdfs:label "Cata de vino fortificado"@es,
+        rdfs:label "Fortified wine tasting"@en
+    
+    SubClassOf: 
+        Wine_tasting
+    
+    
+Class: Sweetness_palate
+
+    Annotations: 
+        rdfs:label "Sweetness on palate"@en,
+        rdfs:label "Dulzura en paladar"@es
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Malolactic_aroma
+
+    Annotations: 
+        rdfs:label "Malolactic aroma"@en,
+        rdfs:label "Aroma maloláctico"@es
+    
+    SubClassOf: 
+        Secondary_aroma
+    
+    
+Class: Red_wine_tasting
+
+    Annotations: 
+        rdfs:label "Red wine tasting"@en,
+        rdfs:label "Cata de vino tinto"@es,
+        rdfs:comment "Descripción organoléptica de un vino tinto. Comprende fundamentalmente tres características: vista, olfato y gusto."@es
+    
+    SubClassOf: 
+        Wine_tasting
+    
+    
+Class: Aroma_development
+
+    Annotations: 
+        rdfs:label "Aroma development"@en,
+        rdfs:label "Desarrollo del aroma"@es
+    
+    SubClassOf: 
+        Wine_nose
+    
+    
+Class: Herbaceous_flavour
+
+    Annotations: 
+        rdfs:label "Herbaceous flavour"@en,
+        rdfs:label "Sabor herbáceo"@es
+    
+    SubClassOf: 
+        Primary_flavour
+    
+    
+Class: Smoothness_palate
+
+    Annotations: 
+        rdfs:label "Suavidad en paladar"@es,
+        rdfs:label "Smoothness on palate"@en
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Wine_tasting
+
+    Annotations: 
+        rdfs:seeAlso <http://issuu.com/cataunvino/docs/tutorial_de_cata/1?e=5254475/2614582>,
+        rdfs:label "Cata de vino"@es,
+        rdfs:label "Wine tasting"@en,
+        rdfs:comment "Descripción organoléptica de un vino. Comprende fundamentalmente tres características: vista, olfato y gusto."^^xsd:string,
+        rdfs:seeAlso <http://www.cataunvino.es/>
+    
+    SubClassOf: 
+        has_tear some Wine_tear,
+        has_colour_intensity some Wine_colour_intensity,
+        has_edging_colour some Wine_edging_colour,
+        has_aroma some Wine_nose,
+        has_clarity some Wine_clarity,
+        has_aroma_intensity some Aroma_intensity
+    
+    
+Class: Yeast_aroma
+
+    Annotations: 
+        rdfs:label "Yeast aroma"@en,
+        rdfs:label "Aroma de levadura"@es
+    
+    SubClassOf: 
+        Secondary_aroma
+    
+    
+Class: Pungent_spice_aroma
+
+    Annotations: 
+        rdfs:label "Pungent spice"@en,
+        rdfs:label "Especia picante"@es
+    
+    SubClassOf: 
+        Primary_aroma
+    
+    
+Class: Floral_aroma
+
+    Annotations: 
+        rdfs:label "Aroma floral"@es,
+        rdfs:label "Floral aroma"@en
+    
+    SubClassOf: 
+        Primary_aroma
+    
+    
+Class: Wine_tear
+
+    Annotations: 
+        rdfs:label "Wine tear"@en,
+        rdfs:comment "Característica visual del vino que se refiere a la formación de gotas que resbalan por las paredes de la copa tras agitar el vino en la copa. 
+Este fenómeno deriva de la viscosidad del vino, y su naturaleza depende fundamentalmente del contenido alcohólico.
+Cuanto más numerosas, largas y persistentes son las lágrimas, más cuerpo, volumen y fortaleza tiene el vino. Lágrimas muy separadas es indicativo de vinos jóvenes, mientras que lágrimas abuntantes, densas y cortas corresponden con vinos viejos y maduros."@es,
+        rdfs:label "Lágrima del vino"@es
+    
+    SubClassOf: 
+        Wine_appearance
+    
+    
+Class: Secondary_flavour
+
+    Annotations: 
+        rdfs:label "Secondary flavour"@en,
+        rdfs:label "Sabor secundario"@es,
+        rdfs:comment "Un sabor secundario es un sabor procedente de la elaboración del vino (fermentación alcohólica, fermentación maloláctica, levaduras, etc.)"@es
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: white_wine_tasting
+
+    Annotations: 
+        rdfs:label "Cata de vino blanco"@es,
+        rdfs:label "White wine tasting"@en,
+        rdfs:comment "Descripción organoléptica de un vino blanco. Comprende fundamentalmente tres características: vista, olfato y gusto."@es
+    
+    SubClassOf: 
+        Wine_tasting
+    
+    
+Class: Fruit_aroma
+
+    Annotations: 
+        rdfs:label "Fruit aroma"@en,
+        rdfs:label "Aroma de fruta"@es
+    
+    SubClassOf: 
+        Primary_aroma
+    
+    
+Class: Malolactic_flavour
+
+    Annotations: 
+        rdfs:label "Sabor maloláctico"@es,
+        rdfs:label "Malolactic flavour"@en
+    
+    SubClassOf: 
+        Secondary_flavour
+    
+    
+Class: Dessert
+
+    Annotations: 
+        rdfs:label "Postre"@es,
+        rdfs:label "Dessert"@en
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Finish_palate
+
+    Annotations: 
+        rdfs:label "Persistencia en paladar"@es,
+        rdfs:label "Finish on palate"@en
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Other_aroma
+
+    Annotations: 
+        rdfs:label "Other aroma"@en,
+        rdfs:label "Otros aromas"@es
+    
+    SubClassOf: 
+        Secondary_aroma
+    
+    
+Class: Red_wine
+
+    
+Class: Other_flavour
+
+    Annotations: 
+        rdfs:label "Otros sabores"@es,
+        rdfs:label "Other flavour"@en
+    
+    SubClassOf: 
+        Secondary_flavour
+    
+    
+Class: Stone_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Stone fruit aroma"@en,
+        rdfs:label "Aroma de fruta de hueso"@es
+    
+    SubClassOf: 
+        Fruit_aroma
+    
+    
+Class: Wine_edging_colour
+
+    Annotations: 
+        rdfs:comment "Característica visual del vino que se refiere al color del ribete que forma el vino en la copa en la interfase entre el vino y el aire. 
+Es curvada y depende de la tensión superficial del vino. 
+En el se aprecian los reflejos del vino que indican aspectos como su edad o estado de conservación."^^xsd:string,
+        rdfs:label "Wine edging colour"@en,
+        rdfs:label "Color del menisco del vino"@es
+    
+    SubClassOf: 
+        Wine_appearance
+    
+    
+Class: Wine_taster
+
+    Annotations: 
+        rdfs:label "Catador"@es,
+        rdfs:label "Wine taster"@en,
+        rdfs:comment "Un catador es una persona que realiza catas de vino."@es
+    
+    SubClassOf: 
+        <http://www.w3.org/ns/prov#Person>
+    
+    
+Class: White_bottle_age_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de envejimiento en botella de vino blanco"@es,
+        rdfs:label "White wine bottle age flavour"@en
+    
+    SubClassOf: 
+        Tertiary_flavour
+    
+    
+Class: Tertiary_flavour
+
+    Annotations: 
+        rdfs:label "Sabor terciario"@es,
+        rdfs:label "Tertiary flavour"@en,
+        rdfs:comment "Un sabor terciario es un sabor procedente de la crianza y el envejecimiento del vino tanto en barrica como en botella."@es
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Yeast_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de levadura"@es,
+        rdfs:label "Yeast flavour"@en
+    
+    SubClassOf: 
+        Secondary_flavour
+    
+    
+Class: Primary_aroma
+
+    Annotations: 
+        rdfs:comment "Los aromas primarios son los aromas producidos por la uva."@es,
+        rdfs:label "Primary aroma"@en,
+        rdfs:label "Aroma primario"@es
+    
+    SubClassOf: 
+        Wine_nose
+    
+    
+Class: Organoleptic_characteristic
+
+    Annotations: 
+        rdfs:comment "Característica organoléptica que expresa una percepción sensorial (visual, olfativa o gustativa) del vino."@es,
+        rdfs:label "Organoleptic characteristic"@en,
+        rdfs:label "Característica organoléptica del vino"@es,
+        rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en
+    
+    
+Class: Fortified_wine
+
+    
+Class: Aroma_intensity
+
+    Annotations: 
+        rdfs:label "Aroma intensity"@en,
+        rdfs:label "Intensidad de aroma"@es
+    
+    SubClassOf: 
+        Wine_nose
+    
+    
+Class: White_wine
+
+    
+Class: Black_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Black fruit aroma"@en,
+        rdfs:label "Aroma de fruta negra"@es
+    
+    SubClassOf: 
+        Fruit_aroma
+    
+    
+Class: Red_fruit_development_flavour
+
+    Annotations: 
+        rdfs:label "Red wine fruit development flavour"@en,
+        rdfs:label "Sabor de desarrollo frutal en vino tinto"@es
+    
+    SubClassOf: 
+        Tertiary_flavour
+    
+    
+Class: Green_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Green fruit flavour"@en,
+        rdfs:label "Sabor de fruta verde"@es
+    
+    SubClassOf: 
+        Fruit_flavour
+    
+    
+Class: White_wine_edging_colour
+
+    Annotations: 
+        rdfs:label "Color del menisco de vino blanco"@es,
+        rdfs:label "White wine edging colour"@en
+    
+    SubClassOf: 
+        Wine_edging_colour
+    
+    
+Class: Wine_food
+
+    Annotations: 
+        rdfs:label "Wine food"@en,
+        rdfs:comment "Tipo de comida con la que se bebe un vino."@es,
+        rdfs:label "Comida con vino"@es
+    
+    
+Class: Body_palate
+
+    Annotations: 
+        rdfs:label "Body on palate"@en,
+        rdfs:label "Cuerpo en paladar"@es
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Floral_flavour
+
+    Annotations: 
+        rdfs:label "Sabor floral"@es,
+        rdfs:label "Floral flavour"@en
+    
+    SubClassOf: 
+        Primary_flavour
+    
+    
+Class: White_bottle_age_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de envejimiento en botella de vino blanco"@es,
+        rdfs:label "White wine bottle age aroma"@en
+    
+    SubClassOf: 
+        Tertiary_aroma
+    
+    
+Class: Primary_flavour
+
+    Annotations: 
+        rdfs:comment "Los sabores primarios son los sabores producidos por la uva."@es,
+        rdfs:label "Sabor primario"@es,
+        rdfs:label "Primary flavour"@en
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Black_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Black fruit flavour"@en,
+        rdfs:label "Sabor de fruta negra"@es
+    
+    SubClassOf: 
+        Fruit_flavour
+    
+    
+Class: Red_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de fruta roja"@es,
+        rdfs:label "Red fruit aroma"@en
+    
+    SubClassOf: 
+        Fruit_aroma
+    
+    
+Class: Wine_colour
+
+    Annotations: 
+        rdfs:label "Color del vino"@es,
+        rdfs:label "Wine colour"@en,
+        rdfs:comment "Característica visual del vino que se refiere al color del vino al mirar la copa sobre un fondo blanco."@es
+    
+    SubClassOf: 
+        Wine_appearance
+    
+    
+Class: <http://www.w3.org/ns/prov#Person>
+
+    Annotations: 
+        rdfs:comment "Person"@en,
+        rdfs:label "Persona"@es
+    
+    
+Class: Green_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Green fruit aroma"@en,
+        rdfs:label "Aroma de fruta verde"@es
+    
+    SubClassOf: 
+        Fruit_aroma
+    
+    
+Class: Stone_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Stone fruit flavour"@en,
+        rdfs:label "Sabor de fruta de hueso"@es
+    
+    SubClassOf: 
+        Fruit_flavour
+    
+    
+Class: Secondary_aroma
+
+    Annotations: 
+        rdfs:label "Secondary aroma"@en,
+        rdfs:label "Aroma secundario"@es,
+        rdfs:comment "Un aroma secundario es un aroma procedente de la elaboración del vino (fermentación alcohólica, fermentación maloláctica, levaduras, etc.)"@es
+    
+    SubClassOf: 
+        Wine_nose
+    
+    
+Class: Spice
+
+    Annotations: 
+        rdfs:label "Spice"@en,
+        rdfs:label "Especia"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Herbaceous_aroma
+
+    Annotations: 
+        rdfs:label "Herbaceous aroma"@en,
+        rdfs:label "Aroma herbáceo"@es
+    
+    SubClassOf: 
+        Primary_aroma
+    
+    
+Class: Citrus_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Citrus fruit flavour"@en,
+        rdfs:label "Sabor de fruta cítrica"@es
+    
+    SubClassOf: 
+        Fruit_flavour
+    
+    
+Class: Oxidation_aroma
+
+    Annotations: 
+        rdfs:label "Oxidation aroma"@en,
+        rdfs:label "Aroma de oxidación"@es
+    
+    SubClassOf: 
+        Tertiary_aroma
+    
+    
+Class: Tropical_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de fruta tropical"@es,
+        rdfs:label "Tropical fruit flavour"@en
+    
+    SubClassOf: 
+        Fruit_flavour
+    
+    
+Class: Tertiary_aroma
+
+    Annotations: 
+        rdfs:label "Tertiary aroma"@en,
+        rdfs:comment "Un aroma terciario es un aroma procedente de la crianza y el envejecimiento del vino tanto en barrica como en botella."@es,
+        rdfs:label "Aroma terciario"@es
+    
+    SubClassOf: 
+        Wine_nose
+    
+    
+Class: Fruit
+
+    Annotations: 
+        rdfs:label "Fruta"@es,
+        rdfs:label "Fruit"@en
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Vegetable
+
+    Annotations: 
+        rdfs:label "Vegetable"@en,
+        rdfs:label "Verdura"@es
+    
+    SubClassOf: 
+        Wine_food
+    
+    
+Class: Intensity_flavour
+
+    Annotations: 
+        rdfs:label "Intensidad del sabor"@es,
+        rdfs:label "Intensity flavour"@en
+    
+    SubClassOf: 
+        Wine_palate
+    
+    
+Class: Wine_palate
+
+    Annotations: 
+        rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en,
+        rdfs:label "Wine palate"@en,
+        rdfs:label "Sabor del vino"@es,
+        rdfs:comment "Percepción gustativa del vino. Puede expresar un sabor dulce, salado, amargo o ácido y su intensidad."@es
+    
+    SubClassOf: 
+        Organoleptic_characteristic
+    
+    
+Individual: pastry_flavour
+
+    Annotations: 
+        rdfs:label "Pastry flavour"@en,
+        rdfs:label "Sabor de pastel"@es
+    
+    Types: 
+        Yeast_flavour
+    
+    
+Individual: yoghurt_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de yogur"@es,
+        rdfs:label "Yoghurt flavour"@en
+    
+    Types: 
+        Malolactic_flavour,
+        Yeast_flavour
+    
+    
+Individual: asparagus_aroma
+
+    Annotations: 
+        rdfs:label "Asparagus aroma"@en,
+        rdfs:label "Aroma de espárrago"@es
+    
+    Types: 
+        Herbaceous_aroma
+    
+    
+Individual: cow_cheese
+
+    Annotations: 
+        rdfs:label "Queso de vaca"@es,
+        rdfs:label "Cow cheese"@en
+    
+    Types: 
+        Dairy
+    
+    
+Individual: pine_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de pino"@es,
+        rdfs:label "Pine aroma"@en
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: raspberry_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de frambuesa"@es,
+        rdfs:label "Raspberry aroma"@en
+    
+    Types: 
+        Red_fruit_aroma
+    
+    
+Individual: liquorice_aroma
+
+    Annotations: 
+        rdfs:label "Liquorice aroma"@en,
+        rdfs:label "Aroma de regaliz"@es
+    
+    Types: 
+        Pungent_spice_aroma
+    
+    
+Individual: walnut_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de nuez"@es,
+        rdfs:label "Walnut aroma"@en
+    
+    Types: 
+        Oxidation_aroma
+    
+    
+Individual: almond_blossom_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de almendro"@es,
+        rdfs:label "Almond blossom aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: bramble_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de zarza"@es,
+        rdfs:label "Bramble flavour"@en
+    
+    Types: 
+        Black_fruit_flavour
+    
+    
+Individual: lavender_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de lavanda"@es,
+        rdfs:label "Lavender aroma"@en
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: dull_clarity
+
+    Annotations: 
+        rdfs:label "Limpieza mate"@es,
+        rdfs:label "Dull clarity"@en
+    
+    Types: 
+        Wine_clarity
+    
+    
+Individual: partridge_meat
+
+    Annotations: 
+        rdfs:label "Carne de perdiz"@es,
+        rdfs:label "Partridge meat"@en
+    
+    Types: 
+        Poultry
+    
+    
+Individual: eucalyptus_aroma
+
+    Annotations: 
+        rdfs:label "Eucalyptus aroma"@en,
+        rdfs:label "Aroma de eucalipto"@es
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: greenish_edging_colour
+
+    Annotations: 
+        rdfs:label "Color de menisco verdoso"@es,
+        rdfs:label "greenish edging colour"@en
+    
+    Types: 
+        White_wine_edging_colour
+    
+    
+Individual: red_apple_aroma
+
+    Annotations: 
+        rdfs:label "Red apple aroma"@en,
+        rdfs:label "Aroma de manzana roja"@es
+    
+    Types: 
+        Green_fruit_aroma
+    
+    
+Individual: vegetal_flavour
+
+    Annotations: 
+        rdfs:label "Vegetal flavour"@en,
+        rdfs:label "Sabor vegetal"@es
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: yelow_edging_colour
+
+    Annotations: 
+        rdfs:label "yelow edging colour"@en,
+        rdfs:label "Color de menisco amarillo"@es
+    
+    Types: 
+        White_wine_edging_colour
+    
+    
+Individual: thyme_aroma
+
+    Annotations: 
+        rdfs:label "Thyme aroma"@en,
+        rdfs:label "Aroma de tomillo"@es
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: blackcurrant_flavour
+
+    Annotations: 
+        rdfs:label "Blackcurrant flavour"@en,
+        rdfs:label "Sabor de grosella negra"@es
+    
+    Types: 
+        Black_fruit_flavour
+    
+    
+Individual: bread_dough_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de masa de pan"@es,
+        rdfs:label "Bread dough aroma"@en
+    
+    Types: 
+        Yeast_aroma
+    
+    
+Individual: red_plum_flavour
+
+    Annotations: 
+        rdfs:label "Red plum flavour"@en,
+        rdfs:label "Sabor de ciruela roja"@es
+    
+    Types: 
+        Red_fruit_flavour
+    
+    
+Individual: cheese
+
+    Annotations: 
+        rdfs:label "Queso"@es,
+        rdfs:label "Cheese"@en
+    
+    Types: 
+        Dairy
+    
+    
+Individual: white_pepper_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de pimienta blanca"@es,
+        rdfs:label "White pepper flavour"@en
+    
+    Types: 
+        Pungent_spice_flavour
+    
+    
+Individual: peach_aroma
+
+    Annotations: 
+        rdfs:label "Peach aroma"@en,
+        rdfs:label "Aroma de melocotón"@es
+    
+    Types: 
+        Stone_fruit_aroma
+    
+    
+Individual: thyme_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de tomillo"@es,
+        rdfs:label "Thyme flavour"@en
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: melon_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de melón"@es,
+        rdfs:label "Melon flavour"@en
+    
+    Types: 
+        Tropical_fruit_flavour
+    
+    
+Individual: rose_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de rosa"@es,
+        rdfs:label "Rose flavour"@en
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: lime_aroma
+
+    Annotations: 
+        rdfs:label "Lime aroma"@en,
+        rdfs:label "Aroma de lima"@es
+    
+    Types: 
+        Citrus_fruit_aroma
+    
+    
+Individual: lemon_peel_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de cáscara de limón"@es,
+        rdfs:label "Lemon peel aroma"@en
+    
+    Types: 
+        Citrus_fruit_aroma
+    
+    
+Individual: raspberry_flavour
+
+    Annotations: 
+        rdfs:label "Raspberry flavour"@en,
+        rdfs:label "Sabor de frambuesa"@es
+    
+    Types: 
+        Red_fruit_flavour
+    
+    
+Individual: long_finish
+
+    Annotations: 
+        rdfs:label "Persistencia de sabor alta"@es,
+        rdfs:label "Long finish"@en
+    
+    Types: 
+        Finish_palate
+    
+    
+Individual: butter_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de mantequilla"@es,
+        rdfs:label "Butter aroma"@en
+    
+    Types: 
+        Malolactic_aroma
+    
+    
+Individual: honeysuckle_flavour
+
+    Annotations: 
+        rdfs:label "Honeysuckle flavour"@en,
+        rdfs:label "Sabor de madreselva"@es
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: creamy_smoothness
+
+    Annotations: 
+        rdfs:label "Creamy smoothness"@en,
+        rdfs:label "Suavidad cremosa"@es
+    
+    Types: 
+        Smoothness_palate
+    
+    
+Individual: red_cherry_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de cereza"@es,
+        rdfs:label "Red cherry flavour"@en
+    
+    Types: 
+        Red_fruit_flavour
+    
+    
+Individual: grape_flavour
+
+    Annotations: 
+        rdfs:label "Grape flavour"@en,
+        rdfs:label "Sabor de uva"@es
+    
+    Types: 
+        Green_fruit_flavour
+    
+    
+Individual: liquorice_flavour
+
+    Annotations: 
+        rdfs:label "Liquorice flavour"@en,
+        rdfs:label "Sabor de regaliz"@es
+    
+    Types: 
+        Pungent_spice_flavour
+    
+    
+Individual: marmalade_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de mermelada"@es,
+        rdfs:label "Marmalade flavour"@en
+    
+    Types: 
+        White_fruit_development_flavour
+    
+    
+Individual: mango_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de mango"@es
+    
+    Types: 
+        Tropical_fruit_aroma
+    
+    
+Individual: farmyard_aroma
+
+    Annotations: 
+        rdfs:label "Farmyard aroma"@en,
+        rdfs:label "Aroma de granja"@es
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: orange_blossom_flavour
+
+    Annotations: 
+        rdfs:label "Orange blossom flavour"@en,
+        rdfs:label "Sabor de azahar"@es
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: medium-high_tannines
+
+    Annotations: 
+        rdfs:label "Medium-high tannines"@en,
+        rdfs:label "Taninos medios-altos"@es
+    
+    Types: 
+        Tannins_level_palate
+    
+    
+Individual: bramble_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de zarza"@es,
+        rdfs:label "Bramble aroma"@en
+    
+    Types: 
+        Black_fruit_aroma
+    
+    
+Individual: high_acidity
+
+    Annotations: 
+        rdfs:label "Acidez alta"@es,
+        rdfs:label "High acidity"@en
+    
+    Types: 
+        Acidity_palate
+    
+    
+Individual: mango_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de mango"@es
+    
+    Types: 
+        Tropical_fruit_flavour
+    
+    
+Individual: dried_banana_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de plátano seco"@es,
+        rdfs:label "Dried banana aroma"@es
+    
+    Types: 
+        White_fruit_development_aroma
+    
+    
+Individual: almond_blossom_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de almendro"@es,
+        rdfs:label "Almond blossom flavour"@en
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: jasmine_flavour
+
+    Annotations: 
+        rdfs:label "Jasmine flavour"@en,
+        rdfs:label "Sabor de jazmín"@es
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: blossom_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de flor"@es,
+        rdfs:label "Blossom aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: colourless_edging_colour
+
+    Annotations: 
+        rdfs:label "Color de menisco incoloro"@es,
+        rdfs:label "colourless edging colour"@en
+    
+    Types: 
+        White_wine_edging_colour
+    
+    
+Individual: raisin_flavour
+
+    Annotations: 
+        rdfs:label "Raisin flavour"@en,
+        rdfs:label "Sabor de uva pasa"@es
+    
+    Types: 
+        Dried_fruit_flavour
+    
+    
+Individual: medium-sweet_sweetness
+
+    Annotations: 
+        rdfs:label "Dulzura semidulce"@es,
+        rdfs:label "Medium-sweet sweetness"@en
+    
+    Types: 
+        Sweetness_palate
+    
+    
+Individual: custard_apple_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de chirimoya"@es,
+        rdfs:label "Custard apple flavour"@en
+    
+    Types: 
+        Green_fruit_flavour
+    
+    
+Individual: full_body
+
+    Annotations: 
+        rdfs:label "Full body"@en,
+        rdfs:label "Cuerpo pleno"@es
+    
+    Types: 
+        Body_palate
+    
+    
+Individual: quail_meat
+
+    Annotations: 
+        rdfs:label "Carne de codorniz"@es,
+        rdfs:label "Quail meat"@en
+    
+    Types: 
+        Poultry
+    
+    
+Individual: pear_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de pera"@es,
+        rdfs:label "Pear aroma"@en
+    
+    Types: 
+        Green_fruit_aroma
+    
+    
+Individual: geranium_aroma
+
+    Annotations: 
+        rdfs:label "Geranium aroma"@en,
+        rdfs:label "Aroma de geranio"@es
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: rice_with_meat
+
+    Annotations: 
+        rdfs:label "Arroz con carne"@es,
+        rdfs:label "Rice with meat"@en
+    
+    Types: 
+        Rice
+    
+    
+Individual: icecream
+
+    Annotations: 
+        rdfs:label "Icecream"@en,
+        rdfs:label "Helados"
+    
+    Types: 
+        Dessert
+    
+    
+Individual: poularde_meat
+
+    Annotations: 
+        rdfs:label "Carne de pularda"@es,
+        rdfs:label "Poularde meat"@en
+    
+    Types: 
+        Poultry
+    
+    
+Individual: green_bell_pepper_flavour
+
+    Annotations: 
+        rdfs:label "Green bell pepper flavour"@en,
+        rdfs:label "Sabor de pimiento"@es
+    
+    Types: 
+        Herbaceous_flavour
+    
+    
+Individual: low-medium_alcohol
+
+    Annotations: 
+        rdfs:label "Low-medium alcohol"@en,
+        rdfs:label "Alcohol medio-bajo"@es
+    
+    Types: 
+        Alcohol_palate
+    
+    
+Individual: dill_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de eneldo"@es,
+        rdfs:label "Dill flavour"@en
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: sausage
+
+    Annotations: 
+        rdfs:label "Embutidos curados"@es,
+        rdfs:label "Sausage"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: butter_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de mantequilla"@es,
+        rdfs:label "Butter flavour"@en
+    
+    Types: 
+        Malolactic_flavour
+    
+    
+Individual: leather_flavour
+
+    Annotations: 
+        rdfs:label "Leather flavour"@en,
+        rdfs:label "Sabor de cuero"@es
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: white_pepper_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de pimienta blanca"@es,
+        rdfs:label "White pepper aroma"@en
+    
+    Types: 
+        Pungent_spice_aroma
+    
+    
+Individual: fig_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de higo seco"@es,
+        rdfs:label "Fig flavour"@en
+    
+    Types: 
+        Red_fruit_development_flavour,
+        Dried_fruit_flavour
+    
+    
+Individual: spicy_food
+
+    Annotations: 
+        rdfs:label "Comida picante"@es,
+        rdfs:label "Spicy food"@en
+    
+    Types: 
+        Spice
+    
+    
+Individual: vanilla_flavour
+
+    Annotations: 
+        rdfs:label "Vanilla flavour"@en,
+        rdfs:label "Sabor de vainilla"@es
+    
+    Types: 
+        Oak_flavour
+    
+    
+Individual: preserved_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de fruta en conserva"@es,
+        rdfs:label "Preserved fruit aroma"@en
+    
+    Types: 
+        Dried_fruit_aroma
+    
+    
+Individual: ripe_tannines
+
+    Annotations: 
+        rdfs:label "Ripe tannines"@en,
+        rdfs:label "Taninos maduros"@es
+    
+    Types: 
+        Tannins_astringency_palate
+    
+    
+Individual: geranium_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de geranio"@es,
+        rdfs:label "Geranium flavour"@en
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: cooked_blackberry_aroma
+
+    Annotations: 
+        rdfs:label "Cooked blackberry aroma"@en,
+        rdfs:label "Aroma de mora cocida"@es
+    
+    Types: 
+        Red_fruit_development_aroma
+    
+    
+Individual: passion_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de maracuyá"@es,
+        rdfs:label "Passion fruit flavour"@en
+    
+    Types: 
+        Tropical_fruit_flavour
+    
+    
+Individual: acacia_flavour
+
+    Annotations: 
+        rdfs:label "Acacia flavour"@en,
+        rdfs:label "Sabor de acacia"@es
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: cooked_black_cherry_aroma
+
+    Annotations: 
+        rdfs:label "Cooked black cherry aroma"@en,
+        rdfs:label "Aroma de cereza negra cocida"@es
+    
+    Types: 
+        Red_fruit_development_aroma
+    
+    
+Individual: pineapple_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de piña"@es,
+        rdfs:label "Pineapple aroma"@en
+    
+    Types: 
+        Tropical_fruit_aroma
+    
+    
+Individual: fig_tree_aroma
+
+    Annotations: 
+        rdfs:label "Fig tree aroma"@en,
+        rdfs:label "Aroma de higuera"@es
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: charamel_aroma
+
+    Annotations: 
+        rdfs:label "Charamel aroma"@en,
+        rdfs:label "Aroma de caramelo"@es
+    
+    Types: 
+        Oxidation_aroma
+    
+    
+Individual: aggressive_smoothness
+
+    Annotations: 
+        rdfs:label "Suavidad agresiva"@es,
+        rdfs:label "Aggressive smoothness"@en
+    
+    Types: 
+        Smoothness_palate
+    
+    
+Individual: wet_leaves_aroma
+
+    Annotations: 
+        rdfs:label "Wet leaves aroma"@en,
+        rdfs:label "Aroma de hojas mojadas"@es
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: stew
+
+    Annotations: 
+        rdfs:label "Stew"@en,
+        rdfs:label "Guisos de carne"@es
+    
+    Types: 
+        Carne
+    
+    
+Individual: banana_aroma
+
+    Annotations: 
+        rdfs:label "Banana aroma"@en,
+        rdfs:label "Aroma de plátano"@es
+    
+    Types: 
+        Tropical_fruit_aroma
+    
+    
+Individual: marzipan_aroma
+
+    Annotations: 
+        rdfs:label "Marzipan aroma"@en,
+        rdfs:label "Aroma de mazapán"@es
+    
+    Types: 
+        Oxidation_aroma
+    
+    
+Individual: date_aroma
+
+    Annotations: 
+        rdfs:label "Date aroma"@en,
+        rdfs:label "Aroma de dátil"@es
+    
+    Types: 
+        Dried_fruit_aroma
+    
+    
+Individual: brioche_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de brioche"@es,
+        rdfs:label "Brioche aroma"@en
+    
+    Types: 
+        Yeast_aroma
+    
+    
+Individual: acacia_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de acacia"@es,
+        rdfs:label "Acacia aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: tomato_leaf_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de hoja de tomate"@es,
+        rdfs:label "Tomato leaf flavour"@en
+    
+    Types: 
+        Herbaceous_flavour
+    
+    
+Individual: blueberry_flavour
+
+    Annotations: 
+        rdfs:label "Blueberry flavour"@en,
+        rdfs:label "Sabor de arándano"@es
+    
+    Types: 
+        Black_fruit_flavour
+    
+    
+Individual: roasted_lamb
+
+    Annotations: 
+        rdfs:label "Lechazo asado"@es,
+        rdfs:label "Roasted lamb"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: black_plum_aroma
+
+    Annotations: 
+        rdfs:label "Black plum aroma"@en,
+        rdfs:label "Aroma de ciruela negra"@es
+    
+    Types: 
+        Black_fruit_aroma
+    
+    
+Individual: flint_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de pedernal"@es,
+        rdfs:label "Flint aroma"@en
+    
+    Types: 
+        Other_aroma
+    
+    
+Individual: juniper_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de enebro"@es,
+        rdfs:label "Juniper aroma"@en
+    
+    Types: 
+        Pungent_spice_aroma
+    
+    
+Individual: coconut_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de coco"@es,
+        rdfs:label "Coconut aroma"@en
+    
+    Types: 
+        Oak_aroma,
+        Oxidation_aroma
+    
+    
+Individual: rose_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de rosa"@es,
+        rdfs:label "Rose aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: mint_flavour
+
+    Annotations: 
+        rdfs:label "Mint flavour"@en,
+        rdfs:label "Sabor de hierba buena"@es
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: cedar_aroma
+
+    Annotations: 
+        rdfs:label "Cedar aroma"@en,
+        rdfs:label "Aroma de cedro"@es
+    
+    Types: 
+        Oak_aroma,
+        Red_bottle_age_aroma
+    
+    
+Individual: earth_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de tierra"@es,
+        rdfs:label "Earth aroma"@en
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: wet_stone_flavour
+
+    Annotations: 
+        rdfs:label "Wet stone flavour"@en,
+        rdfs:label "Sabor de piedra mojada"@es
+    
+    Types: 
+        Other_flavour
+    
+    
+Individual: seafood
+
+    Annotations: 
+        rdfs:label "Marisco en general"@es
+    
+    Types: 
+        Seafood
+    
+    
+Individual: green_apple_aroma
+
+    Annotations: 
+        rdfs:label "Green apple aroma"@en,
+        rdfs:label "Aroma de manzana verde"@es
+    
+    Types: 
+        Green_fruit_aroma
+    
+    
+Individual: coffe_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de café"@es,
+        rdfs:label "Coffe aroma"@en
+    
+    Types: 
+        Oxidation_aroma,
+        Other_aroma
+    
+    
+Individual: dried_banana_flavour
+
+    Annotations: 
+        rdfs:label "Dried banana flavour"@es,
+        rdfs:label "Sabor de plátano seco"@es
+    
+    Types: 
+        White_fruit_development_flavour
+    
+    
+Individual: fig_tree_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de higuera"@es,
+        rdfs:label "Fig tree flavour"@en
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: light_flavour_intensity
+
+    Annotations: 
+        rdfs:label "Light flavour intensity"@en,
+        rdfs:label "Intensidad de sabor ligera"@es
+    
+    Types: 
+        Intensity_flavour
+    
+    
+Individual: leather_aroma
+
+    Annotations: 
+        rdfs:label "Leather aroma"@en,
+        rdfs:label "Aroma de cuero"@es
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: luscious_sweetness
+
+    Annotations: 
+        rdfs:label "Dulzura empalagosa"@es,
+        rdfs:label "Luscious sweetness"@en
+    
+    Types: 
+        Sweetness_palate
+    
+    
+Individual: cheese_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de queso"@es,
+        rdfs:label "Cheese flavour"@en
+    
+    Types: 
+        Yeast_flavour,
+        Malolactic_flavour
+    
+    
+Individual: low_tear
+
+    Annotations: 
+        rdfs:label "Low tear"@en,
+        rdfs:label "Lágrima escasa"@es
+    
+    Types: 
+        Wine_tear
+    
+    
+Individual: nutmeg_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de nuez moscada"@es,
+        rdfs:label "Nutmeg flavour"@en
+    
+    Types: 
+        Oak_flavour,
+        White_bottle_age_flavour
+    
+    
+Individual: vegetal_aroma
+
+    Annotations: 
+        rdfs:label "Vegetal aroma"@en,
+        rdfs:label "Aroma vegetal"@es
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: cereal_aroma
+
+    Annotations: 
+        rdfs:label "Cereal aroma"@en,
+        rdfs:label "Aroma de cereal"@es
+    
+    Types: 
+        White_bottle_age_aroma
+    
+    
+Individual: sheep_cheese
+
+    Annotations: 
+        rdfs:label "Sheep cheese"@en,
+        rdfs:label "Queso de oveja"@es
+    
+    Types: 
+        Dairy
+    
+    
+Individual: rice_with_fish
+
+    Annotations: 
+        rdfs:label "Arroz con pescado"@es,
+        rdfs:label "Rice with fish"@en
+    
+    Types: 
+        Rice
+    
+    
+Individual: red_currant_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de grosella roja"@es,
+        rdfs:label "Red currant aroma"@en
+    
+    Types: 
+        Red_fruit_aroma
+    
+    
+Individual: custard_apple_aroma
+
+    Annotations: 
+        rdfs:label "Custard apple aroma"@en,
+        rdfs:label "Aroma de chirimoya"@es
+    
+    Types: 
+        Green_fruit_aroma
+    
+    
+Individual: creamy_cheese
+
+    Annotations: 
+        rdfs:label "Queso cremoso"@es,
+        rdfs:label "Creamy cheese"@en
+    
+    Types: 
+        Dairy
+    
+    
+Individual: hay_flavour
+
+    Annotations: 
+        rdfs:label "Hay flavour"@en,
+        rdfs:label "Sabor de heno"@es
+    
+    Types: 
+        White_bottle_age_flavour
+    
+    
+Individual: cow_meat
+
+    Annotations: 
+        rdfs:label "Carne de ternera"@es,
+        rdfs:label "Cow meat"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: duck_meat
+
+    Annotations: 
+        rdfs:label "Carne de pato"@es,
+        rdfs:label "Duck meat"@en
+    
+    Types: 
+        Poultry
+    
+    
+Individual: hazy_clarity
+
+    Annotations: 
+        rdfs:label "Limpieza turbia"@es,
+        rdfs:label "Hazy clarity"@en
+    
+    Types: 
+        Wine_clarity
+    
+    
+Individual: bluefish
+
+    Annotations: 
+        rdfs:label "Bluefish"@en,
+        rdfs:label "Pescado azul"
+    
+    Types: 
+        Fish
+    
+    
+Individual: lemon_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de limón"@es,
+        rdfs:label "Lemon flavour"@en
+    
+    Types: 
+        Citrus_fruit_flavour
+    
+    
+Individual: tomato_leaf_aroma
+
+    Annotations: 
+        rdfs:label "Tomato leaf aroma"@en,
+        rdfs:label "Aroma de hoja de tomate"@es
+    
+    Types: 
+        Herbaceous_aroma
+    
+    
+Individual: brioche_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de brioche"@es,
+        rdfs:label "Brioche flavour"@en
+    
+    Types: 
+        Yeast_flavour
+    
+    
+Individual: toast_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de tostada"@es,
+        rdfs:label "Toast aroma"@en
+    
+    Types: 
+        White_bottle_age_aroma,
+        Yeast_aroma,
+        Oak_aroma
+    
+    
+Individual: orange_colour
+
+    Annotations: 
+        rdfs:label "Color naranja"@es,
+        rdfs:label "Orange colour"@en
+    
+    Types: 
+        Rose_wine_colour
+    
+    
+Individual: petrol_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de petróleo"@es,
+        rdfs:label "Petrol flavour"@en
+    
+    Types: 
+        White_bottle_age_flavour
+    
+    
+Individual: honeysuckle_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de madreselva"@es,
+        rdfs:label "Honeysuckle aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: blueberry_aroma
+
+    Annotations: 
+        rdfs:label "Blueberry aroma"@en,
+        rdfs:label "Aroma de arándano"@es
+    
+    Types: 
+        Black_fruit_aroma
+    
+    
+Individual: charamel_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de caramelo"@es,
+        rdfs:label "Charamel flavour"@en
+    
+    Types: 
+        Oxidation_flavour
+    
+    
+Individual: elderflower_aroma
+
+    Annotations: 
+        rdfs:label "Elderflower aroma"@en,
+        rdfs:label "Aroma de flor de sauco"@es
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: dry_fruits
+
+    Annotations: 
+        rdfs:label "Dry fruits"@en,
+        rdfs:label "Frutos secos"
+    
+    Types: 
+        Dessert
+    
+    
+Individual: jasmine_aroma
+
+    Annotations: 
+        rdfs:label "Jasmine aroma"@en,
+        rdfs:label "Aroma de jazmín"@es
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: tobacco_aroma
+
+    Annotations: 
+        rdfs:label "Tobacco aroma"@en,
+        rdfs:label "Aroma de tabaco"@es
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: cooked_strawberry_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de fresa cocida"@es,
+        rdfs:label "Cooked strawberry aroma"@en
+    
+    Types: 
+        Red_fruit_development_aroma
+    
+    
+Individual: honey_aroma
+
+    Annotations: 
+        rdfs:label "Honey aroma"@en,
+        rdfs:label "Aroma de miel"@es
+    
+    Types: 
+        White_bottle_age_aroma
+    
+    
+Individual: tar_aroma
+
+    Annotations: 
+        rdfs:label "Tar aroma"@en,
+        rdfs:label "Aroma de alquitrán"@es
+    
+    Types: 
+        Red_fruit_development_aroma
+    
+    
+Individual: bread_dough_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de masa de pan"@es,
+        rdfs:label "Bread dough flavour"@en
+    
+    Types: 
+        Yeast_flavour
+    
+    
+Individual: cooked
+
+    Annotations: 
+        rdfs:label "Jamón cocido"@es,
+        rdfs:label "Cooked ham"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: short-medium_finish
+
+    Annotations: 
+        rdfs:label "Short-medium finish"@en,
+        rdfs:label "Persistencia del sabor media-baja"@es
+    
+    Types: 
+        Finish_palate
+    
+    
+Individual: sultana_aroma
+
+    Annotations: 
+        rdfs:label "Sultana aroma"@en,
+        rdfs:label "Aroma de sultana"@es
+    
+    Types: 
+        Dried_fruit_aroma
+    
+    
+Individual: pizza
+
+    Annotations: 
+        rdfs:label "Pizza"@en,
+        rdfs:label "Pizza"@es
+    
+    Types: 
+        pizza
+    
+    
+Individual: almond_aroma
+
+    Annotations: 
+        rdfs:label "Almond aroma"@en,
+        rdfs:label "Aroma de almendra"@es
+    
+    Types: 
+        Oxidation_aroma
+    
+    
+Individual: rosemary_aroma
+
+    Annotations: 
+        rdfs:label "Rosemary aroma"@en,
+        rdfs:label "Aroma de romero"@es
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: ruby_colour
+
+    Annotations: 
+        rdfs:label "Color rubí"@es,
+        rdfs:label "ruby colour"@en
+    
+    Types: 
+        Red_wine_colour
+    
+    
+Individual: coarse_tannines
+
+    Annotations: 
+        rdfs:label "Coarse tannines"@en,
+        rdfs:label "Taninos ásperos"@es
+    
+    Types: 
+        Tannins_astringency_palate
+    
+    
+Individual: grapefruit_aroma
+
+    Annotations: 
+        rdfs:label "Grapefruit aroma"@en,
+        rdfs:label "Aroma de pomelo"@es
+    
+    Types: 
+        Citrus_fruit_aroma
+    
+    
+Individual: onion_skin_colour
+
+    Annotations: 
+        rdfs:label "Color de cáscara de cebolla"@es,
+        rdfs:label "Onion skin colour"@en
+    
+    Types: 
+        Rose_wine_colour
+    
+    
+Individual: chicken_meat
+
+    Annotations: 
+        rdfs:label "Chicken meat"@en,
+        rdfs:label "Carne de pollo"@es
+    
+    Types: 
+        Poultry
+    
+    
+Individual: melon_aroma
+
+    Annotations: 
+        rdfs:label "Melon aroma"@en,
+        rdfs:label "Aroma de melón"@es
+    
+    Types: 
+        Tropical_fruit_aroma
+    
+    
+Individual: hamburger
+
+    Annotations: 
+        rdfs:label "Hamburguesa"@es,
+        rdfs:label "Hamburger"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: savoury_flavour
+
+    Annotations: 
+        rdfs:label "Sabor salado"@es,
+        rdfs:label "Savoury flavour"@en
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: biscuit_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de galleta"@es,
+        rdfs:label "Biscuit flavour"@en
+    
+    Types: 
+        Yeast_flavour
+    
+    
+Individual: whitefish
+
+    Annotations: 
+        rdfs:label "Pescado blanco"@es,
+        rdfs:label "Whitefish"@en
+    
+    Types: 
+        Fish
+    
+    
+Individual: toffe_aroma
+
+    Annotations: 
+        rdfs:label "Toffe aroma"@en,
+        rdfs:label "Aroma de caramelo toffee"@es
+    
+    Types: 
+        Oxidation_aroma
+    
+    
+Individual: biscuit_aroma
+
+    Annotations: 
+        rdfs:label "Biscuit aroma"@en,
+        rdfs:label "Aroma de galleta"@es
+    
+    Types: 
+        Yeast_aroma
+    
+    
+Individual: wet_wool_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de lana mojada"@es,
+        rdfs:label "Wet wool aroma"@en
+    
+    Types: 
+        Other_aroma
+    
+    
+Individual: roasted_pig
+
+    Annotations: 
+        rdfs:label "Cochinillo asado"@es,
+        rdfs:label "Roasted pig"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: amber_colour
+
+    Annotations: 
+        rdfs:label "amber colour"@en,
+        rdfs:label "Color ámbar"@es
+    
+    Types: 
+        White_wine_colour
+    
+    
+Individual: grape_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de uva"@es,
+        rdfs:label "Grape aroma"@en
+    
+    Types: 
+        Green_fruit_aroma
+    
+    
+Individual: marmalade_aroma
+
+    Annotations: 
+        rdfs:label "Marmalade aroma"@en,
+        rdfs:label "Aroma de mermelada"@es
+    
+    Types: 
+        White_fruit_development_aroma
+    
+    
+Individual: toffe_flavour
+
+    Annotations: 
+        rdfs:label "Toffe flavour"@en,
+        rdfs:label "Sabor de caramelo toffee"@es
+    
+    Types: 
+        Oxidation_flavour
+    
+    
+Individual: ripened_cheese
+
+    Annotations: 
+        rdfs:label "Ripened cheese"@en,
+        rdfs:label "Queso curado"@es
+    
+    Types: 
+        Dairy
+    
+    
+Individual: forest_floor_flavour
+
+    Annotations: 
+        rdfs:label "Forest floor flavour"@en,
+        rdfs:label "Sabor de suelo de bosque"@es
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: dill_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de eneldo"@es,
+        rdfs:label "Dill aroma"@en
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: bushmeat
+
+    Annotations: 
+        rdfs:label "Carne de caza"@es,
+        rdfs:label "Bushmeat"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: ham
+
+    Annotations: 
+        rdfs:label "Ham"@en,
+        rdfs:label "Jamón"@es
+    
+    Types: 
+        Carne
+    
+    
+Individual: medium-high_alcohol
+
+    Annotations: 
+        rdfs:label "Medium-high alcohol"@en,
+        rdfs:label "Alcohol medio-alto"@es
+    
+    Types: 
+        Alcohol_palate
+    
+    
+Individual: dark_brown
+
+    Annotations: 
+        rdfs:label "Dark brown colour"@en,
+        rdfs:label "Color marrón oscuro"@es
+    
+    Types: 
+        Red_wine_colour
+    
+    
+Individual: red_meat
+
+    Annotations: 
+        rdfs:label "Red meat"@en,
+        rdfs:label "Carne roja"@es
+    
+    Types: 
+        Carne
+    
+    
+Individual: unripe_tannines
+
+    Annotations: 
+        rdfs:label "Taninos verdes"@es,
+        rdfs:label "Unripe tannines"@en
+    
+    Types: 
+        Tannins_astringency_palate
+    
+    
+Individual: mint_aroma
+
+    Annotations: 
+        rdfs:label "Mint aroma"@en,
+        rdfs:label "Aroma de hierba buena"@es
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: medium_body
+
+    Annotations: 
+        rdfs:label "Medium body"@en,
+        rdfs:label "Cuerpo medio"@es
+    
+    Types: 
+        Body_palate
+    
+    
+Individual: ensalada_pasta
+
+    Annotations: 
+        rdfs:label "Pasta salade"@en,
+        rdfs:label "Ensalada de pasta"@es
+    
+    Types: 
+        Pasta
+    
+    
+Individual: delicate_smoothness
+
+    Annotations: 
+        rdfs:label "Suavidad delicada"@es,
+        rdfs:label "Delicate moothness"@en
+    
+    Types: 
+        Smoothness_palate
+    
+    
+Individual: blackberry_aroma
+
+    Annotations: 
+        rdfs:label "Blackberry aroma"@en,
+        rdfs:label "Aroma de mora"@es
+    
+    Types: 
+        Black_fruit_aroma
+    
+    
+Individual: chamomile_aroma
+
+    Annotations: 
+        rdfs:label "Chamomile aroma"@en,
+        rdfs:label "Aroma de camomila"@es
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: lime_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de lima"@es,
+        rdfs:label "Lime flavour"@en
+    
+    Types: 
+        Citrus_fruit_flavour
+    
+    
+Individual: dried_apricot_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de albaricoque seco"@es,
+        rdfs:label "Dried apricot aroma"@en
+    
+    Types: 
+        White_fruit_development_aroma
+    
+    
+Individual: magret_of_duck
+
+    Annotations: 
+        rdfs:label "Magret of duck"@en,
+        rdfs:label "Magret de pato"@es
+    
+    Types: 
+        Poultry
+    
+    
+Individual: grapefruit_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de pomelo"@es,
+        rdfs:label "Grapefruit flavour"@en
+    
+    Types: 
+        Citrus_fruit_flavour
+    
+    
+Individual: lychee_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de lichis"@es,
+        rdfs:label "Lichee aroma"@en
+    
+    Types: 
+        Tropical_fruit_aroma
+    
+    
+Individual: vegetable
+
+    Annotations: 
+        rdfs:label "Verdura"@es,
+        rdfs:label "Vegetable"@en
+    
+    Types: 
+        Vegetable
+    
+    
+Individual: coffe_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de café"@es,
+        rdfs:label "Coffe flavour"@en
+    
+    Types: 
+        Oxidation_flavour,
+        Other_flavour
+    
+    
+Individual: medium-long_finish
+
+    Annotations: 
+        rdfs:label "Persistencia de sabor media-alta"@es,
+        rdfs:label "Medium-long finish"@en
+    
+    Types: 
+        Finish_palate
+    
+    
+Individual: youthful_aroma_development
+
+    Annotations: 
+        rdfs:label "Desarrollo de aroma joven"@es,
+        rdfs:label "Youthful aroma development"@en
+    
+    Types: 
+        Aroma_development
+    
+    
+Individual: developing_aroma
+
+    Annotations: 
+        rdfs:label "Desarrollo de aroma en evolución"@es,
+        rdfs:label "Developing aroma"@en
+    
+    Types: 
+        Aroma_development
+    
+    
+Individual: kerosene_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de queroseno"@es,
+        rdfs:label "Kerosene flavour"@en
+    
+    Types: 
+        White_bottle_age_flavour
+    
+    
+Individual: light_aroma_intensity
+
+    Annotations: 
+        rdfs:label "Light aroma intensity"@en,
+        rdfs:label "Intensidad de aroma baja"@es
+    
+    Types: 
+        Aroma_intensity
+    
+    
+Individual: smoke_aroma
+
+    Annotations: 
+        rdfs:label "Smoke aroma"@en,
+        rdfs:label "Aroma ahumado"@es
+    
+    Types: 
+        Other_aroma,
+        Oak_aroma
+    
+    
+Individual: elderflower_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de flor de sauco"@es,
+        rdfs:label "Elderflower flavour"@en
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: earth_flavour
+
+    Annotations: 
+        rdfs:label "Earth flavour"@en,
+        rdfs:label "Sabor de tierra"@es
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: medium-full_body
+
+    Annotations: 
+        rdfs:label "Medium-full body"@en,
+        rdfs:label "Cuerpo medio-pleno"@es
+    
+    Types: 
+        Body_palate
+    
+    
+Individual: cream_aroma
+
+    Annotations: 
+        rdfs:label "Cream aroma"@en,
+        rdfs:label "Aroma de nata"@es
+    
+    Types: 
+        Malolactic_aroma
+    
+    
+Individual: hay_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de heno"@es,
+        rdfs:label "Hay aroma"@en
+    
+    Types: 
+        White_bottle_age_aroma
+    
+    
+Individual: nutmeg_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de nuez moscada"@es,
+        rdfs:label "Nutmeg aroma"@en
+    
+    Types: 
+        White_bottle_age_aroma,
+        Oak_aroma
+    
+    
+Individual: low_alcohol
+
+    Annotations: 
+        rdfs:label "Alcohol bajo"@es,
+        rdfs:label "Low alcohol"@en
+    
+    Types: 
+        Alcohol_palate
+    
+    
+Individual: pink_colour
+
+    Annotations: 
+        rdfs:label "pink colour"@en,
+        rdfs:label "Color rosa"@es
+    
+    Types: 
+        Rose_wine_colour
+    
+    
+Individual: chocolate
+
+    Annotations: 
+        rdfs:label "Chocolate"@en,
+        rdfs:label "Chocolate"
+    
+    Types: 
+        Dessert
+    
+    
+Individual: tired_flavour
+
+    Annotations: 
+        rdfs:label "Tired flavour"@en,
+        rdfs:label "Sabor pasado"@es
+    
+    Types: 
+        Aroma_development
+    
+    
+Individual: purple_colour
+
+    Annotations: 
+        rdfs:label "Color violáceo"@es,
+        rdfs:label "Purple colour"@en
+    
+    Types: 
+        Red_wine_colour
+    
+    
+Individual: butterscotch_flavour
+
+    Annotations: 
+        rdfs:label "Butterscotch flavour"@en,
+        rdfs:label "Sabor de caramelo de mantequilla"@es
+    
+    Types: 
+        Oak_flavour
+    
+    
+Individual: fig_aroma
+
+    Annotations: 
+        rdfs:label "Fig aroma"@en,
+        rdfs:label "Aroma de higo seco"@es
+    
+    Types: 
+        Red_fruit_development_aroma,
+        Dried_fruit_aroma
+    
+    
+Individual: pepper
+
+    Annotations: 
+        rdfs:label "Pimienta"@es,
+        rdfs:label "Pepper"@en
+    
+    Types: 
+        Spice
+    
+    
+Individual: medium_flavour_intensity
+
+    Annotations: 
+        rdfs:label "Intensidad de sabor media"@es,
+        rdfs:label "Medium flavour intensity"@en
+    
+    Types: 
+        Intensity_flavour
+    
+    
+Individual: walnut_flavour
+
+    Annotations: 
+        rdfs:label "Walnut flavour"@en,
+        rdfs:label "Sabor de nuez"@es
+    
+    Types: 
+        Oxidation_flavour
+    
+    
+Individual: charred_wood_aroma
+
+    Annotations: 
+        rdfs:label "Charred wood aroma"@en,
+        rdfs:label "Aroma de madera quemada"@es
+    
+    Types: 
+        Oak_aroma
+    
+    
+Individual: butterscotch_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de caramelo de mantequilla"@es,
+        rdfs:label "Butterscotch aroma"@en
+    
+    Types: 
+        Oak_aroma
+    
+    
+Individual: lemon_peel_flavour
+
+    Annotations: 
+        rdfs:label "Lemon peel flavour"@en,
+        rdfs:label "Sabor de cáscara de limón"@es
+    
+    Types: 
+        Citrus_fruit_flavour
+    
+    
+Individual: high_alcohol
+
+    Annotations: 
+        rdfs:label "Alcohol alto"@es,
+        rdfs:label "High alcohol"@en
+    
+    Types: 
+        Alcohol_palate
+    
+    
+Individual: petrol_aroma
+
+    Annotations: 
+        rdfs:label "Petrol aroma"@en,
+        rdfs:label "Aroma de petróleo"@es
+    
+    Types: 
+        White_bottle_age_aroma
+    
+    
+Individual: raisin_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de uva pasa"@es,
+        rdfs:label "Raisin aroma"@en
+    
+    Types: 
+        Dried_fruit_aroma
+    
+    
+Individual: deer_meat
+
+    Annotations: 
+        rdfs:label "Carne de ciervo"@es,
+        rdfs:label "Deer meat"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: orange_peel_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de cáscara de naranaja"@es,
+        rdfs:label "Orange peel aroma"@en
+    
+    Types: 
+        Citrus_fruit_aroma
+    
+    
+Individual: rubber_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de caucho"@es,
+        rdfs:label "Rubber flavour"@en
+    
+    Types: 
+        Other_flavour
+    
+    
+Individual: salmon_colour
+
+    Annotations: 
+        rdfs:label "Salmon colour"@en,
+        rdfs:label "Color salmón"@es
+    
+    Types: 
+        Rose_wine_colour
+    
+    
+Individual: low-medium_tannines
+
+    Annotations: 
+        rdfs:label "Taninos medios-bajos"@es,
+        rdfs:label "Low-medium tannines"@en
+    
+    Types: 
+        Tannins_level_palate
+    
+    
+Individual: rubber_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de caucho"@es,
+        rdfs:label "Rubber aroma"@en
+    
+    Types: 
+        Other_aroma
+    
+    
+Individual: legumes
+
+    Annotations: 
+        rdfs:label "Legumbres"@es,
+        rdfs:label "Legumes"@en
+    
+    Types: 
+        Vegetable
+    
+    
+Individual: gold-yellow_colour
+
+    Annotations: 
+        rdfs:label "gold-yellow colour"@en,
+        rdfs:label "Color amarillo dorado"@es
+    
+    Types: 
+        White_wine_colour
+    
+    
+Individual: medium_sweetness
+
+    Annotations: 
+        rdfs:label "Medium sweetness"@en,
+        rdfs:label "Dulzura media"@es
+    
+    Types: 
+        Sweetness_palate
+    
+    
+Individual: cooked_black_cherry_flavour
+
+    Annotations: 
+        rdfs:label "Cooked black cherry flavour"@en,
+        rdfs:label "Sabor de cereza negra cocida"@es
+    
+    Types: 
+        Red_fruit_development_flavour
+    
+    
+Individual: cinnamon_aroma
+
+    Annotations: 
+        rdfs:label "Cinnamon aroma"@en,
+        rdfs:label "Aroma de canela"@es
+    
+    Types: 
+        White_bottle_age_aroma
+    
+    
+Individual: medium_aroma_intensity
+
+    Annotations: 
+        rdfs:label "Medium aroma intensity"@en,
+        rdfs:label "Intensidad de aroma media"@es
+    
+    Types: 
+        Aroma_intensity
+    
+    
+Individual: prune_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de ciruela pasa"@es,
+        rdfs:label "Prune aroma"@en
+    
+    Types: 
+        Red_fruit_development_aroma,
+        Dried_fruit_aroma
+    
+    
+Individual: dried_apple_flavour
+
+    Annotations: 
+        rdfs:label "Dried apple flavour"@en,
+        rdfs:label "Sabor de manzana seca"@es
+    
+    Types: 
+        White_fruit_development_flavour
+    
+    
+Individual: green_bell_pepper_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de pimiento"@es,
+        rdfs:label "Green bell pepper aroma"@en
+    
+    Types: 
+        Herbaceous_aroma
+    
+    
+Individual: quince_aroma
+
+    Annotations: 
+        rdfs:label "Quince aroma"@en,
+        rdfs:label "Aroma de membrillo"@es
+    
+    Types: 
+        Green_fruit_aroma
+    
+    
+Individual: lychee_flavour
+
+    Annotations: 
+        rdfs:label "Lichee flavour"@en,
+        rdfs:label "Sabor de lichis"@es
+    
+    Types: 
+        Tropical_fruit_flavour
+    
+    
+Individual: ginger_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de jengibre"@es,
+        rdfs:label "Ginger aroma"@en
+    
+    Types: 
+        White_bottle_age_aroma
+    
+    
+Individual: pear_flavour
+
+    Annotations: 
+        rdfs:label "Pear flavour"@en,
+        rdfs:label "Sabor de pera"@es
+    
+    Types: 
+        Green_fruit_flavour
+    
+    
+Individual: wild_boar_meat
+
+    Annotations: 
+        rdfs:label "Carne de jabalí"@es,
+        rdfs:label "Wild boar meat"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: cheese_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de queso"@es,
+        rdfs:label "Cheese aroma"@en
+    
+    Types: 
+        Malolactic_aroma,
+        Yeast_aroma
+    
+    
+Individual: fennel_aroma
+
+    Annotations: 
+        rdfs:label "Fennel aroma"@en,
+        rdfs:label "Aroma de hinojo"@es
+    
+    Types: 
+        Herbal_aroma
+    
+    
+Individual: gooseberry_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de grosella"@es,
+        rdfs:label "Gooseberry flavour"@en
+    
+    Types: 
+        Green_fruit_flavour
+    
+    
+Individual: rice_with_seafood
+
+    Annotations: 
+        rdfs:label "Arroz con marisco"@es,
+        rdfs:label "Rice with seafood"@en
+    
+    Types: 
+        Rice
+    
+    
+Individual: gooseberry_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de grosella"@es,
+        rdfs:label "Gooseberry aroma"@en
+    
+    Types: 
+        Green_fruit_aroma
+    
+    
+Individual: chocolate_flavour
+
+    Annotations: 
+        rdfs:label "Chocolate flavour"@en,
+        rdfs:label "Sabor de chocolate"@es
+    
+    Types: 
+        Oxidation_flavour
+    
+    
+Individual: savoury_aroma
+
+    Annotations: 
+        rdfs:label "Aroma salado"@es,
+        rdfs:label "Savoury aroma"@en
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: low_tannines
+
+    Annotations: 
+        rdfs:label "Low tannines"@en,
+        rdfs:label "Taninos bajos"@es
+    
+    Types: 
+        Tannins_level_palate
+    
+    
+Individual: medium-pronounced_aroma_intensity
+
+    Annotations: 
+        rdfs:label "Medium-pronounced aroma intensity"@en,
+        rdfs:label "Intensidad de aroma media-alta"@es
+    
+    Types: 
+        Aroma_intensity
+    
+    
+Individual: gass_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de hierba"@es,
+        rdfs:label "Grass flavour"@en
+    
+    Types: 
+        Herbaceous_flavour
+    
+    
+Individual: wet_stone_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de piedra mojada"@es,
+        rdfs:label "Wet stone aroma"@en
+    
+    Types: 
+        Other_aroma
+    
+    
+Individual: blackberry_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de mora"@es,
+        rdfs:label "Blackberry flavour"@en
+    
+    Types: 
+        Black_fruit_flavour
+    
+    
+Individual: fully_developed_aroma
+
+    Annotations: 
+        rdfs:label "Fully developed aroma"@en,
+        rdfs:label "Aroma completamente desarrollado"@es
+    
+    Types: 
+        Aroma_development
+    
+    
+Individual: blackcurrant_aroma
+
+    Annotations: 
+        rdfs:label "Blackcurrant aroma"@en,
+        rdfs:label "Aroma de grosella negra"@es
+    
+    Types: 
+        Black_fruit_aroma
+    
+    
+Individual: marzipan_flavour
+
+    Annotations: 
+        rdfs:label "Marzipan flavour"@en,
+        rdfs:label "Sabor de mazapán"@es
+    
+    Types: 
+        Oxidation_flavour
+    
+    
+Individual: red_plum_aroma
+
+    Annotations: 
+        rdfs:label "Red plum aroma"@en,
+        rdfs:label "Aroma de ciruela roja"@es
+    
+    Types: 
+        Red_fruit_aroma
+    
+    
+Individual: lemon-green_colour
+
+    Annotations: 
+        rdfs:label "Color amarillo verdoso"@es,
+        rdfs:label "lemmon-green colour"@en
+    
+    Types: 
+        White_wine_colour
+    
+    
+Individual: light-medium_aroma_intensity
+
+    Annotations: 
+        rdfs:label "Intensidad de aroma media-baja"@es,
+        rdfs:label "Light-medium aroma intensity"@en
+    
+    Types: 
+        Aroma_intensity
+    
+    
+Individual: dried_apricot_flavour
+
+    Annotations: 
+        rdfs:label "Dried apricot flavour"@en,
+        rdfs:label "Sabor de albaricoque seco"@es
+    
+    Types: 
+        White_fruit_development_flavour
+    
+    
+Individual: gass_aroma
+
+    Annotations: 
+        rdfs:label "Grass aroma"@en,
+        rdfs:label "Aroma de hierba"@es
+    
+    Types: 
+        Herbaceous_aroma
+    
+    
+Individual: iris_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de lirio"@es,
+        rdfs:label "Iris flavour"@en
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: mushroom_aroma
+
+    Annotations: 
+        rdfs:label "Mushroom aroma"@en,
+        rdfs:label "Aroma de champiñón"@es
+    
+    Types: 
+        Red_bottle_age_aroma,
+        White_bottle_age_aroma
+    
+    
+Individual: tar_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de alquitrán"@es,
+        rdfs:label "Tar flavour"@en
+    
+    Types: 
+        Red_fruit_development_flavour
+    
+    
+Individual: medium_acidity
+
+    Annotations: 
+        rdfs:label "Acidez media"@es,
+        rdfs:label "Medium acidity"@en
+    
+    Types: 
+        Acidity_palate
+    
+    
+Individual: sultana_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de sultana"@es,
+        rdfs:label "Sultana flavour"@en
+    
+    Types: 
+        Dried_fruit_flavour
+    
+    
+Individual: pork_meat
+
+    Annotations: 
+        rdfs:label "Pork meat"@es,
+        rdfs:label "Carne de cerdo"@es
+    
+    Types: 
+        Carne
+    
+    
+Individual: ginger_flavour
+
+    Annotations: 
+        rdfs:label "Ginger flavour"@en,
+        rdfs:label "Sabor de jengibre"@es
+    
+    Types: 
+        White_bottle_age_flavour
+    
+    
+Individual: medium_colour_intensity
+
+    Annotations: 
+        rdfs:label "Medium colour intensity"@en,
+        rdfs:label "Capa medio cubierta"@es
+    
+    Types: 
+        Wine_colour_intensity
+    
+    
+Individual: pasta
+
+    Annotations: 
+        rdfs:label "Pasta en general"@es,
+        rdfs:label "Pasta"@en
+    
+    Types: 
+        Pasta
+    
+    
+Individual: prune_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de ciruela pasa"@es,
+        rdfs:label "Prune flavour"@en
+    
+    Types: 
+        Dried_fruit_flavour,
+        Red_fruit_development_flavour
+    
+    
+Individual: tired_aroma
+
+    Annotations: 
+        rdfs:label "Tired aroma"@en,
+        rdfs:label "Aroma pasado"@es
+    
+    Types: 
+        Aroma_development
+    
+    
+Individual: low_acidity
+
+    Annotations: 
+        rdfs:label "Acidez baja"@es,
+        rdfs:label "Low acidity"@en
+    
+    Types: 
+        Acidity_palate
+    
+    
+Individual: bread_flavour
+
+    Annotations: 
+        rdfs:label "Bread flavour"@en,
+        rdfs:label "Sabor de pan"@es
+    
+    Types: 
+        Yeast_flavour
+    
+    
+Individual: black_pepper_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de pimienta negra"@es,
+        rdfs:label "Black pepper flavour"@en
+    
+    Types: 
+        Pungent_spice_flavour
+    
+    
+Individual: blue_cheese
+
+    Annotations: 
+        rdfs:label "Queso azul"@es,
+        rdfs:label "Blue cheese"@en
+    
+    Types: 
+        Dairy
+    
+    
+Individual: farmyard_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de granja"@es,
+        rdfs:label "Farmyard flavour"@en
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: orange_blossom_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de azahar"@es,
+        rdfs:label "Orange blossom aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: strawberry_flavour
+
+    Annotations: 
+        rdfs:label "Strawberry flavour"@en,
+        rdfs:label "Sabor de fresa"@es
+    
+    Types: 
+        Red_fruit_flavour
+    
+    
+Individual: light-medium_flavour_intensity
+
+    Annotations: 
+        rdfs:label "Intensidad de sabor medio-ligera"@es,
+        rdfs:label "Light-medium flavour intensity"@en
+    
+    Types: 
+        Intensity_flavour
+    
+    
+Individual: roasted_goat
+
+    Annotations: 
+        rdfs:label "Cabrito asado"@es,
+        rdfs:label "Roasted goat"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: violet_flavour
+
+    Annotations: 
+        rdfs:label "Violet flavour"@en,
+        rdfs:label "Sabor de violeta"@es
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: medium_tannines
+
+    Annotations: 
+        rdfs:label "Taninos medios"@es,
+        rdfs:label "Medium tannines"@en
+    
+    Types: 
+        Tannins_level_palate
+    
+    
+Individual: yoghurt_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de yogur"@es,
+        rdfs:label "Yoghurt aroma"@en
+    
+    Types: 
+        Yeast_aroma,
+        Malolactic_aroma
+    
+    
+Individual: honey_flavour
+
+    Annotations: 
+        rdfs:label "Honey flavour"@en,
+        rdfs:label "Sabor de miel"@es
+    
+    Types: 
+        White_bottle_age_flavour
+    
+    
+Individual: meaty_aroma
+
+    Annotations: 
+        rdfs:label "Meaty aroma"@en,
+        rdfs:label "Aroma carnoso"@es
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: pastry_aroma
+
+    Annotations: 
+        rdfs:label "Pastry aroma"@en,
+        rdfs:label "Aroma de pastel"@es
+    
+    Types: 
+        Yeast_aroma
+    
+    
+Individual: forest_floor_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de suelo de bosque"@es,
+        rdfs:label "Forest floor aroma"@en
+    
+    Types: 
+        Red_bottle_age_aroma
+    
+    
+Individual: vanilla_aroma
+
+    Annotations: 
+        rdfs:label "Vanilla aroma"@en,
+        rdfs:label "Aroma de vainilla"@es
+    
+    Types: 
+        Oak_aroma
+    
+    
+Individual: nectarine_flavour
+
+    Annotations: 
+        rdfs:label "Nectarine flavour"@en,
+        rdfs:label "Sabor de nectarina"@es
+    
+    Types: 
+        Stone_fruit_flavour
+    
+    
+Individual: blossom_flavour
+
+    Annotations: 
+        rdfs:label "Blossom flavour"@en,
+        rdfs:label "Sabor de flor"@es
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: red_currant_flavour
+
+    Annotations: 
+        rdfs:label "Red currant flavour"@en,
+        rdfs:label "Sabor de grosella roja"@es
+    
+    Types: 
+        Red_fruit_flavour
+    
+    
+Individual: black_pepper_aroma
+
+    Annotations: 
+        rdfs:label "Black pepper aroma"@en,
+        rdfs:label "Aroma de pimienta negra"@es
+    
+    Types: 
+        Pungent_spice_aroma
+    
+    
+Individual: meat
+
+    Annotations: 
+        rdfs:label "Meat"@en,
+        rdfs:label "Carne en general"@es
+    
+    Types: 
+        Carne
+    
+    
+Individual: lemon-yellow_colour
+
+    Annotations: 
+        rdfs:label "lemon-yellow color"@en,
+        rdfs:label "Color amarillo limón"@es
+    
+    Types: 
+        White_wine_colour
+    
+    
+Individual: bread_aroma
+
+    Annotations: 
+        rdfs:label "Bread aroma"@en,
+        rdfs:label "Aroma de pan"@es
+    
+    Types: 
+        Yeast_aroma
+    
+    
+Individual: deep_colour_intensity
+
+    Annotations: 
+        rdfs:label "Capa cubierta"@es,
+        rdfs:label "Deep colour intensity"@en
+    
+    Types: 
+        Wine_colour_intensity
+    
+    
+Individual: cooked_strawberry_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de fresa cocida"@es,
+        rdfs:label "Cooked strawberry flavour"@en
+    
+    Types: 
+        Red_fruit_development_flavour
+    
+    
+Individual: lemon_aroma
+
+    Annotations: 
+        rdfs:label "Lemon aroma"@en,
+        rdfs:label "Aroma de limón"@es
+    
+    Types: 
+        Citrus_fruit_aroma
+    
+    
+Individual: almond_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de almendra"@es,
+        rdfs:label "Almond flavour"@en
+    
+    Types: 
+        Oxidation_flavour
+    
+    
+Individual: high_tear
+
+    Annotations: 
+        rdfs:label "Lágrima abundante"@es,
+        rdfs:label "High tear"@en
+    
+    Types: 
+        Wine_tear
+    
+    
+Individual: salade
+
+    Annotations: 
+        rdfs:label "Ensaladas"@es,
+        rdfs:label "Salade"@en
+    
+    Types: 
+        Vegetable
+    
+    
+Individual: fine_grained_tannines
+
+    Annotations: 
+        rdfs:label "Fine grained tannines"@en,
+        rdfs:label "Taninos finos"@es
+    
+    Types: 
+        Tannins_astringency_palate
+    
+    
+Individual: orange_peel_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de cáscara de naranaja"@es,
+        rdfs:label "Orange peel flavour"@en
+    
+    Types: 
+        Citrus_fruit_flavour
+    
+    
+Individual: wet_leaves_flavour
+
+    Annotations: 
+        rdfs:label "Wet leaves flavour"@en,
+        rdfs:label "Sabor de hojas mojadas"@es
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: peach_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de melocotón"@es,
+        rdfs:label "Peach flavour"@en
+    
+    Types: 
+        Stone_fruit_flavour
+    
+    
+Individual: pale_colour_intensity
+
+    Annotations: 
+        rdfs:label "Capa no cubierta"@es,
+        rdfs:label "Pale colour intensity"@en
+    
+    Types: 
+        Wine_colour_intensity
+    
+    
+Individual: eucalyptus_flavour
+
+    Annotations: 
+        rdfs:label "Eucalyptus flavour"@en,
+        rdfs:label "Sabor de eucalipto"@es
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: date_flavour
+
+    Annotations: 
+        rdfs:label "Date flavour"@en,
+        rdfs:label "Sabor de dátil"@es
+    
+    Types: 
+        Dried_fruit_flavour
+    
+    
+Individual: asparagus_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de espárrago"@es,
+        rdfs:label "Asparagus flavour"@en
+    
+    Types: 
+        Herbaceous_flavour
+    
+    
+Individual: pultry
+
+    Annotations: 
+        rdfs:label "Aves en general"@es,
+        rdfs:label "Poultry"@en
+    
+    Types: 
+        Poultry
+    
+    
+Individual: cranberry_flavour
+
+    Annotations: 
+        rdfs:label "Cranberry flavour"@en,
+        rdfs:label "Sabor de arándano rojo"@es
+    
+    Types: 
+        Red_fruit_flavour
+    
+    
+Individual: banana_flavour
+
+    Annotations: 
+        rdfs:label "Banana flavour"@en,
+        rdfs:label "Sabor de plátano"@es
+    
+    Types: 
+        Tropical_fruit_flavour
+    
+    
+Individual: brown_colour
+
+    Annotations: 
+        rdfs:label "Color marrón"@es,
+        rdfs:label "brown colour"@en
+    
+    Types: 
+        White_wine_colour
+    
+    
+Individual: mushroom_flavour
+
+    Annotations: 
+        rdfs:label "Mushroom flavour"@en,
+        rdfs:label "Sabor de champiñón"@es
+    
+    Types: 
+        Red_bottle_age_flavour,
+        White_bottle_age_flavour
+    
+    
+Individual: cedar_flavour
+
+    Annotations: 
+        rdfs:label "Cedar flavour"@en,
+        rdfs:label "Sabor de cedro"@es
+    
+    Types: 
+        Oak_flavour,
+        Red_bottle_age_flavour
+    
+    
+Individual: pronounced_aroma_intensity
+
+    Annotations: 
+        rdfs:label "Intensidad de aroma alta"@es,
+        rdfs:label "Pronounced aroma intensity"@en
+    
+    Types: 
+        Aroma_intensity
+    
+    
+Individual: medium_finish
+
+    Annotations: 
+        rdfs:label "Medium finish"@en,
+        rdfs:label "Persistencia del sabor media"@es
+    
+    Types: 
+        Finish_palate
+    
+    
+Individual: light-medium_body
+
+    Annotations: 
+        rdfs:label "Cuerpo medio-ligero"@es,
+        rdfs:label "Light-medium body"@en
+    
+    Types: 
+        Body_palate
+    
+    
+Individual: medium_tear
+
+    Annotations: 
+        rdfs:label "Medium tear"@en,
+        rdfs:label "Lágrima media"@es
+    
+    Types: 
+        Wine_tear
+    
+    
+Individual: clove_aroma
+
+    Annotations: 
+        rdfs:label "Clove aroma"@en,
+        rdfs:label "Aroma de clavo"@es
+    
+    Types: 
+        Oak_aroma
+    
+    
+Individual: violet_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de violeta"@es,
+        rdfs:label "Violet aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+Individual: tawny_colour
+
+    Annotations: 
+        rdfs:label "Color marrón teja"@es,
+        rdfs:label "Tawny colour"@en
+    
+    Types: 
+        Red_wine_colour
+    
+    
+Individual: clove_flavour
+
+    Annotations: 
+        rdfs:label "Clove flavour"@en,
+        rdfs:label "Sabor de clavo"@es
+    
+    Types: 
+        Oak_flavour
+    
+    
+Individual: rice_salade
+
+    Annotations: 
+        rdfs:label "Ensalada de arroz"@es,
+        rdfs:label "Rice salade"@en
+    
+    Types: 
+        Rice
+    
+    
+Individual: flint_flavour
+
+    Annotations: 
+        rdfs:label "Flint flavour"@en,
+        rdfs:label "Sabor de pedernal"@es
+    
+    Types: 
+        Other_flavour
+    
+    
+Individual: dry_sweetness
+
+    Annotations: 
+        rdfs:label "Dry sweetness"@en,
+        rdfs:label "Dulzura seca"@es
+    
+    Types: 
+        Sweetness_palate
+    
+    
+Individual: bright_clarity
+
+    Annotations: 
+        rdfs:label "Bright clarity"@en,
+        rdfs:label "Limpieza brillante"@es
+    
+    Types: 
+        Wine_clarity
+    
+    
+Individual: toast_flavour
+
+    Annotations: 
+        rdfs:label "Toast flavour"@en,
+        rdfs:label "Sabor de tostada"@es
+    
+    Types: 
+        White_bottle_age_flavour,
+        Yeast_flavour,
+        Oak_flavour
+    
+    
+Individual: low-medium_acidity
+
+    Annotations: 
+        rdfs:label "Acidez media-baja"@es,
+        rdfs:label "Low-medium acidity"@en
+    
+    Types: 
+        Acidity_palate
+    
+    
+Individual: rice_with_vegetables
+
+    Annotations: 
+        rdfs:label "Rice with vegetables"@en,
+        rdfs:label "Arroz con verduras"@es
+    
+    Types: 
+        Rice
+    
+    
+Individual: pineapple_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de piña"@es,
+        rdfs:label "Pineapple flavour"@en
+    
+    Types: 
+        Tropical_fruit_flavour
+    
+    
+Individual: preserved_fruit_flavour
+
+    Annotations: 
+        rdfs:label "Preserved fruit flavour"@en,
+        rdfs:label "Sabor de fruta en conserva"@es
+    
+    Types: 
+        Dried_fruit_flavour
+    
+    
+Individual: quince_flavour
+
+    Annotations: 
+        rdfs:label "Quince flavour"@en,
+        rdfs:label "Sabor de membrillo"@es
+    
+    Types: 
+        Green_fruit_flavour
+    
+    
+Individual: red_apple_flavour
+
+    Annotations: 
+        rdfs:label "Red apple flavour"@en,
+        rdfs:label "Sabor de manzana roja"@es
+    
+    Types: 
+        Green_fruit_flavour
+    
+    
+Individual: dried_apple_aroma
+
+    Annotations: 
+        rdfs:label "Dried apple aroma"@en,
+        rdfs:label "Aroma de manzana seca"@es
+    
+    Types: 
+        White_fruit_development_aroma
+    
+    
+Individual: red_cherry_aroma
+
+    Annotations: 
+        rdfs:label "Red cherry aroma"@en,
+        rdfs:label "Aroma de cereza"@es
+    
+    Types: 
+        Red_fruit_aroma
+    
+    
+Individual: sweet_sweetness
+
+    Annotations: 
+        rdfs:label "Dulzura dulce"@es,
+        rdfs:label "Sweet sweetness"@en
+    
+    Types: 
+        Sweetness_palate
+    
+    
+Individual: goat_cheese
+
+    Annotations: 
+        rdfs:label "Goat cheese"@en,
+        rdfs:label "Queso de cabra"@es
+    
+    Types: 
+        Dairy
+    
+    
+Individual: light_body
+
+    Annotations: 
+        rdfs:label "Light body"@en,
+        rdfs:label "Cuerpo ligero"@es
+    
+    Types: 
+        Body_palate
+    
+    
+Individual: rosemary_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de romero"@es,
+        rdfs:label "Rosemary flavour"@en
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: pronounced_flavour_intensity
+
+    Annotations: 
+        rdfs:label "Pronounced flavour intensity"@en,
+        rdfs:label "Intensidad de sabor pronunciada"@es
+    
+    Types: 
+        Intensity_flavour
+    
+    
+Individual: black_cherry_flavour
+
+    Annotations: 
+        rdfs:label "Black cherry flavour"@en,
+        rdfs:label "Sabor de cereza negra"@es
+    
+    Types: 
+        Black_fruit_flavour
+    
+    
+Individual: fresh_cheese
+
+    Annotations: 
+        rdfs:label "Fresh cheese"@en,
+        rdfs:label "Queso fresco"@es
+    
+    Types: 
+        Dairy
+    
+    
+Individual: desert
+
+    Annotations: 
+        rdfs:label "Postres en general",
+        rdfs:label "Desert"@en
+    
+    Types: 
+        Dessert
+    
+    
+Individual: garnet_colour
+
+    Annotations: 
+        rdfs:label "Color granate"@es,
+        rdfs:label "Garnet colour"@en
+    
+    Types: 
+        Red_wine_colour
+    
+    
+Individual: fish
+
+    Annotations: 
+        rdfs:label "Pescado en general"@es,
+        rdfs:label "Fish"@en
+    
+    Types: 
+        Fish
+    
+    
+Individual: cereal_flavour
+
+    Annotations: 
+        rdfs:label "Cereal flavour"@en,
+        rdfs:label "Sabor de cereal"@es
+    
+    Types: 
+        White_bottle_age_flavour
+    
+    
+Individual: lavender_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de lavanda"@es,
+        rdfs:label "Lavender flavour"@en
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: black_cherry_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de cereza negra"@es,
+        rdfs:label "Black cherry aroma"@en
+    
+    Types: 
+        Black_fruit_aroma
+    
+    
+Individual: medium_alcohol
+
+    Annotations: 
+        rdfs:label "Alcohol medio"@es,
+        rdfs:label "Medium alcohol"@en
+    
+    Types: 
+        Alcohol_palate
+    
+    
+Individual: hazelnut_flavour
+
+    Annotations: 
+        rdfs:label "Hazelnut flavour"@en,
+        rdfs:label "Sabor de avellana"@es
+    
+    Types: 
+        Oxidation_flavour
+    
+    
+Individual: rabbit_meat
+
+    Annotations: 
+        rdfs:label "Carne de conejo"@es,
+        rdfs:label "Rabbit meat"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: passion_fruit_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de maracuyá"@es,
+        rdfs:label "Passion fruit aroma"@en
+    
+    Types: 
+        Tropical_fruit_aroma
+    
+    
+Individual: resinous_aroma
+
+    Annotations: 
+        rdfs:label "Resinous aroma"@en,
+        rdfs:label "Aroma de resina"@es
+    
+    Types: 
+        Oak_aroma
+    
+    
+Individual: chamomile_flavour
+
+    Annotations: 
+        rdfs:label "Chamomile flavour"@en,
+        rdfs:label "Sabor de camomila"@es
+    
+    Types: 
+        Floral_flavour
+    
+    
+Individual: short_finish
+
+    Annotations: 
+        rdfs:label "Persistencia del sabor baja"@es,
+        rdfs:label "Short finish"@en
+    
+    Types: 
+        Finish_palate
+    
+    
+Individual: resinous_flavour
+
+    Annotations: 
+        rdfs:label "Resinous flavour"@en,
+        rdfs:label "Sabor de resina"@es
+    
+    Types: 
+        Oak_flavour
+    
+    
+Individual: meaty_flavour
+
+    Annotations: 
+        rdfs:label "Meaty flavour"@en,
+        rdfs:label "Sabor carnoso"@es
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: tobacco_flavour
+
+    Annotations: 
+        rdfs:label "Tobacco flavour"@en,
+        rdfs:label "Sabor de tabaco"@es
+    
+    Types: 
+        Red_bottle_age_flavour
+    
+    
+Individual: chocolate_aroma
+
+    Annotations: 
+        rdfs:label "Chocolate aroma"@en,
+        rdfs:label "Aroma de chocolate"@es
+    
+    Types: 
+        Oxidation_aroma
+    
+    
+Individual: hazelnut_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de avellana"@es,
+        rdfs:label "Hazelnut aroma"@en
+    
+    Types: 
+        Oxidation_aroma
+    
+    
+Individual: pigeon_meat
+
+    Annotations: 
+        rdfs:label "Pigeon meat"@en,
+        rdfs:label "Carne de pichón"@es
+    
+    Types: 
+        Poultry
+    
+    
+Individual: ostrich_meat
+
+    Annotations: 
+        rdfs:label "Carne de avestruz"@es,
+        rdfs:label "Ostrich meat"@en
+    
+    Types: 
+        Poultry
+    
+    
+Individual: smoke_flavour
+
+    Annotations: 
+        rdfs:label "Smoke flavour"@en,
+        rdfs:label "Sabor ahumado"@es
+    
+    Types: 
+        Other_flavour,
+        Oak_flavour
+    
+    
+Individual: cinnamon_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de canela"@es,
+        rdfs:label "Cinnamon flavour"@en
+    
+    Types: 
+        White_bottle_age_flavour
+    
+    
+Individual: nectarine_aroma
+
+    Annotations: 
+        rdfs:label "Nectarine aroma"@en,
+        rdfs:label "Aroma de nectarina"@es
+    
+    Types: 
+        Stone_fruit_aroma
+    
+    
+Individual: cranberry_aroma
+
+    Annotations: 
+        rdfs:label "Cranberry aroma"@en,
+        rdfs:label "Aroma de arándano rojo"@es
+    
+    Types: 
+        Red_fruit_aroma
+    
+    
+Individual: fennel_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de hinojo"@es,
+        rdfs:label "Fennel flavour"@en
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: apricot_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de albaricoque"@es,
+        rdfs:label "Apricot aroma"@en
+    
+    Types: 
+        Stone_fruit_aroma
+    
+    
+Individual: white_meat
+
+    Annotations: 
+        rdfs:label "Carne blanca"@es,
+        rdfs:label "White meat"@en
+    
+    Types: 
+        Carne
+    
+    
+Individual: kerosene_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de queroseno"@es,
+        rdfs:label "Kerosene aroma"@en
+    
+    Types: 
+        White_bottle_age_aroma
+    
+    
+Individual: clear_clarity
+
+    Annotations: 
+        rdfs:label "Clear clarity"@en,
+        rdfs:label "Limpieza clara"@es
+    
+    Types: 
+        Wine_clarity
+    
+    
+Individual: pine_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de pino"@es,
+        rdfs:label "Pine flavour"@en
+    
+    Types: 
+        Herbal_flavour
+    
+    
+Individual: wet_wool_flavour
+
+    Annotations: 
+        rdfs:label "Wet wool flavour"@en,
+        rdfs:label "Sabor de lana mojada"@es
+    
+    Types: 
+        Other_flavour
+    
+    
+Individual: coconut_flavour
+
+    Annotations: 
+        rdfs:label "Coconut flavour"@en,
+        rdfs:label "Sabor de coco"@es
+    
+    Types: 
+        Oak_flavour,
+        Oxidation_flavour
+    
+    
+Individual: black_plum_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de ciruela negra"@es,
+        rdfs:label "Black plum flavour"@en
+    
+    Types: 
+        Black_fruit_flavour
+    
+    
+Individual: cooked_blackberry_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de mora cocida"@es,
+        rdfs:label "Cooked blackberry flavour"@en
+    
+    Types: 
+        Red_fruit_development_flavour
+    
+    
+Individual: rice
+
+    Annotations: 
+        rdfs:label "Arroz en general"@es,
+        rdfs:label "Rice"@en
+    
+    Types: 
+        Rice
+    
+    
+Individual: apricot_flavour
+
+    Annotations: 
+        rdfs:label "Apricot flavour"@en,
+        rdfs:label "Sabor de albaricoque"@es
+    
+    Types: 
+        Stone_fruit_flavour
+    
+    
+Individual: medium-dry_sweetness
+
+    Annotations: 
+        rdfs:label "Dulzura semiseca"@es,
+        rdfs:label "medium-dry sweetness"@en
+    
+    Types: 
+        Sweetness_palate
+    
+    
+Individual: pheasant_meat
+
+    Annotations: 
+        rdfs:label "Carne de faisán"@es,
+        rdfs:label "Pheasant meat"@en
+    
+    Types: 
+        Poultry
+    
+    
+Individual: high_tannines
+
+    Annotations: 
+        rdfs:label "Taninos altos"@es,
+        rdfs:label "High tannines"@en
+    
+    Types: 
+        Tannins_level_palate
+    
+    
+Individual: cream_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de nata"@es,
+        rdfs:label "Cream flavour"@en
+    
+    Types: 
+        Malolactic_flavour
+    
+    
+Individual: juniper_flavour
+
+    Annotations: 
+        rdfs:label "Sabor de enebro"@es,
+        rdfs:label "Juniper flavour"@en
+    
+    Types: 
+        Pungent_spice_flavour
+    
+    
+Individual: strawberry_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de fresa"@es,
+        rdfs:label "Strawberry aroma"@en
+    
+    Types: 
+        Red_fruit_aroma
+    
+    
+Individual: charred_wood_flavour
+
+    Annotations: 
+        rdfs:label "Charred wood flavour"@en,
+        rdfs:label "Sabor de madera quemada"@es
+    
+    Types: 
+        Oak_flavour
+    
+    
+Individual: medium-pronounced_flavour_intensity
+
+    Annotations: 
+        rdfs:label "Intensidad de sabor medio-pronunciada"@es,
+        rdfs:label "Medium-pronounced flavour intensity"@en
+    
+    Types: 
+        Intensity_flavour
+    
+    
+Individual: medium-high_acidity
+
+    Annotations: 
+        rdfs:label "Acidez media-alta"@es,
+        rdfs:label "Medium-high acidity"@en
+    
+    Types: 
+        Acidity_palate
+    
+    
+Individual: green_apple_flavour
+
+    Annotations: 
+        rdfs:label "Green apple flavour"@en,
+        rdfs:label "Sabor de manzana verde"@es
+    
+    Types: 
+        Green_fruit_flavour
+    
+    
+Individual: iris_aroma
+
+    Annotations: 
+        rdfs:label "Aroma de lirio"@es,
+        rdfs:label "Iris aroma"@en
+    
+    Types: 
+        Floral_aroma
+    
+    
+DisjointClasses: 
+    Red_wine_tasting, rose_wine_tasting, white_wine_tasting
+

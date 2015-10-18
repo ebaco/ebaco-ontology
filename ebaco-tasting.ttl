@@ -1,0 +1,6275 @@
+@prefix : <http://purl.org/ceu/ebaco#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix ebaco: <http://purl.org/ceu/ebaco/1.0#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix tasting: <http://purl.org/ceu/ebaco/tasting/1.0#> .
+@prefix webprotege: <http://protege.stanford.edu/webprotege/> .
+@base <http://purl.org/ceu/ebaco/tasting> .
+
+<http://purl.org/ceu/ebaco/tasting> rdf:type owl:Ontology ;
+                                    
+                                    rdfs:label "Ontología E-BACO"@es ;
+                                    
+                                    rdfs:comment """The E-BACO ontology defines a precise vocabulary for representing knowledge in the oenology domain. 
+The E-BACO-Tasting module contains the basic concepts, properties and relations for describing wines, the wine tasting and the pairing of wine and food. 
+It has been developed by the Complutense University of Madrid and the San Pablo CEU University."""@en ;
+                                    
+                                    dc:creator "Alfredo Sánchez Alberca (http://aprendeconalf.es/foaf.rdf)"@es ;
+                                    
+                                    dc:date "Febrero 2015"@es ;
+                                    
+                                    rdfs:comment """La ontología E-BACO define un vocabulario preciso para representación de conocimiento en el dominio de la enología.
+El módulo E-BACO-Tasting contiene los conceptos, propiedades y relaciones básicas para describir los vinos, las catas de los vinos y el maridaje de vinos con comidas. 
+Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad San Pablo CEU."""@es ;
+                                    
+                                    dc:creator "Mari Ángeles Gómez Flechoso (magflechoso@bio.ucm.es)"@es ;
+                                    
+                                    owl:versionInfo "Vesión 1.0"@es ;
+                                    
+                                    rdfs:seeAlso <http://ebaco.github.io/> ;
+                                    
+                                    owl:imports <http://purl.org/ceu/ebaco/core/1.0> ;
+                                    
+                                    owl:versionIRI <http://purl.org/ceu/ebaco/tasting/1.0> .
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+
+xsd:date rdf:type rdfs:Datatype .
+
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#done_by_taster
+
+:done_by_taster rdf:type owl:FunctionalProperty ,
+                         owl:ObjectProperty ;
+                
+                rdfs:label "done by taster"@en ,
+                           "hecha por catador"@es ;
+                
+                rdfs:comment "Propiedad que relaciona una cata con el catador que la hizo."@es ;
+                
+                rdfs:range :Wine_taster ;
+                
+                rdfs:domain :Wine_tasting ;
+                
+                rdfs:subPropertyOf :wine_tasting_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#drink_with_food
+
+:drink_with_food rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "beber con comida"@es ;
+                 
+                 rdfs:comment "drink with food"@en ,
+                              "Propiedad que relaciona un vino con un tipo de comida con el que hace buen maridaje."@es ;
+                 
+                 rdfs:domain :Wine ;
+                 
+                 rdfs:range :Wine_food ;
+                 
+                 owl:inverseOf :eat_with_wine ;
+                 
+                 rdfs:subPropertyOf :wine_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#eat_with_wine
+
+:eat_with_wine rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "eat with wine"@en ,
+                          "comer con vino"@es ;
+               
+               rdfs:comment "Propiedad que relaciona un tipo de comida con un vino con el que hace buen maridaje."@es ;
+               
+               rdfs:range :Wine ;
+               
+               rdfs:domain :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#fortified_wine_tasting_of
+
+:fortified_wine_tasting_of rdf:type owl:ObjectProperty ;
+                           
+                           rdfs:label "fortified wine tasting of"@en ,
+                                      "cata de vino fortificado de"@es ;
+                           
+                           rdfs:comment "Propiedad que relaciona una cata de un vino fortificado con el vino catado."@es ;
+                           
+                           rdfs:range :Fortified_wine ;
+                           
+                           rdfs:domain :Fortified_wine_tasting ;
+                           
+                           owl:inverseOf :has_fortified_wine_tasting ;
+                           
+                           rdfs:subPropertyOf :tasting_of .
+
+
+
+###  http://purl.org/ceu/ebaco#has_acidity_palate
+
+:has_acidity_palate rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has acidity on palate"@en ,
+                               "tiene acidez en paladar"@es ;
+                    
+                    rdfs:comment "Propiedad que relaciona una cata de un vino con la acidez en paladar del vino."@es ;
+                    
+                    rdfs:range :Acidity_palate ;
+                    
+                    rdfs:domain :Wine_tasting ;
+                    
+                    rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_alcohol_palate
+
+:has_alcohol_palate rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has alcohol on palate"@en ,
+                               "tiene alcohol en paladar"@es ;
+                    
+                    rdfs:comment "Propiedad que relaciona una cata de un vino con el alcohol en paladar del vino."@es ;
+                    
+                    rdfs:range :Alcohol_palate ;
+                    
+                    rdfs:domain :Wine_tasting ;
+                    
+                    rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_aroma
+
+:has_aroma rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "has aroma"@en ,
+                      "tiene aroma"@es ;
+           
+           rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma."@es ;
+           
+           rdfs:range :Wine_nose ;
+           
+           rdfs:domain :Wine_tasting ;
+           
+           rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_aroma_intensity
+
+:has_aroma_intensity rdf:type owl:FunctionalProperty ,
+                              owl:ObjectProperty ;
+                     
+                     rdfs:label "has intensity aroma"@en ,
+                                "tiene intensidad de aroma"@es ;
+                     
+                     rdfs:comment "Propiedad que relaciona una cata de un vino con la intensidad del aroma que presenta el vino."@es ;
+                     
+                     rdfs:range :Aroma_intensity ;
+                     
+                     rdfs:domain :Wine_tasting ;
+                     
+                     rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_astringency_palate
+
+:has_astringency_palate rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:label "has astringency on palate"@en ,
+                                   "tiene astringencia en paladar"@es ;
+                        
+                        rdfs:comment "Propiedad que relaciona una cata de un vino con la astringencia en paladar del vino."@es ;
+                        
+                        rdfs:range :Tannins_astringency_palate ;
+                        
+                        rdfs:domain :Wine_tasting ;
+                        
+                        rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_body_palate
+
+:has_body_palate rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "has body on palate"@en ,
+                            "tiene cuerpo en paladar"@es ;
+                 
+                 rdfs:comment "Propiedad que relaciona una cata de un vino con el cuerpo en paladar del vino."@es ;
+                 
+                 rdfs:range :Body_palate ;
+                 
+                 rdfs:domain :Wine_tasting ;
+                 
+                 rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_clarity
+
+:has_clarity rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:label "has clarity"@en ,
+                        "tiene limpieza"@es ;
+             
+             rdfs:comment "Propiedad que relaciona una cata de un vino con la limpieza que presenta el vino."@es ;
+             
+             rdfs:range :Wine_clarity ;
+             
+             rdfs:domain :Wine_tasting ;
+             
+             rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_colour
+
+:has_colour rdf:type owl:FunctionalProperty ,
+                     owl:ObjectProperty ;
+            
+            rdfs:label "has colour"@en ,
+                       "tiene color"@es ;
+            
+            rdfs:comment "Propiedad que relaciona una cata de un vino con el color que presenta el vino."@es ;
+            
+            rdfs:range :Wine_colour ;
+            
+            rdfs:domain :Wine_tasting ;
+            
+            rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_colour_intensity
+
+:has_colour_intensity rdf:type owl:FunctionalProperty ,
+                               owl:ObjectProperty ;
+                      
+                      rdfs:label "has colour intensity"@en ,
+                                 "tiene capa"@es ;
+                      
+                      rdfs:comment "Propiedad que relaciona una cata de un vino con la capa que presenta el vino."@es ;
+                      
+                      rdfs:range :Wine_colour_intensity ;
+                      
+                      rdfs:domain :Wine_tasting ;
+                      
+                      rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_colour_red_wine
+
+:has_colour_red_wine rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "has colour of red wine"@en ,
+                                "tiene color de vino tinto"@es ;
+                     
+                     rdfs:comment "Propiedad que relaciona una cata de un vino tinto con el color que presenta el vino."@es ;
+                     
+                     rdfs:range :Red_wine_colour ;
+                     
+                     rdfs:domain :Red_wine_tasting ;
+                     
+                     rdfs:subPropertyOf :has_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#has_colour_rose_wine
+
+:has_colour_rose_wine rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has colour of rosé wine"@en ,
+                                 "tiene color de vino rosado"@es ;
+                      
+                      rdfs:comment "Propiedad que relaciona una cata de un vino rosado con el color que presenta el vino."@es ;
+                      
+                      rdfs:range :Rose_wine_colour ;
+                      
+                      rdfs:subPropertyOf :has_colour ;
+                      
+                      rdfs:domain :rose_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_colour_white_wine
+
+:has_colour_white_wine rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "has colour of white wine"@en ,
+                                  "tiene color de vino blanco"@es ;
+                       
+                       rdfs:comment "Propiedad que relaciona una cata de un vino blanco con el color que presenta el vino."@es ;
+                       
+                       rdfs:range :White_wine_colour ;
+                       
+                       rdfs:subPropertyOf :has_colour ;
+                       
+                       rdfs:domain :white_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_edging_colour
+
+:has_edging_colour rdf:type owl:FunctionalProperty ,
+                            owl:ObjectProperty ;
+                   
+                   rdfs:label "has edging colour"@en ,
+                              "tiene color de menisco"@es ;
+                   
+                   rdfs:comment "Propiedad que relaciona una cata de un vino con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es ;
+                   
+                   rdfs:range :Wine_edging_colour ;
+                   
+                   rdfs:domain :Wine_tasting ;
+                   
+                   rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_edging_colour_red_wine
+
+:has_edging_colour_red_wine rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:label "has edging colour of red wine"@en ,
+                                       "tiene color de menisco de vino tinto"@es ;
+                            
+                            rdfs:comment "Propiedad que relaciona una cata de un vino tinto con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es ;
+                            
+                            rdfs:subPropertyOf :has_edging_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#has_edging_colour_rose_wine
+
+:has_edging_colour_rose_wine rdf:type owl:ObjectProperty ;
+                             
+                             rdfs:label "has edging colour of rosé wine"@en ,
+                                        "tiene color de menisco de vino rosado"@es ;
+                             
+                             rdfs:comment "Propiedad que relaciona una cata de un vino rosado con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es ;
+                             
+                             rdfs:range :Rose_wine_edging_colour ;
+                             
+                             rdfs:subPropertyOf :has_edging_colour ;
+                             
+                             rdfs:domain :rose_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_edging_colour_white_wine
+
+:has_edging_colour_white_wine rdf:type owl:ObjectProperty ;
+                              
+                              rdfs:label "has edging colour of white wine"@en ,
+                                         "tiene color de menisco de vino blanco"@es ;
+                              
+                              rdfs:comment "Propiedad que relaciona una cata de un vino blanco con el color que presenta el vino en el menisco o ribete (en el borde de la copa tumbada)."@es ;
+                              
+                              rdfs:range :White_wine_edging_colour ;
+                              
+                              rdfs:subPropertyOf :has_edging_colour ;
+                              
+                              rdfs:domain :white_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_finish_palate
+
+:has_finish_palate rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "has finish on palate"@en ,
+                              "tiene persistencia en paladar"@es ;
+                   
+                   rdfs:comment "Propiedad que relaciona una cata de un vino con la persistencia en paladar del vino."@es ;
+                   
+                   rdfs:range :Finish_palate ;
+                   
+                   rdfs:domain :Wine_tasting ;
+                   
+                   rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_flavour
+
+:has_flavour rdf:type owl:ObjectProperty ;
+             
+             rdfs:label "has flavour"@en ,
+                        "tiene sabor"@es ;
+             
+             rdfs:comment "Propiedad que relaciona una cata de un vino con el sabor del vino."@es ;
+             
+             rdfs:range :Wine_palate ;
+             
+             rdfs:domain :Wine_tasting ;
+             
+             rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_flavour_intensity
+
+:has_flavour_intensity rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "has flavour intensity"@en ,
+                                  "tiene intensidad de sabor"@es ;
+                       
+                       rdfs:comment "Propiedad que relaciona una cata de un vino con la intensidad del sabor del vino."@es ;
+                       
+                       rdfs:range :Intensity_flavour ;
+                       
+                       rdfs:domain :Wine_tasting ;
+                       
+                       rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_fortified_wine_tasting
+
+:has_fortified_wine_tasting rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:label "has fortified wine tasting"@en ,
+                                       "tiene cata de vino fortificado"@es ;
+                            
+                            rdfs:comment "Propiedad que relaciona un vino fortificado con una cata suya."@es ;
+                            
+                            rdfs:domain :Fortified_wine ;
+                            
+                            rdfs:range :Fortified_wine_tasting ;
+                            
+                            rdfs:subPropertyOf :has_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_organoleptic_characteristic
+
+:has_organoleptic_characteristic rdf:type owl:ObjectProperty ;
+                                 
+                                 rdfs:label "has organoleptic characteristic"@en ,
+                                            "tiene característica organoléptica"@es ;
+                                 
+                                 rdfs:comment "Propiedad que relaciona la cata de un vino con una característica organoléptia suya (aspecto, aroma o sabor)."@es ;
+                                 
+                                 rdfs:range :Organoleptic_characteristic ;
+                                 
+                                 rdfs:domain :Wine_tasting ;
+                                 
+                                 rdfs:subPropertyOf :wine_tasting_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#has_primariy_aroma
+
+:has_primariy_aroma rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has primary aroma"@en ,
+                               "tiene aroma primario"@es ;
+                    
+                    rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma primario."@es ;
+                    
+                    rdfs:range :Primary_aroma ;
+                    
+                    rdfs:domain :Wine_tasting ;
+                    
+                    rdfs:subPropertyOf :has_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#has_primary_flavour
+
+:has_primary_flavour rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "has primary flavour"@en ,
+                                "tiene sabor primario"@es ;
+                     
+                     rdfs:comment "Propiedad que relaciona una cata de un vino con un sabor primario."@es ;
+                     
+                     rdfs:range :Primary_flavour ;
+                     
+                     rdfs:domain :Wine_tasting ;
+                     
+                     rdfs:subPropertyOf :has_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#has_red_wine_tasting
+
+:has_red_wine_tasting rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has red wine tasting"@en ,
+                                 "tiene cata de vino tinto"@es ;
+                      
+                      rdfs:comment "Propiedad que relaciona un vino tinto con una cata suya."@es ;
+                      
+                      rdfs:domain :Red_wine ;
+                      
+                      rdfs:range :Red_wine_tasting ;
+                      
+                      rdfs:subPropertyOf :has_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_retronasal_aroma
+
+:has_retronasal_aroma rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has retronasal aroma"@en ,
+                                 "tiene aroma retronasal"@es ;
+                      
+                      rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma retronasal (después del paso del vino por la boca)."@es ;
+                      
+                      rdfs:range :Wine_nose ;
+                      
+                      rdfs:domain :Wine_tasting ;
+                      
+                      rdfs:subPropertyOf :has_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#has_rose_wine_tasting
+
+:has_rose_wine_tasting rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "has rosé wine tasting"@en ,
+                                  "tiene cata de vino rosado"@es ;
+                       
+                       rdfs:comment "Propiedad que relaciona un vino rosado con una cata suya."@es ;
+                       
+                       rdfs:domain :Rose_wine ;
+                       
+                       rdfs:subPropertyOf :has_wine_tasting ;
+                       
+                       rdfs:range :rose_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_secondary_aroma
+
+:has_secondary_aroma rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "has secondary aroma"@en ,
+                                "tiene aroma secundario"@es ;
+                     
+                     rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma secundario."@es ;
+                     
+                     rdfs:range :Secondary_aroma ;
+                     
+                     rdfs:domain :Wine_tasting ;
+                     
+                     rdfs:subPropertyOf :has_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#has_secondary_flavour
+
+:has_secondary_flavour rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "has secondary flavour"@en ,
+                                  "tiene sabor secundario"@es ;
+                       
+                       rdfs:comment "Propiedad que relaciona una cata de un vino con un sabor secundario."@es ;
+                       
+                       rdfs:range :Secondary_flavour ;
+                       
+                       rdfs:domain :Wine_tasting ;
+                       
+                       rdfs:subPropertyOf :has_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#has_smoothness_palate
+
+:has_smoothness_palate rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "has smoothness on palate"@en ,
+                                  "tiene suavidad en paladar"@es ;
+                       
+                       rdfs:comment "Propiedad que relaciona una cata de un vino espumoso con la suavidad en paladar del vino."@es ;
+                       
+                       rdfs:range :Smoothness_palate ;
+                       
+                       rdfs:domain :Sparkling_wine_tasting ;
+                       
+                       rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_sparkling_wine_tasting
+
+:has_sparkling_wine_tasting rdf:type owl:ObjectProperty ;
+                            
+                            rdfs:label "has sparkling wine tasting"@en ,
+                                       "tiene cata de vino espumoso"@es ;
+                            
+                            rdfs:comment "Propiedad que relaciona un vino espumoso con una cata suya."@es ;
+                            
+                            rdfs:domain :Sparkling_wine ;
+                            
+                            rdfs:range :Sparkling_wine_tasting ;
+                            
+                            rdfs:subPropertyOf :has_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_sweetness_palate
+
+:has_sweetness_palate rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has sweetness on palate"@en ,
+                                 "tiene dulzura en paladar"@es ;
+                      
+                      rdfs:comment "Propiedad que relaciona una cata de un vino con la dulzura en paladar del vino."@es ;
+                      
+                      rdfs:range :Sweetness_palate ;
+                      
+                      rdfs:domain :Wine_tasting ;
+                      
+                      rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_tannins_level_palate
+
+:has_tannins_level_palate rdf:type owl:ObjectProperty ;
+                          
+                          rdfs:label "has tannins level on palate"@en ,
+                                     "tiene nivel de taninos en paladar"@es ;
+                          
+                          rdfs:comment "Propiedad que relaciona una cata de un vino con el nivel de los taninos en paladar del vino."@es ;
+                          
+                          rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_tear
+
+:has_tear rdf:type owl:FunctionalProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:label "has tear"@en ,
+                     "tiene lágrima"@es ;
+          
+          rdfs:comment "Propiedad que relaciona una cata de un vino con la lágrima que presenta el vino en la copa."@es ;
+          
+          rdfs:domain :Wine_tasting ;
+          
+          rdfs:range :Wine_tear ;
+          
+          rdfs:subPropertyOf :has_organoleptic_characteristic .
+
+
+
+###  http://purl.org/ceu/ebaco#has_tertiary_aroma
+
+:has_tertiary_aroma rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "has tertiary aroma"@en ,
+                               "tiene aroma terciario"@es ;
+                    
+                    rdfs:comment "Propiedad que relaciona una cata de un vino con un aroma terciario."@es ;
+                    
+                    rdfs:range :Tertiary_aroma ;
+                    
+                    rdfs:domain :Wine_tasting ;
+                    
+                    rdfs:subPropertyOf :has_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#has_tertiary_flavour
+
+:has_tertiary_flavour rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has tertiary flavour"@en ,
+                                 "tiene sabor terciario"@es ;
+                      
+                      rdfs:comment "Propiedad que relaciona una cata de un vino con un sabor terciario."@es ;
+                      
+                      rdfs:range :Tertiary_flavour ;
+                      
+                      rdfs:domain :Wine_tasting ;
+                      
+                      rdfs:subPropertyOf :has_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#has_white_wine_tasting
+
+:has_white_wine_tasting rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:label "has white wine tasting"@en ,
+                                   "tiene cata de vino blanco"@es ;
+                        
+                        rdfs:comment "Propiedad que relaciona un vino blanco con una cata suya."@es ;
+                        
+                        rdfs:domain :White_wine ;
+                        
+                        rdfs:subPropertyOf :has_wine_tasting ;
+                        
+                        rdfs:range :white_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#has_wine_tasting
+
+:has_wine_tasting rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has tasting"@en ,
+                             "tiene cata"@es ;
+                  
+                  rdfs:comment "Propiedad que relaciona un vino con una cata suya."@es ;
+                  
+                  rdfs:domain :Wine ;
+                  
+                  rdfs:range :Wine_tasting ;
+                  
+                  rdfs:subPropertyOf :wine_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#red_wine_tasting_of
+
+:red_wine_tasting_of rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "red wine tasting of"@en ,
+                                "cata de vino tinto de"@es ;
+                     
+                     rdfs:comment "Propiedad que relaciona una cata de un vino tinto con el vino catado."@es ;
+                     
+                     rdfs:range :Red_wine ;
+                     
+                     rdfs:domain :Red_wine_tasting ;
+                     
+                     owl:inverseOf :has_red_wine_tasting ;
+                     
+                     rdfs:subPropertyOf :tasting_of .
+
+
+
+###  http://purl.org/ceu/ebaco#rose_wine_tasting_of
+
+:rose_wine_tasting_of rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "rosé wine tasting of"@en ,
+                                 "cata de vino rosado de"@es ;
+                      
+                      rdfs:comment "Propiedad que relaciona una cata de un vino rosado con el vino catado."@es ;
+                      
+                      rdfs:range :Rose_wine ;
+                      
+                      owl:inverseOf :has_rose_wine_tasting ;
+                      
+                      rdfs:domain :rose_wine_tasting ;
+                      
+                      rdfs:subPropertyOf :tasting_of .
+
+
+
+###  http://purl.org/ceu/ebaco#sparkling_wine_tasting_of
+
+:sparkling_wine_tasting_of rdf:type owl:ObjectProperty ;
+                           
+                           rdfs:label "sparkling wine tasting of"@en ,
+                                      "cata de vino espumoso de"@es ;
+                           
+                           rdfs:comment "Propiedad que relaciona una cata de un vino espumoso con el vino catado."@es ;
+                           
+                           rdfs:range :Sparkling_wine ;
+                           
+                           rdfs:domain :Sparkling_wine_tasting ;
+                           
+                           owl:inverseOf :has_sparkling_wine_tasting ;
+                           
+                           rdfs:subPropertyOf :tasting_of .
+
+
+
+###  http://purl.org/ceu/ebaco#tasting_of
+
+:tasting_of rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "tasting of"@en ,
+                       "cata de"@es ;
+            
+            rdfs:comment "Propiedad que relaciona una cata de un vino con el vino catado."@es ;
+            
+            rdfs:range :Wine ;
+            
+            rdfs:domain :Wine_tasting ;
+            
+            owl:inverseOf :has_wine_tasting ;
+            
+            rdfs:subPropertyOf :wine_tasting_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#white_wine_tasting_of
+
+:white_wine_tasting_of rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "white wine tasting of"@en ,
+                                  "cata de vino blanco de"@es ;
+                       
+                       rdfs:comment "Propiedad que relaciona una cata de un vino blanco con el vino catado."@es ;
+                       
+                       rdfs:range :White_wine ;
+                       
+                       owl:inverseOf :has_white_wine_tasting ;
+                       
+                       rdfs:subPropertyOf :tasting_of ;
+                       
+                       rdfs:domain :white_wine_tasting .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_object_property
+
+:wine_object_property rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:domain :Wine .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_tasting_object_property
+
+:wine_tasting_object_property rdf:type owl:ObjectProperty ;
+                              
+                              rdfs:label "wine tasting object property"@en ,
+                                         "propiedad de la cata del vino"@es .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#Acidity_palate
+
+:Acidity_palate rdf:type owl:Class ;
+                
+                rdfs:label "Acidity on palate"@en ,
+                           "Acidez en paladar"@es ;
+                
+                rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Alcohol_palate
+
+:Alcohol_palate rdf:type owl:Class ;
+                
+                rdfs:label "Alcohol on palate"@en ,
+                           "Alcohol en paladar"@es ;
+                
+                rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Aperitif
+
+:Aperitif rdf:type owl:Class ;
+          
+          rdfs:label "Aperitif"@en ,
+                     "Aperitivo"@es ;
+          
+          rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Aroma_development
+
+:Aroma_development rdf:type owl:Class ;
+                   
+                   rdfs:label "Aroma development"@en ,
+                              "Desarrollo del aroma"@es ;
+                   
+                   rdfs:subClassOf :Wine_nose .
+
+
+
+###  http://purl.org/ceu/ebaco#Aroma_intensity
+
+:Aroma_intensity rdf:type owl:Class ;
+                 
+                 rdfs:label "Aroma intensity"@en ,
+                            "Intensidad de aroma"@es ;
+                 
+                 rdfs:subClassOf :Wine_nose .
+
+
+
+###  http://purl.org/ceu/ebaco#Black_fruit_aroma
+
+:Black_fruit_aroma rdf:type owl:Class ;
+                   
+                   rdfs:label "Black fruit aroma"@en ,
+                              "Aroma de fruta negra"@es ;
+                   
+                   rdfs:subClassOf :Fruit_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Black_fruit_flavour
+
+:Black_fruit_flavour rdf:type owl:Class ;
+                     
+                     rdfs:label "Black fruit flavour"@en ,
+                                "Sabor de fruta negra"@es ;
+                     
+                     rdfs:subClassOf :Fruit_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Body_palate
+
+:Body_palate rdf:type owl:Class ;
+             
+             rdfs:label "Body on palate"@en ,
+                        "Cuerpo en paladar"@es ;
+             
+             rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Carne
+
+:Carne rdf:type owl:Class ;
+       
+       rdfs:label "Meat"@en ,
+                  "Carne"@es ;
+       
+       rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Citrus_fruit_aroma
+
+:Citrus_fruit_aroma rdf:type owl:Class ;
+                    
+                    rdfs:label "Citrus fruit aroma"@en ,
+                               "Aroma de fruta cítrica"@es ;
+                    
+                    rdfs:subClassOf :Fruit_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Citrus_fruit_flavour
+
+:Citrus_fruit_flavour rdf:type owl:Class ;
+                      
+                      rdfs:label "Citrus fruit flavour"@en ,
+                                 "Sabor de fruta cítrica"@es ;
+                      
+                      rdfs:subClassOf :Fruit_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Dairy
+
+:Dairy rdf:type owl:Class ;
+       
+       rdfs:label "Dairy"@en ,
+                  "Lácteo"@es ;
+       
+       rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Dessert
+
+:Dessert rdf:type owl:Class ;
+         
+         rdfs:label "Dessert"@en ,
+                    "Postre"@es ;
+         
+         rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Dried_fruit_aroma
+
+:Dried_fruit_aroma rdf:type owl:Class ;
+                   
+                   rdfs:label "Dried fruit aroma"@en ,
+                              "Aroma de fruta pasa"@es ;
+                   
+                   rdfs:subClassOf :Fruit_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Dried_fruit_flavour
+
+:Dried_fruit_flavour rdf:type owl:Class ;
+                     
+                     rdfs:label "Dried fruit flavour"@en ,
+                                "Sabor de fruta pasa"@es ;
+                     
+                     rdfs:subClassOf :Fruit_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Finish_palate
+
+:Finish_palate rdf:type owl:Class ;
+               
+               rdfs:label "Finish on palate"@en ,
+                          "Persistencia en paladar"@es ;
+               
+               rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Fish
+
+:Fish rdf:type owl:Class ;
+      
+      rdfs:label "Fish"@en ,
+                 "Pescado"@es ;
+      
+      rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Floral_aroma
+
+:Floral_aroma rdf:type owl:Class ;
+              
+              rdfs:label "Floral aroma"@en ,
+                         "Aroma floral"@es ;
+              
+              rdfs:subClassOf :Primary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Floral_flavour
+
+:Floral_flavour rdf:type owl:Class ;
+                
+                rdfs:label "Floral flavour"@en ,
+                           "Sabor floral"@es ;
+                
+                rdfs:subClassOf :Primary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Fortified_wine_tasting
+
+:Fortified_wine_tasting rdf:type owl:Class ;
+                        
+                        rdfs:label "Fortified wine tasting"@en ,
+                                   "Cata de vino fortificado"@es ;
+                        
+                        rdfs:subClassOf :Wine_tasting ;
+                        
+                        rdfs:comment "Descripción organoléptica de un vino fortificado o generoso. Comprende fundamentalmente tres características: vista, olfato y gusto."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Fruit
+
+:Fruit rdf:type owl:Class ;
+       
+       rdfs:label "Fruit"@en ,
+                  "Fruta"@es ;
+       
+       rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Fruit_aroma
+
+:Fruit_aroma rdf:type owl:Class ;
+             
+             rdfs:label "Fruit aroma"@en ,
+                        "Aroma de fruta"@es ;
+             
+             rdfs:subClassOf :Primary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Fruit_flavour
+
+:Fruit_flavour rdf:type owl:Class ;
+               
+               rdfs:label "Fruit flavour"@en ,
+                          "Sabor de fruta"@es ;
+               
+               rdfs:subClassOf :Primary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Green_fruit_aroma
+
+:Green_fruit_aroma rdf:type owl:Class ;
+                   
+                   rdfs:label "Green fruit aroma"@en ,
+                              "Aroma de fruta verde"@es ;
+                   
+                   rdfs:subClassOf :Fruit_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Green_fruit_flavour
+
+:Green_fruit_flavour rdf:type owl:Class ;
+                     
+                     rdfs:label "Green fruit flavour"@en ,
+                                "Sabor de fruta verde"@es ;
+                     
+                     rdfs:subClassOf :Fruit_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Herbaceous_aroma
+
+:Herbaceous_aroma rdf:type owl:Class ;
+                  
+                  rdfs:label "Herbaceous aroma"@en ,
+                             "Aroma herbáceo"@es ;
+                  
+                  rdfs:subClassOf :Primary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Herbaceous_flavour
+
+:Herbaceous_flavour rdf:type owl:Class ;
+                    
+                    rdfs:label "Herbaceous flavour"@en ,
+                               "Sabor herbáceo"@es ;
+                    
+                    rdfs:subClassOf :Primary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Herbal_aroma
+
+:Herbal_aroma rdf:type owl:Class ;
+              
+              rdfs:label "Herbal aroma"@en ,
+                         "Aroma de hierbas"@es ;
+              
+              rdfs:subClassOf :Primary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Herbal_flavour
+
+:Herbal_flavour rdf:type owl:Class ;
+                
+                rdfs:label "Herbal flavour"@en ,
+                           "Sabor de hierbas"@es ;
+                
+                rdfs:subClassOf :Primary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Intensity_flavour
+
+:Intensity_flavour rdf:type owl:Class ;
+                   
+                   rdfs:label "Intensity flavour"@en ,
+                              "Intensidad del sabor"@es ;
+                   
+                   rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Malolactic_aroma
+
+:Malolactic_aroma rdf:type owl:Class ;
+                  
+                  rdfs:label "Malolactic aroma"@en ,
+                             "Aroma maloláctico"@es ;
+                  
+                  rdfs:subClassOf :Secondary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Malolactic_flavour
+
+:Malolactic_flavour rdf:type owl:Class ;
+                    
+                    rdfs:label "Malolactic flavour"@en ,
+                               "Sabor maloláctico"@es ;
+                    
+                    rdfs:subClassOf :Secondary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Oak_aroma
+
+:Oak_aroma rdf:type owl:Class ;
+           
+           rdfs:label "Oak aroma"@en ,
+                      "Aroma de roble"@es ;
+           
+           rdfs:subClassOf :Secondary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Oak_flavour
+
+:Oak_flavour rdf:type owl:Class ;
+             
+             rdfs:label "Oak flavour"@en ,
+                        "Sabor de roble"@es ;
+             
+             rdfs:subClassOf :Secondary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Organoleptic_characteristic
+
+:Organoleptic_characteristic rdf:type owl:Class ;
+                             
+                             rdfs:label "Organoleptic characteristic"@en ,
+                                        "Característica organoléptica del vino"@es ;
+                             
+                             rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en ;
+                             
+                             rdfs:comment "Característica organoléptica que expresa una percepción sensorial (visual, olfativa o gustativa) del vino."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Other_aroma
+
+:Other_aroma rdf:type owl:Class ;
+             
+             rdfs:label "Other aroma"@en ,
+                        "Otros aromas"@es ;
+             
+             rdfs:subClassOf :Secondary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Other_flavour
+
+:Other_flavour rdf:type owl:Class ;
+               
+               rdfs:label "Other flavour"@en ,
+                          "Otros sabores"@es ;
+               
+               rdfs:subClassOf :Secondary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Oxidation_aroma
+
+:Oxidation_aroma rdf:type owl:Class ;
+                 
+                 rdfs:label "Oxidation aroma"@en ,
+                            "Aroma de oxidación"@es ;
+                 
+                 rdfs:subClassOf :Tertiary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Oxidation_flavour
+
+:Oxidation_flavour rdf:type owl:Class ;
+                   
+                   rdfs:label "Oxidation flavour"@en ,
+                              "Sabor de oxidación"@es ;
+                   
+                   rdfs:subClassOf :Tertiary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Pasta
+
+:Pasta rdf:type owl:Class ;
+       
+       rdfs:label "Pasta"@en ,
+                  "Pasta"@es ;
+       
+       rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Poultry
+
+:Poultry rdf:type owl:Class ;
+         
+         rdfs:label "Poultry"@en ,
+                    "Aves"@es ;
+         
+         rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Primary_aroma
+
+:Primary_aroma rdf:type owl:Class ;
+               
+               rdfs:label "Primary aroma"@en ,
+                          "Aroma primario"@es ;
+               
+               rdfs:subClassOf :Wine_nose ;
+               
+               rdfs:comment "Los aromas primarios son los aromas producidos por la uva."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Primary_flavour
+
+:Primary_flavour rdf:type owl:Class ;
+                 
+                 rdfs:label "Primary flavour"@en ,
+                            "Sabor primario"@es ;
+                 
+                 rdfs:subClassOf :Wine_palate ;
+                 
+                 rdfs:comment "Los sabores primarios son los sabores producidos por la uva."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Pungent_spice_aroma
+
+:Pungent_spice_aroma rdf:type owl:Class ;
+                     
+                     rdfs:label "Pungent spice"@en ,
+                                "Especia picante"@es ;
+                     
+                     rdfs:subClassOf :Primary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Pungent_spice_flavour
+
+:Pungent_spice_flavour rdf:type owl:Class ;
+                       
+                       rdfs:label "Pungent spice"@en ,
+                                  "Especia picante"@es ;
+                       
+                       rdfs:subClassOf :Primary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_bottle_age_aroma
+
+:Red_bottle_age_aroma rdf:type owl:Class ;
+                      
+                      rdfs:label "Red wine bottle age aroma"@en ,
+                                 "Aroma de envejicimiento en botella de vino tinto"@es ;
+                      
+                      rdfs:subClassOf :Tertiary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_bottle_age_flavour
+
+:Red_bottle_age_flavour rdf:type owl:Class ;
+                        
+                        rdfs:label "Red wine bottle age flavour"@en ,
+                                   "Sabor de envejicimiento en botella de vino tinto"@es ;
+                        
+                        rdfs:subClassOf :Tertiary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_fruit_aroma
+
+:Red_fruit_aroma rdf:type owl:Class ;
+                 
+                 rdfs:label "Red fruit aroma"@en ,
+                            "Aroma de fruta roja"@es ;
+                 
+                 rdfs:subClassOf :Fruit_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_fruit_development_aroma
+
+:Red_fruit_development_aroma rdf:type owl:Class ;
+                             
+                             rdfs:label "Red wine fruit development aroma"@en ,
+                                        "Aroma de desarrollo frutal en vino tinto"@es ;
+                             
+                             rdfs:subClassOf :Tertiary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_fruit_development_flavour
+
+:Red_fruit_development_flavour rdf:type owl:Class ;
+                               
+                               rdfs:label "Red wine fruit development flavour"@en ,
+                                          "Sabor de desarrollo frutal en vino tinto"@es ;
+                               
+                               rdfs:subClassOf :Tertiary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_fruit_flavour
+
+:Red_fruit_flavour rdf:type owl:Class ;
+                   
+                   rdfs:label "Red fruit flavour"@en ,
+                              "Sabor de fruta roja"@es ;
+                   
+                   rdfs:subClassOf :Fruit_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_wine_colour
+
+:Red_wine_colour rdf:type owl:Class ;
+                 
+                 rdfs:label "Red wine colour"@en ,
+                            "Color de vino tinto"@es ;
+                 
+                 rdfs:subClassOf :Wine_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_wine_edging_colour
+
+:Red_wine_edging_colour rdf:type owl:Class ;
+                        
+                        rdfs:label "Red wine edging colour"@en ,
+                                   "Color del menisco de vino tinto"@es ;
+                        
+                        rdfs:subClassOf :Wine_edging_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#Red_wine_tasting
+
+:Red_wine_tasting rdf:type owl:Class ;
+                  
+                  rdfs:label "Red wine tasting"@en ,
+                             "Cata de vino tinto"@es ;
+                  
+                  rdfs:subClassOf :Wine_tasting ;
+                  
+                  rdfs:comment "Descripción organoléptica de un vino tinto. Comprende fundamentalmente tres características: vista, olfato y gusto."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Rice
+
+:Rice rdf:type owl:Class ;
+      
+      rdfs:label "Rice"@en ,
+                 "Arroz"@es ;
+      
+      rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Rose_wine_colour
+
+:Rose_wine_colour rdf:type owl:Class ;
+                  
+                  rdfs:label "Rosé wine colour"@en ,
+                             "Color de vino rosado"@es ;
+                  
+                  rdfs:subClassOf :Wine_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#Rose_wine_edging_colour
+
+:Rose_wine_edging_colour rdf:type owl:Class ;
+                         
+                         rdfs:label "Rosé wine edging colour"@en ,
+                                    "Color del menisco de vino rosado"@es ;
+                         
+                         rdfs:subClassOf :Wine_edging_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#Seafood
+
+:Seafood rdf:type owl:Class ;
+         
+         rdfs:label "Seafood"@en ,
+                    "Marisco"@es ;
+         
+         rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Secondary_aroma
+
+:Secondary_aroma rdf:type owl:Class ;
+                 
+                 rdfs:label "Secondary aroma"@en ,
+                            "Aroma secundario"@es ;
+                 
+                 rdfs:subClassOf :Wine_nose ;
+                 
+                 rdfs:comment "Un aroma secundario es un aroma procedente de la elaboración del vino (fermentación alcohólica, fermentación maloláctica, levaduras, etc.)"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Secondary_flavour
+
+:Secondary_flavour rdf:type owl:Class ;
+                   
+                   rdfs:label "Secondary flavour"@en ,
+                              "Sabor secundario"@es ;
+                   
+                   rdfs:subClassOf :Wine_palate ;
+                   
+                   rdfs:comment "Un sabor secundario es un sabor procedente de la elaboración del vino (fermentación alcohólica, fermentación maloláctica, levaduras, etc.)"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Smoothness_palate
+
+:Smoothness_palate rdf:type owl:Class ;
+                   
+                   rdfs:label "Smoothness on palate"@en ,
+                              "Suavidad en paladar"@es ;
+                   
+                   rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Sparkling_wine_tasting
+
+:Sparkling_wine_tasting rdf:type owl:Class ;
+                        
+                        rdfs:label "Sparkling wine tasting"@en ,
+                                   "Cata de vino espumoso"@es ;
+                        
+                        rdfs:subClassOf :Wine_tasting ;
+                        
+                        rdfs:comment "Descripción organoléptica de un vino espumoso. Comprende fundamentalmente tres características: vista, olfato y gusto."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Spice
+
+:Spice rdf:type owl:Class ;
+       
+       rdfs:label "Spice"@en ,
+                  "Especia"@es ;
+       
+       rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#Stone_fruit_aroma
+
+:Stone_fruit_aroma rdf:type owl:Class ;
+                   
+                   rdfs:label "Stone fruit aroma"@en ,
+                              "Aroma de fruta de hueso"@es ;
+                   
+                   rdfs:subClassOf :Fruit_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Stone_fruit_flavour
+
+:Stone_fruit_flavour rdf:type owl:Class ;
+                     
+                     rdfs:label "Stone fruit flavour"@en ,
+                                "Sabor de fruta de hueso"@es ;
+                     
+                     rdfs:subClassOf :Fruit_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Sweetness_palate
+
+:Sweetness_palate rdf:type owl:Class ;
+                  
+                  rdfs:label "Sweetness on palate"@en ,
+                             "Dulzura en paladar"@es ;
+                  
+                  rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Tannins_astringency_palate
+
+:Tannins_astringency_palate rdf:type owl:Class ;
+                            
+                            rdfs:label "Tannins astringency on palate"@en ,
+                                       "Astringencia de los taninos en paladar"@es ;
+                            
+                            rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Tannins_level_palate
+
+:Tannins_level_palate rdf:type owl:Class ;
+                      
+                      rdfs:label "Tannins level on palate"@en ,
+                                 "Nivel de taninos en paladar"@es ;
+                      
+                      rdfs:subClassOf :Wine_palate .
+
+
+
+###  http://purl.org/ceu/ebaco#Tertiary_aroma
+
+:Tertiary_aroma rdf:type owl:Class ;
+                
+                rdfs:label "Tertiary aroma"@en ,
+                           "Aroma terciario"@es ;
+                
+                rdfs:subClassOf :Wine_nose ;
+                
+                rdfs:comment "Un aroma terciario es un aroma procedente de la crianza y el envejecimiento del vino tanto en barrica como en botella."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Tertiary_flavour
+
+:Tertiary_flavour rdf:type owl:Class ;
+                  
+                  rdfs:label "Tertiary flavour"@en ,
+                             "Sabor terciario"@es ;
+                  
+                  rdfs:subClassOf :Wine_palate ;
+                  
+                  rdfs:comment "Un sabor terciario es un sabor procedente de la crianza y el envejecimiento del vino tanto en barrica como en botella."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Tropical_fruit_aroma
+
+:Tropical_fruit_aroma rdf:type owl:Class ;
+                      
+                      rdfs:label "Tropical fruit aroma"@en ,
+                                 "Aroma de fruta tropical"@es ;
+                      
+                      rdfs:subClassOf :Fruit_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Tropical_fruit_flavour
+
+:Tropical_fruit_flavour rdf:type owl:Class ;
+                        
+                        rdfs:label "Tropical fruit flavour"@en ,
+                                   "Sabor de fruta tropical"@es ;
+                        
+                        rdfs:subClassOf :Fruit_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#Vegetable
+
+:Vegetable rdf:type owl:Class ;
+           
+           rdfs:label "Vegetable"@en ,
+                      "Verdura"@es ;
+           
+           rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#White_bottle_age_aroma
+
+:White_bottle_age_aroma rdf:type owl:Class ;
+                        
+                        rdfs:label "White wine bottle age aroma"@en ,
+                                   "Aroma de envejimiento en botella de vino blanco"@es ;
+                        
+                        rdfs:subClassOf :Tertiary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#White_bottle_age_flavour
+
+:White_bottle_age_flavour rdf:type owl:Class ;
+                          
+                          rdfs:label "White wine bottle age flavour"@en ,
+                                     "Sabor de envejimiento en botella de vino blanco"@es ;
+                          
+                          rdfs:subClassOf :Tertiary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#White_fruit_development_aroma
+
+:White_fruit_development_aroma rdf:type owl:Class ;
+                               
+                               rdfs:label "White wine fruit development aroma"@en ,
+                                          "Aroma de desarrollo frutal en vino blanco"@es ;
+                               
+                               rdfs:subClassOf :Tertiary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#White_fruit_development_flavour
+
+:White_fruit_development_flavour rdf:type owl:Class ;
+                                 
+                                 rdfs:label "White wine fruit development flavour"@en ,
+                                            "Sabor de desarrollo frutal en vino blanco"@es ;
+                                 
+                                 rdfs:subClassOf :Tertiary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#White_wine_colour
+
+:White_wine_colour rdf:type owl:Class ;
+                   
+                   rdfs:label "White wine colour"@en ,
+                              "Color de vino blanco"@es ;
+                   
+                   rdfs:subClassOf :Wine_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#White_wine_edging_colour
+
+:White_wine_edging_colour rdf:type owl:Class ;
+                          
+                          rdfs:label "White wine edging colour"@en ,
+                                     "Color del menisco de vino blanco"@es ;
+                          
+                          rdfs:subClassOf :Wine_edging_colour .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_appearance
+
+:Wine_appearance rdf:type owl:Class ;
+                 
+                 rdfs:label "Wine appearance"@en ,
+                            "Aspecto del vino"@es ;
+                 
+                 rdfs:subClassOf :Organoleptic_characteristic ;
+                 
+                 rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en ;
+                 
+                 rdfs:comment "Percepción visual del vino. Puede referirse al color, la limpieza o la viscosidad."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_clarity
+
+:Wine_clarity rdf:type owl:Class ;
+              
+              rdfs:label "Wine clarity"@en ,
+                         "Limpieza del vino"@es ;
+              
+              rdfs:subClassOf :Wine_appearance ;
+              
+              rdfs:comment "Característica visual del vino que se refiere a la presencia o no de partículas suspendidas o precipitadas en el vino."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_colour
+
+:Wine_colour rdf:type owl:Class ;
+             
+             rdfs:label "Wine colour"@en ,
+                        "Color del vino"@es ;
+             
+             rdfs:subClassOf :Wine_appearance ;
+             
+             rdfs:comment "Característica visual del vino que se refiere al color del vino al mirar la copa sobre un fondo blanco."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_colour_intensity
+
+:Wine_colour_intensity rdf:type owl:Class ;
+                       
+                       rdfs:label "Wine colour intensity"@en ,
+                                  "Capa del vino"@es ;
+                       
+                       rdfs:subClassOf :Wine_appearance ;
+                       
+                       rdfs:comment """Característica visual del vino que se refiere a la medida de la cantidad o intensidad del color en vinos tintos que depende del contenido de antocianos. 
+Se observa tumbando la copa sobre fondo blanco y mirando el centro de la copa. Se distingue capa alta cuando no se puede ver a través del vino (opaco), capa media cuando deja pasar algo de luz y capa baja cuando puede verse a través del vino."""@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_edging_colour
+
+:Wine_edging_colour rdf:type owl:Class ;
+                    
+                    rdfs:label "Wine edging colour"@en ,
+                               "Color del menisco del vino"@es ;
+                    
+                    rdfs:subClassOf :Wine_appearance ;
+                    
+                    rdfs:comment """Característica visual del vino que se refiere al color del ribete que forma el vino en la copa en la interfase entre el vino y el aire. 
+Es curvada y depende de la tensión superficial del vino. 
+En el se aprecian los reflejos del vino que indican aspectos como su edad o estado de conservación."""^^xsd:string .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_food
+
+:Wine_food rdf:type owl:Class ;
+           
+           rdfs:label "Wine food"@en ,
+                      "Comida con vino"@es ;
+           
+           rdfs:comment "Tipo de comida con la que se bebe un vino."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_nose
+
+:Wine_nose rdf:type owl:Class ;
+           
+           rdfs:label "Wine nose"@en ,
+                      "Olor del vino"@es ;
+           
+           rdfs:subClassOf :Organoleptic_characteristic ;
+           
+           rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en ;
+           
+           rdfs:comment "Percepción olfativa de un vino. Puede expresar un aroma primario o secundario."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_palate
+
+:Wine_palate rdf:type owl:Class ;
+             
+             rdfs:label "Wine palate"@en ,
+                        "Sabor del vino"@es ;
+             
+             rdfs:subClassOf :Organoleptic_characteristic ;
+             
+             rdfs:seeAlso "http://www.wsetglobal.com/documents/dip_sat_wine2014_v2.pdf"@en ;
+             
+             rdfs:comment "Percepción gustativa del vino. Puede expresar un sabor dulce, salado, amargo o ácido y su intensidad."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_taster
+
+:Wine_taster rdf:type owl:Class ;
+             
+             rdfs:label "Wine taster"@en ,
+                        "Catador"@es ;
+             
+             rdfs:subClassOf <http://www.w3.org/ns/prov#Person> ;
+             
+             rdfs:comment "Un catador es una persona que realiza catas de vino."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_tasting
+
+:Wine_tasting rdf:type owl:Class ;
+              
+              rdfs:label "Wine tasting"@en ,
+                         "Cata de vino"@es ;
+              
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_clarity ;
+                                owl:someValuesFrom :Wine_clarity
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_edging_colour ;
+                                owl:someValuesFrom :Wine_edging_colour
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_tear ;
+                                owl:someValuesFrom :Wine_tear
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_colour_intensity ;
+                                owl:someValuesFrom :Wine_colour_intensity
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_aroma ;
+                                owl:someValuesFrom :Wine_nose
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :has_aroma_intensity ;
+                                owl:someValuesFrom :Aroma_intensity
+                              ] ;
+              
+              rdfs:comment "Descripción organoléptica de un vino. Comprende fundamentalmente tres características: vista, olfato y gusto."^^xsd:string ;
+              
+              rdfs:seeAlso <http://issuu.com/cataunvino/docs/tutorial_de_cata/1?e=5254475/2614582> ,
+                           <http://www.cataunvino.es/> .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_tear
+
+:Wine_tear rdf:type owl:Class ;
+           
+           rdfs:label "Wine tear"@en ,
+                      "Lágrima del vino"@es ;
+           
+           rdfs:subClassOf :Wine_appearance ;
+           
+           rdfs:comment """Característica visual del vino que se refiere a la formación de gotas que resbalan por las paredes de la copa tras agitar el vino en la copa. 
+Este fenómeno deriva de la viscosidad del vino, y su naturaleza depende fundamentalmente del contenido alcohólico.
+Cuanto más numerosas, largas y persistentes son las lágrimas, más cuerpo, volumen y fortaleza tiene el vino. Lágrimas muy separadas es indicativo de vinos jóvenes, mientras que lágrimas abuntantes, densas y cortas corresponden con vinos viejos y maduros."""@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Yeast_aroma
+
+:Yeast_aroma rdf:type owl:Class ;
+             
+             rdfs:label "Yeast aroma"@en ,
+                        "Aroma de levadura"@es ;
+             
+             rdfs:subClassOf :Secondary_aroma .
+
+
+
+###  http://purl.org/ceu/ebaco#Yeast_flavour
+
+:Yeast_flavour rdf:type owl:Class ;
+               
+               rdfs:label "Yeast flavour"@en ,
+                          "Sabor de levadura"@es ;
+               
+               rdfs:subClassOf :Secondary_flavour .
+
+
+
+###  http://purl.org/ceu/ebaco#pizza
+
+:pizza rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Wine_food .
+
+
+
+###  http://purl.org/ceu/ebaco#rose_wine_tasting
+
+:rose_wine_tasting rdf:type owl:Class ;
+                   
+                   rdfs:label "Rosé wine tasting"@en ,
+                              "Cata de vino rosado"@es ;
+                   
+                   rdfs:subClassOf :Wine_tasting ;
+                   
+                   rdfs:comment "Descripción organoléptica de un vino rosado. Comprende fundamentalmente tres características: vista, olfato y gusto."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#white_wine_tasting
+
+:white_wine_tasting rdf:type owl:Class ;
+                    
+                    rdfs:label "White wine tasting"@en ,
+                               "Cata de vino blanco"@es ;
+                    
+                    rdfs:subClassOf :Wine_tasting ;
+                    
+                    rdfs:comment "Descripción organoléptica de un vino blanco. Comprende fundamentalmente tres características: vista, olfato y gusto."@es .
+
+
+
+###  http://www.w3.org/ns/prov#Person
+
+<http://www.w3.org/ns/prov#Person> rdfs:label "Persona"@es ;
+                                   
+                                   rdfs:comment "Person"@en .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#acacia_aroma
+
+:acacia_aroma rdf:type :Floral_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Acacia aroma"@en ,
+                         "Aroma de acacia"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#acacia_flavour
+
+:acacia_flavour rdf:type :Floral_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Acacia flavour"@en ,
+                           "Sabor de acacia"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#aggressive_smoothness
+
+:aggressive_smoothness rdf:type :Smoothness_palate ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Aggressive smoothness"@en ,
+                                  "Suavidad agresiva"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#almond_aroma
+
+:almond_aroma rdf:type :Oxidation_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Almond aroma"@en ,
+                         "Aroma de almendra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#almond_blossom_aroma
+
+:almond_blossom_aroma rdf:type :Floral_aroma ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Almond blossom aroma"@en ,
+                                 "Aroma de almendro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#almond_blossom_flavour
+
+:almond_blossom_flavour rdf:type :Floral_flavour ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "Almond blossom flavour"@en ,
+                                   "Sabor de almendro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#almond_flavour
+
+:almond_flavour rdf:type :Oxidation_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Almond flavour"@en ,
+                           "Sabor de almendra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#amber_colour
+
+:amber_colour rdf:type :White_wine_colour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "amber colour"@en ,
+                         "Color ámbar"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#apricot_aroma
+
+:apricot_aroma rdf:type :Stone_fruit_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Apricot aroma"@en ,
+                          "Aroma de albaricoque"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#apricot_flavour
+
+:apricot_flavour rdf:type :Stone_fruit_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Apricot flavour"@en ,
+                            "Sabor de albaricoque"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#asparagus_aroma
+
+:asparagus_aroma rdf:type :Herbaceous_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Asparagus aroma"@en ,
+                            "Aroma de espárrago"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#asparagus_flavour
+
+:asparagus_flavour rdf:type :Herbaceous_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Asparagus flavour"@en ,
+                              "Sabor de espárrago"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#banana_aroma
+
+:banana_aroma rdf:type :Tropical_fruit_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Banana aroma"@en ,
+                         "Aroma de plátano"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#banana_flavour
+
+:banana_flavour rdf:type :Tropical_fruit_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Banana flavour"@en ,
+                           "Sabor de plátano"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#biscuit_aroma
+
+:biscuit_aroma rdf:type :Yeast_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Biscuit aroma"@en ,
+                          "Aroma de galleta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#biscuit_flavour
+
+:biscuit_flavour rdf:type :Yeast_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Biscuit flavour"@en ,
+                            "Sabor de galleta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#black_cherry_aroma
+
+:black_cherry_aroma rdf:type :Black_fruit_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Black cherry aroma"@en ,
+                               "Aroma de cereza negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#black_cherry_flavour
+
+:black_cherry_flavour rdf:type :Black_fruit_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Black cherry flavour"@en ,
+                                 "Sabor de cereza negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#black_pepper_aroma
+
+:black_pepper_aroma rdf:type :Pungent_spice_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Black pepper aroma"@en ,
+                               "Aroma de pimienta negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#black_pepper_flavour
+
+:black_pepper_flavour rdf:type :Pungent_spice_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Black pepper flavour"@en ,
+                                 "Sabor de pimienta negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#black_plum_aroma
+
+:black_plum_aroma rdf:type :Black_fruit_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Black plum aroma"@en ,
+                             "Aroma de ciruela negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#black_plum_flavour
+
+:black_plum_flavour rdf:type :Black_fruit_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Black plum flavour"@en ,
+                               "Sabor de ciruela negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blackberry_aroma
+
+:blackberry_aroma rdf:type :Black_fruit_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Blackberry aroma"@en ,
+                             "Aroma de mora"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blackberry_flavour
+
+:blackberry_flavour rdf:type :Black_fruit_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Blackberry flavour"@en ,
+                               "Sabor de mora"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blackcurrant_aroma
+
+:blackcurrant_aroma rdf:type :Black_fruit_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Blackcurrant aroma"@en ,
+                               "Aroma de grosella negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blackcurrant_flavour
+
+:blackcurrant_flavour rdf:type :Black_fruit_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Blackcurrant flavour"@en ,
+                                 "Sabor de grosella negra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blossom_aroma
+
+:blossom_aroma rdf:type :Floral_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Blossom aroma"@en ,
+                          "Aroma de flor"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blossom_flavour
+
+:blossom_flavour rdf:type :Floral_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Blossom flavour"@en ,
+                            "Sabor de flor"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blue_cheese
+
+:blue_cheese rdf:type :Dairy ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Blue cheese"@en ,
+                        "Queso azul"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blueberry_aroma
+
+:blueberry_aroma rdf:type :Black_fruit_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Blueberry aroma"@en ,
+                            "Aroma de arándano"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#blueberry_flavour
+
+:blueberry_flavour rdf:type :Black_fruit_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Blueberry flavour"@en ,
+                              "Sabor de arándano"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bluefish
+
+:bluefish rdf:type :Fish ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Pescado azul" ,
+                     "Bluefish"@en .
+
+
+
+###  http://purl.org/ceu/ebaco#bramble_aroma
+
+:bramble_aroma rdf:type :Black_fruit_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Bramble aroma"@en ,
+                          "Aroma de zarza"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bramble_flavour
+
+:bramble_flavour rdf:type :Black_fruit_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Bramble flavour"@en ,
+                            "Sabor de zarza"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bread_aroma
+
+:bread_aroma rdf:type :Yeast_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Bread aroma"@en ,
+                        "Aroma de pan"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bread_dough_aroma
+
+:bread_dough_aroma rdf:type :Yeast_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Bread dough aroma"@en ,
+                              "Aroma de masa de pan"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bread_dough_flavour
+
+:bread_dough_flavour rdf:type :Yeast_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Bread dough flavour"@en ,
+                                "Sabor de masa de pan"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bread_flavour
+
+:bread_flavour rdf:type :Yeast_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Bread flavour"@en ,
+                          "Sabor de pan"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bright_clarity
+
+:bright_clarity rdf:type :Wine_clarity ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Bright clarity"@en ,
+                           "Limpieza brillante"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#brioche_aroma
+
+:brioche_aroma rdf:type :Yeast_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Brioche aroma"@en ,
+                          "Aroma de brioche"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#brioche_flavour
+
+:brioche_flavour rdf:type :Yeast_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Brioche flavour"@en ,
+                            "Sabor de brioche"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#brown_colour
+
+:brown_colour rdf:type :White_wine_colour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "brown colour"@en ,
+                         "Color marrón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#bushmeat
+
+:bushmeat rdf:type :Carne ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Bushmeat"@en ,
+                     "Carne de caza"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#butter_aroma
+
+:butter_aroma rdf:type :Malolactic_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Butter aroma"@en ,
+                         "Aroma de mantequilla"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#butter_flavour
+
+:butter_flavour rdf:type :Malolactic_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Butter flavour"@en ,
+                           "Sabor de mantequilla"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#butterscotch_aroma
+
+:butterscotch_aroma rdf:type :Oak_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Butterscotch aroma"@en ,
+                               "Aroma de caramelo de mantequilla"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#butterscotch_flavour
+
+:butterscotch_flavour rdf:type :Oak_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Butterscotch flavour"@en ,
+                                 "Sabor de caramelo de mantequilla"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cedar_aroma
+
+:cedar_aroma rdf:type :Oak_aroma ,
+                      :Red_bottle_age_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Cedar aroma"@en ,
+                        "Aroma de cedro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cedar_flavour
+
+:cedar_flavour rdf:type :Oak_flavour ,
+                        :Red_bottle_age_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Cedar flavour"@en ,
+                          "Sabor de cedro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cereal_aroma
+
+:cereal_aroma rdf:type :White_bottle_age_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Cereal aroma"@en ,
+                         "Aroma de cereal"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cereal_flavour
+
+:cereal_flavour rdf:type :White_bottle_age_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Cereal flavour"@en ,
+                           "Sabor de cereal"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#chamomile_aroma
+
+:chamomile_aroma rdf:type :Floral_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Chamomile aroma"@en ,
+                            "Aroma de camomila"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#chamomile_flavour
+
+:chamomile_flavour rdf:type :Floral_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Chamomile flavour"@en ,
+                              "Sabor de camomila"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#charamel_aroma
+
+:charamel_aroma rdf:type :Oxidation_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Charamel aroma"@en ,
+                           "Aroma de caramelo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#charamel_flavour
+
+:charamel_flavour rdf:type :Oxidation_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Charamel flavour"@en ,
+                             "Sabor de caramelo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#charred_wood_aroma
+
+:charred_wood_aroma rdf:type :Oak_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Charred wood aroma"@en ,
+                               "Aroma de madera quemada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#charred_wood_flavour
+
+:charred_wood_flavour rdf:type :Oak_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Charred wood flavour"@en ,
+                                 "Sabor de madera quemada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cheese
+
+:cheese rdf:type :Dairy ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Cheese"@en ,
+                   "Queso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cheese_aroma
+
+:cheese_aroma rdf:type :Malolactic_aroma ,
+                       :Yeast_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Cheese aroma"@en ,
+                         "Aroma de queso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cheese_flavour
+
+:cheese_flavour rdf:type :Malolactic_flavour ,
+                         :Yeast_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Cheese flavour"@en ,
+                           "Sabor de queso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#chicken_meat
+
+:chicken_meat rdf:type :Poultry ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Chicken meat"@en ,
+                         "Carne de pollo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#chocolate
+
+:chocolate rdf:type :Dessert ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Chocolate" ,
+                      "Chocolate"@en .
+
+
+
+###  http://purl.org/ceu/ebaco#chocolate_aroma
+
+:chocolate_aroma rdf:type :Oxidation_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Chocolate aroma"@en ,
+                            "Aroma de chocolate"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#chocolate_flavour
+
+:chocolate_flavour rdf:type :Oxidation_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Chocolate flavour"@en ,
+                              "Sabor de chocolate"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cinnamon_aroma
+
+:cinnamon_aroma rdf:type :White_bottle_age_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Cinnamon aroma"@en ,
+                           "Aroma de canela"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cinnamon_flavour
+
+:cinnamon_flavour rdf:type :White_bottle_age_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Cinnamon flavour"@en ,
+                             "Sabor de canela"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#clear_clarity
+
+:clear_clarity rdf:type :Wine_clarity ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Clear clarity"@en ,
+                          "Limpieza clara"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#clove_aroma
+
+:clove_aroma rdf:type :Oak_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Clove aroma"@en ,
+                        "Aroma de clavo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#clove_flavour
+
+:clove_flavour rdf:type :Oak_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Clove flavour"@en ,
+                          "Sabor de clavo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#coarse_tannines
+
+:coarse_tannines rdf:type :Tannins_astringency_palate ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Coarse tannines"@en ,
+                            "Taninos ásperos"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#coconut_aroma
+
+:coconut_aroma rdf:type :Oak_aroma ,
+                        :Oxidation_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Coconut aroma"@en ,
+                          "Aroma de coco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#coconut_flavour
+
+:coconut_flavour rdf:type :Oak_flavour ,
+                          :Oxidation_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Coconut flavour"@en ,
+                            "Sabor de coco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#coffe_aroma
+
+:coffe_aroma rdf:type :Other_aroma ,
+                      :Oxidation_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Coffe aroma"@en ,
+                        "Aroma de café"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#coffe_flavour
+
+:coffe_flavour rdf:type :Other_flavour ,
+                        :Oxidation_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Coffe flavour"@en ,
+                          "Sabor de café"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#colourless_edging_colour
+
+:colourless_edging_colour rdf:type :White_wine_edging_colour ,
+                                   owl:NamedIndividual ;
+                          
+                          rdfs:label "colourless edging colour"@en ,
+                                     "Color de menisco incoloro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cooked
+
+:cooked rdf:type :Carne ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Cooked ham"@en ,
+                   "Jamón cocido"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cooked_black_cherry_aroma
+
+:cooked_black_cherry_aroma rdf:type :Red_fruit_development_aroma ,
+                                    owl:NamedIndividual ;
+                           
+                           rdfs:label "Cooked black cherry aroma"@en ,
+                                      "Aroma de cereza negra cocida"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cooked_black_cherry_flavour
+
+:cooked_black_cherry_flavour rdf:type :Red_fruit_development_flavour ,
+                                      owl:NamedIndividual ;
+                             
+                             rdfs:label "Cooked black cherry flavour"@en ,
+                                        "Sabor de cereza negra cocida"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cooked_blackberry_aroma
+
+:cooked_blackberry_aroma rdf:type :Red_fruit_development_aroma ,
+                                  owl:NamedIndividual ;
+                         
+                         rdfs:label "Cooked blackberry aroma"@en ,
+                                    "Aroma de mora cocida"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cooked_blackberry_flavour
+
+:cooked_blackberry_flavour rdf:type :Red_fruit_development_flavour ,
+                                    owl:NamedIndividual ;
+                           
+                           rdfs:label "Cooked blackberry flavour"@en ,
+                                      "Sabor de mora cocida"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cooked_strawberry_aroma
+
+:cooked_strawberry_aroma rdf:type :Red_fruit_development_aroma ,
+                                  owl:NamedIndividual ;
+                         
+                         rdfs:label "Cooked strawberry aroma"@en ,
+                                    "Aroma de fresa cocida"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cooked_strawberry_flavour
+
+:cooked_strawberry_flavour rdf:type :Red_fruit_development_flavour ,
+                                    owl:NamedIndividual ;
+                           
+                           rdfs:label "Cooked strawberry flavour"@en ,
+                                      "Sabor de fresa cocida"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cow_cheese
+
+:cow_cheese rdf:type :Dairy ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Cow cheese"@en ,
+                       "Queso de vaca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cow_meat
+
+:cow_meat rdf:type :Carne ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Cow meat"@en ,
+                     "Carne de ternera"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cranberry_aroma
+
+:cranberry_aroma rdf:type :Red_fruit_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Cranberry aroma"@en ,
+                            "Aroma de arándano rojo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cranberry_flavour
+
+:cranberry_flavour rdf:type :Red_fruit_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Cranberry flavour"@en ,
+                              "Sabor de arándano rojo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cream_aroma
+
+:cream_aroma rdf:type :Malolactic_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Cream aroma"@en ,
+                        "Aroma de nata"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#cream_flavour
+
+:cream_flavour rdf:type :Malolactic_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Cream flavour"@en ,
+                          "Sabor de nata"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#creamy_cheese
+
+:creamy_cheese rdf:type :Dairy ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Creamy cheese"@en ,
+                          "Queso cremoso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#creamy_smoothness
+
+:creamy_smoothness rdf:type :Smoothness_palate ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Creamy smoothness"@en ,
+                              "Suavidad cremosa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#custard_apple_aroma
+
+:custard_apple_aroma rdf:type :Green_fruit_aroma ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Custard apple aroma"@en ,
+                                "Aroma de chirimoya"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#custard_apple_flavour
+
+:custard_apple_flavour rdf:type :Green_fruit_flavour ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Custard apple flavour"@en ,
+                                  "Sabor de chirimoya"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dark_brown
+
+:dark_brown rdf:type :Red_wine_colour ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Dark brown colour"@en ,
+                       "Color marrón oscuro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#date_aroma
+
+:date_aroma rdf:type :Dried_fruit_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Date aroma"@en ,
+                       "Aroma de dátil"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#date_flavour
+
+:date_flavour rdf:type :Dried_fruit_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Date flavour"@en ,
+                         "Sabor de dátil"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#deep_colour_intensity
+
+:deep_colour_intensity rdf:type :Wine_colour_intensity ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Deep colour intensity"@en ,
+                                  "Capa cubierta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#deer_meat
+
+:deer_meat rdf:type :Carne ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Deer meat"@en ,
+                      "Carne de ciervo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#delicate_smoothness
+
+:delicate_smoothness rdf:type :Smoothness_palate ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Delicate moothness"@en ,
+                                "Suavidad delicada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#desert
+
+:desert rdf:type :Dessert ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Postres en general" ,
+                   "Desert"@en .
+
+
+
+###  http://purl.org/ceu/ebaco#developing_aroma
+
+:developing_aroma rdf:type :Aroma_development ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Developing aroma"@en ,
+                             "Desarrollo de aroma en evolución"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dill_aroma
+
+:dill_aroma rdf:type :Herbal_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Dill aroma"@en ,
+                       "Aroma de eneldo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dill_flavour
+
+:dill_flavour rdf:type :Herbal_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Dill flavour"@en ,
+                         "Sabor de eneldo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dried_apple_aroma
+
+:dried_apple_aroma rdf:type :White_fruit_development_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Dried apple aroma"@en ,
+                              "Aroma de manzana seca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dried_apple_flavour
+
+:dried_apple_flavour rdf:type :White_fruit_development_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Dried apple flavour"@en ,
+                                "Sabor de manzana seca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dried_apricot_aroma
+
+:dried_apricot_aroma rdf:type :White_fruit_development_aroma ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Dried apricot aroma"@en ,
+                                "Aroma de albaricoque seco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dried_apricot_flavour
+
+:dried_apricot_flavour rdf:type :White_fruit_development_flavour ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Dried apricot flavour"@en ,
+                                  "Sabor de albaricoque seco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dried_banana_aroma
+
+:dried_banana_aroma rdf:type :White_fruit_development_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Aroma de plátano seco"@es ,
+                               "Dried banana aroma"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dried_banana_flavour
+
+:dried_banana_flavour rdf:type :White_fruit_development_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Dried banana flavour"@es ,
+                                 "Sabor de plátano seco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dry_fruits
+
+:dry_fruits rdf:type :Dessert ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Frutos secos" ,
+                       "Dry fruits"@en .
+
+
+
+###  http://purl.org/ceu/ebaco#dry_sweetness
+
+:dry_sweetness rdf:type :Sweetness_palate ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Dry sweetness"@en ,
+                          "Dulzura seca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#duck_meat
+
+:duck_meat rdf:type :Poultry ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Duck meat"@en ,
+                      "Carne de pato"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#dull_clarity
+
+:dull_clarity rdf:type :Wine_clarity ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Dull clarity"@en ,
+                         "Limpieza mate"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#earth_aroma
+
+:earth_aroma rdf:type :Red_bottle_age_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Earth aroma"@en ,
+                        "Aroma de tierra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#earth_flavour
+
+:earth_flavour rdf:type :Red_bottle_age_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Earth flavour"@en ,
+                          "Sabor de tierra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#elderflower_aroma
+
+:elderflower_aroma rdf:type :Floral_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Elderflower aroma"@en ,
+                              "Aroma de flor de sauco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#elderflower_flavour
+
+:elderflower_flavour rdf:type :Floral_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Elderflower flavour"@en ,
+                                "Sabor de flor de sauco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ensalada_pasta
+
+:ensalada_pasta rdf:type :Pasta ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Pasta salade"@en ,
+                           "Ensalada de pasta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#eucalyptus_aroma
+
+:eucalyptus_aroma rdf:type :Herbal_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Eucalyptus aroma"@en ,
+                             "Aroma de eucalipto"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#eucalyptus_flavour
+
+:eucalyptus_flavour rdf:type :Herbal_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Eucalyptus flavour"@en ,
+                               "Sabor de eucalipto"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#farmyard_aroma
+
+:farmyard_aroma rdf:type :Red_bottle_age_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Farmyard aroma"@en ,
+                           "Aroma de granja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#farmyard_flavour
+
+:farmyard_flavour rdf:type :Red_bottle_age_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Farmyard flavour"@en ,
+                             "Sabor de granja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fennel_aroma
+
+:fennel_aroma rdf:type :Herbal_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Fennel aroma"@en ,
+                         "Aroma de hinojo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fennel_flavour
+
+:fennel_flavour rdf:type :Herbal_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Fennel flavour"@en ,
+                           "Sabor de hinojo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fig_aroma
+
+:fig_aroma rdf:type :Dried_fruit_aroma ,
+                    :Red_fruit_development_aroma ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Fig aroma"@en ,
+                      "Aroma de higo seco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fig_flavour
+
+:fig_flavour rdf:type :Dried_fruit_flavour ,
+                      :Red_fruit_development_flavour ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Fig flavour"@en ,
+                        "Sabor de higo seco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fig_tree_aroma
+
+:fig_tree_aroma rdf:type :Herbal_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Fig tree aroma"@en ,
+                           "Aroma de higuera"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fig_tree_flavour
+
+:fig_tree_flavour rdf:type :Herbal_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Fig tree flavour"@en ,
+                             "Sabor de higuera"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fine_grained_tannines
+
+:fine_grained_tannines rdf:type :Tannins_astringency_palate ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Fine grained tannines"@en ,
+                                  "Taninos finos"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fish
+
+:fish rdf:type :Fish ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "Fish"@en ,
+                 "Pescado en general"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#flint_aroma
+
+:flint_aroma rdf:type :Other_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Flint aroma"@en ,
+                        "Aroma de pedernal"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#flint_flavour
+
+:flint_flavour rdf:type :Other_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Flint flavour"@en ,
+                          "Sabor de pedernal"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#forest_floor_aroma
+
+:forest_floor_aroma rdf:type :Red_bottle_age_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Forest floor aroma"@en ,
+                               "Aroma de suelo de bosque"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#forest_floor_flavour
+
+:forest_floor_flavour rdf:type :Red_bottle_age_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Forest floor flavour"@en ,
+                                 "Sabor de suelo de bosque"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fresh_cheese
+
+:fresh_cheese rdf:type :Dairy ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Fresh cheese"@en ,
+                         "Queso fresco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#full_body
+
+:full_body rdf:type :Body_palate ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Full body"@en ,
+                      "Cuerpo pleno"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#fully_developed_aroma
+
+:fully_developed_aroma rdf:type :Aroma_development ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Fully developed aroma"@en ,
+                                  "Aroma completamente desarrollado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#garnet_colour
+
+:garnet_colour rdf:type :Red_wine_colour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Garnet colour"@en ,
+                          "Color granate"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#gass_aroma
+
+:gass_aroma rdf:type :Herbaceous_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Grass aroma"@en ,
+                       "Aroma de hierba"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#gass_flavour
+
+:gass_flavour rdf:type :Herbaceous_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Grass flavour"@en ,
+                         "Sabor de hierba"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#geranium_aroma
+
+:geranium_aroma rdf:type :Floral_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Geranium aroma"@en ,
+                           "Aroma de geranio"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#geranium_flavour
+
+:geranium_flavour rdf:type :Floral_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Geranium flavour"@en ,
+                             "Sabor de geranio"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ginger_aroma
+
+:ginger_aroma rdf:type :White_bottle_age_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Ginger aroma"@en ,
+                         "Aroma de jengibre"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ginger_flavour
+
+:ginger_flavour rdf:type :White_bottle_age_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Ginger flavour"@en ,
+                           "Sabor de jengibre"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#goat_cheese
+
+:goat_cheese rdf:type :Dairy ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Goat cheese"@en ,
+                        "Queso de cabra"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#gold-yellow_colour
+
+:gold-yellow_colour rdf:type :White_wine_colour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "gold-yellow colour"@en ,
+                               "Color amarillo dorado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#gooseberry_aroma
+
+:gooseberry_aroma rdf:type :Green_fruit_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Gooseberry aroma"@en ,
+                             "Aroma de grosella"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#gooseberry_flavour
+
+:gooseberry_flavour rdf:type :Green_fruit_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Gooseberry flavour"@en ,
+                               "Sabor de grosella"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_aroma
+
+:grape_aroma rdf:type :Green_fruit_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Grape aroma"@en ,
+                        "Aroma de uva"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_flavour
+
+:grape_flavour rdf:type :Green_fruit_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Grape flavour"@en ,
+                          "Sabor de uva"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#grapefruit_aroma
+
+:grapefruit_aroma rdf:type :Citrus_fruit_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Grapefruit aroma"@en ,
+                             "Aroma de pomelo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#grapefruit_flavour
+
+:grapefruit_flavour rdf:type :Citrus_fruit_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Grapefruit flavour"@en ,
+                               "Sabor de pomelo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#green_apple_aroma
+
+:green_apple_aroma rdf:type :Green_fruit_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Green apple aroma"@en ,
+                              "Aroma de manzana verde"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#green_apple_flavour
+
+:green_apple_flavour rdf:type :Green_fruit_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Green apple flavour"@en ,
+                                "Sabor de manzana verde"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#green_bell_pepper_aroma
+
+:green_bell_pepper_aroma rdf:type :Herbaceous_aroma ,
+                                  owl:NamedIndividual ;
+                         
+                         rdfs:label "Green bell pepper aroma"@en ,
+                                    "Aroma de pimiento"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#green_bell_pepper_flavour
+
+:green_bell_pepper_flavour rdf:type :Herbaceous_flavour ,
+                                    owl:NamedIndividual ;
+                           
+                           rdfs:label "Green bell pepper flavour"@en ,
+                                      "Sabor de pimiento"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#greenish_edging_colour
+
+:greenish_edging_colour rdf:type :White_wine_edging_colour ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "greenish edging colour"@en ,
+                                   "Color de menisco verdoso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ham
+
+:ham rdf:type :Carne ,
+              owl:NamedIndividual ;
+     
+     rdfs:label "Ham"@en ,
+                "Jamón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#hamburger
+
+:hamburger rdf:type :Carne ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Hamburger"@en ,
+                      "Hamburguesa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#hay_aroma
+
+:hay_aroma rdf:type :White_bottle_age_aroma ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Hay aroma"@en ,
+                      "Aroma de heno"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#hay_flavour
+
+:hay_flavour rdf:type :White_bottle_age_flavour ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Hay flavour"@en ,
+                        "Sabor de heno"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#hazelnut_aroma
+
+:hazelnut_aroma rdf:type :Oxidation_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Hazelnut aroma"@en ,
+                           "Aroma de avellana"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#hazelnut_flavour
+
+:hazelnut_flavour rdf:type :Oxidation_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Hazelnut flavour"@en ,
+                             "Sabor de avellana"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#hazy_clarity
+
+:hazy_clarity rdf:type :Wine_clarity ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Hazy clarity"@en ,
+                         "Limpieza turbia"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#high_acidity
+
+:high_acidity rdf:type :Acidity_palate ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "High acidity"@en ,
+                         "Acidez alta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#high_alcohol
+
+:high_alcohol rdf:type :Alcohol_palate ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "High alcohol"@en ,
+                         "Alcohol alto"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#high_tannines
+
+:high_tannines rdf:type :Tannins_level_palate ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "High tannines"@en ,
+                          "Taninos altos"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#high_tear
+
+:high_tear rdf:type :Wine_tear ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "High tear"@en ,
+                      "Lágrima abundante"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#honey_aroma
+
+:honey_aroma rdf:type :White_bottle_age_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Honey aroma"@en ,
+                        "Aroma de miel"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#honey_flavour
+
+:honey_flavour rdf:type :White_bottle_age_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Honey flavour"@en ,
+                          "Sabor de miel"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#honeysuckle_aroma
+
+:honeysuckle_aroma rdf:type :Floral_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Honeysuckle aroma"@en ,
+                              "Aroma de madreselva"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#honeysuckle_flavour
+
+:honeysuckle_flavour rdf:type :Floral_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Honeysuckle flavour"@en ,
+                                "Sabor de madreselva"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#icecream
+
+:icecream rdf:type :Dessert ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Helados" ,
+                     "Icecream"@en .
+
+
+
+###  http://purl.org/ceu/ebaco#iris_aroma
+
+:iris_aroma rdf:type :Floral_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Iris aroma"@en ,
+                       "Aroma de lirio"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#iris_flavour
+
+:iris_flavour rdf:type :Floral_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Iris flavour"@en ,
+                         "Sabor de lirio"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#jasmine_aroma
+
+:jasmine_aroma rdf:type :Floral_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Jasmine aroma"@en ,
+                          "Aroma de jazmín"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#jasmine_flavour
+
+:jasmine_flavour rdf:type :Floral_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Jasmine flavour"@en ,
+                            "Sabor de jazmín"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#juniper_aroma
+
+:juniper_aroma rdf:type :Pungent_spice_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Juniper aroma"@en ,
+                          "Aroma de enebro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#juniper_flavour
+
+:juniper_flavour rdf:type :Pungent_spice_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Juniper flavour"@en ,
+                            "Sabor de enebro"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#kerosene_aroma
+
+:kerosene_aroma rdf:type :White_bottle_age_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Kerosene aroma"@en ,
+                           "Aroma de queroseno"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#kerosene_flavour
+
+:kerosene_flavour rdf:type :White_bottle_age_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Kerosene flavour"@en ,
+                             "Sabor de queroseno"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lavender_aroma
+
+:lavender_aroma rdf:type :Herbal_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Lavender aroma"@en ,
+                           "Aroma de lavanda"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lavender_flavour
+
+:lavender_flavour rdf:type :Herbal_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Lavender flavour"@en ,
+                             "Sabor de lavanda"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#leather_aroma
+
+:leather_aroma rdf:type :Red_bottle_age_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Leather aroma"@en ,
+                          "Aroma de cuero"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#leather_flavour
+
+:leather_flavour rdf:type :Red_bottle_age_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Leather flavour"@en ,
+                            "Sabor de cuero"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#legumes
+
+:legumes rdf:type :Vegetable ,
+                  owl:NamedIndividual ;
+         
+         rdfs:label "Legumes"@en ,
+                    "Legumbres"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lemon-green_colour
+
+:lemon-green_colour rdf:type :White_wine_colour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "lemmon-green colour"@en ,
+                               "Color amarillo verdoso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lemon-yellow_colour
+
+:lemon-yellow_colour rdf:type :White_wine_colour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "lemon-yellow color"@en ,
+                                "Color amarillo limón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lemon_aroma
+
+:lemon_aroma rdf:type :Citrus_fruit_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Lemon aroma"@en ,
+                        "Aroma de limón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lemon_flavour
+
+:lemon_flavour rdf:type :Citrus_fruit_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Lemon flavour"@en ,
+                          "Sabor de limón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lemon_peel_aroma
+
+:lemon_peel_aroma rdf:type :Citrus_fruit_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Lemon peel aroma"@en ,
+                             "Aroma de cáscara de limón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lemon_peel_flavour
+
+:lemon_peel_flavour rdf:type :Citrus_fruit_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Lemon peel flavour"@en ,
+                               "Sabor de cáscara de limón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#light-medium_aroma_intensity
+
+:light-medium_aroma_intensity rdf:type :Aroma_intensity ,
+                                       owl:NamedIndividual ;
+                              
+                              rdfs:label "Light-medium aroma intensity"@en ,
+                                         "Intensidad de aroma media-baja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#light-medium_body
+
+:light-medium_body rdf:type :Body_palate ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Light-medium body"@en ,
+                              "Cuerpo medio-ligero"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#light-medium_flavour_intensity
+
+:light-medium_flavour_intensity rdf:type :Intensity_flavour ,
+                                         owl:NamedIndividual ;
+                                
+                                rdfs:label "Light-medium flavour intensity"@en ,
+                                           "Intensidad de sabor medio-ligera"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#light_aroma_intensity
+
+:light_aroma_intensity rdf:type :Aroma_intensity ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Light aroma intensity"@en ,
+                                  "Intensidad de aroma baja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#light_body
+
+:light_body rdf:type :Body_palate ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Light body"@en ,
+                       "Cuerpo ligero"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#light_flavour_intensity
+
+:light_flavour_intensity rdf:type :Intensity_flavour ,
+                                  owl:NamedIndividual ;
+                         
+                         rdfs:label "Light flavour intensity"@en ,
+                                    "Intensidad de sabor ligera"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lime_aroma
+
+:lime_aroma rdf:type :Citrus_fruit_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Lime aroma"@en ,
+                       "Aroma de lima"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lime_flavour
+
+:lime_flavour rdf:type :Citrus_fruit_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Lime flavour"@en ,
+                         "Sabor de lima"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#liquorice_aroma
+
+:liquorice_aroma rdf:type :Pungent_spice_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Liquorice aroma"@en ,
+                            "Aroma de regaliz"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#liquorice_flavour
+
+:liquorice_flavour rdf:type :Pungent_spice_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Liquorice flavour"@en ,
+                              "Sabor de regaliz"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#long_finish
+
+:long_finish rdf:type :Finish_palate ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Long finish"@en ,
+                        "Persistencia de sabor alta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#low-medium_acidity
+
+:low-medium_acidity rdf:type :Acidity_palate ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Low-medium acidity"@en ,
+                               "Acidez media-baja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#low-medium_alcohol
+
+:low-medium_alcohol rdf:type :Alcohol_palate ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Low-medium alcohol"@en ,
+                               "Alcohol medio-bajo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#low-medium_tannines
+
+:low-medium_tannines rdf:type :Tannins_level_palate ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Low-medium tannines"@en ,
+                                "Taninos medios-bajos"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#low_acidity
+
+:low_acidity rdf:type :Acidity_palate ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Low acidity"@en ,
+                        "Acidez baja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#low_alcohol
+
+:low_alcohol rdf:type :Alcohol_palate ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Low alcohol"@en ,
+                        "Alcohol bajo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#low_tannines
+
+:low_tannines rdf:type :Tannins_level_palate ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Low tannines"@en ,
+                         "Taninos bajos"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#low_tear
+
+:low_tear rdf:type :Wine_tear ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Low tear"@en ,
+                     "Lágrima escasa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#luscious_sweetness
+
+:luscious_sweetness rdf:type :Sweetness_palate ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Luscious sweetness"@en ,
+                               "Dulzura empalagosa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lychee_aroma
+
+:lychee_aroma rdf:type :Tropical_fruit_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Lichee aroma"@en ,
+                         "Aroma de lichis"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lychee_flavour
+
+:lychee_flavour rdf:type :Tropical_fruit_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Lichee flavour"@en ,
+                           "Sabor de lichis"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#magret_of_duck
+
+:magret_of_duck rdf:type :Poultry ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Magret of duck"@en ,
+                           "Magret de pato"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#mango_aroma
+
+:mango_aroma rdf:type :Tropical_fruit_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Aroma de mango"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#mango_flavour
+
+:mango_flavour rdf:type :Tropical_fruit_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Sabor de mango"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#marmalade_aroma
+
+:marmalade_aroma rdf:type :White_fruit_development_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Marmalade aroma"@en ,
+                            "Aroma de mermelada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#marmalade_flavour
+
+:marmalade_flavour rdf:type :White_fruit_development_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Marmalade flavour"@en ,
+                              "Sabor de mermelada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#marzipan_aroma
+
+:marzipan_aroma rdf:type :Oxidation_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Marzipan aroma"@en ,
+                           "Aroma de mazapán"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#marzipan_flavour
+
+:marzipan_flavour rdf:type :Oxidation_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Marzipan flavour"@en ,
+                             "Sabor de mazapán"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#meat
+
+:meat rdf:type :Carne ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "Meat"@en ,
+                 "Carne en general"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#meaty_aroma
+
+:meaty_aroma rdf:type :Red_bottle_age_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Meaty aroma"@en ,
+                        "Aroma carnoso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#meaty_flavour
+
+:meaty_flavour rdf:type :Red_bottle_age_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Meaty flavour"@en ,
+                          "Sabor carnoso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-dry_sweetness
+
+:medium-dry_sweetness rdf:type :Sweetness_palate ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "medium-dry sweetness"@en ,
+                                 "Dulzura semiseca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-full_body
+
+:medium-full_body rdf:type :Body_palate ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Medium-full body"@en ,
+                             "Cuerpo medio-pleno"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-high_acidity
+
+:medium-high_acidity rdf:type :Acidity_palate ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Medium-high acidity"@en ,
+                                "Acidez media-alta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-high_alcohol
+
+:medium-high_alcohol rdf:type :Alcohol_palate ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Medium-high alcohol"@en ,
+                                "Alcohol medio-alto"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-high_tannines
+
+:medium-high_tannines rdf:type :Tannins_level_palate ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Medium-high tannines"@en ,
+                                 "Taninos medios-altos"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-long_finish
+
+:medium-long_finish rdf:type :Finish_palate ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Medium-long finish"@en ,
+                               "Persistencia de sabor media-alta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-pronounced_aroma_intensity
+
+:medium-pronounced_aroma_intensity rdf:type :Aroma_intensity ,
+                                            owl:NamedIndividual ;
+                                   
+                                   rdfs:label "Medium-pronounced aroma intensity"@en ,
+                                              "Intensidad de aroma media-alta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-pronounced_flavour_intensity
+
+:medium-pronounced_flavour_intensity rdf:type :Intensity_flavour ,
+                                              owl:NamedIndividual ;
+                                     
+                                     rdfs:label "Medium-pronounced flavour intensity"@en ,
+                                                "Intensidad de sabor medio-pronunciada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium-sweet_sweetness
+
+:medium-sweet_sweetness rdf:type :Sweetness_palate ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "Medium-sweet sweetness"@en ,
+                                   "Dulzura semidulce"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_acidity
+
+:medium_acidity rdf:type :Acidity_palate ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Medium acidity"@en ,
+                           "Acidez media"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_alcohol
+
+:medium_alcohol rdf:type :Alcohol_palate ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Medium alcohol"@en ,
+                           "Alcohol medio"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_aroma_intensity
+
+:medium_aroma_intensity rdf:type :Aroma_intensity ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "Medium aroma intensity"@en ,
+                                   "Intensidad de aroma media"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_body
+
+:medium_body rdf:type :Body_palate ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Medium body"@en ,
+                        "Cuerpo medio"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_colour_intensity
+
+:medium_colour_intensity rdf:type :Wine_colour_intensity ,
+                                  owl:NamedIndividual ;
+                         
+                         rdfs:label "Medium colour intensity"@en ,
+                                    "Capa medio cubierta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_finish
+
+:medium_finish rdf:type :Finish_palate ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Medium finish"@en ,
+                          "Persistencia del sabor media"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_flavour_intensity
+
+:medium_flavour_intensity rdf:type :Intensity_flavour ,
+                                   owl:NamedIndividual ;
+                          
+                          rdfs:label "Medium flavour intensity"@en ,
+                                     "Intensidad de sabor media"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_sweetness
+
+:medium_sweetness rdf:type :Sweetness_palate ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Medium sweetness"@en ,
+                             "Dulzura media"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_tannines
+
+:medium_tannines rdf:type :Tannins_level_palate ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Medium tannines"@en ,
+                            "Taninos medios"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#medium_tear
+
+:medium_tear rdf:type :Wine_tear ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Medium tear"@en ,
+                        "Lágrima media"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#melon_aroma
+
+:melon_aroma rdf:type :Tropical_fruit_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Melon aroma"@en ,
+                        "Aroma de melón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#melon_flavour
+
+:melon_flavour rdf:type :Tropical_fruit_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Melon flavour"@en ,
+                          "Sabor de melón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#mint_aroma
+
+:mint_aroma rdf:type :Herbal_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Mint aroma"@en ,
+                       "Aroma de hierba buena"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#mint_flavour
+
+:mint_flavour rdf:type :Herbal_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Mint flavour"@en ,
+                         "Sabor de hierba buena"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#mushroom_aroma
+
+:mushroom_aroma rdf:type :Red_bottle_age_aroma ,
+                         :White_bottle_age_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Mushroom aroma"@en ,
+                           "Aroma de champiñón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#mushroom_flavour
+
+:mushroom_flavour rdf:type :Red_bottle_age_flavour ,
+                           :White_bottle_age_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Mushroom flavour"@en ,
+                             "Sabor de champiñón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#nectarine_aroma
+
+:nectarine_aroma rdf:type :Stone_fruit_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Nectarine aroma"@en ,
+                            "Aroma de nectarina"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#nectarine_flavour
+
+:nectarine_flavour rdf:type :Stone_fruit_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Nectarine flavour"@en ,
+                              "Sabor de nectarina"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#nutmeg_aroma
+
+:nutmeg_aroma rdf:type :Oak_aroma ,
+                       :White_bottle_age_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Nutmeg aroma"@en ,
+                         "Aroma de nuez moscada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#nutmeg_flavour
+
+:nutmeg_flavour rdf:type :Oak_flavour ,
+                         :White_bottle_age_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Nutmeg flavour"@en ,
+                           "Sabor de nuez moscada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#onion_skin_colour
+
+:onion_skin_colour rdf:type :Rose_wine_colour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Onion skin colour"@en ,
+                              "Color de cáscara de cebolla"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#orange_blossom_aroma
+
+:orange_blossom_aroma rdf:type :Floral_aroma ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Orange blossom aroma"@en ,
+                                 "Aroma de azahar"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#orange_blossom_flavour
+
+:orange_blossom_flavour rdf:type :Floral_flavour ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "Orange blossom flavour"@en ,
+                                   "Sabor de azahar"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#orange_colour
+
+:orange_colour rdf:type :Rose_wine_colour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Orange colour"@en ,
+                          "Color naranja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#orange_peel_aroma
+
+:orange_peel_aroma rdf:type :Citrus_fruit_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Orange peel aroma"@en ,
+                              "Aroma de cáscara de naranaja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#orange_peel_flavour
+
+:orange_peel_flavour rdf:type :Citrus_fruit_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Orange peel flavour"@en ,
+                                "Sabor de cáscara de naranaja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ostrich_meat
+
+:ostrich_meat rdf:type :Poultry ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Ostrich meat"@en ,
+                         "Carne de avestruz"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pale_colour_intensity
+
+:pale_colour_intensity rdf:type :Wine_colour_intensity ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Pale colour intensity"@en ,
+                                  "Capa no cubierta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#partridge_meat
+
+:partridge_meat rdf:type :Poultry ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Partridge meat"@en ,
+                           "Carne de perdiz"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#passion_fruit_aroma
+
+:passion_fruit_aroma rdf:type :Tropical_fruit_aroma ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Passion fruit aroma"@en ,
+                                "Aroma de maracuyá"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#passion_fruit_flavour
+
+:passion_fruit_flavour rdf:type :Tropical_fruit_flavour ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Passion fruit flavour"@en ,
+                                  "Sabor de maracuyá"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pasta
+
+:pasta rdf:type :Pasta ,
+                owl:NamedIndividual ;
+       
+       rdfs:label "Pasta"@en ,
+                  "Pasta en general"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pastry_aroma
+
+:pastry_aroma rdf:type :Yeast_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Pastry aroma"@en ,
+                         "Aroma de pastel"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pastry_flavour
+
+:pastry_flavour rdf:type :Yeast_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Pastry flavour"@en ,
+                           "Sabor de pastel"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#peach_aroma
+
+:peach_aroma rdf:type :Stone_fruit_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Peach aroma"@en ,
+                        "Aroma de melocotón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#peach_flavour
+
+:peach_flavour rdf:type :Stone_fruit_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Peach flavour"@en ,
+                          "Sabor de melocotón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pear_aroma
+
+:pear_aroma rdf:type :Green_fruit_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Pear aroma"@en ,
+                       "Aroma de pera"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pear_flavour
+
+:pear_flavour rdf:type :Green_fruit_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Pear flavour"@en ,
+                         "Sabor de pera"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pepper
+
+:pepper rdf:type :Spice ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Pepper"@en ,
+                   "Pimienta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#petrol_aroma
+
+:petrol_aroma rdf:type :White_bottle_age_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Petrol aroma"@en ,
+                         "Aroma de petróleo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#petrol_flavour
+
+:petrol_flavour rdf:type :White_bottle_age_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Petrol flavour"@en ,
+                           "Sabor de petróleo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pheasant_meat
+
+:pheasant_meat rdf:type :Poultry ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Pheasant meat"@en ,
+                          "Carne de faisán"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pigeon_meat
+
+:pigeon_meat rdf:type :Poultry ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Pigeon meat"@en ,
+                        "Carne de pichón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pine_aroma
+
+:pine_aroma rdf:type :Herbal_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Pine aroma"@en ,
+                       "Aroma de pino"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pine_flavour
+
+:pine_flavour rdf:type :Herbal_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Pine flavour"@en ,
+                         "Sabor de pino"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pineapple_aroma
+
+:pineapple_aroma rdf:type :Tropical_fruit_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Pineapple aroma"@en ,
+                            "Aroma de piña"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pineapple_flavour
+
+:pineapple_flavour rdf:type :Tropical_fruit_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Pineapple flavour"@en ,
+                              "Sabor de piña"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pink_colour
+
+:pink_colour rdf:type :Rose_wine_colour ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "pink colour"@en ,
+                        "Color rosa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pizza
+
+:pizza rdf:type :pizza ,
+                owl:NamedIndividual .
+
+
+
+###  http://purl.org/ceu/ebaco#pork_meat
+
+:pork_meat rdf:type :Carne ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Carne de cerdo"@es ,
+                      "Pork meat"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#poularde_meat
+
+:poularde_meat rdf:type :Poultry ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Poularde meat"@en ,
+                          "Carne de pularda"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#preserved_fruit_aroma
+
+:preserved_fruit_aroma rdf:type :Dried_fruit_aroma ,
+                                owl:NamedIndividual ;
+                       
+                       rdfs:label "Preserved fruit aroma"@en ,
+                                  "Aroma de fruta en conserva"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#preserved_fruit_flavour
+
+:preserved_fruit_flavour rdf:type :Dried_fruit_flavour ,
+                                  owl:NamedIndividual ;
+                         
+                         rdfs:label "Preserved fruit flavour"@en ,
+                                    "Sabor de fruta en conserva"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pronounced_aroma_intensity
+
+:pronounced_aroma_intensity rdf:type :Aroma_intensity ,
+                                     owl:NamedIndividual ;
+                            
+                            rdfs:label "Pronounced aroma intensity"@en ,
+                                       "Intensidad de aroma alta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pronounced_flavour_intensity
+
+:pronounced_flavour_intensity rdf:type :Intensity_flavour ,
+                                       owl:NamedIndividual ;
+                              
+                              rdfs:label "Pronounced flavour intensity"@en ,
+                                         "Intensidad de sabor pronunciada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#prune_aroma
+
+:prune_aroma rdf:type :Dried_fruit_aroma ,
+                      :Red_fruit_development_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Prune aroma"@en ,
+                        "Aroma de ciruela pasa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#prune_flavour
+
+:prune_flavour rdf:type :Dried_fruit_flavour ,
+                        :Red_fruit_development_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Prune flavour"@en ,
+                          "Sabor de ciruela pasa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#pultry
+
+:pultry rdf:type :Poultry ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Poultry"@en ,
+                   "Aves en general"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#purple_colour
+
+:purple_colour rdf:type :Red_wine_colour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Purple colour"@en ,
+                          "Color violáceo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#quail_meat
+
+:quail_meat rdf:type :Poultry ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Quail meat"@en ,
+                       "Carne de codorniz"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#quince_aroma
+
+:quince_aroma rdf:type :Green_fruit_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Quince aroma"@en ,
+                         "Aroma de membrillo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#quince_flavour
+
+:quince_flavour rdf:type :Green_fruit_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Quince flavour"@en ,
+                           "Sabor de membrillo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rabbit_meat
+
+:rabbit_meat rdf:type :Carne ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Rabbit meat"@en ,
+                        "Carne de conejo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#raisin_aroma
+
+:raisin_aroma rdf:type :Dried_fruit_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Raisin aroma"@en ,
+                         "Aroma de uva pasa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#raisin_flavour
+
+:raisin_flavour rdf:type :Dried_fruit_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Raisin flavour"@en ,
+                           "Sabor de uva pasa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#raspberry_aroma
+
+:raspberry_aroma rdf:type :Red_fruit_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Raspberry aroma"@en ,
+                            "Aroma de frambuesa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#raspberry_flavour
+
+:raspberry_flavour rdf:type :Red_fruit_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Raspberry flavour"@en ,
+                              "Sabor de frambuesa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_apple_aroma
+
+:red_apple_aroma rdf:type :Green_fruit_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Red apple aroma"@en ,
+                            "Aroma de manzana roja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_apple_flavour
+
+:red_apple_flavour rdf:type :Green_fruit_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Red apple flavour"@en ,
+                              "Sabor de manzana roja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_cherry_aroma
+
+:red_cherry_aroma rdf:type :Red_fruit_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Red cherry aroma"@en ,
+                             "Aroma de cereza"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_cherry_flavour
+
+:red_cherry_flavour rdf:type :Red_fruit_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Red cherry flavour"@en ,
+                               "Sabor de cereza"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_currant_aroma
+
+:red_currant_aroma rdf:type :Red_fruit_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Red currant aroma"@en ,
+                              "Aroma de grosella roja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_currant_flavour
+
+:red_currant_flavour rdf:type :Red_fruit_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Red currant flavour"@en ,
+                                "Sabor de grosella roja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_meat
+
+:red_meat rdf:type :Carne ,
+                   owl:NamedIndividual ;
+          
+          rdfs:label "Red meat"@en ,
+                     "Carne roja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_plum_aroma
+
+:red_plum_aroma rdf:type :Red_fruit_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Red plum aroma"@en ,
+                           "Aroma de ciruela roja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#red_plum_flavour
+
+:red_plum_flavour rdf:type :Red_fruit_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Red plum flavour"@en ,
+                             "Sabor de ciruela roja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#resinous_aroma
+
+:resinous_aroma rdf:type :Oak_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Resinous aroma"@en ,
+                           "Aroma de resina"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#resinous_flavour
+
+:resinous_flavour rdf:type :Oak_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Resinous flavour"@en ,
+                             "Sabor de resina"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rice
+
+:rice rdf:type :Rice ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "Rice"@en ,
+                 "Arroz en general"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rice_salade
+
+:rice_salade rdf:type :Rice ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Rice salade"@en ,
+                        "Ensalada de arroz"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rice_with_fish
+
+:rice_with_fish rdf:type :Rice ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Rice with fish"@en ,
+                           "Arroz con pescado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rice_with_meat
+
+:rice_with_meat rdf:type :Rice ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Rice with meat"@en ,
+                           "Arroz con carne"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rice_with_seafood
+
+:rice_with_seafood rdf:type :Rice ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Rice with seafood"@en ,
+                              "Arroz con marisco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rice_with_vegetables
+
+:rice_with_vegetables rdf:type :Rice ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "Rice with vegetables"@en ,
+                                 "Arroz con verduras"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ripe_tannines
+
+:ripe_tannines rdf:type :Tannins_astringency_palate ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Ripe tannines"@en ,
+                          "Taninos maduros"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ripened_cheese
+
+:ripened_cheese rdf:type :Dairy ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Ripened cheese"@en ,
+                           "Queso curado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#roasted_goat
+
+:roasted_goat rdf:type :Carne ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Roasted goat"@en ,
+                         "Cabrito asado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#roasted_lamb
+
+:roasted_lamb rdf:type :Carne ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Roasted lamb"@en ,
+                         "Lechazo asado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#roasted_pig
+
+:roasted_pig rdf:type :Carne ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Roasted pig"@en ,
+                        "Cochinillo asado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rose_aroma
+
+:rose_aroma rdf:type :Floral_aroma ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Rose aroma"@en ,
+                       "Aroma de rosa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rose_flavour
+
+:rose_flavour rdf:type :Floral_flavour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Rose flavour"@en ,
+                         "Sabor de rosa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rosemary_aroma
+
+:rosemary_aroma rdf:type :Herbal_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Rosemary aroma"@en ,
+                           "Aroma de romero"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rosemary_flavour
+
+:rosemary_flavour rdf:type :Herbal_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Rosemary flavour"@en ,
+                             "Sabor de romero"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rubber_aroma
+
+:rubber_aroma rdf:type :Other_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Rubber aroma"@en ,
+                         "Aroma de caucho"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#rubber_flavour
+
+:rubber_flavour rdf:type :Other_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Rubber flavour"@en ,
+                           "Sabor de caucho"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#ruby_colour
+
+:ruby_colour rdf:type :Red_wine_colour ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "ruby colour"@en ,
+                        "Color rubí"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#salade
+
+:salade rdf:type :Vegetable ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Salade"@en ,
+                   "Ensaladas"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#salmon_colour
+
+:salmon_colour rdf:type :Rose_wine_colour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Salmon colour"@en ,
+                          "Color salmón"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#sausage
+
+:sausage rdf:type :Carne ,
+                  owl:NamedIndividual ;
+         
+         rdfs:label "Sausage"@en ,
+                    "Embutidos curados"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#savoury_aroma
+
+:savoury_aroma rdf:type :Red_bottle_age_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Savoury aroma"@en ,
+                          "Aroma salado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#savoury_flavour
+
+:savoury_flavour rdf:type :Red_bottle_age_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Savoury flavour"@en ,
+                            "Sabor salado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#seafood
+
+:seafood rdf:type :Seafood ,
+                  owl:NamedIndividual ;
+         
+         rdfs:label "Marisco en general"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#sheep_cheese
+
+:sheep_cheese rdf:type :Dairy ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Sheep cheese"@en ,
+                         "Queso de oveja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#short-medium_finish
+
+:short-medium_finish rdf:type :Finish_palate ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Short-medium finish"@en ,
+                                "Persistencia del sabor media-baja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#short_finish
+
+:short_finish rdf:type :Finish_palate ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Short finish"@en ,
+                         "Persistencia del sabor baja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#smoke_aroma
+
+:smoke_aroma rdf:type :Oak_aroma ,
+                      :Other_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Smoke aroma"@en ,
+                        "Aroma ahumado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#smoke_flavour
+
+:smoke_flavour rdf:type :Oak_flavour ,
+                        :Other_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Smoke flavour"@en ,
+                          "Sabor ahumado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#spicy_food
+
+:spicy_food rdf:type :Spice ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Spicy food"@en ,
+                       "Comida picante"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#stew
+
+:stew rdf:type :Carne ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "Stew"@en ,
+                 "Guisos de carne"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#strawberry_aroma
+
+:strawberry_aroma rdf:type :Red_fruit_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Strawberry aroma"@en ,
+                             "Aroma de fresa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#strawberry_flavour
+
+:strawberry_flavour rdf:type :Red_fruit_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Strawberry flavour"@en ,
+                               "Sabor de fresa"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#sultana_aroma
+
+:sultana_aroma rdf:type :Dried_fruit_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Sultana aroma"@en ,
+                          "Aroma de sultana"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#sultana_flavour
+
+:sultana_flavour rdf:type :Dried_fruit_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Sultana flavour"@en ,
+                            "Sabor de sultana"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#sweet_sweetness
+
+:sweet_sweetness rdf:type :Sweetness_palate ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Sweet sweetness"@en ,
+                            "Dulzura dulce"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tar_aroma
+
+:tar_aroma rdf:type :Red_fruit_development_aroma ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Tar aroma"@en ,
+                      "Aroma de alquitrán"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tar_flavour
+
+:tar_flavour rdf:type :Red_fruit_development_flavour ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Tar flavour"@en ,
+                        "Sabor de alquitrán"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tawny_colour
+
+:tawny_colour rdf:type :Red_wine_colour ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Tawny colour"@en ,
+                         "Color marrón teja"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#thyme_aroma
+
+:thyme_aroma rdf:type :Herbal_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Thyme aroma"@en ,
+                        "Aroma de tomillo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#thyme_flavour
+
+:thyme_flavour rdf:type :Herbal_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Thyme flavour"@en ,
+                          "Sabor de tomillo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tired_aroma
+
+:tired_aroma rdf:type :Aroma_development ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Tired aroma"@en ,
+                        "Aroma pasado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tired_flavour
+
+:tired_flavour rdf:type :Aroma_development ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Tired flavour"@en ,
+                          "Sabor pasado"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#toast_aroma
+
+:toast_aroma rdf:type :Oak_aroma ,
+                      :White_bottle_age_aroma ,
+                      :Yeast_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Toast aroma"@en ,
+                        "Aroma de tostada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#toast_flavour
+
+:toast_flavour rdf:type :Oak_flavour ,
+                        :White_bottle_age_flavour ,
+                        :Yeast_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Toast flavour"@en ,
+                          "Sabor de tostada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tobacco_aroma
+
+:tobacco_aroma rdf:type :Red_bottle_age_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Tobacco aroma"@en ,
+                          "Aroma de tabaco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tobacco_flavour
+
+:tobacco_flavour rdf:type :Red_bottle_age_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Tobacco flavour"@en ,
+                            "Sabor de tabaco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#toffe_aroma
+
+:toffe_aroma rdf:type :Oxidation_aroma ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "Toffe aroma"@en ,
+                        "Aroma de caramelo toffee"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#toffe_flavour
+
+:toffe_flavour rdf:type :Oxidation_flavour ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Toffe flavour"@en ,
+                          "Sabor de caramelo toffee"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tomato_leaf_aroma
+
+:tomato_leaf_aroma rdf:type :Herbaceous_aroma ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Tomato leaf aroma"@en ,
+                              "Aroma de hoja de tomate"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#tomato_leaf_flavour
+
+:tomato_leaf_flavour rdf:type :Herbaceous_flavour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "Tomato leaf flavour"@en ,
+                                "Sabor de hoja de tomate"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#unripe_tannines
+
+:unripe_tannines rdf:type :Tannins_astringency_palate ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Unripe tannines"@en ,
+                            "Taninos verdes"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#vanilla_aroma
+
+:vanilla_aroma rdf:type :Oak_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Vanilla aroma"@en ,
+                          "Aroma de vainilla"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#vanilla_flavour
+
+:vanilla_flavour rdf:type :Oak_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Vanilla flavour"@en ,
+                            "Sabor de vainilla"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#vegetable
+
+:vegetable rdf:type :Vegetable ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Vegetable"@en ,
+                      "Verdura"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#vegetal_aroma
+
+:vegetal_aroma rdf:type :Red_bottle_age_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Vegetal aroma"@en ,
+                          "Aroma vegetal"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#vegetal_flavour
+
+:vegetal_flavour rdf:type :Red_bottle_age_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Vegetal flavour"@en ,
+                            "Sabor vegetal"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#violet_aroma
+
+:violet_aroma rdf:type :Floral_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Violet aroma"@en ,
+                         "Aroma de violeta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#violet_flavour
+
+:violet_flavour rdf:type :Floral_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Violet flavour"@en ,
+                           "Sabor de violeta"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#walnut_aroma
+
+:walnut_aroma rdf:type :Oxidation_aroma ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Walnut aroma"@en ,
+                         "Aroma de nuez"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#walnut_flavour
+
+:walnut_flavour rdf:type :Oxidation_flavour ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Walnut flavour"@en ,
+                           "Sabor de nuez"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#wet_leaves_aroma
+
+:wet_leaves_aroma rdf:type :Red_bottle_age_aroma ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Wet leaves aroma"@en ,
+                             "Aroma de hojas mojadas"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#wet_leaves_flavour
+
+:wet_leaves_flavour rdf:type :Red_bottle_age_flavour ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Wet leaves flavour"@en ,
+                               "Sabor de hojas mojadas"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#wet_stone_aroma
+
+:wet_stone_aroma rdf:type :Other_aroma ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Wet stone aroma"@en ,
+                            "Aroma de piedra mojada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#wet_stone_flavour
+
+:wet_stone_flavour rdf:type :Other_flavour ,
+                            owl:NamedIndividual ;
+                   
+                   rdfs:label "Wet stone flavour"@en ,
+                              "Sabor de piedra mojada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#wet_wool_aroma
+
+:wet_wool_aroma rdf:type :Other_aroma ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Wet wool aroma"@en ,
+                           "Aroma de lana mojada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#wet_wool_flavour
+
+:wet_wool_flavour rdf:type :Other_flavour ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Wet wool flavour"@en ,
+                             "Sabor de lana mojada"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#white_meat
+
+:white_meat rdf:type :Carne ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "White meat"@en ,
+                       "Carne blanca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#white_pepper_aroma
+
+:white_pepper_aroma rdf:type :Pungent_spice_aroma ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "White pepper aroma"@en ,
+                               "Aroma de pimienta blanca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#white_pepper_flavour
+
+:white_pepper_flavour rdf:type :Pungent_spice_flavour ,
+                               owl:NamedIndividual ;
+                      
+                      rdfs:label "White pepper flavour"@en ,
+                                 "Sabor de pimienta blanca"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#whitefish
+
+:whitefish rdf:type :Fish ,
+                    owl:NamedIndividual ;
+           
+           rdfs:label "Whitefish"@en ,
+                      "Pescado blanco"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#wild_boar_meat
+
+:wild_boar_meat rdf:type :Carne ,
+                         owl:NamedIndividual ;
+                
+                rdfs:label "Wild boar meat"@en ,
+                           "Carne de jabalí"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#yelow_edging_colour
+
+:yelow_edging_colour rdf:type :White_wine_edging_colour ,
+                              owl:NamedIndividual ;
+                     
+                     rdfs:label "yelow edging colour"@en ,
+                                "Color de menisco amarillo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#yoghurt_aroma
+
+:yoghurt_aroma rdf:type :Malolactic_aroma ,
+                        :Yeast_aroma ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "Yoghurt aroma"@en ,
+                          "Aroma de yogur"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#yoghurt_flavour
+
+:yoghurt_flavour rdf:type :Malolactic_flavour ,
+                          :Yeast_flavour ,
+                          owl:NamedIndividual ;
+                 
+                 rdfs:label "Yoghurt flavour"@en ,
+                            "Sabor de yogur"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#youthful_aroma_development
+
+:youthful_aroma_development rdf:type :Aroma_development ,
+                                     owl:NamedIndividual ;
+                            
+                            rdfs:label "Youthful aroma development"@en ,
+                                       "Desarrollo de aroma joven"@es .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+<http://www.w3.org/ns/prov#startedAtTime> rdfs:label "Comenzado en tiempo"@es .
+
+
+
+<http://www.w3.org/2006/time#Interval> rdfs:label "Intervalo temporal"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasDerivedFrom> rdfs:label "derivado de"@es .
+
+
+
+<http://www.w3.org/ns/prov#atTime> rdfs:label "en tiempo"@es .
+
+
+
+<http://www.w3.org/2006/vcard/ns#Organization> rdfs:label "Organización"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedDerivation> rdfs:label "Derivación cualificada"@es .
+
+
+
+<http://www.w3.org/ns/prov#used> rdfs:label "usa"@es .
+
+
+
+<http://www.w3.org/ns/prov#hadUsage> rdfs:label "tiene uso"@es .
+
+
+
+<http://www.w3.org/ns/prov#InstantaneousEvent> rdfs:label "Evento instantáneo"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasStartedBy> rdfs:label "comenzado por"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasEndedAt> rdfs:label "Terminado"@es .
+
+
+
+<http://www.w3.org/ns/prov#specializationOf> rdfs:label "especialización de"@es .
+
+
+
+<http://www.w3.org/2006/time#hasBeginning> rdfs:label "Inicio"@es .
+
+
+
+<http://www.w3.org/ns/prov#ActivityInfluence> rdfs:label "Influencia de actividad"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasInvalidatedBy> rdfs:label "invalidado por"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedStart> rdfs:label "Inicio cualificado"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasGeneratedBy> rdfs:label "Generado por"@es .
+
+
+
+<http://www.w3.org/ns/prov#agent> rdfs:label "agente"@es .
+
+
+
+<http://www.w3.org/ns/prov#hadActivity> rdfs:label "tiene actividad"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedEnd> rdfs:label "Final cualificado"@es .
+
+
+
+<http://webprotege.uspceu.es/ontologies/vino/1.0/tiene_porcentaje> rdfs:label "Tiene porcentaje"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasAssociatedWith> rdfs:label "asociado con"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedAssociation> rdfs:label "Asociación cualificada"@es .
+
+
+
+<http://www.w3.org/ns/prov#atLocation> rdfs:label "ubicado en"@es .
+
+
+
+<http://www.w3.org/ns/prov#Start> rdfs:label "Inicio"@es .
+
+
+
+<http://www.w3.org/ns/prov#hadPlan> rdfs:label "tiene plan"@es .
+
+
+
+<http://www.w3.org/ns/prov#Role> rdfs:label "Rol"@es .
+
+
+
+<http://www.w3.org/ns/prov#alternateOf> rdfs:label "alternativa de"@es .
+
+
+
+<http://www.w3.org/ns/prov#Influence> rdfs:label "Influencia"@es .
+
+
+
+<http://www.w3.org/ns/prov#Association> rdfs:label "Asociación"@es .
+
+
+
+<http://www.w3.org/ns/prov#Generation> rdfs:label "Generación"@es .
+
+
+
+<http://purl.org/net/opmv/ns#Artifact> rdfs:label "Artefacto"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedUsage> rdfs:label "Uso cualificado"@es .
+
+
+
+<http://www.w3.org/ns/prov#invalidatedAtTime> rdfs:label "Invalidado en tiempo"@es .
+
+
+
+<http://purl.org/net/opmv/ns#Agent> rdfs:label "Agente"@es .
+
+
+
+<http://www.w3.org/ns/prov#End> rdfs:label "Fin"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasInformedBy> rdfs:label "informado por"@es .
+
+
+
+<http://www.w3.org/ns/prov#endedAtTime> rdfs:label "terminado en tiempo"@es .
+
+
+
+<http://www.w3.org/2006/time#hasEnd> rdfs:label "Final"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasEndedBy> rdfs:label "terminado por"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedGeneration> rdfs:label "Generación cualificada"@es .
+
+
+
+<http://www.w3.org/ns/prov#AgentInfluence> rdfs:label "Influencia de agente"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedCommunication> rdfs:label "Comunicación cualificada"@es .
+
+
+
+<http://purl.org/net/opmv/ns#Process> rdfs:label "Proceso"@es .
+
+
+
+<http://www.w3.org/ns/prov#generatedAtTime> rdfs:label "generado en tiempo"@es .
+
+
+
+<http://www.w3.org/ns/prov#EntityInfluence> rdfs:label "Influencia de entidad"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasPerformedAt> rdfs:label "Relizado en"@es .
+
+
+
+<http://www.w3.org/ns/prov#generated> rdfs:label "genera"@es .
+
+
+
+<http://www.w3.org/ns/prov#EmptyCollection> rdfs:label "Colección vacía"@es .
+
+
+
+<http://www.w3.org/ns/prov#actedOnBehalfOf> rdfs:label "en nombre de"@es .
+
+
+
+<http://www.w3.org/ns/prov#Agent> rdfs:label "Agente"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasGeneratedBy> rdfs:label "generado por"@es .
+
+
+
+<http://www.w3.org/ns/prov#Communication> rdfs:label "Comunicación"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasUsedAt> rdfs:label "Usado el"@es .
+
+
+
+<http://www.w3.org/ns/prov#entity> rdfs:label "entidad"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedAttribution> rdfs:label "Atribución cualificada"@es .
+
+
+
+<http://www.w3.org/ns/prov#value> rdfs:label "valor"@es .
+
+
+
+<http://www.w3.org/ns/prov#influenced> rdfs:label "influencia"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasInfluencedBy> rdfs:label "influenciado por"@es .
+
+
+
+:pizza rdfs:label "Pizza"@en ,
+                  "Pizza"@es .
+
+
+
+<http://www.w3.org/ns/prov#invalidated> rdfs:label "invalida"@es .
+
+
+
+<http://www.w3.org/ns/prov#activity> rdfs:label "actividad"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasTriggeredBy> rdfs:label "Lanzado por"@es .
+
+
+
+<http://www.w3.org/ns/prov#hadMember> rdfs:label "tiene miembro"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasControlledBy> rdfs:label "Controlado por"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasDerivedFrom> rdfs:label "Derivado de"@es .
+
+
+
+<http://purl.org/net/opmv/ns#used> rdfs:label "Usa"@es .
+
+
+
+<http://www.w3.org/ns/prov#wasAttributedTo> rdfs:label "atribuido a"@es .
+
+
+
+<http://www.w3.org/ns/prov#Collection> rdfs:label "Colección"@es .
+
+
+
+<http://www.w3.org/ns/prov#Attribution> rdfs:label "Atribución"@es .
+
+
+
+<http://www.w3.org/ns/prov#hadRole> rdfs:label "tiene rol"@es .
+
+
+
+<http://www.w3.org/ns/prov#Location> rdfs:label "Ubicación"@es .
+
+
+
+<http://www.w3.org/ns/prov#Invalidation> rdfs:label "Invalidación"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasStartedAt> rdfs:label "Comenzado"@es .
+
+
+
+<http://www.w3.org/ns/prov#Derivation> rdfs:label "Derivación"@es .
+
+
+
+<http://purl.org/net/opmv/ns#wasGeneratedAt> rdfs:label "Generado en"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedInvalidation> rdfs:label "Invalidación cualificada"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedDelegation> rdfs:label "Delegación cualificada"@es .
+
+
+
+<http://www.w3.org/ns/prov#Usage> rdfs:label "Uso"@es .
+
+
+
+<http://www.w3.org/ns/prov#qualifiedInfluence> rdfs:label "Influencia cualificada"@es .
+
+
+
+<http://www.w3.org/2006/time#Instant> rdfs:label "Instante"@es .
+
+
+
+<http://www.w3.org/2006/time#TemporalEntity> rdfs:label "Entidad temporal"@es .
+
+
+
+<http://www.w3.org/ns/prov#Plan> rdfs:label "Plan"@es .
+
+
+
+<http://www.w3.org/ns/prov#influencer> rdfs:label "influenciador"@es .
+
+
+
+<http://www.w3.org/ns/prov#Delegation> rdfs:label "Delegación"@es .
+
+
+
+<http://www.w3.org/ns/prov#hadGeneration> rdfs:label "tiene generación"@es .
+
+
+
+<http://purl.org/net/opmv/ns#withRespectOf> rdfs:label "Con respecto de"@es .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Red_wine_tasting
+                :rose_wine_tasting
+                :white_wine_tasting
+              )
+] .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

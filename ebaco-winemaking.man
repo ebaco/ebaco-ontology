@@ -1,0 +1,2534 @@
+Prefix: : <http://purl.org/ceu/ebaco/winemaking#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: core: <http://purl.org/ceu/ebaco/core/1.0#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: ebaco: <http://purl.org/ceu/ebaco#>
+
+
+
+Ontology: <http://purl.org/ceu/ebaco/winemaking>
+<http://purl.org/ceu/ebaco/winemaking/1.0>
+Import: <http://purl.org/ceu/ebaco/core/1.0>
+Import: <http://www.w3.org/ns/prov-o-20130430>
+
+Annotations: 
+    dc:contributor "Elena Pérez-Urria Carril (elenapuc@bio.ucm.es)"@es,
+    rdfs:seeAlso <http://ebaco.github.io/>,
+    dc:contributor "Aranzazu Gómez Garay (magom02@bio.ucm.es)"@es,
+    dc:creator "Alfredo Sánchez Alberca (asalber@ceu.es) <http://aprendeconalf.es/foaf.rdf>"@es,
+    dc:contributor "Luisa Martín (lmartin@bio.ucm.es)"@es,
+    dc:rights "La ontología E-BACO está bajo una licencia de Creative Commons Reconocimiento-CompartirIgual 3.0 de España (http://creativecommons.org/licenses/by-sa/3.0/es/)."@es,
+    rdfs:comment "La ontología E-BACO define un vocabulario preciso para representación de conocimiento en el dominio de la enología.
+El módulo E-BACO-Winemaking contiene los conceptos, propiedades y relaciones para describir los vinos y su proceso de elaboración y traza desde un punto de vista de expertos (bodegueros, enólogos, etc.)
+Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad San Pablo CEU."@es,
+    rdfs:label "Ontología E-BACO"@es,
+    dc:contributor "María Dolores Saco Sierra (mdsaco@farm.ucm.es)"@es,
+    owl:versionInfo "Vesión 1.0"@es,
+    rdfs:comment "The E-BACO ontology defines a precise vocabulary for representing knowledge in the enology domain. 
+The E-BACO-Core module contains the basic concepts, properties and relations for describing wines. 
+It has been developped by the Complutense university of Madrid and the San Pablo CEU university."@en,
+    dc:date "Febrero 2015"@es,
+    dc:creator "Mari Ángeles Gómez Flechoso (magflechoso@bio.ucm.es)"@es
+
+AnnotationProperty: dc:contributor
+
+    
+AnnotationProperty: dc:rights
+
+    
+AnnotationProperty: ebaco:winery_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la bodega"@es,
+        rdfs:label "winery data property"@en
+    
+    Annotations: 
+        rdfs:label "propiedad de la bodega"@es,
+        rdfs:label "winery data property"@en
+    
+    Domain: 
+        <http://purl.org/ceu/ebaco/core/1.0#Winery>
+    
+    
+AnnotationProperty: rdfs:seeAlso
+
+    
+AnnotationProperty: ebaco:wine_region_with_appellation_object_property
+
+    Annotations: 
+        rdfs:label "propiedad de la región vinícola con denominación de origen"@es,
+        rdfs:label "wine region with appellation object property"@en
+    
+    Annotations: 
+        rdfs:label "propiedad de la región vinícola con denominación de origen"@es,
+        rdfs:label "wine region with appellation object property"@en
+    
+    Domain: 
+        <http://purl.org/ceu/ebaco/core#Wine_region_with_appellation>
+    
+    
+AnnotationProperty: owl:versionInfo
+
+    
+AnnotationProperty: ebaco:carbon_dioxide_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "carbon dioxide content of wine (g/l)"@en,
+        rdfs:label "contenido de ácido carbónico del vino (g/l)"@es
+    
+    Annotations: 
+        rdfs:label "carbon dioxide content of wine (g/l)"@en,
+        rdfs:label "contenido de ácido carbónico del vino (g/l)"@es
+    
+    Domain: 
+        <http://purl.org/ceu/ebaco/core/1.0#Sparkling_wine>
+    
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: ebaco:appellation_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la denominación de origen"@es,
+        rdfs:label "appellation data property"@en
+    
+    Annotations: 
+        rdfs:label "appellation data property"@en,
+        rdfs:label "propiedad de la denominación de origen"@es
+    
+    Domain: 
+        <http://purl.org/ceu/ebaco/core#Appellations>
+    
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: dc:date
+
+    
+AnnotationProperty: ebaco:appellation_of
+
+    
+AnnotationProperty: ebaco:wine_appellation_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la denominación de origen del vino"@es,
+        rdfs:label "wine appellation data property"@en
+    
+    Annotations: 
+        rdfs:label "propiedad de la denominación de origen del vino"@es,
+        rdfs:label "wine appellation data property"@en
+    
+    Domain: 
+        <http://purl.org/ceu/ebaco/core#Wine_appellation>
+    
+    
+AnnotationProperty: dc:creator
+
+    
+Datatype: xsd:date
+
+    
+Datatype: xsd:float
+
+    
+Datatype: xsd:dateTime
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:integer
+
+    
+Datatype: xsd:boolean
+
+    
+Datatype: xsd:positiveInteger
+
+    
+ObjectProperty: ebaco:wine_region_with_appellation_object_property
+
+    Annotations: 
+        rdfs:label "propiedad de la región vinícola con denominación de origen"@es,
+        rdfs:label "wine region with appellation object property"@en
+    
+    SubPropertyOf: 
+        ebaco:wine_region_object_property
+    
+    
+ObjectProperty: ebaco:grow_grape
+
+    Annotations: 
+        rdfs:label "produce variedad de uva"@es,
+        rdfs:label "grow grape variety"@en
+    
+    Range: 
+        ebaco:Grape
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_object_property
+    
+    
+ObjectProperty: ebaco:has_vineyard_pruning_system
+
+    Annotations: 
+        rdfs:label "tiene sistema de poda de viñedo"@es,
+        rdfs:label "has vineyard prunning system"@en
+    
+    Range: 
+        ebaco:vineyard_training
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_object_property
+    
+    
+ObjectProperty: ebaco:belongs_to_wine_region
+
+    Annotations: 
+        rdfs:label "pertenece a la región vinícola"@es,
+        rdfs:label "belongs to wine region"@en
+    
+    Range: 
+        ebaco:Wine_region
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_object_property
+    
+    InverseOf: 
+        ebaco:contains_vineyard
+    
+    
+ObjectProperty: ebaco:grape_destemming_object_property
+
+    Annotations: 
+        rdfs:label "propiedad del despalillado de la uva"@es,
+        rdfs:label "grape destemming object property"@en
+    
+    SubPropertyOf: 
+        ebaco:winemaking_object_property
+    
+    
+ObjectProperty: ebaco:vintage_type
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una vendimia con el tipo de vendimia (manual, mecánica, etc.)."@es,
+        rdfs:label "vintage type"@en,
+        rdfs:label "tipo de vendimia"@es
+    
+    SubPropertyOf: 
+        ebaco:vintage_object_property
+    
+    
+ObjectProperty: ebaco:grape_cultivation_object_property
+
+    Annotations: 
+        rdfs:label "propiedad del cultivo de la uva"@es,
+        rdfs:label "grape cultivation object property"@en
+    
+    Domain: 
+        ebaco:Grape_cultivation
+    
+    SubPropertyOf: 
+        ebaco:winemaking_object_property
+    
+    
+ObjectProperty: ebaco:grape_allowed_in_wine_region
+
+    Annotations: 
+        rdfs:label "variedad de uva permitida en región vinícola"@es,
+        rdfs:label "grape variety allowed in wine region"@en
+    
+    Domain: 
+        ebaco:Grape
+    
+    Range: 
+        ebaco:Wine_region
+    
+    SubPropertyOf: 
+        ebaco:grape_object_property
+    
+    
+ObjectProperty: ebaco:grape_object_property
+
+    
+ObjectProperty: ebaco:grape_of_vintage
+
+    Annotations: 
+        rdfs:label "uva de la vendimia"@es,
+        rdfs:label "grape of vintage"@en
+    
+    Range: 
+        ebaco:Grape
+    
+    SubPropertyOf: 
+        ebaco:vintage_object_property
+    
+    
+ObjectProperty: ebaco:belongs_to_winery
+
+    Annotations: 
+        rdfs:label "belongs to winery"@en,
+        rdfs:label "pertenece a bodega"@es
+    
+    Range: 
+        ebaco:Winery
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_object_property
+    
+    
+ObjectProperty: ebaco:use_herbicide
+
+    Annotations: 
+        rdfs:label "use herbicide"@en,
+        rdfs:label "usa herbicida"@es
+    
+    Range: 
+        ebaco:Herbicide
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_object_property
+    
+    
+ObjectProperty: ebaco:allows_grape_variety
+
+    Annotations: 
+        rdfs:label "permite la variedad de uva"@es,
+        rdfs:label "allows grape variety"@en,
+        rdfs:comment "Propiedad que relaciona una denominación de origen con una variedad de uva permitida en la denominación."@es
+    
+    Range: 
+        ebaco:Grape
+    
+    SubPropertyOf: 
+        ebaco:wine_appellation_object_property
+    
+    
+ObjectProperty: ebaco:grape_cultivation_type
+
+    Annotations: 
+        rdfs:label "grape cultivation type"@en,
+        rdfs:label "tipo de cultivo de la uva"@es,
+        rdfs:comment "Propiedad que relaciona un cultivo con el tipo de cultivo que es (convencional, ecológico, biodinámico, etc.)"@es
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_object_property
+    
+    
+ObjectProperty: ebaco:contains_vineyard
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una región vinícola con un viñedo contenido en esa región."@es,
+        rdfs:label "contains vineyard"@en,
+        rdfs:label "contiene viñedo"@es
+    
+    Range: 
+        ebaco:Vineyard
+    
+    Characteristics: 
+        InverseFunctional
+    
+    SubPropertyOf: 
+        ebaco:wine_region_object_property
+    
+    InverseOf: 
+        ebaco:belongs_to_wine_region
+    
+    
+ObjectProperty: ebaco:vineyard_object_property
+
+    Annotations: 
+        rdfs:label "vineyard object property"@en,
+        rdfs:label "propiedad del viñedo"@es
+    
+    Domain: 
+        ebaco:Vineyard
+    
+    
+ObjectProperty: ebaco:wine_appellation_object_property
+
+    
+ObjectProperty: ebaco:belongs_to_wine_appellation
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona un viñedo con la denominación de origen a la que pertenece."@es,
+        rdfs:label "pertenece a la denominación de origen"@es,
+        rdfs:label "belongs to wine appellation"@en
+    
+    Range: 
+        ebaco:Wine_appellation
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_object_property
+    
+    
+ObjectProperty: ebaco:use_fertilizer
+
+    Annotations: 
+        rdfs:label "use fertilizer"@en,
+        rdfs:label "usa fertilizante"@es
+    
+    Range: 
+        ebaco:Fertilizer
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_object_property
+    
+    
+ObjectProperty: ebaco:winemaking_object_property
+
+    Annotations: 
+        rdfs:label "winemaking object property"@en,
+        rdfs:label "propiedad de la vinificación"@es
+    
+    Domain: 
+        ebaco:Winemaking_process
+    
+    
+ObjectProperty: ebaco:appellation_of
+
+    SubPropertyOf: 
+        ebaco:wine_region_with_appellation_object_property
+    
+    
+ObjectProperty: ebaco:vintage_object_property
+
+    Annotations: 
+        rdfs:label "propiedad de la vendimia"@es,
+        rdfs:label "vintage object property"@en
+    
+    Domain: 
+        ebaco:Vintage
+    
+    SubPropertyOf: 
+        ebaco:winemaking_object_property
+    
+    
+ObjectProperty: ebaco:use_pesticide
+
+    Annotations: 
+        rdfs:label "use pesticide"@en,
+        rdfs:label "usa pesticida"@es
+    
+    Range: 
+        ebaco:Pesticide
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_object_property
+    
+    
+ObjectProperty: ebaco:use_fungicide
+
+    Annotations: 
+        rdfs:label "use fungicide"@en,
+        rdfs:label "usa fungicida"@es
+    
+    Range: 
+        ebaco:Fungicide
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_object_property
+    
+    
+ObjectProperty: ebaco:wine_region_object_property
+
+    
+DataProperty: ebaco:grape_selection_in_reception
+
+    Annotations: 
+        rdfs:label "selección de la uva en la recepción"@es,
+        rdfs:label "grape selection in reception"@en
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        ebaco:grape_reception_object_property
+    
+    
+DataProperty: ebaco:molybdenum_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de molibdeno de la uva (mg/l)"@es,
+        rdfs:label "molybdenum content of grape (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:acetic_acid_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "acetic acid content of wine (g/l)"@en,
+        rdfs:label "contenido de ácido acético del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:free_sulphur_dioxide_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de anhídrico sulfuroso libre del vino (mg/l)"@es,
+        rdfs:label "free sulphur dioxide content of wine mg l"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:total_dry_extract_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "total dry extract of wine (g/l)"@en,
+        rdfs:label "extracto seco total del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:tannins_polyphenols_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de polifenoles taninos de la uva (mg/l)"@es,
+        rdfs:label "tannins polyphenols content of grape (mg/l)"@en
+    
+    Range: 
+        xsd:integer[>= 0]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:tannins_polyphenols_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de polifenoles taninos del vino (mg/l)"@es,
+        rdfs:label "tannins polyphenols content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:max_grape_must_yield_allowed_by_wine_appellation
+
+    Annotations: 
+        rdfs:label "maximum grape must yield allowed by the wine appellation (%)"@en,
+        rdfs:label "rendimiento máximo de mosto de uva permitido por la denominación de origen (%)"@es
+    
+    Range: 
+        xsd:positiveInteger
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_appellation_data_property
+    
+    
+DataProperty: ebaco:winery_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la bodega"@es,
+        rdfs:label "winery data property"@en
+    
+    
+DataProperty: ebaco:creation_date_of_appellation
+
+    Annotations: 
+        rdfs:label "creation date of the appellation"@en,
+        rdfs:label "fecha de creación de la denominación de origen"@es
+    
+    Range: 
+        xsd:date
+    
+    SubPropertyOf: 
+        ebaco:appellation_data_property
+    
+    
+DataProperty: ebaco:glucose_content_of_grape_g_l
+
+    Annotations: 
+        rdfs:label "contenido de glucosa de la uva (g/l)"@es,
+        rdfs:label "glucose content of grape (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:molybdenum_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "molybdenum content of wine (mg/l)"@en,
+        rdfs:label "contenido de molibdeno del vino (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:carbon_dioxide_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "carbon dioxide content of wine (g/l)"@en,
+        rdfs:label "contenido de ácido carbónico del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:succinic_acid_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "contenido de ácido succínico del vino (g/l)"@es,
+        rdfs:label "succinic acid content of wine (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:glycerol_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "glycerol content of wine (g/l)"@en,
+        rdfs:label "contenido de glicerina del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:has_grape_destemming
+
+    Annotations: 
+        rdfs:label "has grape destemming"@en,
+        rdfs:label "hay estrujado de uva"@es
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        ebaco:grape_destemming_data_property
+    
+    
+DataProperty: ebaco:wine_ph
+
+    Annotations: 
+        rdfs:label "wine pH"@en,
+        rdfs:label "pH del vino"@es
+    
+    Range: 
+        xsd:float[> 0.0f , <= 14.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:calcium_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de calcio del vino (mg/l)"@es,
+        rdfs:label "calcium content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:grape_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la uva"@es,
+        rdfs:label "grape data property"@en
+    
+    Domain: 
+        ebaco:Grape
+    
+    
+DataProperty: ebaco:fructose_content_of_grape_g_l
+
+    Annotations: 
+        rdfs:label "contenido de fructosa de la uva (g/l)"@es,
+        rdfs:label "fructose content of grape (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:fructose_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "contenido de fructosa del vino (g/l)"@es,
+        rdfs:label "fructose content of wine (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:min_altitude_of_vineyards
+
+    Annotations: 
+        rdfs:comment "Propiedad que relaciona una región vinícola con la altitud mínima de los viñedos que hay en ella."@es,
+        rdfs:label "minimum altitude of vineyards"@en,
+        rdfs:label "altitud mínima de los viñedos"@es
+    
+    Range: 
+        xsd:positiveInteger
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_region_data_property
+    
+    
+DataProperty: ebaco:wine_total_acidity_g_l
+
+    Annotations: 
+        rdfs:label "acidez total del vino (g/l)"@es,
+        rdfs:label "wine total acidity (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:has_grape_crushing
+
+    Annotations: 
+        rdfs:label "hay estrujado de uva"@es,
+        rdfs:label "has grape crushing"@en
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        ebaco:grape_destemming_data_property
+    
+    
+DataProperty: ebaco:sodium_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "sodium content of wine (mg/l)"@en,
+        rdfs:label "contenido de sodio del vino (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:zinc_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de zinc del vino (mg/l)"@es,
+        rdfs:label "zinc content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:lactic_bacteria_count_of_wine
+
+    Annotations: 
+        rdfs:label "recuento de bacterias lácticas del vino"@es,
+        rdfs:label "lactic bacteria count of wine"@en
+    
+    Range: 
+        xsd:integer[>= 0]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:anthocyanins_polyphenols_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "anthocyanins polyphenols content of wine (mg/l)"@en,
+        rdfs:label "contenido de polifenoles antocianos del vino (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:vineyard_area
+
+    Annotations: 
+        rdfs:label "area del viñedo (ha)"@es,
+        rdfs:label "vineyard area (ha)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_data_property
+    
+    
+DataProperty: ebaco:magnesium_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de magnesio del vino (mg/l)"@es,
+        rdfs:label "magnesium content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:iron_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "iron content of wine (mg/l)"@en,
+        rdfs:label "contenido de hierro del vino (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:total_yeast_count_of_wine
+
+    Annotations: 
+        rdfs:label "total yeast count of wine"@en,
+        rdfs:label "recuento total de levaduras del vino"@es
+    
+    Range: 
+        xsd:integer[>= 0]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:nitrogen_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de nitrógeno del vino (mg/l)"@es,
+        rdfs:label "nitrogen content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:winery_foundation_date
+
+    Annotations: 
+        rdfs:label "fecha de fundación de la bodega"@es,
+        rdfs:label "winery foundation date"@en
+    
+    Range: 
+        xsd:dateTime
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:winery_data_property
+    
+    
+DataProperty: ebaco:boron_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "boron content of wine (mg/l)"@en,
+        rdfs:label "contenido de boro del vino (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:malic_acid_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "contenido de ácido málico del vino (g/l)"@es,
+        rdfs:label "malic acid content of wine (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:vines_per_ha
+
+    Annotations: 
+        rdfs:label "densidad de plantación (vides/ha)"@es,
+        rdfs:label "planting density (vine/ha)"@es
+    
+    Range: 
+        xsd:integer[>= 0]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_data_property
+    
+    
+DataProperty: ebaco:citric_acid_content_of_grape_g_l
+
+    Annotations: 
+        rdfs:label "citric acid content of grape (g/l)"@en,
+        rdfs:label "contenido de ácido cítrico de la uva (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:sulfur_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de azufre del vino (mg/l)"@es,
+        rdfs:label "sulphur content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:citric_acid_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "contenido de ácido cítrico del vino (g/l)"@es,
+        rdfs:label "citric acid content of wine (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:hydrogen_sulphide_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "contenido de ácido sulfídrico del vino (g/l)"@es,
+        rdfs:label "hydrogen sulphide content of wine (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:vineyard_row_orientation_degrees
+
+    Annotations: 
+        rdfs:label "Orientación de las líneas del viñedo (grados desde el norte)"@es,
+        rdfs:label "vineyard row orientation (degrees from North)"@en
+    
+    Range: 
+        xsd:integer[>= 0 , < 360]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:vineyard_data_property
+    
+    
+DataProperty: ebaco:anthocyanins_polyphenols_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "anthocyanins polyphenols content of grape (mg/l)"@en,
+        rdfs:label "contenido de polifenoles antocianos de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:integer[>= 0]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:phosphorus_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "phosphorus content of grape (mg/l)"@en,
+        rdfs:label "contenido de fósforo de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:amount_of_grapes_harvested_in_vintage_kg
+
+    Annotations: 
+        rdfs:label "cantidad de uva recolectada en la vendimia (Kg)"@es,
+        rdfs:label "amount of grapes harvested in vintage (Kg)"@en
+    
+    Range: 
+        xsd:positiveInteger
+    
+    SubPropertyOf: 
+        ebaco:vintage_data_property
+    
+    
+DataProperty: ebaco:manganese_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de manganeso de la uva (mg/l)"@es,
+        rdfs:label "manganese content of grape (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:total_polyphenols_content_of_wine
+
+    Annotations: 
+        rdfs:label "contenido de polifenoles totales del vino"@es,
+        rdfs:label "total polyphenols content of wine"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:manganese_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "manganese content of wine (mg/l)"@en,
+        rdfs:label "contenido de manganeso del vino (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:proteins_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "proteins content of wine (g/l)"@en,
+        rdfs:label "contenido de proteínas del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:temperature_grape_reception_celsius
+
+    Annotations: 
+        rdfs:label "temperature of grape reception (degrees celsius)"@en,
+        rdfs:label "temperatura de la recepción de la uva (grados centígrados)"@es
+    
+    SubPropertyOf: 
+        ebaco:grape_reception_object_property
+    
+    
+DataProperty: ebaco:reducing_sugars_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "reducing sugars content of wine (g/l)"@en,
+        rdfs:label "contenido de azúcares reductores del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:average_annual_rainfall_mm
+
+    Annotations: 
+        rdfs:label "average annual rainfall (mm)"@en,
+        rdfs:label "pluviometria anual media (mm)"@es
+    
+    Range: 
+        xsd:positiveInteger
+    
+    SubPropertyOf: 
+        ebaco:wine_region_data_property
+    
+    
+DataProperty: ebaco:copper_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de cobre del vino (mg/l)"@es,
+        rdfs:label "copper content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:copper_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "copper content of grape (mg/l)"@en,
+        rdfs:label "contenido de cobre de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:lactic_acid_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "lactic acid content of wine (g/l)"@en,
+        rdfs:label "contenido de ácido láctico del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:assimilable_nitrogen_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "assimilable nitrogen content of grape (mg/l)"@en,
+        rdfs:label "contenido de nitrógeno asimilable en la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:maximum_installed_capacity_of_winery_l
+
+    Annotations: 
+        rdfs:label "maximum installed capacity of winery (l)"@en,
+        rdfs:label "capacidad máxima instalada de la bodega (l)"@es
+    
+    Range: 
+        xsd:float[> 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:winery_data_property
+    
+    
+DataProperty: ebaco:likely_alcohol_content_of_grape_vol
+
+    Annotations: 
+        rdfs:label "likely alcohol content of grape (%vol)"@en,
+        rdfs:label "contenido de alcohol probable de la uva (%vol)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:acetic_bacteria_count_of_wine
+
+    Annotations: 
+        rdfs:label "acetic bacteria count of wine"@en,
+        rdfs:label "recuento de bacterias acéticas del vino"@es
+    
+    Range: 
+        xsd:integer[>= 0]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:vintage_data_property
+
+    Annotations: 
+        rdfs:label "vintage data property"@en,
+        rdfs:label "propiedad de la vendimia"@es
+    
+    Domain: 
+        ebaco:Vintage
+    
+    SubPropertyOf: 
+        ebaco:winemaking_data_property
+    
+    
+DataProperty: ebaco:iron_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "iron content of grape (mg/l)"@en,
+        rdfs:label "contenido de hierro de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:colouring_intensity_of_wine
+
+    Annotations: 
+        rdfs:label "colouring intensity of wine"@en,
+        rdfs:label "intensidad colorante del vino"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:annual_irrigation_l_ha
+
+    Annotations: 
+        rdfs:label "riego anual (l/ha)"@es,
+        rdfs:label "annual irrigation (l/ha)"@en
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_data_property
+    
+    
+DataProperty: ebaco:total_sulphur_dioxide_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de anhídrico sulfuroso total del vino (mg/l)"@es,
+        rdfs:comment "total sulphur dioxide content"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:zinc_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de zinc de la uva (mg/l)"@es,
+        rdfs:label "zinc content of grape (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:wine_appellation_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la denominación de origen del vino"@es,
+        rdfs:label "wine appellation data property"@en
+    
+    SubPropertyOf: 
+        ebaco:appellation_data_property
+    
+    
+DataProperty: ebaco:vintage_starting_date
+
+    Annotations: 
+        rdfs:label "vintage starting date"@en,
+        rdfs:label "fecha de inicio de la vendimia"@es
+    
+    Range: 
+        xsd:date
+    
+    SubPropertyOf: 
+        ebaco:vintage_data_property
+    
+    
+DataProperty: ebaco:tartaric_acid_content_of_grape_g_l
+
+    Annotations: 
+        rdfs:label "tartaric acid content of grape (g/l)"@en,
+        rdfs:label "contenido de ácido tartárico de la uva (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:acetaldehyde_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de acetaldehído del vino (mg/l)"@es,
+        rdfs:label "acetaldehyde content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:annual_max_temperature_celsius
+
+    Annotations: 
+        rdfs:label "temperatura anual máxima (grados centígrados)"@es,
+        rdfs:label "annual maximum temperature (degrees celsius)"@en
+    
+    Range: 
+        xsd:float
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_data_property
+    
+    
+DataProperty: ebaco:grape_ph
+
+    Annotations: 
+        rdfs:label "pH de la uva"@es,
+        rdfs:label "grape pH"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:wine_density_g_ml
+
+    Annotations: 
+        rdfs:label "wine density (g/ml)"@en,
+        rdfs:label "densidad del vino (g/ml)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:sulfur_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de azufre de la uva (mg/l)"@es,
+        rdfs:label "sulphur content of grape (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:grape_selection_in_vintage
+
+    Annotations: 
+        rdfs:label "selección de la uva en la vendimia"@es,
+        rdfs:label "grape selection in vintage"@en
+    
+    Range: 
+        xsd:boolean
+    
+    SubPropertyOf: 
+        ebaco:vintage_data_property
+    
+    
+DataProperty: ebaco:min_temperature_of_month_previous_vintage_celsius
+
+    Annotations: 
+        rdfs:label "temperatura mínima del mes previo a la vendimia (grados centígrados)"@es,
+        rdfs:label "minimum temperature of month previous to vintage (degreees celsius)"@en
+    
+    Range: 
+        xsd:float
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_data_property
+    
+    
+DataProperty: ebaco:potassium_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "potassium content of grape (mg/l)"@en,
+        rdfs:label "contenido de potasio de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:wine_fixed_acidity_g_l
+
+    Annotations: 
+        rdfs:label "wine fixed acidity (g/l)"@en,
+        rdfs:label "acidez fija del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:sodium_chloride_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "sodium chloride content of wine (g/l)"@en,
+        rdfs:label "contenido de cloruro de sodio del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:wine_region_data_property
+
+    Annotations: 
+        rdfs:label "wine region data property"@es,
+        rdfs:label "propiedad de la región vinícola"@es
+    
+    Domain: 
+        ebaco:Wine_region
+    
+    
+DataProperty: ebaco:hundred_grape_berries_weight_g
+
+    Annotations: 
+        rdfs:label "Peso de 100 uvas (g)"@es,
+        rdfs:label "A hundred grape berries weight (g)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:vineyard_data_property
+
+    Annotations: 
+        rdfs:label "vineyard data property"@en,
+        rdfs:label "propiedad del viñedo"@es
+    
+    Domain: 
+        ebaco:Vineyard
+    
+    
+DataProperty: ebaco:total_bacteria_count_of_wine
+
+    Annotations: 
+        rdfs:label "total bacteria count of wine"@en,
+        rdfs:label "recuento de bacterias totales del vino"@es
+    
+    Range: 
+        xsd:integer[>= 0]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:annual_min_temperature_celsius
+
+    Annotations: 
+        rdfs:label "temperatura anual mínima (grados centígrados)"@es,
+        rdfs:label "annual minimum temperature (degrees celsius)"@en
+    
+    Range: 
+        xsd:float
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_data_property
+    
+    
+DataProperty: ebaco:sodium_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de sodio de la uva (mg/l)"@es,
+        rdfs:label "sodium content of grape (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:total_acidity_of_grape_g_l
+
+    Annotations: 
+        rdfs:label "total acidity of grape (g/l)"@en,
+        rdfs:label "acidez total de la uva (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:max_wine_yield_allowed_by_wine_appellation_hl_ha
+
+    Annotations: 
+        rdfs:label "rendimiento máximo de vino permitido por la denomiación de origen (Hl/ha)"@es,
+        rdfs:label "maximum wine yield allowed by the wine appellation (Hl/ha)"@en
+    
+    Range: 
+        xsd:float[> 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_appellation_data_property
+    
+    
+DataProperty: ebaco:grape_reception_object_property
+
+    Annotations: 
+        rdfs:label "propiedad de la recepción de la uva"@es,
+        rdfs:label "grape reception object property"@en
+    
+    Domain: 
+        ebaco:Grape_reception
+    
+    SubPropertyOf: 
+        ebaco:winemaking_data_property
+    
+    
+DataProperty: ebaco:boron_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "boron content of grape (mg/l)"@en,
+        rdfs:label "contenido de boro de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:phosphorus_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "contenido de fósforo del vino (mg/l)"@es,
+        rdfs:label "phosphorus content of wine (mg/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:magnesium_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "magnesium content of grape (mg/l)"@en,
+        rdfs:label "contenido de magnesio de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:max_white_grape_production_allowed_by_wine_appellation_Kg_ha
+
+    Annotations: 
+        rdfs:label "maximum white grape production allowed by the wine appellation (Kg/ha)"@en,
+        rdfs:label "producción máxima de uva blanca permitida por la denominación de origen (Kg/ha)"@es
+    
+    Range: 
+        xsd:positiveInteger
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_appellation_data_property
+    
+    
+DataProperty: ebaco:glucose_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "contenido de glucosa del vino (g/l)"@es,
+        rdfs:label "glucose content of wine (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:max_red_grape_production_allowed_by_wine_appellation_Kg_ha
+
+    Annotations: 
+        rdfs:label "producción máxima de uva tinta permitida por la denominación de origen (Kg/ha)"@es,
+        rdfs:label "maximum white grape production allowed by the wine appellation (Kg/ha)"@en
+    
+    Range: 
+        xsd:positiveInteger
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_appellation_data_property
+    
+    
+DataProperty: ebaco:ascorbic_acid_content_of_grape_g_l
+
+    Annotations: 
+        rdfs:label "ascorbic acid content of grape (g/l)"@en,
+        rdfs:label "contenido de ácido ascórbico de la uva (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:malic_acid_content_of_grape_g_l
+
+    Annotations: 
+        rdfs:label "malic acid content of grape (g/l)"@en,
+        rdfs:label "contenido de ácido málico de la uva (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:grape_destemming_data_property
+
+    Annotations: 
+        rdfs:label "propiedad del despalillado de la uva"@es,
+        rdfs:label "grape destemming data property"@en
+    
+    Domain: 
+        ebaco:Grape_destemming
+    
+    SubPropertyOf: 
+        ebaco:winemaking_data_property
+    
+    
+DataProperty: ebaco:winemaking_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la vinificación"@es,
+        rdfs:label "winemaking data property"@en
+    
+    Domain: 
+        ebaco:Winemaking_process
+    
+    
+DataProperty: ebaco:annual_rainfall_mm
+
+    Annotations: 
+        rdfs:label "annual rainfall (mm)"@en,
+        rdfs:label "pluviometria anual (mm)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_data_property
+    
+    
+DataProperty: ebaco:max_altitude_of_vineyards
+
+    Annotations: 
+        rdfs:label "altitud máxima de los viñedos"@es,
+        rdfs:label "maximum altitude of vineyards"@en,
+        rdfs:comment "Propiedad que relaciona una región vinícola con la altitud máxima de los viñedos que hay en ella."@es
+    
+    Range: 
+        xsd:positiveInteger
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_region_data_property
+    
+    
+DataProperty: ebaco:max_temperature_of_month_previous_vintage_celsius
+
+    Annotations: 
+        rdfs:label "maximum temperature of month previous vintage (degrees celsius)"@en,
+        rdfs:label "temperatura máxima del mes previo a la vendimia (grados centígrados)"@es
+    
+    Range: 
+        xsd:float
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_data_property
+    
+    
+DataProperty: ebaco:daily_mean_insolation_hours
+
+    Annotations: 
+        rdfs:label "daily mean insolation (hours)"@en,
+        rdfs:label "insolación media diaria (horas)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_cultivation_data_property
+    
+    
+DataProperty: ebaco:grape_cultivation_data_property
+
+    Annotations: 
+        rdfs:label "grape cultivation data property"@en,
+        rdfs:label "propiedad del cultivo de la uva"@es
+    
+    Domain: 
+        ebaco:Grape_cultivation
+    
+    SubPropertyOf: 
+        ebaco:winemaking_data_property
+    
+    
+DataProperty: ebaco:calcium_content_of_grape_mg_l
+
+    Annotations: 
+        rdfs:label "calcium content of grape (mg/l)"@en,
+        rdfs:label "contenido de calcio de la uva (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:grape_data_property
+    
+    
+DataProperty: ebaco:appellation_data_property
+
+    Annotations: 
+        rdfs:label "propiedad de la denominación de origen"@es,
+        rdfs:label "appellation data property"@en
+    
+    
+DataProperty: ebaco:wine_data_property
+
+    
+DataProperty: ebaco:tartaric_acid_content_of_wine_g_l
+
+    Annotations: 
+        rdfs:label "contenido de ácido tartárico del vino (g/l)"@es,
+        rdfs:label "tartaric acid content of wine (g/l)"@en
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:wine_volatile_acidity_g_l
+
+    Annotations: 
+        rdfs:label "wine volatile acidity (g/l)"@en,
+        rdfs:label "acidez volátil del vino (g/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+DataProperty: ebaco:potassium_content_of_wine_mg_l
+
+    Annotations: 
+        rdfs:label "potassium content of wine (mg/l)"@en,
+        rdfs:label "contenido de potasio del vino (mg/l)"@es
+    
+    Range: 
+        xsd:float[>= 0.0f]
+    
+    Characteristics: 
+        Functional
+    
+    SubPropertyOf: 
+        ebaco:wine_data_property
+    
+    
+Class: ebaco:Herbicide
+
+    Annotations: 
+        rdfs:label "Herbicide"@en,
+        rdfs:label "Herbicida"@es
+    
+    SubClassOf: 
+        ebaco:Cultivation_treatment
+    
+    
+Class: ebaco:Wine_barrel
+
+    Annotations: 
+        rdfs:label "Barrica de vino"@es,
+        rdfs:label "Wine barrel"@en
+    
+    SubClassOf: 
+        ebaco:Wine_container
+    
+    
+Class: ebaco:Grape
+
+    
+Class: ebaco:Natural_cultivation_treatment
+
+    Annotations: 
+        rdfs:label "Natural cultivation treatment"@en,
+        rdfs:label "Tratamiento del cultivo natural"@es
+    
+    SubClassOf: 
+        ebaco:Cultivation_treatment
+    
+    DisjointWith: 
+        ebaco:Artificial_cultivation_treatment
+    
+    
+Class: ebaco:Wine_bottle
+
+    Annotations: 
+        rdfs:label "Wine bottle"@en,
+        rdfs:label "Botella de vino"@es
+    
+    SubClassOf: 
+        ebaco:Wine_container
+    
+    
+Class: ebaco:Wine_corking
+
+    Annotations: 
+        rdfs:label "Wine corking"@en,
+        rdfs:label "Encorchado del vino"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Bottle_cap
+
+    Annotations: 
+        rdfs:label "Bottle cap"@en,
+        rdfs:label "Tapón de botella"@es
+    
+    
+Class: ebaco:Wine_bottling
+
+    Annotations: 
+        rdfs:label "Wine bottling"@en,
+        rdfs:label "Embotellado del vino"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Pesticide
+
+    Annotations: 
+        rdfs:label "Pesticida"@es,
+        rdfs:label "Pesticide"@en
+    
+    SubClassOf: 
+        ebaco:Cultivation_treatment
+    
+    
+Class: ebaco:Grape_must_maceration
+
+    Annotations: 
+        rdfs:label "Grape must maceration"@en,
+        rdfs:label "Maceración del mosto de la uva"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Wine_pressing
+
+    Annotations: 
+        rdfs:label "Wine pressing"@en,
+        rdfs:label "Prensado del vino"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Wine_malolactic_fermentation
+
+    Annotations: 
+        rdfs:label "Malolactic fermentation of wine"@en,
+        rdfs:label "Fermentación maloláctica del vino"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Vintage
+
+    Annotations: 
+        rdfs:label "Vintage"@en,
+        rdfs:label "Vendimia"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Silicone_bottle_cap
+
+    Annotations: 
+        rdfs:label "Silicone bottle cap"@en,
+        rdfs:label "Tapón de botella de silicona"@es
+    
+    SubClassOf: 
+        ebaco:Bottle_cap
+    
+    
+Class: ebaco:Grape_must_punchdown
+
+    Annotations: 
+        rdfs:label "Bazuqueo del mosto"@es,
+        rdfs:label "Grape must punchdown"@en
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Fertilizer
+
+    Annotations: 
+        rdfs:label "Fertilizer"@en,
+        rdfs:label "Fertilizante"@es
+    
+    SubClassOf: 
+        ebaco:Cultivation_treatment
+    
+    
+Class: ebaco:Artificial_cultivation_treatment
+
+    Annotations: 
+        rdfs:label "Artificial cultivation treatment"@en,
+        rdfs:label "Tratamiento del cultivo artificial"@es
+    
+    SubClassOf: 
+        ebaco:Cultivation_treatment
+    
+    DisjointWith: 
+        ebaco:Natural_cultivation_treatment
+    
+    
+Class: ebaco:Plastic_bottle_cap
+
+    Annotations: 
+        rdfs:label "Tapón de botella de plástico"@es,
+        rdfs:label "Plastic bottle cap"@en
+    
+    SubClassOf: 
+        ebaco:Bottle_cap
+    
+    
+Class: ebaco:Wine_container
+
+    Annotations: 
+        rdfs:label "Wine container"@en,
+        rdfs:label "Contenedor de vino"@es,
+        rdfs:comment "Embase que sirve para contener o almacenar mosto, vino o algún derivado."@es
+    
+    
+Class: ebaco:vineyard_training
+
+    Annotations: 
+        rdfs:label "Vineyard training system"@en,
+        rdfs:comment "Tipo de poda realizado a una viña para conducir sus tallos."@es,
+        rdfs:seeAlso "http://en.wikipedia.org/wiki/Vine_training"@en,
+        rdfs:label "Sistema de poda de la viña"@es
+    
+    
+Class: ebaco:Vineyard_soil
+
+    Annotations: 
+        rdfs:label "Suelo de viña"@es,
+        rdfs:label "Vineyard soil"@en,
+        rdfs:comment "Suelo en el que se cultiva una viña."@es
+    
+    
+Class: ebaco:Rubber_bottle_cap
+
+    Annotations: 
+        rdfs:label "Tapón de botella de caucho"@es,
+        rdfs:label "Rubber bottle cap"@en
+    
+    SubClassOf: 
+        ebaco:Bottle_cap
+    
+    
+Class: ebaco:Winery
+
+    
+Class: ebaco:Grape_destemming
+
+    Annotations: 
+        rdfs:label "Grape destemming"@en,
+        rdfs:label "Despalillado de la uva"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Cork_bottle_cap
+
+    Annotations: 
+        rdfs:label "Cork bottle cap"@en,
+        rdfs:label "Tapón de botella de corcho"@es
+    
+    SubClassOf: 
+        ebaco:Bottle_cap
+    
+    
+Class: ebaco:Wine_maturation
+
+    Annotations: 
+        rdfs:label "Wine maturation"@en,
+        rdfs:label "Crianza del vino"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Grape_cultivation
+
+    Annotations: 
+        rdfs:label "Cultivo de la uva"@es,
+        rdfs:label "Grape cultivation"@en
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Yeast_strain
+
+    Annotations: 
+        rdfs:label "Cepa de levadura"@es,
+        rdfs:label "Yeast strain"@en
+    
+    
+Class: <http://www.w3.org/ns/prov#Activity>
+
+    Annotations: 
+        rdfs:label "Actividad"@es
+    
+    
+Class: ebaco:Vineyard
+
+    Annotations: 
+        rdfs:label "Viñedo"@es,
+        rdfs:label "Vineyard"@en,
+        rdfs:seeAlso "http://es.wikipedia.org/wiki/Vi%C3%B1a"@es,
+        rdfs:comment "Plantación de vides para la producción de uva."@es
+    
+    
+Class: ebaco:Fungicide
+
+    Annotations: 
+        rdfs:label "Fungicide"@en,
+        rdfs:label "Fungicida"@es
+    
+    SubClassOf: 
+        ebaco:Cultivation_treatment
+    
+    
+Class: ebaco:Screw_bottle_cap
+
+    Annotations: 
+        rdfs:label "Tapón de botella roscado"@es,
+        rdfs:label "Screw bottle cap"@en
+    
+    SubClassOf: 
+        ebaco:Bottle_cap
+    
+    
+Class: ebaco:Grape_must_pumpover
+
+    Annotations: 
+        rdfs:label "Remontado del mosto"@es,
+        rdfs:label "Grape must pumpover"@en
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Wine_appellation
+
+    
+Class: ebaco:Wine_region
+
+    
+Class: ebaco:Grape_reception
+
+    Annotations: 
+        rdfs:label "Grape reception"@en,
+        rdfs:label "Recepción de la uva"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Grape_crushing
+
+    Annotations: 
+        rdfs:label "Estrujado de la uva"@es,
+        rdfs:label "Grape crushing"@en
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Wine_aging
+
+    Annotations: 
+        rdfs:label "Wine aging"@en,
+        rdfs:label "Envejecimiento del vino"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Wine_tank
+
+    Annotations: 
+        rdfs:label "Depósito de vino"@es,
+        rdfs:label "Wine tank"@en
+    
+    SubClassOf: 
+        ebaco:Wine_container
+    
+    
+Class: ebaco:Wine_alcoholic_fermentation
+
+    Annotations: 
+        rdfs:label "Fermentación alcohólica del vino"@es,
+        rdfs:label "Alcoholic fermentation of wine"@en
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Wine_filtering
+
+    Annotations: 
+        rdfs:label "Wine filtering"@en,
+        rdfs:label "Filtrado del vino"@es
+    
+    SubClassOf: 
+        ebaco:Winemaking_process
+    
+    
+Class: ebaco:Cultivation_treatment
+
+    Annotations: 
+        rdfs:label "Cultivation treatment"@en,
+        rdfs:label "Tratamiento del cultivo"@es
+    
+    
+Class: ebaco:Winemaking_process
+
+    Annotations: 
+        rdfs:label "Proceso de la vinificación"@es,
+        rdfs:label "Winemaking process"@en
+    
+    SubClassOf: 
+        <http://www.w3.org/ns/prov#Activity>
+    
+    
+Individual: ebaco:staked_vineyard_training
+
+    Annotations: 
+        rdfs:label "Sistema de poda de la viña con estacas"@es,
+        rdfs:label "Staked vineyard training"@en
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    
+Individual: ebaco:single_wire_trellis_vineyard_training
+
+    Annotations: 
+        rdfs:label "Sistema de poda de la viña en espaldera con un alambre"@es,
+        rdfs:label "Single wire trellis vineyard training"@en
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    
+Individual: ebaco:gdc_trellis_vineyard_training
+
+    Annotations: 
+        rdfs:label "Sistema de poda de la viña en espaldera de doble cortina (gdb)"@es,
+        rdfs:label "Geneva double curtain trellis vineyard training"@en
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    
+Individual: ebaco:two_wires_trellis_vineyard_training
+
+    Annotations: 
+        rdfs:label "Sistema de poda de la viña en espaldera con dos alambres"@es,
+        rdfs:label "two wires trellis vineyard training"@en
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    
+Individual: ebaco:goblet_training_system
+
+    Annotations: 
+        rdfs:label "Sistema de poda de la viña en vaso"@es,
+        rdfs:label "Globet vineyard training"@en
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    
+Individual: ebaco:vsp_trellis_wineyard_training
+
+    Annotations: 
+        rdfs:label "Vertical shoot ositioned trellis vineyard training"@en,
+        rdfs:label "Sistema de poda de la viña en espaldera vertical vsp"@es
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    
+Individual: ebaco:lyre_trellis_vineyard_training
+
+    Annotations: 
+        rdfs:label "Sistema de poda de la viña en forma de lira."@es,
+        rdfs:label "Lyre trellis vineyard training"@en
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    
+Individual: ebaco:scott_henry_trellis_vineyard_training
+
+    Annotations: 
+        rdfs:label "Sistema de poda de la viña Scott-Henry"@es,
+        rdfs:label "Scott-Henry trellis vineyard training"@en
+    
+    Types: 
+        ebaco:vineyard_training
+    
+    

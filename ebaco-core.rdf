@@ -82,6 +82,16 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
     
 
 
+    <!-- http://purl.org/ceu/ebaco#appellation_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#appellation_object_property">
+        <rdfs:label xml:lang="en">appellation object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la denominación de origen</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Appellations"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.org/ceu/ebaco#elaborated_with_grape -->
 
     <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#elaborated_with_grape">
@@ -90,7 +100,17 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con una variedad de uva utilizada en su elaboración.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Grape"/>
         <owl:inverseOf rdf:resource="http://purl.org/ceu/ebaco#grape_of_elaboration_of"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#grape_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#grape_object_property">
+        <rdfs:label xml:lang="en">grape object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la uva</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Grape"/>
     </owl:ObjectProperty>
     
 
@@ -102,7 +122,7 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="es">uva de elaboración de</rdfs:label>
         <rdfs:comment xml:lang="es">Relaciona una variedad de uva con un vino en el que es usada la variedad para su elaboración.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Wine"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#grape_object_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#grape_object_property"/>
     </owl:ObjectProperty>
     
 
@@ -127,7 +147,7 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="es">tiene contenido de uva</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad reificada que relaciona un vino con el porcentaje que contiene de una determinada variedad de uva.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Grape_content"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_object_property"/>
     </owl:ObjectProperty>
     
 
@@ -141,8 +161,8 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="es">tiene consejo regulador</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona una denominación de origen con su consejo regulador</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Regulating_council"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#appellation_object_property"/>
         <owl:inverseOf rdf:resource="http://purl.org/ceu/ebaco#regulating_council_of"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#appellation_object_property"/>
     </owl:ObjectProperty>
     
 
@@ -154,9 +174,35 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">has wine appellation</rdfs:label>
         <rdfs:label xml:lang="es">tiene denominación de origen de vino</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con la denomiación de origen a la que pertenece.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Wine_appellation"/>
         <owl:inverseOf rdf:resource="http://purl.org/ceu/ebaco#wine_appellation_of"/>
-        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#has_wine_region_appellation -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#has_wine_region_appellation">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="es">tiene denominación de origen de región vinícola</rdfs:label>
+        <rdfs:comment xml:lang="en">has wine region appellation</rdfs:comment>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona una región vinícola con una denominación de origen.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Wine_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_region_with_appellation_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#produced_in_wine_region -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#produced_in_wine_region">
+        <rdfs:label xml:lang="en">produced in wine region</rdfs:label>
+        <rdfs:label xml:lang="es">producido en la región vinícola</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con la región vinícola en la que se produce.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Wine_region"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_object_property"/>
     </owl:ObjectProperty>
     
 
@@ -169,7 +215,17 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="es">produce vino</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona una bodega con un vino que produce.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Wine"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#winery_object_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#winery_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#regulating_council_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#regulating_council_object_property">
+        <rdfs:label xml:lang="en">regulating council object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad del consejo regulador</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Regulating_council"/>
     </owl:ObjectProperty>
     
 
@@ -182,8 +238,19 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="en">regulating council of</rdfs:label>
         <rdfs:label xml:lang="es">consejo regulador de</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un consejo regulador con la denominación de origen que regula.</rdfs:comment>
-        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#regulating_council_object_property"/>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Appellations"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#regulating_council_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#wine_appellation_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#wine_appellation_object_property">
+        <rdfs:label xml:lang="en">wine appellation object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad de la denominación de origen del vino</rdfs:label>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Wine_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#appellation_object_property"/>
     </owl:ObjectProperty>
     
 
@@ -196,7 +263,16 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="es">denominación de origen del vino</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona una denominación de origen con un vino perteneciente la denominación.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Wine"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_appellation_object_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_appellation_object_property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#wine_object_property -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#wine_object_property">
+        <rdfs:label xml:lang="en">Wine object property</rdfs:label>
+        <rdfs:label xml:lang="es">propiedad del vino</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -210,125 +286,48 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:comment xml:lang="es">Relaciona un vino con la bodega que lo produce.</rdfs:comment>
         <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Winery"/>
         <owl:inverseOf rdf:resource="http://purl.org/ceu/ebaco#produces_wine"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_object_property"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core#appellation_object_property -->
+    <!-- http://purl.org/ceu/ebaco#wine_region_appellation_of -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#appellation_object_property">
-        <rdfs:label xml:lang="en">appellation object property</rdfs:label>
-        <rdfs:label xml:lang="es">propiedad de la denominación de origen</rdfs:label>
-        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#grape_object_property -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#grape_object_property">
-        <rdfs:label xml:lang="en">grape object property</rdfs:label>
-        <rdfs:label xml:lang="es">propiedad de la uva</rdfs:label>
-        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Grape"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#has_wine_region_appellation -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#has_wine_region_appellation">
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
-        <rdfs:label xml:lang="es">tiene denominación de origen de región vinícola</rdfs:label>
-        <rdfs:comment xml:lang="en">has wine region appellation</rdfs:comment>
-        <rdfs:comment xml:lang="es">Propiedad que relaciona una región vinícola con una denominación de origen.</rdfs:comment>
-        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_region_with_appellation_object_property"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#produced_in_wine_region -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#produced_in_wine_region">
-        <rdfs:label xml:lang="en">produced in wine region</rdfs:label>
-        <rdfs:label xml:lang="es">producido en la región vinícola</rdfs:label>
-        <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con la región vinícola en la que se produce.</rdfs:comment>
-        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_object_property"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#regulating_council_object_property -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#regulating_council_object_property">
-        <rdfs:label xml:lang="en">regulating council object property</rdfs:label>
-        <rdfs:label xml:lang="es">propiedad del consejo regulador</rdfs:label>
-        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Regulating_council"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#wine_appellation_object_property -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_appellation_object_property">
-        <rdfs:label xml:lang="en">wine appellation object property</rdfs:label>
-        <rdfs:label xml:lang="es">propiedad de la denominación de origen del vino</rdfs:label>
-        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#appellation_object_property"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#wine_object_property -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_object_property">
-        <rdfs:label xml:lang="en">Wine object property</rdfs:label>
-        <rdfs:label xml:lang="es">propiedad del vino</rdfs:label>
-        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Wine"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#wine_region_appellation_of -->
-
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_region_appellation_of">
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#wine_region_appellation_of">
         <rdfs:label xml:lang="en">wine region appellation of</rdfs:label>
         <rdfs:label xml:lang="es">denominación de origen de la región vinícola</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona una denominación de origen con la región vinícola que tiene la califiación de la denominación.</rdfs:comment>
-        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation"/>
-        <owl:inverseOf rdf:resource="http://purl.org/ceu/ebaco/core#has_wine_region_appellation"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_appellation_object_property"/>
+        <rdfs:range rdf:resource="http://purl.org/ceu/ebaco#Wine_region_with_appellation"/>
+        <owl:inverseOf rdf:resource="http://purl.org/ceu/ebaco#has_wine_region_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_appellation_object_property"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core#wine_region_object_property -->
+    <!-- http://purl.org/ceu/ebaco#wine_region_object_property -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_region_object_property">
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#wine_region_object_property">
         <rdfs:label xml:lang="en">wine region object property</rdfs:label>
         <rdfs:label xml:lang="es">propiedad de la región vinícola</rdfs:label>
-        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Wine_region"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core#wine_region_with_appellation_object_property -->
+    <!-- http://purl.org/ceu/ebaco#wine_region_with_appellation_object_property -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_region_with_appellation_object_property">
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#wine_region_with_appellation_object_property">
         <rdfs:label xml:lang="en">wine region with appellation object property</rdfs:label>
         <rdfs:label xml:lang="es">propiedad de la región vinícola con denominación de origen</rdfs:label>
-        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_region_object_property"/>
+        <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Wine_region_with_appellation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_region_object_property"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core#winery_object_property -->
+    <!-- http://purl.org/ceu/ebaco#winery_object_property -->
 
-    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco/core#winery_object_property">
+    <owl:ObjectProperty rdf:about="http://purl.org/ceu/ebaco#winery_object_property">
         <rdfs:label xml:lang="en">Winery object property</rdfs:label>
         <rdfs:label xml:lang="es">propiedad de la bodega</rdfs:label>
         <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Winery"/>
@@ -377,7 +376,7 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="es">presión atmosférica en botella (atm)</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino espumoso con la presión atmosférica en atmósferas dentro de la botella debida al contenido de gas carbónico.</rdfs:comment>
         <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Sparkling_wine"/>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_data_property"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:onDatatype rdf:resource="&xsd;float"/>
@@ -425,7 +424,7 @@ Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad S
         <rdfs:label xml:lang="es">tiempo mínimo de envejecimiento en botella en meses</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con el tiempo que pasa desde su fermentación hasta su consumo. 
 El vino se deja envejecer para que desarrolle todo su potencial organoléptico.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_data_property"/>
         <rdfs:seeAlso rdf:resource="http://www.diccionariodelvino.com/index.php?qv=envejecimiento"/>
         <rdfs:range>
             <rdfs:Datatype>
@@ -448,7 +447,7 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
         <rdfs:label xml:lang="en">sugar content of wine (g/l)</rdfs:label>
         <rdfs:label xml:lang="es">contenido de azúcar del vino (g/l)</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con su contenido de azúcar en gramos por litro.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_data_property"/>
         <rdfs:range>
             <rdfs:Datatype>
                 <owl:onDatatype rdf:resource="&xsd;float"/>
@@ -470,7 +469,7 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
         <rdfs:label xml:lang="en">time of aging in barrel in months</rdfs:label>
         <rdfs:label xml:lang="es">tiempo de crianza en barrica en meses</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con el tiempo que ha estado criándose en barricas de madera en meses.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_data_property"/>
         <rdfs:seeAlso rdf:resource="http://www.diccionariodelvino.com/index.php?qv=CRIANZA"/>
         <rdfs:range>
             <rdfs:Datatype>
@@ -486,22 +485,22 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core#vintage_year -->
+    <!-- http://purl.org/ceu/ebaco#vintage_year -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/ceu/ebaco/core#vintage_year">
+    <owl:DatatypeProperty rdf:about="http://purl.org/ceu/ebaco#vintage_year">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:label xml:lang="en">vintage year</rdfs:label>
         <rdfs:label xml:lang="es">añada</rdfs:label>
         <rdfs:comment xml:lang="es">Propiedad que relaciona un vino con su añada o año de vendimia de la uva con la que se elaboró.</rdfs:comment>
-        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco/core#wine_data_property"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/ceu/ebaco#wine_data_property"/>
         <rdfs:range rdf:resource="&xsd;gYear"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core#wine_data_property -->
+    <!-- http://purl.org/ceu/ebaco#wine_data_property -->
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/ceu/ebaco/core#wine_data_property">
+    <owl:DatatypeProperty rdf:about="http://purl.org/ceu/ebaco#wine_data_property">
         <rdfs:label xml:lang="en">wine data property</rdfs:label>
         <rdfs:label xml:lang="es">propiedad del vino</rdfs:label>
         <rdfs:domain rdf:resource="http://purl.org/ceu/ebaco#Wine"/>
@@ -924,6 +923,15 @@ El vino se deja envejecer para que desarrolle todo su potencial organoléptico.<
         <rdfs:label xml:lang="en">Ansonica grape</rdfs:label>
         <rdfs:label xml:lang="es">Uva Ansonica</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#White_grape"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#Appellations -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Appellations">
+        <rdfs:label xml:lang="en">Appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen</rdfs:label>
     </owl:Class>
     
 
@@ -3018,6 +3026,16 @@ La fermentación es un proceso biológico de fermentación en plena ausencia de 
     
 
 
+    <!-- http://purl.org/ceu/ebaco#Flora_red_gape -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Flora_red_gape">
+        <rdfs:label xml:lang="en">Flora red grape</rdfs:label>
+        <rdfs:label xml:lang="es">Uva Flora tinta</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Red_grape"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/ceu/ebaco#Flora_white_grape -->
 
     <owl:Class rdf:about="http://purl.org/ceu/ebaco#Flora_white_grape">
@@ -3493,14 +3511,14 @@ Sinónimo de vino fortificado.</rdfs:comment>
         <rdfs:label xml:lang="es">Contenido de uva</rdfs:label>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#has_grape_porcentaje"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#has_grape"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco#Grape"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#has_grape"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco#Grape"/>
+                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#has_grape_porcentaje"/>
+                <owl:someValuesFrom rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="es">Clase que resulta de reificar la relación que asocia un vino al par formado por una variead de uva y el porcentaje de esa variedad que ha sido utilizada en la elaboración del vino.</rdfs:comment>
@@ -6477,11 +6495,38 @@ Sinónimo de vino fortificado.</rdfs:comment>
     
 
 
+    <!-- http://purl.org/ceu/ebaco#Spanish_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Spanish_appellation">
+        <rdfs:label xml:lang="en">Spanish appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen de España</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Appellations"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#Spanish_wine_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_appellation">
+        <rdfs:label xml:lang="en">Spanish wine appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen de vino de España</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_appellation"/>
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_appellation"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/ceu/ebaco#Spanish_wine_region -->
 
     <owl:Class rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region">
         <rdfs:label xml:lang="es">Región vinícola de España</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Wine_region"/>
         <rdfs:comment xml:lang="en">Spanish wine region</rdfs:comment>
         <rdfs:comment xml:lang="es">Región de España donde se produce vino</rdfs:comment>
         <owl:disjointUnionOf rdf:parseType="Collection">
@@ -6542,7 +6587,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region"/>
-                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation"/>
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_region_with_appellation"/>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -6569,7 +6614,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region"/>
-                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_without_appellation"/>
+                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_region_without_appellation"/>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -6632,6 +6677,16 @@ Sinónimo de vino fortificado.</rdfs:comment>
             <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_sweet_still_wine"/>
             <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Sweet_still_wine"/>
         </owl:disjointUnionOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#Sumoll_red_grape -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Sumoll_red_grape">
+        <rdfs:label xml:lang="en">Sumoll red grape</rdfs:label>
+        <rdfs:label xml:lang="es">Uva Sumoll tinta</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Red_grape"/>
     </owl:Class>
     
 
@@ -7383,6 +7438,17 @@ Sinónimo de vino fortificado.</rdfs:comment>
     
 
 
+    <!-- http://purl.org/ceu/ebaco#Vermut -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Vermut">
+        <rdfs:label xml:lang="es">Vermut</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Fortified_wine"/>
+        <rdfs:comment xml:lang="es">Vino macerado en hierbas servido durante los aperitivos que está compuesto de vino tinto, ajenjo y otras sustancias amargas.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://es.wikipedia.org/wiki/Verm%C3%BA"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.org/ceu/ebaco#Vernaccia_di_oristano_grape -->
 
     <owl:Class rdf:about="http://purl.org/ceu/ebaco#Vernaccia_di_oristano_grape">
@@ -7603,14 +7669,14 @@ Sinónimo de vino fortificado.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Fermented_alcoholic_beverage"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#elaborated_with_grape"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco#Grape"/>
+                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#produced_in_wine_region"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco#Wine_region"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco/core#produced_in_wine_region"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
+                <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#elaborated_with_grape"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco#Grape"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -7626,6 +7692,47 @@ Sinónimo de vino fortificado.</rdfs:comment>
             <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Table_wine"/>
             <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_appellation"/>
         </owl:disjointUnionOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#Wine_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Wine_appellation">
+        <rdfs:label xml:lang="en">Wine appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Denominación de origen de vino</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Appellations"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#Wine_region -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Wine_region">
+        <rdfs:label xml:lang="en">Wine region</rdfs:label>
+        <rdfs:label xml:lang="es">Región vinícola</rdfs:label>
+        <rdfs:comment xml:lang="en">A wine region is a geographical region that cultivates grapes and produces wines.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Una región vinícola es una región geográfica que cultiva uvas y produce vinos.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#Wine_region_with_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Wine_region_with_appellation">
+        <rdfs:label xml:lang="en">Wine region with appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Región vinícola con denominación de origen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Wine_region"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#Wine_region_without_appellation -->
+
+    <owl:Class rdf:about="http://purl.org/ceu/ebaco#Wine_region_without_appellation">
+        <rdfs:label xml:lang="en">Wine region without appellation</rdfs:label>
+        <rdfs:label xml:lang="es">Región vinícola sin denominación de origen</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Wine_region"/>
     </owl:Class>
     
 
@@ -7653,7 +7760,7 @@ Sinónimo de vino fortificado.</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://purl.org/ceu/ebaco#has_wine_appellation"/>
-                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
+                <owl:someValuesFrom rdf:resource="http://purl.org/ceu/ebaco#Wine_appellation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="es">Un vino con denominación es un vino de cierta calidad producido en una determinada región geográfica con algún tipo de denominación o protección.</rdfs:comment>
@@ -7938,114 +8045,6 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
         <rdfs:label xml:lang="en">Zweigelt grape</rdfs:label>
         <rdfs:label xml:lang="es">Uva Zweigelt</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Red_grape"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Appellations -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Appellations">
-        <rdfs:label xml:lang="en">Appellation</rdfs:label>
-        <rdfs:label xml:lang="es">Denominación de origen</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Flora_red_gape -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Flora_red_gape">
-        <rdfs:label xml:lang="en">Flora red grape</rdfs:label>
-        <rdfs:label xml:lang="es">Uva Flora tinta</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Red_grape"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Spanish_appellation -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Spanish_appellation">
-        <rdfs:label xml:lang="en">Spanish appellation</rdfs:label>
-        <rdfs:label xml:lang="es">Denominación de origen de España</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Spanish_wine_appellation -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Spanish_wine_appellation">
-        <rdfs:label xml:lang="en">Spanish wine appellation</rdfs:label>
-        <rdfs:label xml:lang="es">Denominación de origen de vino de España</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Spanish_appellation"/>
-                    <rdf:Description rdf:about="http://purl.org/ceu/ebaco/core#Wine_appellation"/>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Sumoll_red_grape -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Sumoll_red_grape">
-        <rdfs:label xml:lang="en">Sumoll red grape</rdfs:label>
-        <rdfs:label xml:lang="es">Uva Sumoll tinta</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Red_grape"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Vermut -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Vermut">
-        <rdfs:label xml:lang="es">Vermut</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco#Fortified_wine"/>
-        <rdfs:comment xml:lang="es">Vino macerado en hierbas servido durante los aperitivos que está compuesto de vino tinto, ajenjo y otras sustancias amargas.</rdfs:comment>
-        <rdfs:seeAlso rdf:resource="http://es.wikipedia.org/wiki/Verm%C3%BA"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Wine_appellation -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_appellation">
-        <rdfs:label xml:lang="en">Wine appellation</rdfs:label>
-        <rdfs:label xml:lang="es">Denominación de origen de vino</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Appellations"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Wine_region -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_region">
-        <rdfs:label xml:lang="en">Wine region</rdfs:label>
-        <rdfs:label xml:lang="es">Región vinícola</rdfs:label>
-        <rdfs:comment xml:lang="en">A wine region is a geographical region that cultivates grapes and produces wines.</rdfs:comment>
-        <rdfs:comment xml:lang="es">Una región vinícola es una región geográfica que cultiva uvas y produce vinos.</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Wine_region_with_appellation -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_with_appellation">
-        <rdfs:label xml:lang="en">Wine region with appellation</rdfs:label>
-        <rdfs:label xml:lang="es">Región vinícola con denominación de origen</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#Wine_region_without_appellation -->
-
-    <owl:Class rdf:about="http://purl.org/ceu/ebaco/core#Wine_region_without_appellation">
-        <rdfs:label xml:lang="en">Wine region without appellation</rdfs:label>
-        <rdfs:label xml:lang="es">Región vinícola sin denominación de origen</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.org/ceu/ebaco/core#Wine_region"/>
     </owl:Class>
     
 
@@ -10426,6 +10425,16 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
         <rdf:type rdf:resource="http://purl.org/ceu/ebaco#Findling_grape"/>
         <rdfs:label xml:lang="en">Findling grape</rdfs:label>
         <rdfs:label xml:lang="es">Uva Findling</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ceu/ebaco#flora_red_grape -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/ceu/ebaco#flora_red_grape">
+        <rdf:type rdf:resource="http://purl.org/ceu/ebaco#Flora_red_gape"/>
+        <rdfs:label xml:lang="en">Flora red grape</rdfs:label>
+        <rdfs:label xml:lang="es">Uva Flora tinta</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -13550,6 +13559,16 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     
 
 
+    <!-- http://purl.org/ceu/ebaco#sumoll_red_grape -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/ceu/ebaco#sumoll_red_grape">
+        <rdf:type rdf:resource="http://purl.org/ceu/ebaco#Sumoll_red_grape"/>
+        <rdfs:label xml:lang="en">Sumoll red grape</rdfs:label>
+        <rdfs:label xml:lang="es">Uva Sumoll tinta</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://purl.org/ceu/ebaco#sumoll_white_grape -->
 
     <owl:NamedIndividual rdf:about="http://purl.org/ceu/ebaco#sumoll_white_grape">
@@ -14702,26 +14721,6 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     
 
 
-    <!-- http://purl.org/ceu/ebaco/core#flora_red_grape -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/ceu/ebaco/core#flora_red_grape">
-        <rdf:type rdf:resource="http://purl.org/ceu/ebaco/core#Flora_red_gape"/>
-        <rdfs:label xml:lang="en">Flora red grape</rdfs:label>
-        <rdfs:label xml:lang="es">Uva Flora tinta</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://purl.org/ceu/ebaco/core#sumoll_red_grape -->
-
-    <owl:NamedIndividual rdf:about="http://purl.org/ceu/ebaco/core#sumoll_red_grape">
-        <rdf:type rdf:resource="http://purl.org/ceu/ebaco/core#Sumoll_red_grape"/>
-        <rdfs:label xml:lang="en">Sumoll red grape</rdfs:label>
-        <rdfs:label xml:lang="es">Uva Sumoll tinta</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -14748,14 +14747,14 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#used">
         <rdfs:label xml:lang="es">usa</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent">
-        <rdfs:label xml:lang="es">Evento instantáneo</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadUsage">
         <rdfs:label xml:lang="es">tiene uso</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasStartedBy">
         <rdfs:label xml:lang="es">comenzado por</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#InstantaneousEvent">
+        <rdfs:label xml:lang="es">Evento instantáneo</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasEndedAt">
         <rdfs:label xml:lang="es">Terminado</rdfs:label>
@@ -14832,11 +14831,11 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://purl.org/net/opmv/ns#Agent">
         <rdfs:label xml:lang="es">Agente</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#End">
-        <rdfs:label xml:lang="es">Fin</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasInformedBy">
         <rdfs:label xml:lang="es">informado por</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#End">
+        <rdfs:label xml:lang="es">Fin</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#endedAtTime">
         <rdfs:label xml:lang="es">terminado en tiempo</rdfs:label>
@@ -14934,17 +14933,17 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Attribution">
         <rdfs:label xml:lang="es">Atribución</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadRole">
-        <rdfs:label xml:lang="es">tiene rol</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Location">
         <rdfs:label xml:lang="es">Ubicación</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasStartedAt">
-        <rdfs:label xml:lang="es">Comenzado</rdfs:label>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadRole">
+        <rdfs:label xml:lang="es">tiene rol</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Invalidation">
         <rdfs:label xml:lang="es">Invalidación</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/net/opmv/ns#wasStartedAt">
+        <rdfs:label xml:lang="es">Comenzado</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Derivation">
         <rdfs:label xml:lang="es">Derivación</rdfs:label>
@@ -14973,11 +14972,11 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Plan">
         <rdfs:label xml:lang="es">Plan</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="http://www.w3.org/ns/prov#influencer">
-        <rdfs:label xml:lang="es">influenciador</rdfs:label>
-    </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#Delegation">
         <rdfs:label xml:lang="es">Delegación</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.w3.org/ns/prov#influencer">
+        <rdfs:label xml:lang="es">influenciador</rdfs:label>
     </rdf:Description>
     <rdf:Description rdf:about="http://www.w3.org/ns/prov#hadGeneration">
         <rdfs:label xml:lang="es">tiene generación</rdfs:label>
@@ -14999,40 +14998,9 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Dry_sparkling_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Extra_dry_spakling_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_dry_sparkling_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spakling_wine_brut"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spakling_wine_brut_nature"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spakling_wine_extra_brut"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Sweet_spakling_wine"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_denomination_of_pago"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_protected_denomination_of_origin"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_protected_geographical_indicator"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_qualified_denomination_of_origin"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Crianza_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Gran_reserva_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Reserva_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Young_wine"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Dry_still_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_dry_still_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_sweet_still_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Sweet_still_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Aerated_sparkling_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Natural_sparkling_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_spakling_wine"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -15048,10 +15016,13 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_denomination_of_pago"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_protected_denomination_of_origin"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_protected_geographical_indicator"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_qualified_denomination_of_origin"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Dry_sparkling_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Extra_dry_spakling_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_dry_sparkling_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spakling_wine_brut"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spakling_wine_brut_nature"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spakling_wine_extra_brut"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Sweet_spakling_wine"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -15396,9 +15367,37 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Aerated_sparkling_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Natural_sparkling_wine"/>
-            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_spakling_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_denomination_of_pago"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_protected_denomination_of_origin"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_protected_geographical_indicator"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Wine_with_qualified_denomination_of_origin"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Crianza_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Gran_reserva_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Reserva_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Young_wine"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_denomination_of_pago"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_protected_denomination_of_origin"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_protected_geographical_indicator"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Spanish_wine_region_with_qualified_denomination_of_origin"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Dry_still_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_dry_still_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Semi_sweet_still_wine"/>
+            <rdf:Description rdf:about="http://purl.org/ceu/ebaco#Sweet_still_wine"/>
         </owl:members>
     </rdf:Description>
     
@@ -15423,26 +15422,27 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="http://purl.org/ceu/ebaco#elaborated_with_grape"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#u"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#v"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://purl.org/ceu/ebaco#Wine"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#v"/>
+                    </rdf:Description>
+                </rdf:first>
                 <rdf:rest>
                     <rdf:Description>
                         <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://purl.org/ceu/ebaco#has_grape"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#u"/>
+                            </rdf:Description>
+                        </rdf:first>
                         <rdf:rest>
                             <rdf:Description>
                                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -15457,25 +15457,24 @@ Suele ser una empresa o cooperativa con una ubicación física concreta y un nif
                                 </rdf:first>
                             </rdf:Description>
                         </rdf:rest>
-                        <rdf:first>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="http://purl.org/ceu/ebaco#has_grape"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#p"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#u"/>
-                            </rdf:Description>
-                        </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
                 <rdf:first>
                     <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="http://purl.org/ceu/ebaco#Wine"/>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://purl.org/ceu/ebaco#elaborated_with_grape"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#u"/>
                         <swrl:argument1 rdf:resource="urn:swrl#v"/>
                     </rdf:Description>
                 </rdf:first>
             </rdf:Description>
-        </swrl:body>
+        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 

@@ -1,0 +1,2793 @@
+@prefix : <http://purl.org/ceu/ebaco/winemaking#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix core: <http://purl.org/ceu/ebaco/core/1.0#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ebaco: <http://purl.org/ceu/ebaco#> .
+@base <http://purl.org/ceu/ebaco/winemaking> .
+
+<http://purl.org/ceu/ebaco/winemaking> rdf:type owl:Ontology ;
+                                       
+                                       rdfs:label "Ontología E-BACO"@es ;
+                                       
+                                       rdfs:comment """The E-BACO ontology defines a precise vocabulary for representing knowledge in the enology domain. 
+The E-BACO-Core module contains the basic concepts, properties and relations for describing wines. 
+It has been developped by the Complutense university of Madrid and the San Pablo CEU university."""@en ;
+                                       
+                                       dc:creator "Alfredo Sánchez Alberca (asalber@ceu.es) <http://aprendeconalf.es/foaf.rdf>"@es ;
+                                       
+                                       dc:contributor "Aranzazu Gómez Garay (magom02@bio.ucm.es)"@es ,
+                                                      "Elena Pérez-Urria Carril (elenapuc@bio.ucm.es)"@es ;
+                                       
+                                       dc:date "Febrero 2015"@es ;
+                                       
+                                       rdfs:comment """La ontología E-BACO define un vocabulario preciso para representación de conocimiento en el dominio de la enología.
+El módulo E-BACO-Winemaking contiene los conceptos, propiedades y relaciones para describir los vinos y su proceso de elaboración y traza desde un punto de vista de expertos (bodegueros, enólogos, etc.)
+Ha sido desarrollada por la Universidad Complutense de Madrid y la Universidad San Pablo CEU."""@es ;
+                                       
+                                       dc:rights "La ontología E-BACO está bajo una licencia de Creative Commons Reconocimiento-CompartirIgual 3.0 de España (http://creativecommons.org/licenses/by-sa/3.0/es/)."@es ;
+                                       
+                                       dc:contributor "Luisa Martín (lmartin@bio.ucm.es)"@es ;
+                                       
+                                       dc:creator "Mari Ángeles Gómez Flechoso (magflechoso@bio.ucm.es)"@es ;
+                                       
+                                       dc:contributor "María Dolores Saco Sierra (mdsaco@farm.ucm.es)"@es ;
+                                       
+                                       owl:versionInfo "Vesión 1.0"@es ;
+                                       
+                                       rdfs:seeAlso <http://ebaco.github.io/> ;
+                                       
+                                       owl:imports <http://purl.org/ceu/ebaco/core/1.0> ;
+                                       
+                                       owl:versionIRI <http://purl.org/ceu/ebaco/winemaking/1.0> ;
+                                       
+                                       owl:imports <http://www.w3.org/ns/prov-o-20130430> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#appellation_data_property
+
+ebaco:appellation_data_property rdf:type owl:AnnotationProperty ;
+                                
+                                rdfs:domain <http://purl.org/ceu/ebaco/core#Appellations> .
+
+
+
+###  http://purl.org/ceu/ebaco#appellation_of
+
+ebaco:appellation_of rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/ceu/ebaco#carbon_dioxide_content_of_wine_g_l
+
+ebaco:carbon_dioxide_content_of_wine_g_l rdf:type owl:AnnotationProperty ;
+                                         
+                                         rdfs:domain core:Sparkling_wine .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_appellation_data_property
+
+ebaco:wine_appellation_data_property rdf:type owl:AnnotationProperty ;
+                                     
+                                     rdfs:domain <http://purl.org/ceu/ebaco/core#Wine_appellation> .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_region_with_appellation_object_property
+
+ebaco:wine_region_with_appellation_object_property rdf:type owl:AnnotationProperty ;
+                                                   
+                                                   rdfs:domain <http://purl.org/ceu/ebaco/core#Wine_region_with_appellation> .
+
+
+
+###  http://purl.org/ceu/ebaco#winery_data_property
+
+ebaco:winery_data_property rdf:type owl:AnnotationProperty ;
+                           
+                           rdfs:domain core:Winery .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#allows_grape_variety
+
+ebaco:allows_grape_variety rdf:type owl:ObjectProperty ;
+                           
+                           rdfs:label "allows grape variety"@en ,
+                                      "permite la variedad de uva"@es ;
+                           
+                           rdfs:comment "Propiedad que relaciona una denominación de origen con una variedad de uva permitida en la denominación."@es ;
+                           
+                           rdfs:range ebaco:Grape ;
+                           
+                           rdfs:subPropertyOf ebaco:wine_appellation_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#appellation_of
+
+ebaco:appellation_of rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:subPropertyOf ebaco:wine_region_with_appellation_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#belongs_to_wine_appellation
+
+ebaco:belongs_to_wine_appellation rdf:type owl:FunctionalProperty ,
+                                           owl:ObjectProperty ;
+                                  
+                                  rdfs:label "belongs to wine appellation"@en ,
+                                             "pertenece a la denominación de origen"@es ;
+                                  
+                                  rdfs:comment "Propiedad que relaciona un viñedo con la denominación de origen a la que pertenece."@es ;
+                                  
+                                  rdfs:range ebaco:Wine_appellation ;
+                                  
+                                  rdfs:subPropertyOf ebaco:vineyard_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#belongs_to_wine_region
+
+ebaco:belongs_to_wine_region rdf:type owl:FunctionalProperty ,
+                                      owl:ObjectProperty ;
+                             
+                             rdfs:label "belongs to wine region"@en ,
+                                        "pertenece a la región vinícola"@es ;
+                             
+                             rdfs:range ebaco:Wine_region ;
+                             
+                             rdfs:subPropertyOf ebaco:vineyard_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#belongs_to_winery
+
+ebaco:belongs_to_winery rdf:type owl:FunctionalProperty ,
+                                 owl:ObjectProperty ;
+                        
+                        rdfs:label "belongs to winery"@en ,
+                                   "pertenece a bodega"@es ;
+                        
+                        rdfs:range ebaco:Winery ;
+                        
+                        rdfs:subPropertyOf ebaco:vineyard_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#contains_vineyard
+
+ebaco:contains_vineyard rdf:type owl:InverseFunctionalProperty ,
+                                 owl:ObjectProperty ;
+                        
+                        rdfs:label "contains vineyard"@en ,
+                                   "contiene viñedo"@es ;
+                        
+                        rdfs:comment "Propiedad que relaciona una región vinícola con un viñedo contenido en esa región."@es ;
+                        
+                        rdfs:range ebaco:Vineyard ;
+                        
+                        owl:inverseOf ebaco:belongs_to_wine_region ;
+                        
+                        rdfs:subPropertyOf ebaco:wine_region_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_allowed_in_wine_region
+
+ebaco:grape_allowed_in_wine_region rdf:type owl:ObjectProperty ;
+                                   
+                                   rdfs:label "grape variety allowed in wine region"@en ,
+                                              "variedad de uva permitida en región vinícola"@es ;
+                                   
+                                   rdfs:domain ebaco:Grape ;
+                                   
+                                   rdfs:range ebaco:Wine_region ;
+                                   
+                                   rdfs:subPropertyOf ebaco:grape_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_cultivation_object_property
+
+ebaco:grape_cultivation_object_property rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:label "grape cultivation object property"@en ,
+                                                   "propiedad del cultivo de la uva"@es ;
+                                        
+                                        rdfs:domain ebaco:Grape_cultivation ;
+                                        
+                                        rdfs:subPropertyOf ebaco:winemaking_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_cultivation_type
+
+ebaco:grape_cultivation_type rdf:type owl:ObjectProperty ;
+                             
+                             rdfs:label "grape cultivation type"@en ,
+                                        "tipo de cultivo de la uva"@es ;
+                             
+                             rdfs:comment "Propiedad que relaciona un cultivo con el tipo de cultivo que es (convencional, ecológico, biodinámico, etc.)"@es ;
+                             
+                             rdfs:subPropertyOf ebaco:grape_cultivation_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_destemming_object_property
+
+ebaco:grape_destemming_object_property rdf:type owl:ObjectProperty ;
+                                       
+                                       rdfs:label "grape destemming object property"@en ,
+                                                  "propiedad del despalillado de la uva"@es ;
+                                       
+                                       rdfs:subPropertyOf ebaco:winemaking_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_of_vintage
+
+ebaco:grape_of_vintage rdf:type owl:ObjectProperty ;
+                       
+                       rdfs:label "grape of vintage"@en ,
+                                  "uva de la vendimia"@es ;
+                       
+                       rdfs:range ebaco:Grape ;
+                       
+                       rdfs:subPropertyOf ebaco:vintage_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grow_grape
+
+ebaco:grow_grape rdf:type owl:FunctionalProperty ,
+                          owl:ObjectProperty ;
+                 
+                 rdfs:label "grow grape variety"@en ,
+                            "produce variedad de uva"@es ;
+                 
+                 rdfs:range ebaco:Grape ;
+                 
+                 rdfs:subPropertyOf ebaco:vineyard_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#has_vineyard_pruning_system
+
+ebaco:has_vineyard_pruning_system rdf:type owl:FunctionalProperty ,
+                                           owl:ObjectProperty ;
+                                  
+                                  rdfs:label "has vineyard prunning system"@en ,
+                                             "tiene sistema de poda de viñedo"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:vineyard_object_property ;
+                                  
+                                  rdfs:range ebaco:vineyard_training .
+
+
+
+###  http://purl.org/ceu/ebaco#use_fertilizer
+
+ebaco:use_fertilizer rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:label "use fertilizer"@en ,
+                                "usa fertilizante"@es ;
+                     
+                     rdfs:range ebaco:Fertilizer ;
+                     
+                     rdfs:subPropertyOf ebaco:grape_cultivation_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#use_fungicide
+
+ebaco:use_fungicide rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "use fungicide"@en ,
+                               "usa fungicida"@es ;
+                    
+                    rdfs:range ebaco:Fungicide ;
+                    
+                    rdfs:subPropertyOf ebaco:grape_cultivation_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#use_herbicide
+
+ebaco:use_herbicide rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "use herbicide"@en ,
+                               "usa herbicida"@es ;
+                    
+                    rdfs:range ebaco:Herbicide ;
+                    
+                    rdfs:subPropertyOf ebaco:grape_cultivation_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#use_pesticide
+
+ebaco:use_pesticide rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "use pesticide"@en ,
+                               "usa pesticida"@es ;
+                    
+                    rdfs:range ebaco:Pesticide ;
+                    
+                    rdfs:subPropertyOf ebaco:grape_cultivation_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#vineyard_object_property
+
+ebaco:vineyard_object_property rdf:type owl:ObjectProperty ;
+                               
+                               rdfs:label "vineyard object property"@en ,
+                                          "propiedad del viñedo"@es ;
+                               
+                               rdfs:domain ebaco:Vineyard .
+
+
+
+###  http://purl.org/ceu/ebaco#vintage_object_property
+
+ebaco:vintage_object_property rdf:type owl:ObjectProperty ;
+                              
+                              rdfs:label "vintage object property"@en ,
+                                         "propiedad de la vendimia"@es ;
+                              
+                              rdfs:domain ebaco:Vintage ;
+                              
+                              rdfs:subPropertyOf ebaco:winemaking_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#vintage_type
+
+ebaco:vintage_type rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "vintage type"@en ,
+                              "tipo de vendimia"@es ;
+                   
+                   rdfs:comment "Propiedad que relaciona una vendimia con el tipo de vendimia (manual, mecánica, etc.)."@es ;
+                   
+                   rdfs:subPropertyOf ebaco:vintage_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_region_with_appellation_object_property
+
+ebaco:wine_region_with_appellation_object_property rdf:type owl:ObjectProperty ;
+                                                   
+                                                   rdfs:subPropertyOf ebaco:wine_region_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#winemaking_object_property
+
+ebaco:winemaking_object_property rdf:type owl:ObjectProperty ;
+                                 
+                                 rdfs:label "winemaking object property"@en ,
+                                            "propiedad de la vinificación"@es ;
+                                 
+                                 rdfs:domain ebaco:Winemaking_process .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#acetaldehyde_content_of_wine_mg_l
+
+ebaco:acetaldehyde_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                                 owl:FunctionalProperty ;
+                                        
+                                        rdfs:label "acetaldehyde content of wine (mg/l)"@en ,
+                                                   "contenido de acetaldehído del vino (mg/l)"@es ;
+                                        
+                                        rdfs:subPropertyOf ebaco:wine_data_property ;
+                                        
+                                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                                     owl:onDatatype xsd:float ;
+                                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                            ]
+                                                                          )
+                                                   ] .
+
+
+
+###  http://purl.org/ceu/ebaco#acetic_acid_content_of_wine_g_l
+
+ebaco:acetic_acid_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "acetic acid content of wine (g/l)"@en ,
+                                                 "contenido de ácido acético del vino (g/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:wine_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#acetic_bacteria_count_of_wine
+
+ebaco:acetic_bacteria_count_of_wine rdf:type owl:DatatypeProperty ,
+                                             owl:FunctionalProperty ;
+                                    
+                                    rdfs:label "acetic bacteria count of wine"@en ,
+                                               "recuento de bacterias acéticas del vino"@es ;
+                                    
+                                    rdfs:subPropertyOf ebaco:wine_data_property ;
+                                    
+                                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                                 owl:onDatatype xsd:integer ;
+                                                 owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                        ]
+                                                                      )
+                                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#amount_of_grapes_harvested_in_vintage_kg
+
+ebaco:amount_of_grapes_harvested_in_vintage_kg rdf:type owl:DatatypeProperty ;
+                                               
+                                               rdfs:label "amount of grapes harvested in vintage (Kg)"@en ,
+                                                          "cantidad de uva recolectada en la vendimia (Kg)"@es ;
+                                               
+                                               rdfs:subPropertyOf ebaco:vintage_data_property ;
+                                               
+                                               rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/ceu/ebaco#annual_irrigation_l_ha
+
+ebaco:annual_irrigation_l_ha rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:label "annual irrigation (l/ha)"@en ,
+                                        "riego anual (l/ha)"@es ;
+                             
+                             rdfs:subPropertyOf ebaco:grape_cultivation_data_property .
+
+
+
+###  http://purl.org/ceu/ebaco#annual_max_temperature_celsius
+
+ebaco:annual_max_temperature_celsius rdf:type owl:DatatypeProperty ,
+                                              owl:FunctionalProperty ;
+                                     
+                                     rdfs:label "annual maximum temperature (degrees celsius)"@en ,
+                                                "temperatura anual máxima (grados centígrados)"@es ;
+                                     
+                                     rdfs:subPropertyOf ebaco:grape_cultivation_data_property ;
+                                     
+                                     rdfs:range xsd:float .
+
+
+
+###  http://purl.org/ceu/ebaco#annual_min_temperature_celsius
+
+ebaco:annual_min_temperature_celsius rdf:type owl:DatatypeProperty ,
+                                              owl:FunctionalProperty ;
+                                     
+                                     rdfs:label "annual minimum temperature (degrees celsius)"@en ,
+                                                "temperatura anual mínima (grados centígrados)"@es ;
+                                     
+                                     rdfs:subPropertyOf ebaco:grape_cultivation_data_property ;
+                                     
+                                     rdfs:range xsd:float .
+
+
+
+###  http://purl.org/ceu/ebaco#annual_rainfall_mm
+
+ebaco:annual_rainfall_mm rdf:type owl:DatatypeProperty ,
+                                  owl:FunctionalProperty ;
+                         
+                         rdfs:label "annual rainfall (mm)"@en ,
+                                    "pluviometria anual (mm)"@es ;
+                         
+                         rdfs:subPropertyOf ebaco:grape_cultivation_data_property ;
+                         
+                         rdfs:range [ rdf:type rdfs:Datatype ;
+                                      owl:onDatatype xsd:float ;
+                                      owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                             ]
+                                                           )
+                                    ] .
+
+
+
+###  http://purl.org/ceu/ebaco#anthocyanins_polyphenols_content_of_grape_mg_l
+
+ebaco:anthocyanins_polyphenols_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                                              owl:FunctionalProperty ;
+                                                     
+                                                     rdfs:label "anthocyanins polyphenols content of grape (mg/l)"@en ,
+                                                                "contenido de polifenoles antocianos de la uva (mg/l)"@es ;
+                                                     
+                                                     rdfs:subPropertyOf ebaco:grape_data_property ;
+                                                     
+                                                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                  owl:onDatatype xsd:integer ;
+                                                                  owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                                         ]
+                                                                                       )
+                                                                ] .
+
+
+
+###  http://purl.org/ceu/ebaco#anthocyanins_polyphenols_content_of_wine_mg_l
+
+ebaco:anthocyanins_polyphenols_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                                             owl:FunctionalProperty ;
+                                                    
+                                                    rdfs:label "anthocyanins polyphenols content of wine (mg/l)"@en ,
+                                                               "contenido de polifenoles antocianos del vino (mg/l)"@es ;
+                                                    
+                                                    rdfs:subPropertyOf ebaco:wine_data_property ;
+                                                    
+                                                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                 owl:onDatatype xsd:float ;
+                                                                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                                        ]
+                                                                                      )
+                                                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#appellation_data_property
+
+ebaco:appellation_data_property rdf:type owl:DatatypeProperty .
+
+
+
+###  http://purl.org/ceu/ebaco#ascorbic_acid_content_of_grape_g_l
+
+ebaco:ascorbic_acid_content_of_grape_g_l rdf:type owl:DatatypeProperty ,
+                                                  owl:FunctionalProperty ;
+                                         
+                                         rdfs:label "ascorbic acid content of grape (g/l)"@en ,
+                                                    "contenido de ácido ascórbico de la uva (g/l)"@es ;
+                                         
+                                         rdfs:subPropertyOf ebaco:grape_data_property ;
+                                         
+                                         rdfs:range [ rdf:type rdfs:Datatype ;
+                                                      owl:onDatatype xsd:float ;
+                                                      owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                             ]
+                                                                           )
+                                                    ] .
+
+
+
+###  http://purl.org/ceu/ebaco#assimilable_nitrogen_content_of_grape_mg_l
+
+ebaco:assimilable_nitrogen_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                                          owl:FunctionalProperty ;
+                                                 
+                                                 rdfs:label "assimilable nitrogen content of grape (mg/l)"@en ,
+                                                            "contenido de nitrógeno asimilable en la uva (mg/l)"@es ;
+                                                 
+                                                 rdfs:subPropertyOf ebaco:grape_data_property ;
+                                                 
+                                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                                              owl:onDatatype xsd:float ;
+                                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                                     ]
+                                                                                   )
+                                                            ] .
+
+
+
+###  http://purl.org/ceu/ebaco#average_annual_rainfall_mm
+
+ebaco:average_annual_rainfall_mm rdf:type owl:DatatypeProperty ;
+                                 
+                                 rdfs:label "average annual rainfall (mm)"@en ,
+                                            "pluviometria anual media (mm)"@es ;
+                                 
+                                 rdfs:subPropertyOf ebaco:wine_region_data_property ;
+                                 
+                                 rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/ceu/ebaco#boron_content_of_grape_mg_l
+
+ebaco:boron_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty ;
+                                  
+                                  rdfs:label "boron content of grape (mg/l)"@en ,
+                                             "contenido de boro de la uva (mg/l)"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:grape_data_property ;
+                                  
+                                  rdfs:range [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:float ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                      ]
+                                                                    )
+                                             ] .
+
+
+
+###  http://purl.org/ceu/ebaco#boron_content_of_wine_mg_l
+
+ebaco:boron_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                          owl:FunctionalProperty ;
+                                 
+                                 rdfs:label "boron content of wine (mg/l)"@en ,
+                                            "contenido de boro del vino (mg/l)"@es ;
+                                 
+                                 rdfs:subPropertyOf ebaco:wine_data_property ;
+                                 
+                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                              owl:onDatatype xsd:float ;
+                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                     ]
+                                                                   )
+                                            ] .
+
+
+
+###  http://purl.org/ceu/ebaco#calcium_content_of_grape_mg_l
+
+ebaco:calcium_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                             owl:FunctionalProperty ;
+                                    
+                                    rdfs:label "calcium content of grape (mg/l)"@en ,
+                                               "contenido de calcio de la uva (mg/l)"@es ;
+                                    
+                                    rdfs:subPropertyOf ebaco:grape_data_property ;
+                                    
+                                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                                 owl:onDatatype xsd:float ;
+                                                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                        ]
+                                                                      )
+                                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#calcium_content_of_wine_mg_l
+
+ebaco:calcium_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "calcium content of wine (mg/l)"@en ,
+                                              "contenido de calcio del vino (mg/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:wine_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#carbon_dioxide_content_of_wine_g_l
+
+ebaco:carbon_dioxide_content_of_wine_g_l rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:subPropertyOf ebaco:wine_data_property ;
+                                         
+                                         rdfs:range [ rdf:type rdfs:Datatype ;
+                                                      owl:onDatatype xsd:float ;
+                                                      owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                             ]
+                                                                           )
+                                                    ] .
+
+
+
+###  http://purl.org/ceu/ebaco#citric_acid_content_of_grape_g_l
+
+ebaco:citric_acid_content_of_grape_g_l rdf:type owl:DatatypeProperty ,
+                                                owl:FunctionalProperty ;
+                                       
+                                       rdfs:label "citric acid content of grape (g/l)"@en ,
+                                                  "contenido de ácido cítrico de la uva (g/l)"@es ;
+                                       
+                                       rdfs:subPropertyOf ebaco:grape_data_property ;
+                                       
+                                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                                    owl:onDatatype xsd:float ;
+                                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                           ]
+                                                                         )
+                                                  ] .
+
+
+
+###  http://purl.org/ceu/ebaco#citric_acid_content_of_wine_g_l
+
+ebaco:citric_acid_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "citric acid content of wine (g/l)"@en ,
+                                                 "contenido de ácido cítrico del vino (g/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:wine_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#colouring_intensity_of_wine
+
+ebaco:colouring_intensity_of_wine rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty ;
+                                  
+                                  rdfs:label "colouring intensity of wine"@en ,
+                                             "intensidad colorante del vino"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:wine_data_property ;
+                                  
+                                  rdfs:range [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:float ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                      ]
+                                                                    )
+                                             ] .
+
+
+
+###  http://purl.org/ceu/ebaco#copper_content_of_grape_mg_l
+
+ebaco:copper_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "copper content of grape (mg/l)"@en ,
+                                              "contenido de cobre de la uva (mg/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:grape_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#copper_content_of_wine_mg_l
+
+ebaco:copper_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty ;
+                                  
+                                  rdfs:label "copper content of wine (mg/l)"@en ,
+                                             "contenido de cobre del vino (mg/l)"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:wine_data_property ;
+                                  
+                                  rdfs:range [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:float ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                      ]
+                                                                    )
+                                             ] .
+
+
+
+###  http://purl.org/ceu/ebaco#creation_date_of_appellation
+
+ebaco:creation_date_of_appellation rdf:type owl:DatatypeProperty ;
+                                   
+                                   rdfs:label "creation date of the appellation"@en ,
+                                              "fecha de creación de la denominación de origen"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:appellation_data_property ;
+                                   
+                                   rdfs:range xsd:date .
+
+
+
+###  http://purl.org/ceu/ebaco#daily_mean_insolation_hours
+
+ebaco:daily_mean_insolation_hours rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty ;
+                                  
+                                  rdfs:label "daily mean insolation (hours)"@en ,
+                                             "insolación media diaria (horas)"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:grape_cultivation_data_property ;
+                                  
+                                  rdfs:range [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:float ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                      ]
+                                                                    )
+                                             ] .
+
+
+
+###  http://purl.org/ceu/ebaco#free_sulphur_dioxide_content_of_wine_mg_l
+
+ebaco:free_sulphur_dioxide_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                                         owl:FunctionalProperty ;
+                                                
+                                                rdfs:label "free sulphur dioxide content of wine mg l"@en ,
+                                                           "contenido de anhídrico sulfuroso libre del vino (mg/l)"@es ;
+                                                
+                                                rdfs:subPropertyOf ebaco:wine_data_property ;
+                                                
+                                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                                             owl:onDatatype xsd:float ;
+                                                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                                    ]
+                                                                                  )
+                                                           ] .
+
+
+
+###  http://purl.org/ceu/ebaco#fructose_content_of_grape_g_l
+
+ebaco:fructose_content_of_grape_g_l rdf:type owl:DatatypeProperty ,
+                                             owl:FunctionalProperty ;
+                                    
+                                    rdfs:label "fructose content of grape (g/l)"@en ,
+                                               "contenido de fructosa de la uva (g/l)"@es ;
+                                    
+                                    rdfs:subPropertyOf ebaco:grape_data_property ;
+                                    
+                                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                                 owl:onDatatype xsd:float ;
+                                                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                        ]
+                                                                      )
+                                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#fructose_content_of_wine_g_l
+
+ebaco:fructose_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "fructose content of wine (g/l)"@en ,
+                                              "contenido de fructosa del vino (g/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:wine_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#glucose_content_of_grape_g_l
+
+ebaco:glucose_content_of_grape_g_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "glucose content of grape (g/l)"@en ,
+                                              "contenido de glucosa de la uva (g/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:grape_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#glucose_content_of_wine_g_l
+
+ebaco:glucose_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty ;
+                                  
+                                  rdfs:label "glucose content of wine (g/l)"@en ,
+                                             "contenido de glucosa del vino (g/l)"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:wine_data_property ;
+                                  
+                                  rdfs:range [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:float ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                      ]
+                                                                    )
+                                             ] .
+
+
+
+###  http://purl.org/ceu/ebaco#glycerol_content_of_wine_g_l
+
+ebaco:glycerol_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "glycerol content of wine (g/l)"@en ,
+                                              "contenido de glicerina del vino (g/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:wine_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_cultivation_data_property
+
+ebaco:grape_cultivation_data_property rdf:type owl:DatatypeProperty ;
+                                      
+                                      rdfs:label "grape cultivation data property"@en ,
+                                                 "propiedad del cultivo de la uva"@es ;
+                                      
+                                      rdfs:domain ebaco:Grape_cultivation ;
+                                      
+                                      rdfs:subPropertyOf ebaco:winemaking_data_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_data_property
+
+ebaco:grape_data_property rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:label "grape data property"@en ,
+                                     "propiedad de la uva"@es ;
+                          
+                          rdfs:domain ebaco:Grape .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_destemming_data_property
+
+ebaco:grape_destemming_data_property rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:label "grape destemming data property"@en ,
+                                                "propiedad del despalillado de la uva"@es ;
+                                     
+                                     rdfs:domain ebaco:Grape_destemming ;
+                                     
+                                     rdfs:subPropertyOf ebaco:winemaking_data_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_ph
+
+ebaco:grape_ph rdf:type owl:DatatypeProperty ,
+                        owl:FunctionalProperty ;
+               
+               rdfs:label "grape pH"@en ,
+                          "pH de la uva"@es ;
+               
+               rdfs:subPropertyOf ebaco:grape_data_property ;
+               
+               rdfs:range [ rdf:type rdfs:Datatype ;
+                            owl:onDatatype xsd:float ;
+                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                   ]
+                                                 )
+                          ] .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_reception_object_property
+
+ebaco:grape_reception_object_property rdf:type owl:DatatypeProperty ;
+                                      
+                                      rdfs:label "grape reception object property"@en ,
+                                                 "propiedad de la recepción de la uva"@es ;
+                                      
+                                      rdfs:domain ebaco:Grape_reception ;
+                                      
+                                      rdfs:subPropertyOf ebaco:winemaking_data_property .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_selection_in_reception
+
+ebaco:grape_selection_in_reception rdf:type owl:DatatypeProperty ;
+                                   
+                                   rdfs:label "grape selection in reception"@en ,
+                                              "selección de la uva en la recepción"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:grape_reception_object_property ;
+                                   
+                                   rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/ceu/ebaco#grape_selection_in_vintage
+
+ebaco:grape_selection_in_vintage rdf:type owl:DatatypeProperty ;
+                                 
+                                 rdfs:label "grape selection in vintage"@en ,
+                                            "selección de la uva en la vendimia"@es ;
+                                 
+                                 rdfs:subPropertyOf ebaco:vintage_data_property ;
+                                 
+                                 rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/ceu/ebaco#has_grape_crushing
+
+ebaco:has_grape_crushing rdf:type owl:DatatypeProperty ;
+                         
+                         rdfs:label "has grape crushing"@en ,
+                                    "hay estrujado de uva"@es ;
+                         
+                         rdfs:subPropertyOf ebaco:grape_destemming_data_property ;
+                         
+                         rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/ceu/ebaco#has_grape_destemming
+
+ebaco:has_grape_destemming rdf:type owl:DatatypeProperty ;
+                           
+                           rdfs:label "has grape destemming"@en ,
+                                      "hay estrujado de uva"@es ;
+                           
+                           rdfs:subPropertyOf ebaco:grape_destemming_data_property ;
+                           
+                           rdfs:range xsd:boolean .
+
+
+
+###  http://purl.org/ceu/ebaco#hundred_grape_berries_weight_g
+
+ebaco:hundred_grape_berries_weight_g rdf:type owl:DatatypeProperty ,
+                                              owl:FunctionalProperty ;
+                                     
+                                     rdfs:label "A hundred grape berries weight (g)"@en ,
+                                                "Peso de 100 uvas (g)"@es ;
+                                     
+                                     rdfs:subPropertyOf ebaco:grape_data_property ;
+                                     
+                                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                                  owl:onDatatype xsd:float ;
+                                                  owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                         ]
+                                                                       )
+                                                ] .
+
+
+
+###  http://purl.org/ceu/ebaco#hydrogen_sulphide_content_of_wine_g_l
+
+ebaco:hydrogen_sulphide_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                                     owl:FunctionalProperty ;
+                                            
+                                            rdfs:label "hydrogen sulphide content of wine (g/l)"@en ,
+                                                       "contenido de ácido sulfídrico del vino (g/l)"@es ;
+                                            
+                                            rdfs:subPropertyOf ebaco:wine_data_property ;
+                                            
+                                            rdfs:range [ rdf:type rdfs:Datatype ;
+                                                         owl:onDatatype xsd:float ;
+                                                         owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                                ]
+                                                                              )
+                                                       ] .
+
+
+
+###  http://purl.org/ceu/ebaco#iron_content_of_grape_mg_l
+
+ebaco:iron_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                          owl:FunctionalProperty ;
+                                 
+                                 rdfs:label "iron content of grape (mg/l)"@en ,
+                                            "contenido de hierro de la uva (mg/l)"@es ;
+                                 
+                                 rdfs:subPropertyOf ebaco:grape_data_property ;
+                                 
+                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                              owl:onDatatype xsd:float ;
+                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                     ]
+                                                                   )
+                                            ] .
+
+
+
+###  http://purl.org/ceu/ebaco#iron_content_of_wine_mg_l
+
+ebaco:iron_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                         owl:FunctionalProperty ;
+                                
+                                rdfs:label "iron content of wine (mg/l)"@en ,
+                                           "contenido de hierro del vino (mg/l)"@es ;
+                                
+                                rdfs:subPropertyOf ebaco:wine_data_property ;
+                                
+                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                             owl:onDatatype xsd:float ;
+                                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                    ]
+                                                                  )
+                                           ] .
+
+
+
+###  http://purl.org/ceu/ebaco#lactic_acid_content_of_wine_g_l
+
+ebaco:lactic_acid_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "lactic acid content of wine (g/l)"@en ,
+                                                 "contenido de ácido láctico del vino (g/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:wine_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#lactic_bacteria_count_of_wine
+
+ebaco:lactic_bacteria_count_of_wine rdf:type owl:DatatypeProperty ,
+                                             owl:FunctionalProperty ;
+                                    
+                                    rdfs:label "lactic bacteria count of wine"@en ,
+                                               "recuento de bacterias lácticas del vino"@es ;
+                                    
+                                    rdfs:subPropertyOf ebaco:wine_data_property ;
+                                    
+                                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                                 owl:onDatatype xsd:integer ;
+                                                 owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                        ]
+                                                                      )
+                                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#likely_alcohol_content_of_grape_vol
+
+ebaco:likely_alcohol_content_of_grape_vol rdf:type owl:DatatypeProperty ,
+                                                   owl:FunctionalProperty ;
+                                          
+                                          rdfs:label "likely alcohol content of grape (%vol)"@en ,
+                                                     "contenido de alcohol probable de la uva (%vol)"@es ;
+                                          
+                                          rdfs:subPropertyOf ebaco:grape_data_property ;
+                                          
+                                          rdfs:range [ rdf:type rdfs:Datatype ;
+                                                       owl:onDatatype xsd:float ;
+                                                       owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                              ]
+                                                                            )
+                                                     ] .
+
+
+
+###  http://purl.org/ceu/ebaco#magnesium_content_of_grape_mg_l
+
+ebaco:magnesium_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "magnesium content of grape (mg/l)"@en ,
+                                                 "contenido de magnesio de la uva (mg/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:grape_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#magnesium_content_of_wine_mg_l
+
+ebaco:magnesium_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                              owl:FunctionalProperty ;
+                                     
+                                     rdfs:label "magnesium content of wine (mg/l)"@en ,
+                                                "contenido de magnesio del vino (mg/l)"@es ;
+                                     
+                                     rdfs:subPropertyOf ebaco:wine_data_property ;
+                                     
+                                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                                  owl:onDatatype xsd:float ;
+                                                  owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                         ]
+                                                                       )
+                                                ] .
+
+
+
+###  http://purl.org/ceu/ebaco#malic_acid_content_of_grape_g_l
+
+ebaco:malic_acid_content_of_grape_g_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "malic acid content of grape (g/l)"@en ,
+                                                 "contenido de ácido málico de la uva (g/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:grape_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#malic_acid_content_of_wine_g_l
+
+ebaco:malic_acid_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                              owl:FunctionalProperty ;
+                                     
+                                     rdfs:label "malic acid content of wine (g/l)"@en ,
+                                                "contenido de ácido málico del vino (g/l)"@es ;
+                                     
+                                     rdfs:subPropertyOf ebaco:wine_data_property ;
+                                     
+                                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                                  owl:onDatatype xsd:float ;
+                                                  owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                         ]
+                                                                       )
+                                                ] .
+
+
+
+###  http://purl.org/ceu/ebaco#manganese_content_of_grape_mg_l
+
+ebaco:manganese_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "manganese content of grape (mg/l)"@en ,
+                                                 "contenido de manganeso de la uva (mg/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:grape_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#manganese_content_of_wine_mg_l
+
+ebaco:manganese_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                              owl:FunctionalProperty ;
+                                     
+                                     rdfs:label "manganese content of wine (mg/l)"@en ,
+                                                "contenido de manganeso del vino (mg/l)"@es ;
+                                     
+                                     rdfs:subPropertyOf ebaco:wine_data_property ;
+                                     
+                                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                                  owl:onDatatype xsd:float ;
+                                                  owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                         ]
+                                                                       )
+                                                ] .
+
+
+
+###  http://purl.org/ceu/ebaco#max_altitude_of_vineyards
+
+ebaco:max_altitude_of_vineyards rdf:type owl:DatatypeProperty ,
+                                         owl:FunctionalProperty ;
+                                
+                                rdfs:label "maximum altitude of vineyards"@en ,
+                                           "altitud máxima de los viñedos"@es ;
+                                
+                                rdfs:comment "Propiedad que relaciona una región vinícola con la altitud máxima de los viñedos que hay en ella."@es ;
+                                
+                                rdfs:subPropertyOf ebaco:wine_region_data_property ;
+                                
+                                rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/ceu/ebaco#max_grape_must_yield_allowed_by_wine_appellation
+
+ebaco:max_grape_must_yield_allowed_by_wine_appellation rdf:type owl:DatatypeProperty ,
+                                                                owl:FunctionalProperty ;
+                                                       
+                                                       rdfs:label "maximum grape must yield allowed by the wine appellation (%)"@en ,
+                                                                  "rendimiento máximo de mosto de uva permitido por la denominación de origen (%)"@es ;
+                                                       
+                                                       rdfs:subPropertyOf ebaco:wine_appellation_data_property ;
+                                                       
+                                                       rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/ceu/ebaco#max_red_grape_production_allowed_by_wine_appellation_Kg_ha
+
+ebaco:max_red_grape_production_allowed_by_wine_appellation_Kg_ha rdf:type owl:DatatypeProperty ,
+                                                                          owl:FunctionalProperty ;
+                                                                 
+                                                                 rdfs:label "maximum white grape production allowed by the wine appellation (Kg/ha)"@en ,
+                                                                            "producción máxima de uva tinta permitida por la denominación de origen (Kg/ha)"@es ;
+                                                                 
+                                                                 rdfs:subPropertyOf ebaco:wine_appellation_data_property ;
+                                                                 
+                                                                 rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/ceu/ebaco#max_temperature_of_month_previous_vintage_celsius
+
+ebaco:max_temperature_of_month_previous_vintage_celsius rdf:type owl:DatatypeProperty ,
+                                                                 owl:FunctionalProperty ;
+                                                        
+                                                        rdfs:label "maximum temperature of month previous vintage (degrees celsius)"@en ,
+                                                                   "temperatura máxima del mes previo a la vendimia (grados centígrados)"@es ;
+                                                        
+                                                        rdfs:subPropertyOf ebaco:grape_cultivation_data_property ;
+                                                        
+                                                        rdfs:range xsd:float .
+
+
+
+###  http://purl.org/ceu/ebaco#max_white_grape_production_allowed_by_wine_appellation_Kg_ha
+
+ebaco:max_white_grape_production_allowed_by_wine_appellation_Kg_ha rdf:type owl:DatatypeProperty ,
+                                                                            owl:FunctionalProperty ;
+                                                                   
+                                                                   rdfs:label "maximum white grape production allowed by the wine appellation (Kg/ha)"@en ,
+                                                                              "producción máxima de uva blanca permitida por la denominación de origen (Kg/ha)"@es ;
+                                                                   
+                                                                   rdfs:subPropertyOf ebaco:wine_appellation_data_property ;
+                                                                   
+                                                                   rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/ceu/ebaco#max_wine_yield_allowed_by_wine_appellation_hl_ha
+
+ebaco:max_wine_yield_allowed_by_wine_appellation_hl_ha rdf:type owl:DatatypeProperty ,
+                                                                owl:FunctionalProperty ;
+                                                       
+                                                       rdfs:label "maximum wine yield allowed by the wine appellation (Hl/ha)"@en ,
+                                                                  "rendimiento máximo de vino permitido por la denomiación de origen (Hl/ha)"@es ;
+                                                       
+                                                       rdfs:subPropertyOf ebaco:wine_appellation_data_property ;
+                                                       
+                                                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                                                    owl:onDatatype xsd:float ;
+                                                                    owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                                                           ]
+                                                                                         )
+                                                                  ] .
+
+
+
+###  http://purl.org/ceu/ebaco#maximum_installed_capacity_of_winery_l
+
+ebaco:maximum_installed_capacity_of_winery_l rdf:type owl:DatatypeProperty ,
+                                                      owl:FunctionalProperty ;
+                                             
+                                             rdfs:label "maximum installed capacity of winery (l)"@en ,
+                                                        "capacidad máxima instalada de la bodega (l)"@es ;
+                                             
+                                             rdfs:subPropertyOf ebaco:winery_data_property ;
+                                             
+                                             rdfs:range [ rdf:type rdfs:Datatype ;
+                                                          owl:onDatatype xsd:float ;
+                                                          owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                                                 ]
+                                                                               )
+                                                        ] .
+
+
+
+###  http://purl.org/ceu/ebaco#min_altitude_of_vineyards
+
+ebaco:min_altitude_of_vineyards rdf:type owl:DatatypeProperty ,
+                                         owl:FunctionalProperty ;
+                                
+                                rdfs:label "minimum altitude of vineyards"@en ,
+                                           "altitud mínima de los viñedos"@es ;
+                                
+                                rdfs:comment "Propiedad que relaciona una región vinícola con la altitud mínima de los viñedos que hay en ella."@es ;
+                                
+                                rdfs:subPropertyOf ebaco:wine_region_data_property ;
+                                
+                                rdfs:range xsd:positiveInteger .
+
+
+
+###  http://purl.org/ceu/ebaco#min_temperature_of_month_previous_vintage_celsius
+
+ebaco:min_temperature_of_month_previous_vintage_celsius rdf:type owl:DatatypeProperty ,
+                                                                 owl:FunctionalProperty ;
+                                                        
+                                                        rdfs:label "minimum temperature of month previous to vintage (degreees celsius)"@en ,
+                                                                   "temperatura mínima del mes previo a la vendimia (grados centígrados)"@es ;
+                                                        
+                                                        rdfs:subPropertyOf ebaco:grape_cultivation_data_property ;
+                                                        
+                                                        rdfs:range xsd:float .
+
+
+
+###  http://purl.org/ceu/ebaco#molybdenum_content_of_grape_mg_l
+
+ebaco:molybdenum_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                                owl:FunctionalProperty ;
+                                       
+                                       rdfs:label "molybdenum content of grape (mg/l)"@en ,
+                                                  "contenido de molibdeno de la uva (mg/l)"@es ;
+                                       
+                                       rdfs:subPropertyOf ebaco:grape_data_property ;
+                                       
+                                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                                    owl:onDatatype xsd:float ;
+                                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                           ]
+                                                                         )
+                                                  ] .
+
+
+
+###  http://purl.org/ceu/ebaco#molybdenum_content_of_wine_mg_l
+
+ebaco:molybdenum_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "molybdenum content of wine (mg/l)"@en ,
+                                                 "contenido de molibdeno del vino (mg/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:wine_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#nitrogen_content_of_wine_mg_l
+
+ebaco:nitrogen_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                             owl:FunctionalProperty ;
+                                    
+                                    rdfs:label "nitrogen content of wine (mg/l)"@en ,
+                                               "contenido de nitrógeno del vino (mg/l)"@es ;
+                                    
+                                    rdfs:subPropertyOf ebaco:wine_data_property ;
+                                    
+                                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                                 owl:onDatatype xsd:float ;
+                                                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                        ]
+                                                                      )
+                                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#phosphorus_content_of_grape_mg_l
+
+ebaco:phosphorus_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                                owl:FunctionalProperty ;
+                                       
+                                       rdfs:label "phosphorus content of grape (mg/l)"@en ,
+                                                  "contenido de fósforo de la uva (mg/l)"@es ;
+                                       
+                                       rdfs:subPropertyOf ebaco:grape_data_property ;
+                                       
+                                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                                    owl:onDatatype xsd:float ;
+                                                    owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                           ]
+                                                                         )
+                                                  ] .
+
+
+
+###  http://purl.org/ceu/ebaco#phosphorus_content_of_wine_mg_l
+
+ebaco:phosphorus_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "phosphorus content of wine (mg/l)"@en ,
+                                                 "contenido de fósforo del vino (mg/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:wine_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#potassium_content_of_grape_mg_l
+
+ebaco:potassium_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                               owl:FunctionalProperty ;
+                                      
+                                      rdfs:label "potassium content of grape (mg/l)"@en ,
+                                                 "contenido de potasio de la uva (mg/l)"@es ;
+                                      
+                                      rdfs:subPropertyOf ebaco:grape_data_property ;
+                                      
+                                      rdfs:range [ rdf:type rdfs:Datatype ;
+                                                   owl:onDatatype xsd:float ;
+                                                   owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                          ]
+                                                                        )
+                                                 ] .
+
+
+
+###  http://purl.org/ceu/ebaco#potassium_content_of_wine_mg_l
+
+ebaco:potassium_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                              owl:FunctionalProperty ;
+                                     
+                                     rdfs:label "potassium content of wine (mg/l)"@en ,
+                                                "contenido de potasio del vino (mg/l)"@es ;
+                                     
+                                     rdfs:subPropertyOf ebaco:wine_data_property ;
+                                     
+                                     rdfs:range [ rdf:type rdfs:Datatype ;
+                                                  owl:onDatatype xsd:float ;
+                                                  owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                         ]
+                                                                       )
+                                                ] .
+
+
+
+###  http://purl.org/ceu/ebaco#proteins_content_of_wine_g_l
+
+ebaco:proteins_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "proteins content of wine (g/l)"@en ,
+                                              "contenido de proteínas del vino (g/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:wine_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#reducing_sugars_content_of_wine_g_l
+
+ebaco:reducing_sugars_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                                   owl:FunctionalProperty ;
+                                          
+                                          rdfs:label "reducing sugars content of wine (g/l)"@en ,
+                                                     "contenido de azúcares reductores del vino (g/l)"@es ;
+                                          
+                                          rdfs:subPropertyOf ebaco:wine_data_property ;
+                                          
+                                          rdfs:range [ rdf:type rdfs:Datatype ;
+                                                       owl:onDatatype xsd:float ;
+                                                       owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                              ]
+                                                                            )
+                                                     ] .
+
+
+
+###  http://purl.org/ceu/ebaco#sodium_chloride_content_of_wine_g_l
+
+ebaco:sodium_chloride_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                                   owl:FunctionalProperty ;
+                                          
+                                          rdfs:label "sodium chloride content of wine (g/l)"@en ,
+                                                     "contenido de cloruro de sodio del vino (g/l)"@es ;
+                                          
+                                          rdfs:subPropertyOf ebaco:wine_data_property ;
+                                          
+                                          rdfs:range [ rdf:type rdfs:Datatype ;
+                                                       owl:onDatatype xsd:float ;
+                                                       owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                              ]
+                                                                            )
+                                                     ] .
+
+
+
+###  http://purl.org/ceu/ebaco#sodium_content_of_grape_mg_l
+
+ebaco:sodium_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "sodium content of grape (mg/l)"@en ,
+                                              "contenido de sodio de la uva (mg/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:grape_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#sodium_content_of_wine_mg_l
+
+ebaco:sodium_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty ;
+                                  
+                                  rdfs:label "sodium content of wine (mg/l)"@en ,
+                                             "contenido de sodio del vino (mg/l)"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:wine_data_property ;
+                                  
+                                  rdfs:range [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:float ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                      ]
+                                                                    )
+                                             ] .
+
+
+
+###  http://purl.org/ceu/ebaco#succinic_acid_content_of_wine_g_l
+
+ebaco:succinic_acid_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                                 owl:FunctionalProperty ;
+                                        
+                                        rdfs:label "succinic acid content of wine (g/l)"@en ,
+                                                   "contenido de ácido succínico del vino (g/l)"@es ;
+                                        
+                                        rdfs:subPropertyOf ebaco:wine_data_property ;
+                                        
+                                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                                     owl:onDatatype xsd:float ;
+                                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                            ]
+                                                                          )
+                                                   ] .
+
+
+
+###  http://purl.org/ceu/ebaco#sulfur_content_of_grape_mg_l
+
+ebaco:sulfur_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "sulphur content of grape (mg/l)"@en ,
+                                              "contenido de azufre de la uva (mg/l)"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:grape_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:float ;
+                                                owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#sulfur_content_of_wine_mg_l
+
+ebaco:sulfur_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                           owl:FunctionalProperty ;
+                                  
+                                  rdfs:label "sulphur content of wine (mg/l)"@en ,
+                                             "contenido de azufre del vino (mg/l)"@es ;
+                                  
+                                  rdfs:subPropertyOf ebaco:wine_data_property ;
+                                  
+                                  rdfs:range [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:float ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                      ]
+                                                                    )
+                                             ] .
+
+
+
+###  http://purl.org/ceu/ebaco#tannins_polyphenols_content_of_grape_mg_l
+
+ebaco:tannins_polyphenols_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                                         owl:FunctionalProperty ;
+                                                
+                                                rdfs:label "tannins polyphenols content of grape (mg/l)"@en ,
+                                                           "contenido de polifenoles taninos de la uva (mg/l)"@es ;
+                                                
+                                                rdfs:subPropertyOf ebaco:grape_data_property ;
+                                                
+                                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                                             owl:onDatatype xsd:integer ;
+                                                             owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                                    ]
+                                                                                  )
+                                                           ] .
+
+
+
+###  http://purl.org/ceu/ebaco#tannins_polyphenols_content_of_wine_mg_l
+
+ebaco:tannins_polyphenols_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                                        owl:FunctionalProperty ;
+                                               
+                                               rdfs:label "tannins polyphenols content of wine (mg/l)"@en ,
+                                                          "contenido de polifenoles taninos del vino (mg/l)"@es ;
+                                               
+                                               rdfs:subPropertyOf ebaco:wine_data_property ;
+                                               
+                                               rdfs:range [ rdf:type rdfs:Datatype ;
+                                                            owl:onDatatype xsd:float ;
+                                                            owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                                   ]
+                                                                                 )
+                                                          ] .
+
+
+
+###  http://purl.org/ceu/ebaco#tartaric_acid_content_of_grape_g_l
+
+ebaco:tartaric_acid_content_of_grape_g_l rdf:type owl:DatatypeProperty ,
+                                                  owl:FunctionalProperty ;
+                                         
+                                         rdfs:label "tartaric acid content of grape (g/l)"@en ,
+                                                    "contenido de ácido tartárico de la uva (g/l)"@es ;
+                                         
+                                         rdfs:subPropertyOf ebaco:grape_data_property ;
+                                         
+                                         rdfs:range [ rdf:type rdfs:Datatype ;
+                                                      owl:onDatatype xsd:float ;
+                                                      owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                             ]
+                                                                           )
+                                                    ] .
+
+
+
+###  http://purl.org/ceu/ebaco#tartaric_acid_content_of_wine_g_l
+
+ebaco:tartaric_acid_content_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                                 owl:FunctionalProperty ;
+                                        
+                                        rdfs:label "tartaric acid content of wine (g/l)"@en ,
+                                                   "contenido de ácido tartárico del vino (g/l)"@es ;
+                                        
+                                        rdfs:subPropertyOf ebaco:wine_data_property ;
+                                        
+                                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                                     owl:onDatatype xsd:float ;
+                                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                            ]
+                                                                          )
+                                                   ] .
+
+
+
+###  http://purl.org/ceu/ebaco#temperature_grape_reception_celsius
+
+ebaco:temperature_grape_reception_celsius rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:label "temperature of grape reception (degrees celsius)"@en ,
+                                                     "temperatura de la recepción de la uva (grados centígrados)"@es ;
+                                          
+                                          rdfs:subPropertyOf ebaco:grape_reception_object_property .
+
+
+
+###  http://purl.org/ceu/ebaco#total_acidity_of_grape_g_l
+
+ebaco:total_acidity_of_grape_g_l rdf:type owl:DatatypeProperty ,
+                                          owl:FunctionalProperty ;
+                                 
+                                 rdfs:label "total acidity of grape (g/l)"@en ,
+                                            "acidez total de la uva (g/l)"@es ;
+                                 
+                                 rdfs:subPropertyOf ebaco:grape_data_property ;
+                                 
+                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                              owl:onDatatype xsd:float ;
+                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                     ]
+                                                                   )
+                                            ] .
+
+
+
+###  http://purl.org/ceu/ebaco#total_bacteria_count_of_wine
+
+ebaco:total_bacteria_count_of_wine rdf:type owl:DatatypeProperty ,
+                                            owl:FunctionalProperty ;
+                                   
+                                   rdfs:label "total bacteria count of wine"@en ,
+                                              "recuento de bacterias totales del vino"@es ;
+                                   
+                                   rdfs:subPropertyOf ebaco:wine_data_property ;
+                                   
+                                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                                owl:onDatatype xsd:integer ;
+                                                owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                       ]
+                                                                     )
+                                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#total_dry_extract_of_wine_g_l
+
+ebaco:total_dry_extract_of_wine_g_l rdf:type owl:DatatypeProperty ,
+                                             owl:FunctionalProperty ;
+                                    
+                                    rdfs:label "total dry extract of wine (g/l)"@en ,
+                                               "extracto seco total del vino (g/l)"@es ;
+                                    
+                                    rdfs:subPropertyOf ebaco:wine_data_property ;
+                                    
+                                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                                 owl:onDatatype xsd:float ;
+                                                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                        ]
+                                                                      )
+                                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#total_polyphenols_content_of_wine
+
+ebaco:total_polyphenols_content_of_wine rdf:type owl:DatatypeProperty ,
+                                                 owl:FunctionalProperty ;
+                                        
+                                        rdfs:label "total polyphenols content of wine"@en ,
+                                                   "contenido de polifenoles totales del vino"@es ;
+                                        
+                                        rdfs:subPropertyOf ebaco:wine_data_property ;
+                                        
+                                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                                     owl:onDatatype xsd:float ;
+                                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                            ]
+                                                                          )
+                                                   ] .
+
+
+
+###  http://purl.org/ceu/ebaco#total_sulphur_dioxide_content_of_wine_mg_l
+
+ebaco:total_sulphur_dioxide_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                                          owl:FunctionalProperty ;
+                                                 
+                                                 rdfs:label "contenido de anhídrico sulfuroso total del vino (mg/l)"@es ;
+                                                 
+                                                 rdfs:comment "total sulphur dioxide content"@en ;
+                                                 
+                                                 rdfs:subPropertyOf ebaco:wine_data_property ;
+                                                 
+                                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                                              owl:onDatatype xsd:float ;
+                                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                                     ]
+                                                                                   )
+                                                            ] .
+
+
+
+###  http://purl.org/ceu/ebaco#total_yeast_count_of_wine
+
+ebaco:total_yeast_count_of_wine rdf:type owl:DatatypeProperty ,
+                                         owl:FunctionalProperty ;
+                                
+                                rdfs:label "total yeast count of wine"@en ,
+                                           "recuento total de levaduras del vino"@es ;
+                                
+                                rdfs:subPropertyOf ebaco:wine_data_property ;
+                                
+                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                             owl:onDatatype xsd:integer ;
+                                             owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                    ]
+                                                                  )
+                                           ] .
+
+
+
+###  http://purl.org/ceu/ebaco#vines_per_ha
+
+ebaco:vines_per_ha rdf:type owl:DatatypeProperty ,
+                            owl:FunctionalProperty ;
+                   
+                   rdfs:label "densidad de plantación (vides/ha)"@es ,
+                              "planting density (vine/ha)"@es ;
+                   
+                   rdfs:subPropertyOf ebaco:vineyard_data_property ;
+                   
+                   rdfs:range [ rdf:type rdfs:Datatype ;
+                                owl:onDatatype xsd:integer ;
+                                owl:withRestrictions ( [ xsd:minInclusive 0
+                                                       ]
+                                                     )
+                              ] .
+
+
+
+###  http://purl.org/ceu/ebaco#vineyard_area
+
+ebaco:vineyard_area rdf:type owl:DatatypeProperty ,
+                             owl:FunctionalProperty ;
+                    
+                    rdfs:label "vineyard area (ha)"@en ,
+                               "area del viñedo (ha)"@es ;
+                    
+                    rdfs:subPropertyOf ebaco:vineyard_data_property ;
+                    
+                    rdfs:range [ rdf:type rdfs:Datatype ;
+                                 owl:onDatatype xsd:float ;
+                                 owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                        ]
+                                                      )
+                               ] .
+
+
+
+###  http://purl.org/ceu/ebaco#vineyard_data_property
+
+ebaco:vineyard_data_property rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:label "vineyard data property"@en ,
+                                        "propiedad del viñedo"@es ;
+                             
+                             rdfs:domain ebaco:Vineyard .
+
+
+
+###  http://purl.org/ceu/ebaco#vineyard_row_orientation_degrees
+
+ebaco:vineyard_row_orientation_degrees rdf:type owl:DatatypeProperty ,
+                                                owl:FunctionalProperty ;
+                                       
+                                       rdfs:label "vineyard row orientation (degrees from North)"@en ,
+                                                  "Orientación de las líneas del viñedo (grados desde el norte)"@es ;
+                                       
+                                       rdfs:subPropertyOf ebaco:vineyard_data_property ;
+                                       
+                                       rdfs:range [ rdf:type rdfs:Datatype ;
+                                                    owl:onDatatype xsd:integer ;
+                                                    owl:withRestrictions ( [ xsd:minInclusive 0
+                                                                           ]
+                                                                           [ xsd:maxExclusive 360
+                                                                           ]
+                                                                         )
+                                                  ] .
+
+
+
+###  http://purl.org/ceu/ebaco#vintage_data_property
+
+ebaco:vintage_data_property rdf:type owl:DatatypeProperty ;
+                            
+                            rdfs:label "vintage data property"@en ,
+                                       "propiedad de la vendimia"@es ;
+                            
+                            rdfs:domain ebaco:Vintage ;
+                            
+                            rdfs:subPropertyOf ebaco:winemaking_data_property .
+
+
+
+###  http://purl.org/ceu/ebaco#vintage_starting_date
+
+ebaco:vintage_starting_date rdf:type owl:DatatypeProperty ;
+                            
+                            rdfs:label "vintage starting date"@en ,
+                                       "fecha de inicio de la vendimia"@es ;
+                            
+                            rdfs:subPropertyOf ebaco:vintage_data_property ;
+                            
+                            rdfs:range xsd:date .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_appellation_data_property
+
+ebaco:wine_appellation_data_property rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:subPropertyOf ebaco:appellation_data_property .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_density_g_ml
+
+ebaco:wine_density_g_ml rdf:type owl:DatatypeProperty ,
+                                 owl:FunctionalProperty ;
+                        
+                        rdfs:label "wine density (g/ml)"@en ,
+                                   "densidad del vino (g/ml)"@es ;
+                        
+                        rdfs:subPropertyOf ebaco:wine_data_property ;
+                        
+                        rdfs:range [ rdf:type rdfs:Datatype ;
+                                     owl:onDatatype xsd:float ;
+                                     owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                            ]
+                                                          )
+                                   ] .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_fixed_acidity_g_l
+
+ebaco:wine_fixed_acidity_g_l rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:label "wine fixed acidity (g/l)"@en ,
+                                        "acidez fija del vino (g/l)"@es ;
+                             
+                             rdfs:subPropertyOf ebaco:wine_data_property ;
+                             
+                             rdfs:range [ rdf:type rdfs:Datatype ;
+                                          owl:onDatatype xsd:float ;
+                                          owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                 ]
+                                                               )
+                                        ] .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_ph
+
+ebaco:wine_ph rdf:type owl:DatatypeProperty ,
+                       owl:FunctionalProperty ;
+              
+              rdfs:label "wine pH"@en ,
+                         "pH del vino"@es ;
+              
+              rdfs:subPropertyOf ebaco:wine_data_property ;
+              
+              rdfs:range [ rdf:type rdfs:Datatype ;
+                           owl:onDatatype xsd:float ;
+                           owl:withRestrictions ( [ xsd:minExclusive "0.0"^^xsd:float
+                                                  ]
+                                                  [ xsd:maxInclusive "14.0"^^xsd:float
+                                                  ]
+                                                )
+                         ] .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_region_data_property
+
+ebaco:wine_region_data_property rdf:type owl:DatatypeProperty ;
+                                
+                                rdfs:label "propiedad de la región vinícola"@es ,
+                                           "wine region data property"@es ;
+                                
+                                rdfs:domain ebaco:Wine_region .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_total_acidity_g_l
+
+ebaco:wine_total_acidity_g_l rdf:type owl:DatatypeProperty ;
+                             
+                             rdfs:label "wine total acidity (g/l)"@en ,
+                                        "acidez total del vino (g/l)"@es ;
+                             
+                             rdfs:subPropertyOf ebaco:wine_data_property ;
+                             
+                             rdfs:range [ rdf:type rdfs:Datatype ;
+                                          owl:onDatatype xsd:float ;
+                                          owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                 ]
+                                                               )
+                                        ] .
+
+
+
+###  http://purl.org/ceu/ebaco#wine_volatile_acidity_g_l
+
+ebaco:wine_volatile_acidity_g_l rdf:type owl:DatatypeProperty ;
+                                
+                                rdfs:label "wine volatile acidity (g/l)"@en ,
+                                           "acidez volátil del vino (g/l)"@es ;
+                                
+                                rdfs:subPropertyOf ebaco:wine_data_property ;
+                                
+                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                             owl:onDatatype xsd:float ;
+                                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                    ]
+                                                                  )
+                                           ] .
+
+
+
+###  http://purl.org/ceu/ebaco#winemaking_data_property
+
+ebaco:winemaking_data_property rdf:type owl:DatatypeProperty ;
+                               
+                               rdfs:label "winemaking data property"@en ,
+                                          "propiedad de la vinificación"@es ;
+                               
+                               rdfs:domain ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#winery_data_property
+
+ebaco:winery_data_property rdf:type owl:DatatypeProperty .
+
+
+
+###  http://purl.org/ceu/ebaco#winery_foundation_date
+
+ebaco:winery_foundation_date rdf:type owl:DatatypeProperty ,
+                                      owl:FunctionalProperty ;
+                             
+                             rdfs:label "winery foundation date"@en ,
+                                        "fecha de fundación de la bodega"@es ;
+                             
+                             rdfs:subPropertyOf ebaco:winery_data_property ;
+                             
+                             rdfs:range xsd:dateTime .
+
+
+
+###  http://purl.org/ceu/ebaco#zinc_content_of_grape_mg_l
+
+ebaco:zinc_content_of_grape_mg_l rdf:type owl:DatatypeProperty ,
+                                          owl:FunctionalProperty ;
+                                 
+                                 rdfs:label "zinc content of grape (mg/l)"@en ,
+                                            "contenido de zinc de la uva (mg/l)"@es ;
+                                 
+                                 rdfs:subPropertyOf ebaco:grape_data_property ;
+                                 
+                                 rdfs:range [ rdf:type rdfs:Datatype ;
+                                              owl:onDatatype xsd:float ;
+                                              owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                     ]
+                                                                   )
+                                            ] .
+
+
+
+###  http://purl.org/ceu/ebaco#zinc_content_of_wine_mg_l
+
+ebaco:zinc_content_of_wine_mg_l rdf:type owl:DatatypeProperty ,
+                                         owl:FunctionalProperty ;
+                                
+                                rdfs:label "zinc content of wine (mg/l)"@en ,
+                                           "contenido de zinc del vino (mg/l)"@es ;
+                                
+                                rdfs:subPropertyOf ebaco:wine_data_property ;
+                                
+                                rdfs:range [ rdf:type rdfs:Datatype ;
+                                             owl:onDatatype xsd:float ;
+                                             owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:float
+                                                                    ]
+                                                                  )
+                                           ] .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#Artificial_cultivation_treatment
+
+ebaco:Artificial_cultivation_treatment rdf:type owl:Class ;
+                                       
+                                       rdfs:label "Artificial cultivation treatment"@en ,
+                                                  "Tratamiento del cultivo artificial"@es ;
+                                       
+                                       rdfs:subClassOf ebaco:Cultivation_treatment ;
+                                       
+                                       owl:disjointWith ebaco:Natural_cultivation_treatment .
+
+
+
+###  http://purl.org/ceu/ebaco#Bottle_cap
+
+ebaco:Bottle_cap rdf:type owl:Class ;
+                 
+                 rdfs:label "Bottle cap"@en ,
+                            "Tapón de botella"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Cork_bottle_cap
+
+ebaco:Cork_bottle_cap rdf:type owl:Class ;
+                      
+                      rdfs:label "Cork bottle cap"@en ,
+                                 "Tapón de botella de corcho"@es ;
+                      
+                      rdfs:subClassOf ebaco:Bottle_cap .
+
+
+
+###  http://purl.org/ceu/ebaco#Cultivation_treatment
+
+ebaco:Cultivation_treatment rdf:type owl:Class ;
+                            
+                            rdfs:label "Cultivation treatment"@en ,
+                                       "Tratamiento del cultivo"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Fertilizer
+
+ebaco:Fertilizer rdf:type owl:Class ;
+                 
+                 rdfs:label "Fertilizer"@en ,
+                            "Fertilizante"@es ;
+                 
+                 rdfs:subClassOf ebaco:Cultivation_treatment .
+
+
+
+###  http://purl.org/ceu/ebaco#Fungicide
+
+ebaco:Fungicide rdf:type owl:Class ;
+                
+                rdfs:label "Fungicide"@en ,
+                           "Fungicida"@es ;
+                
+                rdfs:subClassOf ebaco:Cultivation_treatment .
+
+
+
+###  http://purl.org/ceu/ebaco#Grape_crushing
+
+ebaco:Grape_crushing rdf:type owl:Class ;
+                     
+                     rdfs:label "Grape crushing"@en ,
+                                "Estrujado de la uva"@es ;
+                     
+                     rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Grape_cultivation
+
+ebaco:Grape_cultivation rdf:type owl:Class ;
+                        
+                        rdfs:label "Grape cultivation"@en ,
+                                   "Cultivo de la uva"@es ;
+                        
+                        rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Grape_destemming
+
+ebaco:Grape_destemming rdf:type owl:Class ;
+                       
+                       rdfs:label "Grape destemming"@en ,
+                                  "Despalillado de la uva"@es ;
+                       
+                       rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Grape_must_maceration
+
+ebaco:Grape_must_maceration rdf:type owl:Class ;
+                            
+                            rdfs:label "Grape must maceration"@en ,
+                                       "Maceración del mosto de la uva"@es ;
+                            
+                            rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Grape_must_pumpover
+
+ebaco:Grape_must_pumpover rdf:type owl:Class ;
+                          
+                          rdfs:label "Grape must pumpover"@en ,
+                                     "Remontado del mosto"@es ;
+                          
+                          rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Grape_must_punchdown
+
+ebaco:Grape_must_punchdown rdf:type owl:Class ;
+                           
+                           rdfs:label "Grape must punchdown"@en ,
+                                      "Bazuqueo del mosto"@es ;
+                           
+                           rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Grape_reception
+
+ebaco:Grape_reception rdf:type owl:Class ;
+                      
+                      rdfs:label "Grape reception"@en ,
+                                 "Recepción de la uva"@es ;
+                      
+                      rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Herbicide
+
+ebaco:Herbicide rdf:type owl:Class ;
+                
+                rdfs:label "Herbicide"@en ,
+                           "Herbicida"@es ;
+                
+                rdfs:subClassOf ebaco:Cultivation_treatment .
+
+
+
+###  http://purl.org/ceu/ebaco#Natural_cultivation_treatment
+
+ebaco:Natural_cultivation_treatment rdf:type owl:Class ;
+                                    
+                                    rdfs:label "Natural cultivation treatment"@en ,
+                                               "Tratamiento del cultivo natural"@es ;
+                                    
+                                    rdfs:subClassOf ebaco:Cultivation_treatment .
+
+
+
+###  http://purl.org/ceu/ebaco#Pesticide
+
+ebaco:Pesticide rdf:type owl:Class ;
+                
+                rdfs:label "Pesticide"@en ,
+                           "Pesticida"@es ;
+                
+                rdfs:subClassOf ebaco:Cultivation_treatment .
+
+
+
+###  http://purl.org/ceu/ebaco#Plastic_bottle_cap
+
+ebaco:Plastic_bottle_cap rdf:type owl:Class ;
+                         
+                         rdfs:label "Plastic bottle cap"@en ,
+                                    "Tapón de botella de plástico"@es ;
+                         
+                         rdfs:subClassOf ebaco:Bottle_cap .
+
+
+
+###  http://purl.org/ceu/ebaco#Rubber_bottle_cap
+
+ebaco:Rubber_bottle_cap rdf:type owl:Class ;
+                        
+                        rdfs:label "Rubber bottle cap"@en ,
+                                   "Tapón de botella de caucho"@es ;
+                        
+                        rdfs:subClassOf ebaco:Bottle_cap .
+
+
+
+###  http://purl.org/ceu/ebaco#Screw_bottle_cap
+
+ebaco:Screw_bottle_cap rdf:type owl:Class ;
+                       
+                       rdfs:label "Screw bottle cap"@en ,
+                                  "Tapón de botella roscado"@es ;
+                       
+                       rdfs:subClassOf ebaco:Bottle_cap .
+
+
+
+###  http://purl.org/ceu/ebaco#Silicone_bottle_cap
+
+ebaco:Silicone_bottle_cap rdf:type owl:Class ;
+                          
+                          rdfs:label "Silicone bottle cap"@en ,
+                                     "Tapón de botella de silicona"@es ;
+                          
+                          rdfs:subClassOf ebaco:Bottle_cap .
+
+
+
+###  http://purl.org/ceu/ebaco#Vineyard
+
+ebaco:Vineyard rdf:type owl:Class ;
+               
+               rdfs:label "Vineyard"@en ,
+                          "Viñedo"@es ;
+               
+               rdfs:comment "Plantación de vides para la producción de uva."@es ;
+               
+               rdfs:seeAlso "http://es.wikipedia.org/wiki/Vi%C3%B1a"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Vineyard_soil
+
+ebaco:Vineyard_soil rdf:type owl:Class ;
+                    
+                    rdfs:label "Vineyard soil"@en ,
+                               "Suelo de viña"@es ;
+                    
+                    rdfs:comment "Suelo en el que se cultiva una viña."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Vintage
+
+ebaco:Vintage rdf:type owl:Class ;
+              
+              rdfs:label "Vintage"@en ,
+                         "Vendimia"@es ;
+              
+              rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_aging
+
+ebaco:Wine_aging rdf:type owl:Class ;
+                 
+                 rdfs:label "Wine aging"@en ,
+                            "Envejecimiento del vino"@es ;
+                 
+                 rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_alcoholic_fermentation
+
+ebaco:Wine_alcoholic_fermentation rdf:type owl:Class ;
+                                  
+                                  rdfs:label "Alcoholic fermentation of wine"@en ,
+                                             "Fermentación alcohólica del vino"@es ;
+                                  
+                                  rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_barrel
+
+ebaco:Wine_barrel rdf:type owl:Class ;
+                  
+                  rdfs:label "Wine barrel"@en ,
+                             "Barrica de vino"@es ;
+                  
+                  rdfs:subClassOf ebaco:Wine_container .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_bottle
+
+ebaco:Wine_bottle rdf:type owl:Class ;
+                  
+                  rdfs:label "Wine bottle"@en ,
+                             "Botella de vino"@es ;
+                  
+                  rdfs:subClassOf ebaco:Wine_container .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_bottling
+
+ebaco:Wine_bottling rdf:type owl:Class ;
+                    
+                    rdfs:label "Wine bottling"@en ,
+                               "Embotellado del vino"@es ;
+                    
+                    rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_container
+
+ebaco:Wine_container rdf:type owl:Class ;
+                     
+                     rdfs:label "Wine container"@en ,
+                                "Contenedor de vino"@es ;
+                     
+                     rdfs:comment "Embase que sirve para contener o almacenar mosto, vino o algún derivado."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_corking
+
+ebaco:Wine_corking rdf:type owl:Class ;
+                   
+                   rdfs:label "Wine corking"@en ,
+                              "Encorchado del vino"@es ;
+                   
+                   rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_filtering
+
+ebaco:Wine_filtering rdf:type owl:Class ;
+                     
+                     rdfs:label "Wine filtering"@en ,
+                                "Filtrado del vino"@es ;
+                     
+                     rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_malolactic_fermentation
+
+ebaco:Wine_malolactic_fermentation rdf:type owl:Class ;
+                                   
+                                   rdfs:label "Malolactic fermentation of wine"@en ,
+                                              "Fermentación maloláctica del vino"@es ;
+                                   
+                                   rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_maturation
+
+ebaco:Wine_maturation rdf:type owl:Class ;
+                      
+                      rdfs:label "Wine maturation"@en ,
+                                 "Crianza del vino"@es ;
+                      
+                      rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_pressing
+
+ebaco:Wine_pressing rdf:type owl:Class ;
+                    
+                    rdfs:label "Wine pressing"@en ,
+                               "Prensado del vino"@es ;
+                    
+                    rdfs:subClassOf ebaco:Winemaking_process .
+
+
+
+###  http://purl.org/ceu/ebaco#Wine_tank
+
+ebaco:Wine_tank rdf:type owl:Class ;
+                
+                rdfs:label "Wine tank"@en ,
+                           "Depósito de vino"@es ;
+                
+                rdfs:subClassOf ebaco:Wine_container .
+
+
+
+###  http://purl.org/ceu/ebaco#Winemaking_process
+
+ebaco:Winemaking_process rdf:type owl:Class ;
+                         
+                         rdfs:label "Winemaking process"@en ,
+                                    "Proceso de la vinificación"@es ;
+                         
+                         rdfs:subClassOf <http://www.w3.org/ns/prov#Activity> .
+
+
+
+###  http://purl.org/ceu/ebaco#Yeast_strain
+
+ebaco:Yeast_strain rdf:type owl:Class ;
+                   
+                   rdfs:label "Yeast strain"@en ,
+                              "Cepa de levadura"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#vineyard_training
+
+ebaco:vineyard_training rdf:type owl:Class ;
+                        
+                        rdfs:label "Vineyard training system"@en ,
+                                   "Sistema de poda de la viña"@es ;
+                        
+                        rdfs:seeAlso "http://en.wikipedia.org/wiki/Vine_training"@en ;
+                        
+                        rdfs:comment "Tipo de poda realizado a una viña para conducir sus tallos."@es .
+
+
+
+###  http://www.w3.org/ns/prov#Activity
+
+<http://www.w3.org/ns/prov#Activity> rdfs:label "Actividad"@es .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://purl.org/ceu/ebaco#gdc_trellis_vineyard_training
+
+ebaco:gdc_trellis_vineyard_training rdf:type ebaco:vineyard_training ,
+                                             owl:NamedIndividual ;
+                                    
+                                    rdfs:label "Geneva double curtain trellis vineyard training"@en ,
+                                               "Sistema de poda de la viña en espaldera de doble cortina (gdb)"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#goblet_training_system
+
+ebaco:goblet_training_system rdf:type ebaco:vineyard_training ,
+                                      owl:NamedIndividual ;
+                             
+                             rdfs:label "Globet vineyard training"@en ,
+                                        "Sistema de poda de la viña en vaso"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#lyre_trellis_vineyard_training
+
+ebaco:lyre_trellis_vineyard_training rdf:type ebaco:vineyard_training ,
+                                              owl:NamedIndividual ;
+                                     
+                                     rdfs:label "Lyre trellis vineyard training"@en ,
+                                                "Sistema de poda de la viña en forma de lira."@es .
+
+
+
+###  http://purl.org/ceu/ebaco#scott_henry_trellis_vineyard_training
+
+ebaco:scott_henry_trellis_vineyard_training rdf:type ebaco:vineyard_training ,
+                                                     owl:NamedIndividual ;
+                                            
+                                            rdfs:label "Scott-Henry trellis vineyard training"@en ,
+                                                       "Sistema de poda de la viña Scott-Henry"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#single_wire_trellis_vineyard_training
+
+ebaco:single_wire_trellis_vineyard_training rdf:type ebaco:vineyard_training ,
+                                                     owl:NamedIndividual ;
+                                            
+                                            rdfs:label "Single wire trellis vineyard training"@en ,
+                                                       "Sistema de poda de la viña en espaldera con un alambre"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#staked_vineyard_training
+
+ebaco:staked_vineyard_training rdf:type ebaco:vineyard_training ,
+                                        owl:NamedIndividual ;
+                               
+                               rdfs:label "Staked vineyard training"@en ,
+                                          "Sistema de poda de la viña con estacas"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#two_wires_trellis_vineyard_training
+
+ebaco:two_wires_trellis_vineyard_training rdf:type ebaco:vineyard_training ,
+                                                   owl:NamedIndividual ;
+                                          
+                                          rdfs:label "two wires trellis vineyard training"@en ,
+                                                     "Sistema de poda de la viña en espaldera con dos alambres"@es .
+
+
+
+###  http://purl.org/ceu/ebaco#vsp_trellis_wineyard_training
+
+ebaco:vsp_trellis_wineyard_training rdf:type ebaco:vineyard_training ,
+                                             owl:NamedIndividual ;
+                                    
+                                    rdfs:label "Vertical shoot ositioned trellis vineyard training"@en ,
+                                               "Sistema de poda de la viña en espaldera vertical vsp"@es .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+ebaco:winery_data_property rdfs:label "winery data property"@en ,
+                                      "propiedad de la bodega"@es .
+
+
+
+ebaco:carbon_dioxide_content_of_wine_g_l rdfs:label "carbon dioxide content of wine (g/l)"@en ,
+                                                    "contenido de ácido carbónico del vino (g/l)"@es .
+
+
+
+ebaco:wine_appellation_data_property rdfs:label "wine appellation data property"@en ,
+                                                "propiedad de la denominación de origen del vino"@es .
+
+
+
+ebaco:wine_region_with_appellation_object_property rdfs:label "wine region with appellation object property"@en ,
+                                                              "propiedad de la región vinícola con denominación de origen"@es .
+
+
+
+ebaco:appellation_data_property rdfs:label "appellation data property"@en ,
+                                           "propiedad de la denominación de origen"@es .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

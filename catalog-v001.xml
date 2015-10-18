@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://purl.org/ceu/ebaco/core/1.0" uri="ebaco-core.rdf"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1445189263576" name="duplicate:http://purl.org/ceu/ebaco" uri="ebaco-core.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1445189263576" name="duplicate:http://purl.org/ceu/ebaco" uri="ebaco-tasting.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1445189263576" name="http://purl.org/ceu/ebaco/winemaking" uri="ebaco-winemaking.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1445192081738" name="duplicate:http://purl.org/ceu/ebaco" uri="ebaco-tasting.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1445192081738" name="duplicate:http://purl.org/ceu/ebaco" uri="ebaco-core.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1445192081738" name="http://purl.org/ceu/ebaco/winemaking" uri="ebaco-winemaking.rdf"/>
     </group>
 </catalog>
